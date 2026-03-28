@@ -121,10 +121,10 @@ export const GRID = {
 // Spherical: r=distance, phi=elevation from vertical, theta=azimuth
 // SSE camera: theta ≈ π/8 puts camera at south-south-east
 export const CAMERA = {
-  frustum: 6,
+  frustum: 7,
   topDown: { r: 80, phi: 0, theta: 0 },
   isometric: { r: 18, phi: Math.PI / 5, theta: Math.PI / 8 },
-  barChart: { x: 0, y: 3.5, z: 16, lookAt: { x: 0, y: 3.5, z: 0 } },
+  barChart: { x: 0, y: 3, z: 16, lookAt: { x: 0, y: 3, z: 0 } },
 };
 
 // ── Bar chart layout ──────────────────────────────────────────

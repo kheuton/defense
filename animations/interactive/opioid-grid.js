@@ -44,7 +44,14 @@ function generateHexCenters(polygon, radius, gap) {
   const minX = Math.min(...xs), maxX = Math.max(...xs);
   const minZ = Math.min(...zs), maxZ = Math.max(...zs);
 
-  // Expand generously to avoid gaps at polygon edges
+  // Hex vertex offsets (flat-top)
+  const vertexOffsets = [];
+  for (let i = 0; i < 6; i++) {
+    const angle = (Math.PI / 3) * i;
+    vertexOffsets.push([radius * Math.cos(angle), radius * Math.sin(angle)]);
+  }
+
+  // Include hex if center OR any vertex is inside the polygon
   const pad = radius * 2;
   const centers = [];
   let col = 0;
@@ -54,6 +61,14 @@ function generateHexCenters(polygon, radius, gap) {
       const cz = z + zOff;
       if (pointInPolygon(x, cz, polygon)) {
         centers.push({ x, z: cz });
+        continue;
+      }
+      // Check vertices — include if any vertex is inside
+      for (const [dx, dz] of vertexOffsets) {
+        if (pointInPolygon(x + dx, cz + dz, polygon)) {
+          centers.push({ x, z: cz });
+          break;
+        }
       }
     }
   }
@@ -333,7 +348,9 @@ function transitionToBarChart() {
     .to({ opacity: 0 }, TIMING.barChart.fadeGroundDuration)
     .start();
 
-  // Camera to front view
+  // Camera to front view — must also fix up vector from top-down (0,0,-1)
+  // to front-facing (0,1,0), otherwise x-offsets appear vertical on screen.
+  camera.up.set(0, 1, 0);
   const ct = CAMERA.barChart;
   new TWEEN.Tween(camera.position)
     .to({ x: ct.x, y: ct.y, z: ct.z }, TIMING.barChart.cameraDuration)
