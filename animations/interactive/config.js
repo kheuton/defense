@@ -15,14 +15,16 @@ export const COLORS = {
   yellow: new THREE.Color("#ffd166"),
   grid:   new THREE.Color("#222233"),
   edge:   new THREE.Color("#444466"),
+  muted:  new THREE.Color("#888899"),
 };
 
 /**
  * Map a normalized value t ∈ [0, 1] to a color.
+ * t=0 uses COLORS.muted (theme-aware, visible on any background).
  * Returns a new THREE.Color each call (safe to mutate).
  */
 export function valueColor(t) {
-  if (t === 0) return new THREE.Color(COLORS.bg);
+  if (t === 0) return COLORS.muted.clone();
   if (t < 0.15) return COLORS.teal.clone().lerp(COLORS.purple, t / 0.15);
   if (t < 0.5)  return COLORS.purple.clone().lerp(COLORS.coral, (t - 0.15) / 0.35);
   return COLORS.coral.clone().lerp(COLORS.yellow, (t - 0.5) / 0.5);
@@ -186,20 +188,20 @@ export const LIGHTING = {
 //
 // Coordinates are in the same world-unit system as MA_OUTLINE.
 export const HOTSPOTS = [
-  { x:  2.5,  z: -0.3, peak: 110, sigma: 1.0, label: "Boston" },
-  { x:  0.0,  z:  0.0, peak:  85, sigma: 0.9, label: "Worcester" },
-  { x: -1.8,  z:  0.3, peak:  68, sigma: 0.8, label: "Springfield" },
-  { x:  1.8,  z: -1.1, peak:  95, sigma: 0.7, label: "Lowell" },
-  { x:  1.5,  z:  2.0, peak:  72, sigma: 0.7, label: "New Bedford" },
-  { x:  1.2,  z:  1.5, peak:  45, sigma: 0.6, label: "Fall River" },
-  { x:  1.8,  z: -1.4, peak:  42, sigma: 0.5, label: "Lawrence" },
-  { x:  1.8,  z:  0.6, peak:  38, sigma: 0.6, label: "Brockton" },
-  { x:  2.3,  z: -0.7, peak:  24, sigma: 0.5, label: "Lynn" },
-  { x: -1.5,  z:  0.1, peak:  22, sigma: 0.5, label: "Holyoke" },
-  { x: -4.2,  z: -0.5, peak:  15, sigma: 0.6, label: "Pittsfield" },
-  { x:  3.2,  z:  1.8, peak:  14, sigma: 0.5, label: "Barnstable" },
+  { x:  2.5,  z: -0.3, peak:  20, sigma: 0.55, label: "Boston" },
+  { x:  0.0,  z:  0.0, peak:  16, sigma: 0.50, label: "Worcester" },
+  { x: -1.8,  z:  0.3, peak:  13, sigma: 0.45, label: "Springfield" },
+  { x:  1.8,  z: -1.1, peak:  18, sigma: 0.40, label: "Lowell" },
+  { x:  1.5,  z:  2.0, peak:  14, sigma: 0.40, label: "New Bedford" },
+  { x:  1.2,  z:  1.5, peak:   9, sigma: 0.35, label: "Fall River" },
+  { x:  1.8,  z: -1.4, peak:   8, sigma: 0.30, label: "Lawrence" },
+  { x:  1.8,  z:  0.6, peak:   7, sigma: 0.35, label: "Brockton" },
+  { x:  2.3,  z: -0.7, peak:   5, sigma: 0.30, label: "Lynn" },
+  { x: -1.5,  z:  0.1, peak:   4, sigma: 0.30, label: "Holyoke" },
+  { x: -4.2,  z: -0.5, peak:   3, sigma: 0.35, label: "Pittsfield" },
+  { x:  3.2,  z:  1.8, peak:   3, sigma: 0.30, label: "Barnstable" },
   // Second western MA hotspot — smaller, broader
-  { x: -3.2,  z: -0.8, peak:  35, sigma: 1.0, label: "Greenfield/W. MA" },
+  { x: -3.2,  z: -0.8, peak:   6, sigma: 0.50, label: "Greenfield/W. MA" },
 ];
 
 // ── Bar chart data (independent dataset) ──────────────────────
@@ -218,28 +220,28 @@ export const HOTSPOTS = [
 // the top N geographic values (the morph logic is agnostic).
 export const BAR_CHART_DATA = [
   // ── Flat top: values bunched together (hard to rank) ──
-  { label: "Suffolk",      value: 150 },
-  { label: "Essex",        value: 149 },
-  { label: "Middlesex",    value: 147 },
-  { label: "Worcester",    value: 144 },
-  { label: "Bristol",      value: 140 },
-  { label: "Hampden",      value: 135 },
-  { label: "Plymouth",     value: 129 },
-  { label: "Norfolk",      value: 122 },
-  // ── Linear ramp: clear separation ──
-  { label: "Barnstable",   value: 110 },
-  { label: "Berkshire",    value: 97 },
-  { label: "Hampshire",    value: 84 },
-  { label: "Franklin",     value: 71 },
-  { label: "Dukes",        value: 59 },
-  { label: "Nantucket",    value: 48 },
-  { label: "Region A",     value: 38 },
-  { label: "Region B",     value: 29 },
-  { label: "Region C",     value: 21 },
-  { label: "Region D",     value: 14 },
-  { label: "Region E",     value: 9 },
-  { label: "Region F",     value: 5 },
-  { label: "Region G",     value: 3 },
+  { label: "Suffolk",      value: 20 },
+  { label: "Essex",        value: 20 },
+  { label: "Middlesex",    value: 19 },
+  { label: "Worcester",    value: 19 },
+  { label: "Bristol",      value: 19 },
+  { label: "Hampden",      value: 18 },
+  { label: "Plymouth",     value: 18 },
+  { label: "Norfolk",      value: 18 },
+  // ── Ramp: accelerating decrease ──
+  { label: "Barnstable",   value: 16 },
+  { label: "Berkshire",    value: 14 },
+  { label: "Hampshire",    value: 12 },
+  { label: "Franklin",     value: 10 },
+  { label: "Dukes",        value: 8 },
+  { label: "Nantucket",    value: 6 },
+  { label: "Region A",     value: 5 },
+  { label: "Region B",     value: 4 },
+  { label: "Region C",     value: 3 },
+  { label: "Region D",     value: 2 },
+  { label: "Region E",     value: 2 },
+  { label: "Region F",     value: 1 },
+  { label: "Region G",     value: 1 },
   { label: "Region H",     value: 1 },
   // ── Zeros: no signal ──
   { label: "Region I",     value: 0 },
