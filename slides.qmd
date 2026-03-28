@@ -211,6 +211,63 @@ This is the thesis overview dressed up as open questions. Each maps to a chapter
 
 
 # Evaluation {background-color="#0a2a1a"}
+
+::::: {.columns style="margin-top: 1.5em;"}
+
+:::: {.column width="75%"}
+**Spatiotemporal forecasting of opioid-related fatal overdoses: towards best practices for modeling and evaluation** [[Open Access]{.accent-teal}]{style="font-weight: normal; font-size: 0.75em; margin-left: 0.4em;"}
+
+<br>
+
+Kyle Heuton, Jyontika Kapoor, Shikhar Shrestha, Thomas J. Stopka, Michael C. Hughes
+
+[*American Journal of Epidemiology*, Vol. 194, No. 6, June 2025, pp. 1776–1782]{.muted}
+::::
+
+:::: {.column width="25%" style="display: flex; justify-content: center; align-items: flex-start; padding-top: 0.3em;"}
+::: {style="width: 110px; height: 110px; background: var(--bg-card); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.5em; text-align: center;"}
+AJE logo
+:::
+::::
+
+:::::
+
+## The opportunities created by existing literature
+
+::: {.fragment}
+::: {.contribution-item}
+::: {.contribution-num .accent-teal-light}
+1
+:::
+::: {.contribution-body}
+Existing literature nearly unanimously used error-based metrics to compare models, making the effects of using such models to guide policy decisions unclear.
+:::
+:::
+:::
+
+::: {.fragment}
+::: {.contribution-item}
+::: {.contribution-num .accent-teal}
+2
+:::
+::: {.contribution-body}
+Models were rarely compared to competitors or reasonable baselines, making the benefit of any model impossible to determine.
+:::
+:::
+:::
+
+::: {.fragment}
+::: {.contribution-item}
+::: {.contribution-num .accent-teal-dark}
+3
+:::
+::: {.contribution-body}
+Code rarely shared, data nearly never shared.
+:::
+:::
+:::
+
+
 ## Best Possible Reach (BPR)
 
 <!-- TODO: flesh out Chapter 3 slides -->

@@ -33,7 +33,9 @@ $heading4Size: 0.95em;
 // ---- CSS custom properties (for use in slides) ----
 :root {
   --purple:    #7c6af7;
-  --teal:      #50c8a8;
+  --teal:       #50c8a8;
+  --teal-light: #7ddcc0;
+  --teal-dark:  #2ea882;
   --coral:     #ff7c57;
   --yellow:    #ffd166;
   --bg-card:   rgba(255, 255, 255, 0.05);
@@ -110,7 +112,9 @@ $heading4Size: 0.95em;
 
 // ---- Accent utility classes ----
 .reveal .accent-purple { color: var(--purple); }
-.reveal .accent-teal   { color: var(--teal);   }
+.reveal .accent-teal        { color: var(--teal);        }
+.reveal .accent-teal-light  { color: var(--teal-light);  }
+.reveal .accent-teal-dark   { color: var(--teal-dark);   }
 .reveal .accent-coral  { color: var(--coral);  }
 .reveal .accent-yellow { color: var(--yellow); }
 .reveal .muted         { color: var(--muted);  }
