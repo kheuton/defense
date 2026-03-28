@@ -29,8 +29,10 @@ animations/
   interactive/              # Browser-based Three.js animations (embedded via background-iframe)
     opioid-grid.html        # HTML shell — canvas + CDN imports
     config.js               # All tunables: colors, timing, camera, layout, MA outline, datasets
-    opioid-grid.js          # Three.js scene: hex grid on MA outline, morph transition
+    opioid-grid.js          # Three.js scene: 9-phase hex grid → bar chart → model comparison
     gen_ma_outline.py       # One-shot script: GeoJSON → MA polygon coordinates for config.js
+    NOTES.md                # Developer notes: what to read, restyling, dataset adjustment
+    TUNING.md               # Section-by-section config.js reference
 figures/                    # Static images
 _output/                    # Quarto build output (gitignored)
 ```
@@ -67,7 +69,9 @@ Files live in `animations/interactive/`. Embedded in slides via:
 ## {background-iframe="animations/interactive/opioid-grid.html" background-interactive="true"}
 ```
 
-Tunables are in `config.js` — see `animations/interactive/TUNING.md` for details.
+Tunables are in `config.js` — see `animations/interactive/TUNING.md` for a section-by-section guide.
+
+For a higher-level overview (what to read, how to restyle, how to adjust datasets and prediction models), see `animations/interactive/NOTES.md`.
 
 Test standalone by opening the `.html` file in a browser (click / arrow to advance).
 
