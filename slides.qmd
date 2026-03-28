@@ -43,11 +43,30 @@ Land on the thesis question early.
 :::
 ::: {.fragment .opioid-step}
 :::
+::: {.fragment .opioid-step}
+:::
+::: {.fragment .opioid-step}
+:::
+::: {.fragment .opioid-step}
+:::
+::: {.fragment .opioid-step}
+:::
+::: {.fragment .opioid-step}
+:::
+::: {.fragment .opioid-step}
+:::
 
 ::: notes
-Interactive animation — click or press → to advance through three steps:
-(1) heatmap of MA opioid overdose deaths, (2) isometric density view,
-(3) sorted bar chart revealing the skewed distribution.
+Interactive animation — 9 steps:
+(1) heatmap of MA opioid overdose deaths,
+(2) isometric density view,
+(3) sorted bar chart (ascending),
+(4) split into two identical charts,
+(5) prediction lines appear (standard vs decision-aware),
+(6) error fill between bars and predictions,
+(7) RMSE text appears,
+(8) non-top-K bars fade,
+(9) ranking evaluation with reach percentages.
 :::
 
 

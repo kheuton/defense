@@ -121,10 +121,10 @@ export const GRID = {
 // Spherical: r=distance, phi=elevation from vertical, theta=azimuth
 // SSE camera: theta ≈ π/8 puts camera at south-south-east
 export const CAMERA = {
-  frustum: 8,
+  frustum: 6,
   topDown: { r: 80, phi: 0, theta: 0 },
   isometric: { r: 18, phi: Math.PI / 5, theta: Math.PI / 8 },
-  barChart: { x: 0, y: 4, z: 16, lookAt: { x: 0, y: 2.5, z: 0 } },
+  barChart: { x: 0, y: 3.5, z: 16, lookAt: { x: 0, y: 3.5, z: 0 } },
 };
 
 // ── Bar chart layout ──────────────────────────────────────────
@@ -253,3 +253,53 @@ export const BAR_CHART_DATA = [
   { label: "Region O",     value: 0 },
   { label: "Region P",     value: 0 },
 ];
+
+// ── Comparison layout ─────────────────────────────────────────
+export const COMPARISON = {
+  gap: 2.5,            // horizontal gap between the two charts (world units)
+  k: 5,               // top-K for ranking evaluation
+  frustumScale: 1.6,  // frustum multiplier when showing side-by-side charts
+};
+
+// ── Prediction models ─────────────────────────────────────────
+// Left model: "standard" — low MSE, poor top-K ranking.
+// Predictions = actual + Gaussian noise. Top-K predictions are shuffled
+// so the model's top-K picks differ from the true top-K.
+export const PRED_LEFT = {
+  label: "Standard Model (minimize MSE)",
+  noiseSigma: 1.0,       // noise std for non-top bars
+  topNoiseSigma: 2.5,    // noise std for top-K bars
+  seed: 42,              // deterministic PRNG seed
+};
+
+// Right model: "decision-aware" — high MSE, perfect top-K ranking.
+// Parabola: f(i) = a * (i - c)^2 + d, where i is bar index (ascending).
+// Tuned so: positive at i=0 (zeros), dips near i≈9, rises above bars at right.
+export const PRED_RIGHT = {
+  label: "Decision-Aware Model",
+  a: 0.032,    // curvature — controls how fast it rises
+  c: 9,        // vertex x-position (bar index of minimum)
+  d: -0.3,     // vertex y-offset (slightly below zero, clamped)
+};
+
+// ── Comparison timing (ms) ────────────────────────────────────
+export const TIMING_COMPARISON = {
+  splitDuration: 800,
+  lineDrawDuration: 600,
+  fillPerBar: 60,            // delay between successive bar fills
+  fillFadeDuration: 200,
+  blinkDuration: 200,
+  blinkCount: 2,
+  textFadeDuration: 400,
+  errorFadeOut: 400,
+  barFadeDuration: 500,
+  evalLineDelay: 800,        // delay between numerator/denominator
+  evalChartDelay: 1200,      // delay between left and right chart eval
+};
+
+// ── Comparison easing ─────────────────────────────────────────
+export const EASING_COMPARISON = {
+  split: TWEEN.Easing.Quadratic.InOut,
+  lineDraw: TWEEN.Easing.Linear.None,
+  fill: TWEEN.Easing.Quadratic.Out,
+};
