@@ -198,44 +198,56 @@ export const HOTSPOTS = [
   { x: -1.5,  z:  0.1, peak:  22, sigma: 0.5, label: "Holyoke" },
   { x: -4.2,  z: -0.5, peak:  15, sigma: 0.6, label: "Pittsfield" },
   { x:  3.2,  z:  1.8, peak:  14, sigma: 0.5, label: "Barnstable" },
+  // Second western MA hotspot — smaller, broader
+  { x: -3.2,  z: -0.8, peak:  35, sigma: 1.0, label: "Greenfield/W. MA" },
 ];
 
 // ── Bar chart data (independent dataset) ──────────────────────
 // This is the dataset the bars morph INTO during the arc transition.
-// Completely independent of the geographic hotspots — different labels,
-// different values. 30 entries for the bar chart.
+// Completely independent of the geographic hotspots.
+//
+// Shape: sigmoid (sorted descending). The flat top means a model
+// that is slightly off on the highest-value locations makes large
+// ranking errors in the top-K — exactly the decision-aware point.
+//
+//   Bars 1-8:   flat top (bunched, hard to rank correctly)
+//   Bars 9-22:  linear ramp (clear separation)
+//   Bars 23-30: exact zeros (no signal)
 //
 // To fall back to "same data, fewer bars": replace these entries with
 // the top N geographic values (the morph logic is agnostic).
 export const BAR_CHART_DATA = [
-  { label: "Suffolk",      value: 215 },
-  { label: "Essex",        value: 190 },
-  { label: "Middlesex",    value: 175 },
-  { label: "Worcester",    value: 160 },
-  { label: "Bristol",      value: 148 },
+  // ── Flat top: values bunched together (hard to rank) ──
+  { label: "Suffolk",      value: 150 },
+  { label: "Essex",        value: 149 },
+  { label: "Middlesex",    value: 147 },
+  { label: "Worcester",    value: 144 },
+  { label: "Bristol",      value: 140 },
   { label: "Hampden",      value: 135 },
-  { label: "Plymouth",     value: 120 },
-  { label: "Norfolk",      value: 108 },
-  { label: "Barnstable",   value: 95 },
-  { label: "Berkshire",    value: 82 },
-  { label: "Hampshire",    value: 70 },
-  { label: "Franklin",     value: 58 },
-  { label: "Dukes",        value: 48 },
-  { label: "Nantucket",    value: 35 },
-  { label: "Region A",     value: 130 },
-  { label: "Region B",     value: 115 },
-  { label: "Region C",     value: 102 },
-  { label: "Region D",     value: 90 },
-  { label: "Region E",     value: 78 },
-  { label: "Region F",     value: 65 },
-  { label: "Region G",     value: 55 },
-  { label: "Region H",     value: 45 },
-  { label: "Region I",     value: 38 },
-  { label: "Region J",     value: 32 },
-  { label: "Region K",     value: 28 },
-  { label: "Region L",     value: 22 },
-  { label: "Region M",     value: 18 },
-  { label: "Region N",     value: 15 },
-  { label: "Region O",     value: 12 },
-  { label: "Region P",     value: 8  },
+  { label: "Plymouth",     value: 129 },
+  { label: "Norfolk",      value: 122 },
+  // ── Linear ramp: clear separation ──
+  { label: "Barnstable",   value: 110 },
+  { label: "Berkshire",    value: 97 },
+  { label: "Hampshire",    value: 84 },
+  { label: "Franklin",     value: 71 },
+  { label: "Dukes",        value: 59 },
+  { label: "Nantucket",    value: 48 },
+  { label: "Region A",     value: 38 },
+  { label: "Region B",     value: 29 },
+  { label: "Region C",     value: 21 },
+  { label: "Region D",     value: 14 },
+  { label: "Region E",     value: 9 },
+  { label: "Region F",     value: 5 },
+  { label: "Region G",     value: 3 },
+  { label: "Region H",     value: 1 },
+  // ── Zeros: no signal ──
+  { label: "Region I",     value: 0 },
+  { label: "Region J",     value: 0 },
+  { label: "Region K",     value: 0 },
+  { label: "Region L",     value: 0 },
+  { label: "Region M",     value: 0 },
+  { label: "Region N",     value: 0 },
+  { label: "Region O",     value: 0 },
+  { label: "Region P",     value: 0 },
 ];
