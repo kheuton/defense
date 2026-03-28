@@ -1,0 +1,31 @@
+project:
+  type: default
+  output-dir: _output
+
+format:
+  revealjs:
+    theme: [dark, style/theme.scss]
+    css: style/custom.css
+    # Dimensions (16:9)
+    width: 1600
+    height: 900
+    margin: 0.06
+    # Navigation
+    slide-number: c/t
+    show-slide-number: speaker
+    history: false
+    hash: true
+    # Transitions
+    transition: fade
+    background-transition: fade
+    # Math
+    html-math-method: katex
+    # Code
+    highlight-style: github-dark
+    # Misc
+    center: false
+    incremental: false
+    controls: true
+    progress: false
+    # Speaker view
+    chalkboard: false

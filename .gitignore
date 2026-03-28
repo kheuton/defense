@@ -1,0 +1,10 @@
+_output/
+.quarto/
+__pycache__/
+*.pyc
+*.tar.gz
+# keep .gitkeep files
+!*/.gitkeep
+
+/.quarto/
+**/*.quarto_ipynb

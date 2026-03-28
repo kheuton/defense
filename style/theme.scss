@@ -1,0 +1,163 @@
+/*-- scss:defaults --*/
+
+// ---- Color Palette ----
+$backgroundColor:          #11111e;
+$mainColor:                #c8c8e0;
+$headingColor:             #eeeeff;
+$linkColor:                #7c6af7;
+$linkColorHover:           #a89df9;
+$selectionBackgroundColor: rgba(124, 106, 247, 0.35);
+$selectionColor:           #ffffff;
+
+// ---- Typography ----
+$mainFont:            'Inter', 'Helvetica Neue', Arial, sans-serif;
+$headingFont:         'Inter', 'Helvetica Neue', Arial, sans-serif;
+$mainFontSize:        34px;
+$headingFontWeight:   600;
+$headingTextShadow:   none;
+$headingLetterSpacing: -0.02em;
+$headingTextTransform: none;
+
+// ---- Heading scale ----
+$heading1Size: 2.0em;
+$heading2Size: 1.4em;
+$heading3Size: 1.1em;
+$heading4Size: 0.95em;
+
+
+/*-- scss:rules --*/
+
+// ---- Google Fonts ----
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+// ---- CSS custom properties (for use in slides) ----
+:root {
+  --purple:    #7c6af7;
+  --teal:      #50c8a8;
+  --coral:     #ff7c57;
+  --yellow:    #ffd166;
+  --bg-card:   rgba(255, 255, 255, 0.05);
+  --bg-card-2: rgba(255, 255, 255, 0.09);
+  --border:    rgba(255, 255, 255, 0.12);
+  --muted:     rgba(200, 200, 224, 0.55);
+}
+
+// ---- Title slide ----
+.reveal .title-slide,
+.reveal.has-dark-background .title-slide {
+  text-align: left;
+
+  h1.title {
+    font-size: 1.7em;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.25em;
+    background: linear-gradient(135deg, #eeeeff 0%, #a89df9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  p.subtitle {
+    font-size: 1.0em;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 1.2em;
+    -webkit-text-fill-color: var(--teal);
+  }
+
+  .quarto-title-author-name {
+    font-size: 0.85em;
+    color: $mainColor;
+    font-weight: 400;
+  }
+
+  .quarto-title-affiliation {
+    font-size: 0.72em;
+    color: var(--muted);
+  }
+}
+
+// ---- Section header slides ----
+.reveal section.level1 h1 {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: $headingColor;
+}
+
+// ---- Slide headings ----
+.reveal .slides section h2 {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.25em;
+  margin-bottom: 0.6em;
+}
+
+// ---- Accent utility classes ----
+.reveal .accent-purple { color: var(--purple); }
+.reveal .accent-teal   { color: var(--teal);   }
+.reveal .accent-coral  { color: var(--coral);  }
+.reveal .accent-yellow { color: var(--yellow); }
+.reveal .muted         { color: var(--muted);  }
+
+// ---- Card component ----
+.reveal .card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8em 1.1em;
+  margin: 0.4em 0;
+}
+
+.reveal .card-purple { border-left: 4px solid var(--purple); }
+.reveal .card-teal   { border-left: 4px solid var(--teal);   }
+.reveal .card-coral  { border-left: 4px solid var(--coral);  }
+
+// ---- Fragment animation ----
+.reveal .fragment.highlight-purple.visible { color: var(--purple); }
+.reveal .fragment.highlight-teal.visible   { color: var(--teal);   }
+.reveal .fragment.highlight-coral.visible  { color: var(--coral);  }
+
+// ---- Columns ----
+.reveal .columns {
+  display: flex;
+  gap: 1.5em;
+  align-items: flex-start;
+}
+
+// ---- Figures ----
+.reveal figure figcaption {
+  font-size: 0.55em;
+  color: var(--muted);
+  margin-top: 0.3em;
+}
+
+// ---- Code ----
+.reveal pre {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.65em;
+}
+
+// ---- KaTeX math ----
+.reveal .katex {
+  font-size: 1.0em;
+}
+
+.reveal .katex-display {
+  margin: 0.6em 0;
+}
+
+// ---- Slide number ----
+.reveal .slide-number {
+  font-family: $mainFont;
+  font-size: 0.5em;
+  color: var(--muted);
+  background: transparent;
+}
+
+// ---- Footer ----
+.reveal .footer {
+  font-size: 0.45em;
+  color: var(--muted);
+}
