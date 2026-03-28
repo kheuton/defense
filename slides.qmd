@@ -6,6 +6,107 @@ institute: "Tufts University · Hughes Lab"
 date: "2026"
 ---
 
+## Talk Outline
+
+1. My story
+2. [Evaluating models for decision making]{.muted}
+3. [Training models for decision making]{.muted}
+4. [Benchmarking decision making modeling approaches]{.muted}
+
+
+## Other Work at Tufts
+
+::::: {.columns style="font-size: 0.72em;"}
+
+:::: {.column width="25%"}
+::: {.fragment .col-header fragment-index=1}
+**Machine Learning for Education**
+
+* * *
+:::
+
+::: {.fragment fragment-index=2}
+Combining physics education and machine learning research to measure evidence of students' mechanistic sensemaking
+
+[Physical Review: Physics Education Research 2026]{.muted}
+:::
+::::
+
+:::: {.column width="25%"}
+::: {.fragment .col-header fragment-index=3 style="border-left: 1px solid var(--separator); padding-left: 1em;"}
+**Decision Focused Learning**
+
+* * *
+
+::: {.fragment fragment-index=4}
+Predicting spatiotemporal counts of opioid-related fatal overdoses via zero-inflated Gaussian processes
+
+[NeurIPS 2022 Workshop on Gaussian Processes, Spatiotemporal Modeling, and Decision-making Systems]{.muted}
+:::
+:::
+::::
+
+:::: {.column width="25%"}
+::: {.fragment .col-header fragment-index=5 style="border-left: 1px solid var(--separator); padding-left: 1em;"}
+**Public Health**
+
+* * *
+
+::: {.fragment fragment-index=6}
+Forecasting opioid-related fatal overdoses: Striving towards strong baselines and best evaluation practices
+
+[American Public Health Association 151st Annual Meeting 2023]{.muted}
+:::
+
+::: {.fragment fragment-index=7}
+APHA Data Science Demonstration Project on NLP for Opioid-Related EMS calls
+
+[2024]{.muted}
+:::
+:::
+::::
+
+:::: {.column width="25%"}
+::: {.fragment .col-header fragment-index=8 style="border-left: 1px solid var(--separator); padding-left: 1em;"}
+**Constrained Optimization**
+
+* * *
+
+::: {.fragment fragment-index=9}
+Prediction-constrained markov models for medical time series with missing data and few labels
+
+[NeurIPS 2022 Workshop on Time Series for Health]{.muted}
+:::
+
+::: {.fragment fragment-index=10}
+Partial VOROS: A Cost-aware Performance Metric for Binary Classifiers with Precision and Capacity Constraints
+
+[AISTATS 2026]{.muted}
+:::
+:::
+::::
+
+:::::
+
+:::: {style="position: relative; height: 2rem; font-size: 0.65em; border-top: 1px solid var(--separator); padding-top: 0.3em; overflow: visible;"}
+::: {.fragment .fade-in-then-out fragment-index=2 style="position: absolute; width: 100%;"}
+Kaitlin Gili, Kyle Heuton, Astha Shah, David Hammer, and Michael C. Hughes
+:::
+::: {.fragment .fade-in-then-out fragment-index=4 style="position: absolute; width: 100%;"}
+Kyle Heuton, Shikhar Shrestha, Thomas J. Stopka, Jennifer Pustz, Michael C. Hughes
+:::
+::: {.fragment .fade-in-then-out fragment-index=6 style="position: absolute; width: 100%;"}
+Kyle Heuton, Thomas J. Stopka, Shikhar Shrestha, Jennifer Pustz, Liping Liu, Michael C. Hughes
+:::
+::: {.fragment .fade-in-then-out fragment-index=9 style="position: absolute; width: 100%;"}
+Preetish Rath, Gabe Hope, Kyle Heuton, Erik Sudderth, Michael Hughes
+:::
+::: {.fragment .fade-in fragment-index=10 style="position: absolute; width: 100%;"}
+Christopher Ratigan, Kyle Heuton, Carissa Wang, Lenore Cowen, Michael C. Hughes
+:::
+::::
+
+
 # Introduction {background-color="#1a0a3a"}
 
 ## The Promise of Machine Learning
@@ -285,7 +386,7 @@ This is the thesis overview dressed up as open questions. Each maps to a chapter
 :::
 
 
-# Chapter 3: Evaluating Forecasts {background-color="#0a2a1a"}
+# Evaluation {background-color="#0a2a1a"}
 ## Best Possible Reach (BPR)
 
 <!-- TODO: flesh out Chapter 3 slides -->
@@ -315,7 +416,7 @@ may score poorly on RMSE.
 :::
 
 
-# Chapter 4: Decision-Aware Training {background-color="#1a0a2a"}
+# Training {background-color="#1a0a2a"}
 ## Decision-Aware Maximum Likelihood (DAML)
 
 <!-- TODO: flesh out Chapter 4 slides -->
@@ -341,7 +442,7 @@ may score poorly on RMSE.
 <!-- TODO -->
 
 
-# Chapter 5: Benchmarking {background-color="#2a1a0a"}
+# Benchmarking {background-color="#2a1a0a"}
 ## Evaluating DFL Methods in Practice
 
 <!-- TODO: flesh out Chapter 5 slides -->
@@ -367,7 +468,7 @@ may score poorly on RMSE.
 <!-- TODO -->
 
 
-# Conclusion {background-color="#1a1a2e"}
+# Conclusion and Future Work {background-color="#1a1a2e"}
 
 ## Three Contributions
 

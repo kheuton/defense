@@ -77,6 +77,9 @@ Test standalone by opening the `.html` file in a browser (click / arrow to advan
 
 ## Quarto / Reveal.js notes
 
+See `SLIDE_DESIGN_NOTES.md` for hard-won lessons on fenced div syntax, `<hr>` pitfalls,
+and Reveal.js slide separation. Read it before building complex slide layouts.
+
 - Slide dimensions: 1600x900 (16:9). Design visuals for this aspect ratio.
 - Transitions: fade. Speaker notes via `::: notes` blocks.
 - Math: KaTeX (not MathJax).

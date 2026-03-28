@@ -39,7 +39,22 @@ $heading4Size: 0.95em;
   --bg-card:   rgba(255, 255, 255, 0.05);
   --bg-card-2: rgba(255, 255, 255, 0.09);
   --border:    rgba(255, 255, 255, 0.12);
-  --muted:     rgba(200, 200, 224, 0.55);
+  --muted:      rgba(200, 200, 224, 0.55);
+  --separator:  #444455;
+}
+
+// ---- Horizontal rules ----
+.reveal .slides section hr {
+  border: none;
+  border-top: 1px solid var(--separator);
+  margin: 0.4em 0 0.6em;
+}
+
+// ---- Other-work slide: fixed-height column header ----
+// Assumes the longest header is 2 lines; fixes the hr to always sit at the same row.
+.reveal .col-header > p:first-child {
+  min-height: 2.4em;
+  margin-bottom: 0;
 }
 
 // ---- Title slide ----
