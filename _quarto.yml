@@ -29,3 +29,5 @@ format:
     progress: false
     # Speaker view
     chalkboard: false
+    resources:
+      - "animations/interactive/**"

@@ -35,6 +35,22 @@ Land on the thesis question early.
 :::
 
 
+## {background-iframe="animations/interactive/opioid-grid.html" background-interactive="true"}
+
+::: {.fragment .opioid-step}
+:::
+::: {.fragment .opioid-step}
+:::
+::: {.fragment .opioid-step}
+:::
+
+::: notes
+Interactive animation — click or press → to advance through three steps:
+(1) heatmap of MA opioid overdose deaths, (2) isometric density view,
+(3) sorted bar chart revealing the skewed distribution.
+:::
+
+
 ## A Concrete Motivating Problem
 
 ::: {.columns}
