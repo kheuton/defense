@@ -6,6 +6,8 @@ institute: "Tufts University · Hughes Lab"
 date: "2026"
 ---
 
+# Introduction {visibility="hidden" background-color="#1a0a3a"}
+
 ## Talk Outline
 
 1. My story
@@ -107,34 +109,28 @@ Christopher Ratigan, Kyle Heuton, Carissa Wang, Lenore Cowen, Michael C. Hughes
 ::::
 
 
-# Introduction {background-color="#1a0a3a"}
+---
 
-## The Promise of Machine Learning
+If we can **accurately model our environment**, we can make the world a better place.
 
-::: {.columns}
-::: {.column width="58%"}
-> Through careful modeling of the world, we can learn informative patterns
-> and make **better predictions and better decisions** about the future.
-
-<br>
-
-::: {.fragment}
-**This thesis asks:**
-
-How can ML models be *trained* and *evaluated* so they produce
-**better decisions** when allocating limited resources?
-:::
-:::
-::: {.column width="42%"}
-<!-- TODO: replace with a figure or animation -->
-:::
+::: {style="width: 650px; height: 650px; background: var(--bg-card); border: 2px dashed var(--border); margin: 0.6em auto; display: flex; align-items: center; justify-content: center; color: var(--muted); font-style: italic;"}
+<!-- TODO: figure -->
 :::
 
-::: notes
-Open with the broad promise. The key word is "decisions" — not just predictions.
-Land on the thesis question early.
-:::
+---
 
+:::: {style="position: relative; min-height: 1.6em;"}
+::: {.fragment .fade-out fragment-index=1 style="position: absolute; width: 100%;"}
+If we can **accurately model our environment**, we can make the world a better place.
+:::
+::: {.fragment .fade-down fragment-index=1 style="position: absolute; width: 100%;"}
+If we can **predict the future**, we can make the world a better place.
+:::
+::::
+
+::: {style="width: 650px; height: 650px; background: var(--bg-card); border: 2px dashed var(--border); margin: 0.6em auto; display: flex; align-items: center; justify-content: center; color: var(--muted); font-style: italic;"}
+<!-- TODO: figure -->
+:::
 
 ## {background-iframe="animations/interactive/opioid-grid.html" background-interactive="true"}
 
@@ -168,6 +164,74 @@ Interactive animation — 9 steps:
 (7) RMSE text appears,
 (8) non-top-K bars fade,
 (9) ranking evaluation with reach percentages.
+:::
+
+
+## Three Open Questions
+
+::: {.contribution-item}
+::: {.contribution-num .accent-teal}
+1
+:::
+::: {.contribution-body}
+**Evaluation:** How do we measure whether a forecast is good
+for the *decision* it informs?
+:::
+:::
+
+::: {.fragment}
+::: {.contribution-item}
+::: {.contribution-num .accent-purple}
+2
+:::
+::: {.contribution-body}
+**Training:** Can we design a DFL method that is both
+decision-aware *and* probabilistically well-calibrated?
+:::
+:::
+:::
+
+::: {.fragment}
+::: {.contribution-item}
+::: {.contribution-num .accent-coral}
+3
+:::
+::: {.contribution-body}
+**Benchmarking:** Which DFL methods actually work, and when?
+What guidance can we give practitioners?
+:::
+:::
+:::
+
+::: notes
+This is the thesis overview dressed up as open questions. Each maps to a chapter.
+:::
+
+
+## The Promise of Machine Learning
+
+::: {.columns}
+::: {.column width="58%"}
+> Through careful modeling of the world, we can learn informative patterns
+> and make **better predictions and better decisions** about the future.
+
+<br>
+
+::: {.fragment}
+**This thesis asks:**
+
+How can ML models be *trained* and *evaluated* so they produce
+**better decisions** when allocating limited resources?
+:::
+:::
+::: {.column width="42%"}
+<!-- TODO: replace with a figure or animation -->
+:::
+:::
+
+::: notes
+Open with the broad promise. The key word is "decisions" — not just predictions.
+Land on the thesis question early.
 :::
 
 
@@ -342,47 +406,6 @@ has **zero effect** on the decision — and zero gradient.
 
 ::: notes
 Don't dwell — just establish that the gradient problem is known and there are many proposed solutions. This motivates the benchmarking chapter.
-:::
-
-
-## Three Open Questions
-
-::: {.contribution-item}
-::: {.contribution-num .accent-teal}
-1
-:::
-::: {.contribution-body}
-**Evaluation:** How do we measure whether a forecast is good
-for the *decision* it informs?
-:::
-:::
-
-::: {.fragment}
-::: {.contribution-item}
-::: {.contribution-num .accent-purple}
-2
-:::
-::: {.contribution-body}
-**Training:** Can we design a DFL method that is both
-decision-aware *and* probabilistically well-calibrated?
-:::
-:::
-:::
-
-::: {.fragment}
-::: {.contribution-item}
-::: {.contribution-num .accent-coral}
-3
-:::
-::: {.contribution-body}
-**Benchmarking:** Which DFL methods actually work, and when?
-What guidance can we give practitioners?
-:::
-:::
-:::
-
-::: notes
-This is the thesis overview dressed up as open questions. Each maps to a chapter.
 :::
 
 
