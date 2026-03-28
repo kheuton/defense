@@ -13,7 +13,7 @@ import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import {
   COLORS, valueColor, MA_OUTLINE, HEX, GRID, CAMERA, BAR_CHART,
-  TIMING, EASING, LIGHTING, MAP_DATA, BAR_CHART_DATA,
+  TIMING, EASING, LIGHTING, HOTSPOTS, BAR_CHART_DATA,
 } from "./config.js";
 
 // ── Point-in-polygon (ray casting) ────────────────────────────
@@ -161,13 +161,25 @@ scene.add(gridGroup);
 const hexCenters = generateHexCenters(MA_OUTLINE, HEX.radius, HEX.gap);
 const hexGeo = createHexGeometry(HEX.radius);
 
-const MAX_VAL = Math.max(...MAP_DATA, 1);
+// Compute value for each hex from hotspot Gaussians
+function hexValue(cx, cz) {
+  let sum = 0;
+  for (const h of HOTSPOTS) {
+    const dx = cx - h.x, dz = cz - h.z;
+    const dist2 = dx * dx + dz * dz;
+    sum += h.peak * Math.exp(-dist2 / (2 * h.sigma * h.sigma));
+  }
+  return Math.round(sum);
+}
+
+const hexValues = hexCenters.map(c => hexValue(c.x, c.z));
+const MAX_VAL = Math.max(...hexValues, 1);
 const H_SCALE = GRID.HEIGHT_SCALE / MAX_VAL;
 
 const bars = []; // { mesh, value, gridX, gridZ, targetHeight }
 
 hexCenters.forEach((center, i) => {
-  const v = i < MAP_DATA.length ? MAP_DATA[i] : 0;
+  const v = hexValues[i];
   const t = v / MAX_VAL;
   const color = valueColor(t);
   const mat = new THREE.MeshStandardMaterial({

@@ -104,8 +104,8 @@ export const MA_OUTLINE = [
 
 // ── Hex grid ──────────────────────────────────────────────────
 export const HEX = {
-  radius: 0.45,        // circumradius of each hexagon (world units)
-  gap:    0.06,        // gap between adjacent hexes
+  radius: 0.31,        // circumradius of each hexagon (world units)
+  gap:    0.03,        // gap between adjacent hexes
   flat:   true,        // flat-top orientation
 };
 
@@ -127,8 +127,8 @@ export const CAMERA = {
 
 // ── Bar chart layout ──────────────────────────────────────────
 export const BAR_CHART = {
-  barWidth: 0.85,      // width of each bar in the chart
-  barGap:   0.12,      // gap between sorted bars
+  barWidth: 0.40,      // width of each bar in the chart
+  barGap:   0.06,      // gap between sorted bars
   arcHeight: 4,        // how high bars arc during fly transition
 };
 
@@ -179,45 +179,63 @@ export const LIGHTING = {
   direction: { color: 0xffffff, intensity: 0.8, position: [-30, 50, -20] },
 };
 
-// ── Geographic data (hex grid values) ─────────────────────────
-// One value per hex cell inside MA, assigned in row-major order
-// (bottom-left to top-right). The opioid-grid.js code generates
-// hex centers, clips to MA_OUTLINE, and maps these values.
-// Hotspots roughly correspond to: Springfield (west), Worcester (center),
-// Lowell/Lawrence (north), Boston (east), New Bedford/Fall River (south).
+// ── Geographic data (procedural from hotspots) ────────────────
+// Instead of a flat array, define hotspot centers with peak values.
+// opioid-grid.js computes each hex cell's value as a sum of Gaussian
+// contributions from nearby hotspots. This scales to any hex density.
 //
-// This array is auto-sized at runtime: if it has fewer entries than
-// hex cells, extra cells get value 0. If it has more, extras are ignored.
-export const MAP_DATA = [
-  // Row 0 (southernmost hex row inside MA)
-  0,  0,  2,  5, 12,  3,  0,  0,
-  // Row 1
-  0,  3,  8, 68, 14,  6,  2,  0,  0,
-  // Row 2
-  0,  5, 15, 22,  85, 11,  4,  1,  0,  0,
-  // Row 3
-  2,  7, 10, 18, 24,  95, 42,  8,  3,
-  // Row 4
-  0,  4,  6, 12, 45, 110, 72, 15,  5,  0,
-  // Row 5 (northernmost)
-  0,  0,  3,  9, 38,  98, 24,  6,
+// Coordinates are in the same world-unit system as MA_OUTLINE.
+export const HOTSPOTS = [
+  { x:  2.5,  z: -0.3, peak: 110, sigma: 1.0, label: "Boston" },
+  { x:  0.0,  z:  0.0, peak:  85, sigma: 0.9, label: "Worcester" },
+  { x: -1.8,  z:  0.3, peak:  68, sigma: 0.8, label: "Springfield" },
+  { x:  1.8,  z: -1.1, peak:  95, sigma: 0.7, label: "Lowell" },
+  { x:  1.5,  z:  2.0, peak:  72, sigma: 0.7, label: "New Bedford" },
+  { x:  1.2,  z:  1.5, peak:  45, sigma: 0.6, label: "Fall River" },
+  { x:  1.8,  z: -1.4, peak:  42, sigma: 0.5, label: "Lawrence" },
+  { x:  1.8,  z:  0.6, peak:  38, sigma: 0.6, label: "Brockton" },
+  { x:  2.3,  z: -0.7, peak:  24, sigma: 0.5, label: "Lynn" },
+  { x: -1.5,  z:  0.1, peak:  22, sigma: 0.5, label: "Holyoke" },
+  { x: -4.2,  z: -0.5, peak:  15, sigma: 0.6, label: "Pittsfield" },
+  { x:  3.2,  z:  1.8, peak:  14, sigma: 0.5, label: "Barnstable" },
 ];
 
 // ── Bar chart data (independent dataset) ──────────────────────
 // This is the dataset the bars morph INTO during the arc transition.
-// Completely independent of MAP_DATA — different labels, different values.
+// Completely independent of the geographic hotspots — different labels,
+// different values. 30 entries for the bar chart.
 //
 // To fall back to "same data, fewer bars": replace these entries with
-// the top N values from MAP_DATA (the morph logic is agnostic).
+// the top N geographic values (the morph logic is agnostic).
 export const BAR_CHART_DATA = [
-  { label: "Boston",       value: 110 },
-  { label: "Worcester",    value: 85 },
-  { label: "Springfield",  value: 68 },
-  { label: "Lowell",       value: 95 },
-  { label: "New Bedford",  value: 72 },
-  { label: "Fall River",   value: 45 },
-  { label: "Lawrence",     value: 42 },
-  { label: "Brockton",     value: 38 },
-  { label: "Lynn",         value: 24 },
-  { label: "Holyoke",      value: 22 },
+  { label: "Suffolk",      value: 215 },
+  { label: "Essex",        value: 190 },
+  { label: "Middlesex",    value: 175 },
+  { label: "Worcester",    value: 160 },
+  { label: "Bristol",      value: 148 },
+  { label: "Hampden",      value: 135 },
+  { label: "Plymouth",     value: 120 },
+  { label: "Norfolk",      value: 108 },
+  { label: "Barnstable",   value: 95 },
+  { label: "Berkshire",    value: 82 },
+  { label: "Hampshire",    value: 70 },
+  { label: "Franklin",     value: 58 },
+  { label: "Dukes",        value: 48 },
+  { label: "Nantucket",    value: 35 },
+  { label: "Region A",     value: 130 },
+  { label: "Region B",     value: 115 },
+  { label: "Region C",     value: 102 },
+  { label: "Region D",     value: 90 },
+  { label: "Region E",     value: 78 },
+  { label: "Region F",     value: 65 },
+  { label: "Region G",     value: 55 },
+  { label: "Region H",     value: 45 },
+  { label: "Region I",     value: 38 },
+  { label: "Region J",     value: 32 },
+  { label: "Region K",     value: 28 },
+  { label: "Region L",     value: 22 },
+  { label: "Region M",     value: 18 },
+  { label: "Region N",     value: 15 },
+  { label: "Region O",     value: 12 },
+  { label: "Region P",     value: 8  },
 ];
