@@ -18,6 +18,22 @@ import {
   TIMING_COMPARISON, EASING_COMPARISON,
 } from "./config.js";
 
+// ── Deduplicate near-coincident polygon vertices ─────────────
+// MA_OUTLINE has near-duplicate points (e.g. [-1.169, 0.584] / [-1.169, 0.582])
+// that create near-zero-length segments, confusing the ray-casting test.
+function deduplicatePolygon(polygon, eps = 0.01) {
+  const out = [polygon[0]];
+  for (let i = 1; i < polygon.length; i++) {
+    const prev = out[out.length - 1];
+    const dx = polygon[i][0] - prev[0];
+    const dz = polygon[i][1] - prev[1];
+    if (dx * dx + dz * dz > eps * eps) out.push(polygon[i]);
+  }
+  return out;
+}
+
+const MA_OUTLINE_CLEAN = deduplicatePolygon(MA_OUTLINE);
+
 // ── Point-in-polygon (ray casting) ────────────────────────────
 function pointInPolygon(x, z, polygon) {
   let inside = false;
@@ -30,6 +46,27 @@ function pointInPolygon(x, z, polygon) {
     }
   }
   return inside;
+}
+
+// ── Distance from point to line segment ──────────────────────
+function distToSegment(px, pz, ax, az, bx, bz) {
+  const dx = bx - ax, dz = bz - az;
+  const len2 = dx * dx + dz * dz;
+  if (len2 === 0) return Math.hypot(px - ax, pz - az);
+  let t = ((px - ax) * dx + (pz - az) * dz) / len2;
+  t = Math.max(0, Math.min(1, t));
+  return Math.hypot(px - (ax + t * dx), pz - (az + t * dz));
+}
+
+// ── Distance from point to nearest polygon edge ─────────────
+function distToPolygon(px, pz, polygon) {
+  let minD = Infinity;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const d = distToSegment(px, pz, polygon[j][0], polygon[j][1],
+                            polygon[i][0], polygon[i][1]);
+    if (d < minD) minD = d;
+  }
+  return minD;
 }
 
 // ── Hex grid generation ───────────────────────────────────────
@@ -51,7 +88,8 @@ function generateHexCenters(polygon, radius, gap) {
     vertexOffsets.push([radius * Math.cos(angle), radius * Math.sin(angle)]);
   }
 
-  // Include hex if center OR any vertex is inside the polygon
+  // Include hex if: center inside, any vertex inside, OR center within
+  // radius of a polygon edge (catches gaps along straight boundary segments)
   const pad = radius * 2;
   const centers = [];
   let col = 0;
@@ -64,11 +102,17 @@ function generateHexCenters(polygon, radius, gap) {
         continue;
       }
       // Check vertices — include if any vertex is inside
+      let added = false;
       for (const [dx, dz] of vertexOffsets) {
         if (pointInPolygon(x + dx, cz + dz, polygon)) {
           centers.push({ x, z: cz });
+          added = true;
           break;
         }
+      }
+      // Fallback: include if center is within radius of any polygon edge
+      if (!added && distToPolygon(x, cz, polygon) < radius * 0.9) {
+        centers.push({ x, z: cz });
       }
     }
   }
@@ -176,7 +220,7 @@ scene.add(edgeLine);
 const gridGroup = new THREE.Group();
 scene.add(gridGroup);
 
-const hexCenters = generateHexCenters(MA_OUTLINE, HEX.radius, HEX.gap);
+const hexCenters = generateHexCenters(MA_OUTLINE_CLEAN, HEX.radius, HEX.gap);
 const hexGeo = createHexGeometry(HEX.radius);
 
 // Compute value for each hex from hotspot Gaussians
@@ -194,6 +238,10 @@ const hexValues = hexCenters.map(c => hexValue(c.x, c.z));
 const MAX_VAL = Math.max(...hexValues, 1);
 const H_SCALE = GRID.HEIGHT_SCALE / MAX_VAL;
 
+// DEBUG: log hex grid stats
+console.log(`Hex grid: ${hexCenters.length} hexes, polygon has ${MA_OUTLINE_CLEAN.length} vertices (was ${MA_OUTLINE.length})`);
+console.log(`Bounding box: x=[${Math.min(...hexCenters.map(c=>c.x)).toFixed(2)}, ${Math.max(...hexCenters.map(c=>c.x)).toFixed(2)}] z=[${Math.min(...hexCenters.map(c=>c.z)).toFixed(2)}, ${Math.max(...hexCenters.map(c=>c.z)).toFixed(2)}]`);
+
 const bars = []; // { mesh, value, gridX, gridZ, targetHeight }
 
 hexCenters.forEach((center, i) => {
@@ -204,7 +252,7 @@ hexCenters.forEach((center, i) => {
     color,
     flatShading: true,
     transparent: true,
-    opacity: v === 0 ? 0 : 1,
+    opacity: 1,
   });
   const mesh = new THREE.Mesh(hexGeo, mat);
   mesh.position.set(center.x, 0, center.z);
@@ -534,6 +582,9 @@ function computeRightPredictions(data) {
 
 // ── Helpers: world-to-screen for HTML overlays ───────────────
 function worldToScreen(worldPos) {
+  // Ensure camera matrices are current (may be called from async callbacks
+  // between render frames, where matrices haven't been updated yet)
+  camera.updateMatrixWorld();
   const v = worldPos.clone().project(camera);
   return {
     x: (v.x * 0.5 + 0.5) * canvas.clientWidth,
@@ -550,9 +601,13 @@ function positionOverlay(el, worldPos, offsetY = 0) {
 
 function showOverlay(id, html, worldPos, offsetY = 0) {
   const el = document.getElementById(id);
+  if (!el) { console.error(`showOverlay: element #${id} not found`); return; }
   el.innerHTML = html;
   positionOverlay(el, worldPos, offsetY);
   el.classList.add("visible");
+  // DEBUG: log overlay positioning
+  const screen = worldToScreen(worldPos);
+  console.log(`showOverlay("${id}"): world=(${worldPos.x.toFixed(1)}, ${worldPos.y.toFixed(1)}, ${worldPos.z.toFixed(1)}) → screen=(${screen.x.toFixed(0)}, ${screen.y.toFixed(0)}) offsetY=${offsetY} classes="${el.className}" computed-opacity=${getComputedStyle(el).opacity}`);
 }
 
 function hideOverlay(id) {
@@ -602,7 +657,7 @@ function tweenFrustum(targetF, duration) {
 // ── Helper: create a line from bar-position predictions ──────
 function createPredictionLine(predictions, barPositions, hScale, group) {
   const points = predictions.map((p, i) => {
-    return new THREE.Vector3(barPositions[i], p * hScale, 0.01);
+    return new THREE.Vector3(barPositions[i], p * hScale, 0.5);
   });
   // Add interpolated points between bars for smoother line
   const smoothPoints = [];
@@ -647,7 +702,7 @@ function createFillQuads(predictions, barValues, barPositions, hScale, bw, group
     const mat = fillMat.clone();
     const mesh = new THREE.Mesh(geo, mat);
     const midY = (predY + actualY) / 2;
-    mesh.position.set(barPositions[i], midY, 0.02);
+    mesh.position.set(barPositions[i], midY, 0.5);
     group.add(mesh);
     fills.push({ mesh, mat });
   });
@@ -784,7 +839,6 @@ function transitionToFill() {
   );
 
   const n = chartDataSorted.length;
-  const done = onAllComplete(n, () => { transitioning = false; });
 
   for (let i = 0; i < n; i++) {
     const delay = i * TIMING_COMPARISON.fillPerBar;
@@ -805,12 +859,11 @@ function transitionToFill() {
         .easing(EASING_COMPARISON.fill)
         .start();
     }
-
-    // Last bar triggers done
-    if (i === n - 1) {
-      setTimeout(done, delay + TIMING_COMPARISON.fillFadeDuration);
-    }
   }
+
+  // Total duration: last bar's delay + its fade duration
+  const totalDuration = (n - 1) * TIMING_COMPARISON.fillPerBar + TIMING_COMPARISON.fillFadeDuration;
+  setTimeout(() => { transitioning = false; }, totalDuration);
 }
 
 // ── Phase 7: Blink + RMSE text ───────────────────────────────
@@ -826,11 +879,15 @@ function transitionToRMSE() {
   const rmseLeft = Math.sqrt(mseLeft);
   const rmseRight = Math.sqrt(mseRight);
 
+  console.log(`phase 7: RMSE left=${rmseLeft.toFixed(2)}, right=${rmseRight.toFixed(2)}`);
+  console.log(`phase 7: leftBars=${leftBars.length}, rightBars=${rightBars.length}`);
+
   // Blink both charts
   Promise.all([
     blinkBars(leftBars, TIMING_COMPARISON.blinkCount, TIMING_COMPARISON.blinkDuration),
     blinkBars(rightBars, TIMING_COMPARISON.blinkCount, TIMING_COMPARISON.blinkDuration),
   ]).then(() => {
+    console.log("phase 7: blink done, showing RMSE text");
     // Show RMSE text below each chart
     const halfGap = COMPARISON.gap / 2;
     const offset = chartTotalW / 2 + halfGap;
@@ -974,8 +1031,10 @@ function transitionToEval() {
 
 // ── Phase controller ──────────────────────────────────────────
 function advancePhase() {
+  console.log(`advancePhase: current=${currentPhase}, transitioning=${transitioning}`);
   if (transitioning || currentPhase >= 9) return;
   currentPhase++;
+  console.log(`→ entering phase ${currentPhase}`);
   document.getElementById("hud").classList.add("hidden");
   switch (currentPhase) {
     case 1: transitionToHeatmap(); break;
