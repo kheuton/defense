@@ -726,12 +726,19 @@ function advancePhase() {
     case 7: phase7(); break;
     case 8: phase8(); break;
   }
+  if (currentPhase >= 8) removeListeners();
 }
 
-canvas.addEventListener("click", advancePhase);
-document.addEventListener("keydown", (e) => {
+function onClick() { advancePhase(); }
+function onKeyDown(e) {
   if (e.key === "ArrowRight" || e.key === " ") advancePhase();
-});
+}
+function removeListeners() {
+  canvas.removeEventListener("click", onClick);
+  document.removeEventListener("keydown", onKeyDown);
+}
+canvas.addEventListener("click", onClick);
+document.addEventListener("keydown", onKeyDown);
 
 try {
   const Reveal = window.parent && window.parent.Reveal;

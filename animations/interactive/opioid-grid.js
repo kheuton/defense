@@ -1027,10 +1027,8 @@ function transitionToEval() {
 
 // ── Phase controller ──────────────────────────────────────────
 function advancePhase() {
-  console.log(`advancePhase: current=${currentPhase}, transitioning=${transitioning}`);
   if (transitioning || currentPhase >= 9) return;
   currentPhase++;
-  console.log(`→ entering phase ${currentPhase}`);
   document.getElementById("hud").classList.add("hidden");
   switch (currentPhase) {
     case 1: transitionToHeatmap(); break;
@@ -1043,13 +1041,21 @@ function advancePhase() {
     case 8: transitionToTopK(); break;
     case 9: transitionToEval(); break;
   }
+  // Remove listeners once animation is done so events propagate to Reveal.js
+  if (currentPhase >= 9) removeListeners();
 }
 
 // ── Event handling ────────────────────────────────────────────
-canvas.addEventListener("click", advancePhase);
-document.addEventListener("keydown", (e) => {
+function onClick() { advancePhase(); }
+function onKeyDown(e) {
   if (e.key === "ArrowRight" || e.key === " ") advancePhase();
-});
+}
+function removeListeners() {
+  canvas.removeEventListener("click", onClick);
+  document.removeEventListener("keydown", onKeyDown);
+}
+canvas.addEventListener("click", onClick);
+document.addEventListener("keydown", onKeyDown);
 
 // Reveal.js integration
 try {

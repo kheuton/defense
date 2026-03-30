@@ -741,12 +741,19 @@ function advancePhase() {
     case 9:  phase9();  break;
     case 10: phase10(); break;
   }
+  if (currentPhase >= 10) removeListeners();
 }
 
-canvas.addEventListener("click", advancePhase);
-document.addEventListener("keydown", (e) => {
+function onClick() { advancePhase(); }
+function onKeyDown(e) {
   if (e.key === "ArrowRight" || e.key === " ") advancePhase();
-});
+}
+function removeListeners() {
+  canvas.removeEventListener("click", onClick);
+  document.removeEventListener("keydown", onKeyDown);
+}
+canvas.addEventListener("click", onClick);
+document.addEventListener("keydown", onKeyDown);
 
 // Reveal.js integration
 try {
