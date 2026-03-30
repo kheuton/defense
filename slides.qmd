@@ -559,6 +559,26 @@ Existing decision-aware methods sacrifice model likelihood.
 :::
 
 
+## Differentiable Perturbed Optimizers {background-iframe="animations/interactive/perturbed-opt.html" background-interactive="true"}
+
+::: {.fragment .perturbed-step}
+:::
+::: {.fragment .perturbed-step}
+:::
+::: {.fragment .perturbed-step}
+:::
+::: {.fragment .perturbed-step}
+:::
+::: {.fragment .perturbed-step}
+:::
+::: {.fragment .perturbed-step}
+:::
+::: {.fragment .perturbed-step}
+:::
+::: {.fragment .perturbed-step}
+:::
+
+
 ## Decision-Aware Maximum Likelihood (DAML)
 
 <!-- TODO: flesh out Chapter 4 slides -->

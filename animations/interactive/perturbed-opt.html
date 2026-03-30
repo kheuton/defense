@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Differentiable Perturbed Optimizers</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { overflow: hidden; background: #11111e; }
+  canvas { display: block; width: 100%; height: 100%; }
+  #hud {
+    position: fixed;
+    bottom: 24px;
+    right: 32px;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 15px;
+    color: #888899;
+    opacity: 0.7;
+    transition: opacity 0.6s;
+    pointer-events: none;
+    user-select: none;
+  }
+  #hud.hidden { opacity: 0; }
+
+  #overlays {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    user-select: none;
+  }
+  .chart-label {
+    position: absolute;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #888899;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .axis-label {
+    position: absolute;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #888899;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .tick-label {
+    position: absolute;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 12px;
+    color: #888899;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .value-label {
+    position: absolute;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffd166;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .value-label.good { color: #50c8a8; }
+  .value-label.bad  { color: #ff7c57; }
+  .visible { opacity: 1; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">Click or press &rarr; to advance</div>
+
+<div id="overlays">
+  <div id="y-axis-label" class="axis-label"></div>
+  <div id="x-axis-label" class="axis-label"></div>
+  <div id="dist-y-label" class="axis-label"></div>
+  <div id="theta1-tick" class="tick-label"></div>
+  <div id="theta2-tick" class="tick-label"></div>
+  <div id="point1-value" class="value-label"></div>
+  <div id="point2-value" class="value-label"></div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/",
+    "@tweenjs/tween.js": "https://unpkg.com/@tweenjs/tween.js@23.1.1/dist/tween.esm.js"
+  }
+}
+</script>
+<script type="module" src="perturbed-opt.js"></script>
+</body>
+</html>

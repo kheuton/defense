@@ -367,3 +367,57 @@ export const MSE_GRADIENT = {
     bprCalcDelay: 600,
   },
 };
+
+// ── Perturbed Optimizer animation ────────────────────────────
+export const PERTURBED_OPT = {
+  barWidth: 0.20,
+  barGap: 0.03,
+  frustum: 9,
+  chartOffsetX: -3.25,
+  graphOffsetX: 4.25,
+  heightScale: 8,
+  lerpT: 0.35,
+
+  // Perturbation
+  noiseSigma: 2.0,
+  numTrials: 10,
+  trialDelay: 800,
+  ghostOpacity: 0.15,
+  seedBase: 100,
+
+  // Distribution plot (below bar chart)
+  distHeight: 2.5,
+  distGap: 0.8,
+
+  // Graph
+  graph: {
+    width: 4,
+    height: 5,
+    axisRadius: 0.025,
+    pointRadius: 0.15,
+    hollowRadius: 0.15,
+    hollowTube: 0.025,
+    theta1X: 1.0,
+    theta2X: 3.0,
+    bprMin: 0.85,
+    bprMax: 1.0,
+    dottedSegments: 10,
+    dotRadius: 0.03,
+  },
+
+  timing: {
+    barStagger: 15,
+    barAppear: 500,
+    lineAppear: 600,
+    axesAppear: 500,
+    plotPoint: 400,
+    hollowAppear: 300,
+    dottedDraw: 400,
+    interpolate: 1200,
+    plotNewPoint: 600,
+    connectLine: 400,
+    transition: 800,
+    topKFade: 500,
+    distBarGrow: 400,
+  },
+};
