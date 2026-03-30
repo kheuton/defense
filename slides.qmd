@@ -240,7 +240,7 @@ AJE logo
 1
 :::
 ::: {.contribution-body}
-Existing literature nearly unanimously used error-based metrics to compare models, making the effects of using such models to guide policy decisions unclear.
+Models were rarely compared to competitors or reasonable baselines, making the benefit of any model impossible to determine.
 :::
 :::
 :::
@@ -251,7 +251,7 @@ Existing literature nearly unanimously used error-based metrics to compare model
 2
 :::
 ::: {.contribution-body}
-Models were rarely compared to competitors or reasonable baselines, making the benefit of any model impossible to determine.
+Existing literature nearly unanimously used error-based metrics to compare models, making the effects of using such models to guide policy decisions unclear.
 :::
 :::
 :::
@@ -268,36 +268,273 @@ Code rarely shared, data nearly never shared.
 :::
 
 
+## The Task
+
+::: {style="width: 100%; height: 440px; background: var(--bg-card); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-style: italic; margin-bottom: 0.8em;"}
+<!-- TODO: choropleth map of MA opioid overdose deaths -->
+:::
+
+::: {style="font-size: 0.85em; line-height: 1.4;"}
+**Prediction Target**
+
+$y$ = number of deaths in a census tract next year
+
+::: {.fragment}
+**Input Variables**
+
+$x$ = Location, Time, Demographics, Last year's overdose counts, Social Vulnerability Index
+:::
+:::
+
+
+## Prior State-of-the-Art
+
+::: {style="font-size: 0.82em; margin-bottom: auto;"}
+
+| Year | Base Model | + Social Determinants of Health |
+|:----:|:----------:|:-------------------------------:|
+| 2016 | 2.35       | 2.40                            |
+| 2017 | 2.04       | 1.94                            |
+| 2018 | 2.47       | 2.44                            |
+| 2019 | 2.19       | 2.18                            |
+
+:::
+
+::: {style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 1.5em;"}
+Bauer C, Zhang K, Li W, Bernson D, Dammann O, LaRochelle MR, Stopka TJ. Small Area Forecasting of Opioid-Related Mortality: Bayesian Spatiotemporal Dynamic Modeling Approach. *JMIR Public Health Surveill* 2023;9:e41450.
+:::
+
+
+## Simpler models can be just as strong
+
+::: {style="font-size: 0.7em; color: var(--muted); font-style: italic; margin-bottom: 0.8em;"}
+Prediction error for fatal opioid-related overdose models in Cook County, Illinois. Trained using data from 2015–2020, results averaged over 2021 and 2022.
+:::
+
+::: {style="font-size: 0.85em;"}
+<table style="width: 100%; border-collapse: collapse;">
+<thead>
+<tr>
+  <th style="text-align: left; padding: 0.5em 0.8em; border-bottom: 1px solid var(--separator);"></th>
+  <th style="text-align: center; padding: 0.5em 0.8em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);" colspan="2">Metric</th>
+</tr>
+<tr>
+  <th style="text-align: left; padding: 0.5em 0.8em; border-bottom: 2px solid var(--border);">Model</th>
+  <th style="text-align: center; padding: 0.5em 0.8em; border-bottom: 2px solid var(--border); border-left: 1px solid var(--separator);">RMSE</th>
+  <th style="text-align: center; padding: 0.5em 0.8em; border-bottom: 2px solid var(--border);"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="padding: 0.6em 0.8em; border-bottom: 1px solid var(--separator);">Bayesian Spatiotemporal + SVI</td>
+  <td style="text-align: center; padding: 0.6em 0.8em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">1.47 (1.43–1.51)</td>
+  <td style="padding: 0.6em 0.8em; border-bottom: 1px solid var(--separator);"></td>
+</tr>
+<tr class="fragment">
+  <td style="padding: 0.6em 0.8em;">Historical Average</td>
+  <td style="text-align: center; padding: 0.6em 0.8em; border-left: 1px solid var(--separator);">1.44 (1.38–1.50)</td>
+  <td style="padding: 0.6em 0.8em;"></td>
+</tr>
+</tbody>
+</table>
+:::
+
+
 ## Best Possible Reach (BPR)
 
 <!-- TODO: flesh out Chapter 3 slides -->
 
-## Motivation: Evaluation for Decisions
+## Chicago Results
 
-::: {.card .card-teal}
-**Problem:** Standard metrics (RMSE, MAE) measure prediction accuracy,
-not decision quality. A forecast that perfectly ranks the top $K$ locations
-may score poorly on RMSE.
+::: {style="font-size: 0.72em;"}
+<table style="width: 100%; border-collapse: collapse;">
+<thead>
+<tr>
+  <th style="text-align: left; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"></th>
+  <th style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);" colspan="2">Metric</th>
+</tr>
+<tr>
+  <th style="text-align: left; padding: 0.4em 0.7em; border-bottom: 2px solid var(--border);">Model</th>
+  <th style="text-align: center; padding: 0.4em 0.7em; border-bottom: 2px solid var(--border); border-left: 1px solid var(--separator);">RMSE</th>
+  <th style="text-align: center; padding: 0.4em 0.7em; border-bottom: 2px solid var(--border);"><span class="fragment" data-fragment-index="6">%BPR (K = 100)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">Bayesian Spatiotemporal + SVI</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">1.47 (1.43–1.51)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment" data-fragment-index="6">80.2 (78.7–82.0)</span></td>
+</tr>
+<tr>
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">Historical Average</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">1.44 (1.38–1.50)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment" data-fragment-index="6"><span class="fragment semi-fade-out" data-fragment-index="7">80.1 (76.2–84.3)</span></span></td>
+</tr>
+<tr class="fragment" data-fragment-index="1">
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">Poisson GLM + SVI</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">1.86 (1.77–1.94)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment" data-fragment-index="6"><span class="fragment semi-fade-out" data-fragment-index="7">79.4 (76.0–82.8)</span></span></td>
+</tr>
+<tr class="fragment" data-fragment-index="2">
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">Gradient Boosted Trees + SVI</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">1.55 (1.42–1.68)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment" data-fragment-index="6"><span class="fragment semi-fade-out" data-fragment-index="7">77.1 (72.2–81.9)</span></span></td>
+</tr>
+<tr class="fragment" data-fragment-index="3">
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">Gaussian Process</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">1.63 (1.50–1.74)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment" data-fragment-index="6"><span class="fragment semi-fade-out" data-fragment-index="7">75.7 (69.9–80.5)</span></span></td>
+</tr>
+<tr class="fragment" data-fragment-index="4">
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">CASTNet + SVI</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="7">1.53 (1.39–1.67)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment" data-fragment-index="6"><span class="fragment semi-fade-out" data-fragment-index="7">75.2 (73.2–76.8)</span></span></td>
+</tr>
+<tr class="fragment" data-fragment-index="5">
+  <td style="padding: 0.4em 0.7em;">Negative Binomial Spatially Lagged + SVI</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-left: 1px solid var(--separator);">1.42 (1.37–1.48)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em;"><span class="fragment" data-fragment-index="6"><span class="fragment semi-fade-out" data-fragment-index="7">79.9 (78.1–81.6)</span></span></td>
+</tr>
+</tbody>
+</table>
 :::
 
-<!-- TODO -->
 
-## The BPR Metric
+## Massachusetts Results
 
-<!-- TODO: define BPR, show formula -->
+::: {style="font-size: 0.72em;"}
+<table style="width: 100%; border-collapse: collapse;">
+<thead>
+<tr>
+  <th style="text-align: left; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"></th>
+  <th style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);" colspan="3">Metric</th>
+</tr>
+<tr>
+  <th style="text-align: left; padding: 0.4em 0.7em; border-bottom: 2px solid var(--border);">Model</th>
+  <th style="text-align: center; padding: 0.4em 0.7em; border-bottom: 2px solid var(--border); border-left: 1px solid var(--separator);">RMSE</th>
+  <th style="text-align: center; padding: 0.4em 0.7em; border-bottom: 2px solid var(--border);">%BPR (K = 100)</th>
+  <th style="text-align: center; padding: 0.4em 0.7em; border-bottom: 2px solid var(--border);"><span class="fragment" data-fragment-index="1">Overdoses (top 100 tracts)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">Bayesian Spatiotemporal + SVI</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">1.23 (1.21–1.25)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">62.0 (60.0–63.7)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment" data-fragment-index="1">305.4</span></td>
+</tr>
+<tr>
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">Historical Average</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.28 (1.24–1.33)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">59.8 (56.8–62.9)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">295.4</span></span></td>
+</tr>
+<tr>
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">Poisson GLM + SVI</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.38 (1.30–1.47)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">61.0 (57.4–65.1)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">301.3</span></span></td>
+</tr>
+<tr>
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">Gradient Boosted Trees + SVI</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.24 (1.18–1.30)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">59.5 (55.9–63.1)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">293.6</span></span></td>
+</tr>
+<tr>
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">Gaussian Process</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.28 (1.23–1.34)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">58.2 (55.2–61.2)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">287.2</span></span></td>
+</tr>
+<tr>
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">CASTNet + SVI</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.47 (1.36–1.58)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">54.4 (52.0–56.6)</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">268.0</span></span></td>
+</tr>
+<tr>
+  <td style="padding: 0.4em 0.7em;">Negative Binomial Spatially Lagged + SVI</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-left: 1px solid var(--separator);">1.31 (1.27–1.35)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em;">62.0 (60.3–64.0)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em;"><span class="fragment" data-fragment-index="1">305.4</span></td>
+</tr>
+</tbody>
+</table>
+:::
 
-## Empirical Results
 
-<!-- TODO: results figures from Chapter 3 -->
+## Takeaways
 
-## Chapter 3 Takeaways
+::: {.fragment .card style="border-left: 4px solid var(--teal-light);"}
+Simple models can be strong — these should be included in future work
+:::
 
 ::: {.fragment .card .card-teal}
-<!-- TODO -->
+If these models will be used for decision-making, we should use decision-based metrics like %BPR
+:::
+
+::: {.fragment .card style="border-left: 4px solid var(--teal-dark);"}
+Our code and *data* are available at <https://github.com/tufts-ml/opioid-overdose-models>
 :::
 
 
 # Training {background-color="#1a0a2a"}
+
+::::: {.columns style="margin-top: 1.5em;"}
+
+:::: {.column width="75%"}
+**Decision-aware Training of Spatiotemporal Forecasting Models to Select a Top-K Subset of Sites for Intervention**
+
+<br>
+
+Kyle Heuton, Frederick Muench, Shikhar Shrestha, Thomas J. Stopka, Michael C. Hughes
+
+[*Proceedings of the Forty-Second International Conference on Machine Learning (ICML)*, 2025]{.muted}
+::::
+
+:::: {.column width="25%" style="display: flex; justify-content: center; align-items: flex-start; padding-top: 0.3em;"}
+![](figures/icml-logo.svg){style="width: 550px; filter: brightness(0) invert(1) sepia(1) hue-rotate(220deg) saturate(10);"}
+::::
+
+:::::
+
+## The opportunities created by existing literature {background-image="figures/crane.svg" background-size="22%" background-position="left bottom" background-opacity="0.25"}
+
+::: {.fragment}
+::: {.contribution-item}
+::: {.contribution-num .accent-purple}
+1
+:::
+::: {.contribution-body}
+Decision-aware metrics do not have informative gradients — it is unclear how to optimize for them.
+:::
+:::
+:::
+
+::: {.fragment}
+::: {.contribution-item}
+::: {.contribution-num .accent-purple}
+2
+:::
+::: {.contribution-body}
+Given a probabilistic model for events, it isn't clear how to best rank locations.
+:::
+:::
+:::
+
+::: {.fragment}
+::: {.contribution-item}
+::: {.contribution-num .accent-purple}
+3
+:::
+::: {.contribution-body}
+Existing decision-aware methods sacrifice model likelihood.
+:::
+:::
+:::
+
+
 ## Decision-Aware Maximum Likelihood (DAML)
 
 <!-- TODO: flesh out Chapter 4 slides -->
