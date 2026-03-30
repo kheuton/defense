@@ -1,0 +1,108 @@
+\textbf{Notation.}
+Mathematically, some of our notation follows \citet{sander_fast_2023}. Function $\textsc{TopKMask}$ takes as input a vector $\bm{r}$ of length $S$ and an integer $K$. It produces a binary vector of length $S$ with exactly $K$ entries equal to 1. Each 1 entry corresponds to a value in the top $K$ largest entries of the input vector.
+The $s$-th entry of the output is
+\begin{align}
+\textsc{TopKMask}(\bm{r}, K)_s 
+  &= \begin{cases}
+  1 & \text{if } \textsc{rank}(\bm{r})_s \leq K\\
+  0 & \text{otherwise} 
+\end{cases},
+\end{align}
+Here, function $\textsc{rank}$ provides a numerical ranking (largest-to-smallest) from 1 to $S$ for each entry of an $S$-dimensional input vector. 
+The function $\textsc{TopKIDs}$ acts on the same input as $\textsc{TopKMask}$, but return the size $K$ set of integer indices corresponding to top $K$ values.
+
+\textbf{Problem definition.}
+We wish to probabilistically model events that occur across $S$ distinct spatial sites over time.
+%We wish to develop a probabilistic model for an 
+At each site, indexed by $s$, we can observe a \emph{non-negative} scalar count or value $y_s \geq 0$. We assume that larger $y_s$ corresponds to greater value in intervention at site $s$.
+In our public health applications, $y_s$ represents counts of fatal opioid-related overdoses.
+In our later wildlife monitoring case study, $y_s$ counts how often a rare animal appears.
+At each time $t$, we stack all observations into a vector $\bm{y}_t \in \mathbb{R}^S$.
+We assume that the true data-generating distribution for each vector $\bm{y}_t$ given past history does not change over time, including between the training and test periods. 
+
+We denote our joint model for this vector as $p_{\bm{\phi}}(\bm{y}_t)$, where model parameter vector $\bm{\phi}$ defines the density over r.v. $\bm{y}_t$. 
+We assume that explicitly evaluating this pdf and sampling values of $\bm{y}_t$ are both feasible. Given these assumptions, our framework is quite flexible: the vector $\bm{\phi}$ could represent the weights of a neural network or the coefficients of a logistic regression or a Bayesian hierarchical model. 
+
+% At each time, we have a data vector $\bm{y}_t \in \mathbb{R}_{\geq 0}^S$. 
+ 
+Given a training set of $T$ times, our model family in general factorizes $p( \bm{y}_{1:T} ) = \prod_{t=1}^T p_{\phi}( \bm{y}_t | \bm{y}_{1:t-1} )$. To ease notation throughout, we omit conditioning on past history or other exogenous features. So $p_{\phi}( \bm{y}_t )$ below should be read as equal to $p_{\phi}( \bm{y}_t | \bm{y}_{1:t-1} )$ for models with such dependencies.
+
+% MCH: Moved to discuss AFTER we introduct the train objectives....
+% We train this model based on the likelihood and decision quality of its predictions during the training period. As long as the assumption that the data-generating distribution does not change over time, this will produce useful future predictions, which we empirically observe. However, there are other approaches. In \cite{gupta_decision-aware_2024}, the authors instead seek to minimize the decision error of out-of-sample predictions. 
+
+Our goal is to use this probabilistic model to solve a where-to-intervene decision making problem. We primarily intend to use the model to numerically rank all $S$ sites, then select the top $K$ sites in this ranking for near-future intervention. 
+
+%Our goal is to use this probabilistic model to assign different priorities to the $S$ regions we are modeling. A useful model will assign the highest priority to the regions which are most likely to contain the largest proportion of events. We desire a model with both a high likelihood as well as a low-loss defined by our performance metric that assesses the model's decision making utility. 
+
+\textbf{Definition of BPR.}
+At current time $t$, we evaluate a model $\phi$'s ability to select a top-$K$ subset of sites for intervention before time $t+1$. 
+Let $\mathcal{R}$ be the model's recommended subset of $K$ sites among all $S$ sites.
+For the rest of this section, let $\bm{y} \in \mathbb{R}^S$ be the vector of observations at the target time $t+1$ (we skip time subscripts on $\bm{y}$ to keep notation simple).
+The vector $\bm{y}$ is not available when the decision of $\mathcal{R}$ is made.
+Following~\citet{heutonPredictingSpatiotemporalCounts2022}, we define BPR as:
+\begin{align}
+    \text{BPR}( 
+    \mathcal{R}, \bm{y}) &= 
+    \label{eq:bpr}
+    \frac
+        { \sum_{s \in \mathcal{R}} y_{s}}
+        { \sum_{s \in \textsc{TopKIDs}(\bm{y}, K)} y_{s}}.
+        %&= \frac
+        %{\text{\small \# actual events in K regions picked by model}}
+        %{\text{\small \# actual events in K highest-count regions}}.
+\end{align}
+Both terms in this fraction can only be evaluated in hindsight, after the vector $\bm{y}$ is realized at time $t+1$.
+The numerator counts how many events the model's recommendation would reach. 
+The denominator counts how many events a perfect oracle with knowledge of the future could reach on the same budget of $K$ sites.
+Overall, we interpret BPR as the fraction of events of interest the current model's selection $\mathcal{R}$ would reach compared to perfect knowledge of the future.
+%(NB: \citeauthor{marshallPreventingOverdoseUsing2022}'s denominator sums over the entire $Y_{:,t}$, not just top K entries.)
+Higher BPR indicates a better model for choosing where to intervene. BPR's best value is 1.0, its worst is 0.0.
+
+\textbf{Ranking sites.}
+Given a fixed model $\phi$ and target time, the \emph{ranking} problem is how to assign numerical values to all $S$ sites so that if the top $K$ sites are assigned to $\mathcal{R}$, we reap high BPR scores. We need to define a ranking vector $\bm{r} \in \mathbb{R}^S$ of numerical scalar scores for all $S$ sites. Higher $r_s$ values indicate greater priority for site $s$. 
+
+
+Suppose we have a loss function $L(\bm{r}, \bm{y})$ (not necessarily related to BPR) that 
+produces a scalar value 
+indicating the overall quality of taking an ``action'' $\bm{r}$ and then realizing outcome $\bm{y}$.
+Lower values of $L$ indicate better decisions.
+A natural framework for making decisions about actions~\citep{murphy2022Sec5_1DecisionTheory} is to minimize the expected loss:
+\begin{align}
+    r^* = \argmin_{\bm{r}} \mathbb{E}_{\bm{y} \sim p_{\bm{\phi}}} \left[ L( \bm{r}, \bm{y} )
+    \right]
+\end{align}
+%If the loss is a smooth, continuous, differentiable function, solving for an optimal ranking action is often straightforward via either analytical or gradient-based numerical methods.
+As a simplistic example, if the loss is defined as the sum of squared errors, $\mathcal{L}( \bm{r}, \bm{y}) = \sum_{s=1}^S (r_s - y_s)^2$, the optimal action is provably the per-site mean: $r_s = \mathbb{E}_{p_{\bm{\phi}}}[ y_s ]$. Similarly, for the loss that sums up \emph{absolute} errors, the optimal action is the per-site \emph{median}~\citep{schwertman1990MedianProof,proofMedianMinimizesMAE}. We tackle defining an optimal ranking for BPR.
+
+To pose our ranking problem formally, we need to convert the higher-is-better BPR metric into a lower-is-better loss that depends on $\bm{r}$. Define \emph{negative} BPR loss as
+\begin{align}
+   L^{\text{BPR}}(\bm{r}, \bm{y})
+    =  - \frac{
+    \bm{y} \cdot \textsc{TopKMask}(\bm{r}, K)
+    }{
+    \bm{y} \cdot \textsc{TopKMask}(\bm{y}, K)    
+    }.
+    \label{eq:loss_bpr_how_to_rank}
+\end{align}
+This way of writing the loss with dot products of top-K binary vectors is equivalent to $-\text{BPR}( \textsc{TopKIDs}(\bm{r},K), \bm{y} )$.
+
+\textbf{Connection to 0-1 knapsack.} Given a fixed $\bm{y}$ vector, the problem of selecting $K$ sites to minimize $L^{\text{BPR}}$ can reduce to the canonical 0-1 knapsack problem \cite{dantzigDiscreteVariableExtremumProblems1957} where each site $s$ would have value $y_s$ and weight 1, and the budget constraint allows just $K$ of all $S$ sites. Our how-to-rank contribution solves a more general problem: how to set $\bm{r}$ when $\bm{y}$ is not given but must be forecasted by our model.
+
+%Minimizing the expected value of this loss is challenging. As a function of $\bm{r}$, this loss is ``flat'' around almost all possible $\bm{r}$ values, as minor perturbations will not change which indices are the top K. This means the gradient with respect to $\bm{r}$ will be zero almost everywhere, and gradient descent will not make progress to find a good $\bm{r}$. 
+In Sec.~\ref{sec:methods_rank} below, we show how analysis of tractable bounds of the loss in Eq.~\eqref{eq:loss_bpr_how_to_rank} suggests a high-quality ranking function $\bm{r}^*(\phi)$ for BPR. This ranking is usable across different model families, as long as the model $p_\phi$ allows generating many samples of events $\bm{y}$.
+Later in Sec.~\ref{sec:methods_train}, we show how to \emph{train} parameters $\phi$ with gradient descent to yield better top-K decisions as judged by BPR.
+
+%solutions. The metric of interest to us is best possible reach (BPR), as defined in Heuton et al. BPR is naturally defined as a metric to maximize, so we set our loss to minimize \emph{negative} BPR:
+% \begin{align}
+%    \mathcal{L}^{\text{BPR}}(\bm{r}, \bm{y})
+%     &= -\text{BPR}(\bm{r}, \bm{y}) =  - \frac{
+%     \bm{y} \circ \textsc{TopKMask}(\bm{r}, K)
+%     }{
+%     \bm{y} \circ \textsc{TopKMask}(\bm{y}, K)    
+%     }
+% \end{align}
+% BPR is a ratio of a numerator and a denominator, indicating the fraction of events represented in $\bm{y}$ that would be ``reached'' by the action $\bm{r}$ compared to the best-possible action (with hindsight of $\bm{y}$). In words, the numerator sums over $K$ entries of $y$ selected by our action $\bm{r}$ (symbol $\circ$ indicates an inner-product between two vectors of the same size). The denominator sums over the $K$ entries of $y$ that are the $K$ largest distinct values in $y$.
+
+%\quad 
+%\textsc{TopK}(\bm{r}) = \bm{r} \circ \textsc{TopKMask}(\bm{r})
+%\end{align}

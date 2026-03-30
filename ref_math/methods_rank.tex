@@ -1,0 +1,67 @@
+
+\paragraph{Loose bound justifies per-site mean ranking.} A natural first guess for ranking is the per-site mean: $\bm{\bar{r}} = \mathbb{E}_{p_{\phi}}[\bm{y}]$. We can show this is justifiable way to minimize expected loss on a simplistic upper bound on BPR.
+Assume there exists an \emph{upper limit} $U$ such that for all $s$, we can guarantee $U \geq y_s$.
+%For example, we may know that per-site counts will be smaller than overall population size. 
+The sum over any $K$ entries of vector $\bm{y}$ in the denominator of BPR is then bounded by $K \cdot U$. Plugging this bound into the minimize expected loss problem and simplifying with linearity of expectations yields
+% \begin{align}
+% \label{eq:bound_on_bpr}
+%     \text{BPR}(\bm{\theta}, \bm{y}) 
+%     \geq \frac{
+%     \bm{y} \circ \textsc{TopKMask}( \theta, K)
+%     }{
+%         \sum_{s=1}^S y_s
+%     }
+%     \geq \frac{
+%     \bm{y} \circ \textsc{TopKMask}( \theta, K)
+%     }{
+%         S \cdot U
+%     }, \qquad \text{when}~ U \geq y_s \forall s
+% \end{align}
+% Optimizing our how-to-act problem using this bound yields
+\begin{align}
+    \bm{r}^* \gets \argmin_{\bm{r}} -
+    \underbrace{
+    \frac{
+    \mathbb{E}_{p_{\phi}} [ \bm{y} ]
+    }{
+        K \cdot U
+    } \cdot \textsc{TopKMask}( \bm{r}, K)
+    }_{\leq \text{BPR}(\bm{r}, \bm{y})}
+\end{align}
+Many solutions exist: any vector $\bm{r}^*$ 
+that satisfies $\textsc{TopKMask}(\bm{r}^*, K) = \textsc{TopKMask}(\mathbb{E}_{p_{\phi}}[\bm{y}], K)$ can be an argmin. One valid solution here is the per-site mean $\bm{\bar{r}}(\phi) = \mathbb{E}_{p_{\phi}}[\bm{y}]$. However, this solution is optimal for a potentially quite loose bound on BPR that approximates the denominator with the constant $K \cdot U$.
+
+\textbf{Tighter bound suggests the ratio estimator for ranking.} 
+Instead of bounding with constant $K \cdot U$, we can upper bound the denominator in Eq.~\eqref{eq:loss_bpr_how_to_rank} by summing over all $S$ terms instead of the top $K$:
+$\sum_{s \in \textsc{TopKIDs}(\bm{y})} y_s \leq \sum_{s=1}^S y_s = \bm{1} \cdot \bm{y}$. This bound is tighter when the sum of all entries is less than $K \cdot U$, which is typically true of sparse $\bm{y}$ vectors in our applications. Our how-to-rank problem then becomes
+\begin{align}
+    \argmin_{\bm{r}} - \underbrace{
+    \mathbb{E}_{\bm{y} \sim p_{\phi}} \left[
+    \frac{
+    \bm{y} 
+    }{
+        \bm{1} \cdot \bm{y}
+    }
+    \right] \circ \textsc{TopKMask}( \bm{r}, K)
+    }_{\leq \text{BPR}(\bm{r}, \bm{y})}
+    % \\
+    % %  &= \sum_{s=1}^S 
+    % %  - \mathbb{E}_{y \sim p_{\phi}} \left[
+    % % \frac{ y_s }{\sum_{u=1}^S y_u}
+    % % \right]
+    % \cdot \textsc{TopKMask}( \theta, K)_s
+\end{align}
+Again, we solve via any vector $\bm{r}^*$ whose top-K binary vector
+$ \textsc{TopKMask}(\bm{r}^*, K)$ equals $\textsc{TopKMask}( \mathbb{E}_{p_{\phi}} [
+    \frac{ \bm{y} }{\bm{1} \cdot \bm{y}}
+    ], K )$.    
+One valid solution is the expected ratio of vector $\bm{y}$ to its sum, which we nickname the \emph{ratio} estimator
+\begin{align}
+\label{eq:ratio_estimator_for_ranking}
+\bm{r}^*(\phi) = \mathbb{E}_{\bm{y} \sim p_{\phi}}\left[ \frac{\bm{y}}{\bm{1} \cdot \bm{y}} \right]
+\approx \frac{1}{M} \sum_{m=1}^M \frac{ \bm{y}^{(m)}}{ \bm{1}\cdot\bm{y}^{(m)} }.
+\end{align}
+This ranking is \emph{distinct} from the per-site mean: there exist fixed models $\phi$ where the ratio estimator and the per-site mean would select different subsets of the same $S$ sites. See App.~\ref{supp:ranking_demo} for concrete cases where the ratio estimator earns BPR 2.5x to 5x higher than the per-site mean, even when all estimators know the true data-generating model.
+
+When exact computation of this expectation is not easy, we recommend a Monte Carlo approximation using $M$ samples $\{ \bm{y}^{(m)} \}_{m=1}^M$ drawn iid from $p_{\phi}$, as in Eq.~\eqref{eq:ratio_estimator_for_ranking}. 
+This is a stochastic estimator; rankings can differ across repeat trials if $M$ is not large enough.

@@ -73,3 +73,15 @@
   font-size: 1.05em;
   margin-bottom: 0.2em;
 }
+
+/* ---- Ranking derivation: scrollable container, auto-scrolled by JS ---- */
+.reveal .ranking-math-slide {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 760px;          /* tune: slide content height minus title */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.reveal .ranking-math-slide::-webkit-scrollbar {
+  display: none;          /* Chrome/Safari */
+}

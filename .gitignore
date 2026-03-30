@@ -3,6 +3,10 @@ _output/
 __pycache__/
 *.pyc
 *.tar.gz
+
+# Manim intermediate build artifacts — only keep final renders
+animations/src/media/
+
 # keep .gitkeep files
 !*/.gitkeep
 
