@@ -270,6 +270,20 @@ export const PRED_LEFT = {
   noiseSigma: 1.0,       // noise std for non-top bars
   topNoiseSigma: 2.5,    // noise std for top-K bars
   seed: 42,              // deterministic PRNG seed
+  swapOffset: 5,         // how far below the top-K cutoff to swap (higher = bigger ranking error)
+};
+
+// ── Prediction line styling ──────────────────────────────────
+export const PRED_LINE = {
+  tubeRadius: 0.04,      // tube radius in world units (controls line thickness)
+  markerRadius: 0.08,    // radius of circle markers at each data point
+  markerSegments: 16,    // geometry segments for marker spheres
+};
+
+// ── Error fill styling ───────────────────────────────────────
+export const ERROR_FILL = {
+  color: COLORS.coral,   // fill color (red)
+  opacity: 0.8,          // target opacity when fully visible
 };
 
 // Right model: "decision-aware" — high MSE, perfect top-K ranking.

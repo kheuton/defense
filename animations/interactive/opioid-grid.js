@@ -14,7 +14,7 @@ import TWEEN from "@tweenjs/tween.js";
 import {
   COLORS, valueColor, MA_OUTLINE, HEX, GRID, CAMERA, BAR_CHART,
   TIMING, EASING, LIGHTING, HOTSPOTS, BAR_CHART_DATA,
-  COMPARISON, PRED_LEFT, PRED_RIGHT,
+  COMPARISON, PRED_LEFT, PRED_RIGHT, PRED_LINE, ERROR_FILL,
   TIMING_COMPARISON, EASING_COMPARISON,
 } from "./config.js";
 
@@ -563,8 +563,8 @@ function computeLeftPredictions(data, k) {
   for (let i = topStart + 1; i < n; i++) {
     if (preds[i] > preds[maxPredIdx]) maxPredIdx = i;
   }
-  // Swap it with a bar just below top-K (this guarantees at least 1 wrong pick)
-  const swapIdx = topStart - 2; // two below the cutoff
+  // Swap it with a bar well below top-K (this guarantees at least 1 wrong pick)
+  const swapIdx = topStart - PRED_LEFT.swapOffset;
   if (swapIdx >= 0) {
     const tmp = preds[maxPredIdx];
     preds[maxPredIdx] = preds[swapIdx];
@@ -659,31 +659,48 @@ function createPredictionLine(predictions, barPositions, hScale, group) {
   const points = predictions.map((p, i) => {
     return new THREE.Vector3(barPositions[i], p * hScale, 0.5);
   });
-  // Add interpolated points between bars for smoother line
-  const smoothPoints = [];
-  for (let i = 0; i < points.length; i++) {
-    smoothPoints.push(points[i]);
-    if (i < points.length - 1) {
-      const mid = points[i].clone().lerp(points[i + 1], 0.5);
-      smoothPoints.push(mid);
-    }
-  }
-  const geo = new THREE.BufferGeometry().setFromPoints(smoothPoints);
-  const mat = new THREE.LineBasicMaterial({
+
+  // Thick line via TubeGeometry around a CatmullRom curve
+  const curve = new THREE.CatmullRomCurve3(points, false, "catmullrom", 0.5);
+  const tubeGeo = new THREE.TubeGeometry(
+    curve,
+    points.length * 8,       // tubular segments (smooth)
+    PRED_LINE.tubeRadius,     // tube radius (world units)
+    8,                        // radial segments
+    false                     // not closed
+  );
+  const mat = new THREE.MeshBasicMaterial({
     color: COLORS.purple,
     transparent: true,
     opacity: 0,
   });
-  const line = new THREE.Line(geo, mat);
+  const line = new THREE.Mesh(tubeGeo, mat);
   group.add(line);
-  return { line, mat };
+
+  // Circle markers at each data point
+  const markerGeo = new THREE.SphereGeometry(
+    PRED_LINE.markerRadius, PRED_LINE.markerSegments, PRED_LINE.markerSegments
+  );
+  const markers = points.map(pt => {
+    const markerMat = new THREE.MeshBasicMaterial({
+      color: COLORS.purple,
+      transparent: true,
+      opacity: 0,
+    });
+    const mesh = new THREE.Mesh(markerGeo, markerMat);
+    mesh.position.copy(pt);
+    group.add(mesh);
+    return { mesh, mat: markerMat };
+  });
+
+  return { line, mat, markers };
 }
 
 // ── Helper: create error fill quads between bars and line ────
 function createFillQuads(predictions, barValues, barPositions, hScale, bw, group) {
   const fills = [];
   const fillMat = new THREE.MeshBasicMaterial({
-    color: COLORS.muted,
+    color: ERROR_FILL.color,
     transparent: true,
     opacity: 0,
     side: THREE.DoubleSide,
@@ -808,18 +825,30 @@ function transitionToLines() {
   leftLine = leftResult;
   rightLine = rightResult;
 
-  // Fade lines in
+  // Fade lines + markers in
   const done = onAllComplete(2, () => { transitioning = false; });
   new TWEEN.Tween(leftLine.mat)
     .to({ opacity: 1 }, TIMING_COMPARISON.lineDrawDuration)
     .easing(EASING_COMPARISON.lineDraw)
     .onComplete(done)
     .start();
+  leftLine.markers.forEach(m => {
+    new TWEEN.Tween(m.mat)
+      .to({ opacity: 1 }, TIMING_COMPARISON.lineDrawDuration)
+      .easing(EASING_COMPARISON.lineDraw)
+      .start();
+  });
   new TWEEN.Tween(rightLine.mat)
     .to({ opacity: 1 }, TIMING_COMPARISON.lineDrawDuration)
     .easing(EASING_COMPARISON.lineDraw)
     .onComplete(done)
     .start();
+  rightLine.markers.forEach(m => {
+    new TWEEN.Tween(m.mat)
+      .to({ opacity: 1 }, TIMING_COMPARISON.lineDrawDuration)
+      .easing(EASING_COMPARISON.lineDraw)
+      .start();
+  });
 }
 
 // ── Phase 6: Error fill (bar by bar, both charts) ────────────
@@ -846,7 +875,7 @@ function transitionToFill() {
     // Left fill
     if (leftFills[i]) {
       new TWEEN.Tween(leftFills[i].mat)
-        .to({ opacity: 0.3 }, TIMING_COMPARISON.fillFadeDuration)
+        .to({ opacity: ERROR_FILL.opacity }, TIMING_COMPARISON.fillFadeDuration)
         .delay(delay)
         .easing(EASING_COMPARISON.fill)
         .start();
@@ -854,7 +883,7 @@ function transitionToFill() {
     // Right fill
     if (rightFills[i]) {
       new TWEEN.Tween(rightFills[i].mat)
-        .to({ opacity: 0.3 }, TIMING_COMPARISON.fillFadeDuration)
+        .to({ opacity: ERROR_FILL.opacity }, TIMING_COMPARISON.fillFadeDuration)
         .delay(delay)
         .easing(EASING_COMPARISON.fill)
         .start();
@@ -904,13 +933,22 @@ function transitionToRMSE() {
   });
 }
 
-// ── Phase 8: Fade error fill, highlight top-K ────────────────
+// ── Phase 8: Fade error fill, highlight model's selected top-K ──
 function transitionToTopK() {
   transitioning = true;
 
   const n = chartDataSorted.length;
   const k = COMPARISON.k;
-  const topStart = n - k; // top-K are the last k bars (ascending order)
+
+  // Compute each model's predicted top-K (by highest predictions)
+  const leftRanked = new Set(
+    leftPredictions.map((p, i) => ({ pred: p, idx: i }))
+      .sort((a, b) => b.pred - a.pred).slice(0, k).map(d => d.idx)
+  );
+  const rightRanked = new Set(
+    rightPredictions.map((p, i) => ({ pred: p, idx: i }))
+      .sort((a, b) => b.pred - a.pred).slice(0, k).map(d => d.idx)
+  );
 
   // Fade out all fill quads
   [...leftFills, ...rightFills].forEach(f => {
@@ -921,29 +959,42 @@ function transitionToTopK() {
     }
   });
 
-  // Fade non-top-K bars to heavy transparency
-  const fadeNonTopK = (barList) => {
-    barList.forEach((b, i) => {
-      if (i < topStart) {
-        new TWEEN.Tween(b.mesh.material)
-          .to({ opacity: 0.12 }, TIMING_COMPARISON.barFadeDuration)
-          .start();
-      }
-    });
-  };
-  fadeNonTopK(leftBars);
-  fadeNonTopK(rightBars);
+  // Fade bars NOT selected by each model to heavy transparency
+  leftBars.forEach((b, i) => {
+    if (!leftRanked.has(i)) {
+      new TWEEN.Tween(b.mesh.material)
+        .to({ opacity: 0.12 }, TIMING_COMPARISON.barFadeDuration)
+        .start();
+    }
+  });
+  rightBars.forEach((b, i) => {
+    if (!rightRanked.has(i)) {
+      new TWEEN.Tween(b.mesh.material)
+        .to({ opacity: 0.12 }, TIMING_COMPARISON.barFadeDuration)
+        .start();
+    }
+  });
 
-  // Also fade prediction lines to lower opacity
+  // Fade prediction lines + markers to lower opacity
   if (leftLine) {
     new TWEEN.Tween(leftLine.mat)
       .to({ opacity: 0.3 }, TIMING_COMPARISON.barFadeDuration)
       .start();
+    leftLine.markers.forEach(m => {
+      new TWEEN.Tween(m.mat)
+        .to({ opacity: 0.3 }, TIMING_COMPARISON.barFadeDuration)
+        .start();
+    });
   }
   if (rightLine) {
     new TWEEN.Tween(rightLine.mat)
       .to({ opacity: 0.3 }, TIMING_COMPARISON.barFadeDuration)
       .start();
+    rightLine.markers.forEach(m => {
+      new TWEEN.Tween(m.mat)
+        .to({ opacity: 0.3 }, TIMING_COMPARISON.barFadeDuration)
+        .start();
+    });
   }
 
   setTimeout(() => { transitioning = false; },

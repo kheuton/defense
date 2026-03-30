@@ -55,6 +55,17 @@ Easing functions for each transition, referencing `TWEEN.Easing.*`. Change these
 - `barChart.morphFade` — how doomed bars disappear (default: Quadratic.In for accelerating fade)
 - `barChart.morphHeight` — how surviving bars resize (default: Quadratic.InOut for smooth)
 
+### `PRED_LINE`
+Prediction line styling:
+- `tubeRadius` — thickness of the prediction line in world units (uses `TubeGeometry` for cross-platform support)
+- `markerRadius` — radius of the circle markers placed at each predicted data point
+- `markerSegments` — geometry resolution for marker spheres
+
+### `ERROR_FILL`
+Error fill region styling (the vertical quads between prediction line and actual bars):
+- `color` — fill color (default: `COLORS.coral`, red)
+- `opacity` — target opacity when fully visible (default: 0.8)
+
 ### `MAP_DATA`
 Values for the hex grid geographic view. Flat array, one value per hex cell inside MA (row-major order, bottom-left to top-right). If the array is shorter than the number of hex cells, extra cells get value 0.
 
@@ -78,4 +89,9 @@ Independent dataset for the final bar chart. Array of `{ label, value }` objects
 | Smoother morph | Increase `TIMING.barChart.morphHeightAdjust` |
 | More/fewer chart bars | Add/remove entries in `BAR_CHART_DATA` |
 | Different chart dataset | Edit `BAR_CHART_DATA` values/labels |
+| Thicker/thinner prediction lines | `PRED_LINE.tubeRadius` |
+| Larger/smaller prediction markers | `PRED_LINE.markerRadius` |
+| Error fill color | `ERROR_FILL.color` |
+| Error fill visibility | `ERROR_FILL.opacity` |
+| Bigger MSE ranking mistake | Increase `PRED_LEFT.swapOffset` |
 | Regenerate MA outline | `python gen_ma_outline.py`, paste output into config |
