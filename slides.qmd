@@ -535,6 +535,30 @@ Existing decision-aware methods sacrifice model likelihood.
 :::
 
 
+## How to Train {background-iframe="animations/interactive/mse-gradient.html" background-interactive="true"}
+
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+
+
 ## Decision-Aware Maximum Likelihood (DAML)
 
 <!-- TODO: flesh out Chapter 4 slides -->

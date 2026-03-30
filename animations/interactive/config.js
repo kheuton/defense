@@ -317,3 +317,53 @@ export const EASING_COMPARISON = {
   lineDraw: TWEEN.Easing.Linear.None,
   fill: TWEEN.Easing.Quadratic.Out,
 };
+
+// ── MSE vs BPR Gradient animation ────────────────────────────
+export const MSE_GRADIENT = {
+  // Layout
+  barWidth: 0.20,
+  barGap: 0.03,
+  frustum: 9,
+  chartOffsetX: -3.25,
+  graphOffsetX: 4.25,
+  heightScale: 8,
+
+  // Interpolation — NO monotonicity clamping (preserves top-K up to lerpT≈0.60)
+  lerpT: 0.35,
+
+  // Graph dimensions (local to graph group, reused for MSE and BPR)
+  graph: {
+    width: 4,
+    height: 5,
+    axisRadius: 0.025,
+    pointRadius: 0.15,
+    hollowRadius: 0.15,
+    hollowTube: 0.025,
+    theta1X: 1.0,
+    theta2X: 3.0,
+    mseHeadroom: 1.4,       // mseMax = mse1 * this
+    bprMin: 0.85,            // y-axis lower bound for BPR graph (fraction)
+    bprMax: 1.0,             // y-axis upper bound
+    dottedSegments: 10,
+    dotRadius: 0.03,
+  },
+
+  timing: {
+    barStagger: 15,
+    barAppear: 500,
+    lineAppear: 600,
+    fillStagger: 30,
+    fillAppear: 300,
+    axesAppear: 500,
+    plotPoint: 400,
+    hollowAppear: 300,
+    dottedDraw: 400,
+    interpolate: 1200,
+    tubeRebuildInterval: 100,
+    plotNewPoint: 600,
+    connectLine: 400,
+    transition: 800,
+    topKFade: 500,
+    bprCalcDelay: 600,
+  },
+};

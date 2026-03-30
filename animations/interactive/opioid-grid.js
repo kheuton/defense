@@ -17,6 +17,7 @@ import {
   COMPARISON, PRED_LEFT, PRED_RIGHT, PRED_LINE, ERROR_FILL,
   TIMING_COMPARISON, EASING_COMPARISON,
 } from "./config.js";
+import { computeLeftPredictions, computeRightPredictions } from "./prediction-utils.js";
 
 // ── Deduplicate near-coincident polygon vertices ─────────────
 // MA_OUTLINE has near-duplicate points (e.g. [-1.169, 0.584] / [-1.169, 0.582])
@@ -522,63 +523,7 @@ function transitionToBarChart() {
 // COMPARISON PHASES (4-9)
 // ══════════════════════════════════════════════════════════════
 
-// ── Helpers: seeded PRNG ─────────────────────────────────────
-function makePRNG(seed) {
-  let s = seed | 0;
-  return () => {
-    s = (s * 1664525 + 1013904223) | 0;
-    return (s >>> 0) / 4294967296;
-  };
-}
-
-function makeGaussRNG(seed) {
-  const rand = makePRNG(seed);
-  let spare = null;
-  return () => {
-    if (spare !== null) { const v = spare; spare = null; return v; }
-    let u, v, s;
-    do { u = rand() * 2 - 1; v = rand() * 2 - 1; s = u * u + v * v; } while (s >= 1 || s === 0);
-    const mul = Math.sqrt(-2 * Math.log(s) / s);
-    spare = v * mul;
-    return u * mul;
-  };
-}
-
-// ── Helpers: prediction computation ──────────────────────────
-function computeLeftPredictions(data, k) {
-  const gauss = makeGaussRNG(PRED_LEFT.seed);
-  const n = data.length;
-  const preds = data.map((v, i) => {
-    const isTopK = i >= n - k;
-    const sigma = isTopK ? PRED_LEFT.topNoiseSigma : PRED_LEFT.noiseSigma;
-    return Math.max(0, v + gauss() * sigma);
-  });
-
-  // Deliberately shuffle some top-K predictions with values just below
-  // to ensure the model's predicted top-K ≠ actual top-K
-  // Swap the highest predicted value into a position just below top-K
-  const topStart = n - k;
-  // Find the bar with highest prediction in top-K
-  let maxPredIdx = topStart;
-  for (let i = topStart + 1; i < n; i++) {
-    if (preds[i] > preds[maxPredIdx]) maxPredIdx = i;
-  }
-  // Swap it with a bar well below top-K (this guarantees at least 1 wrong pick)
-  const swapIdx = topStart - PRED_LEFT.swapOffset;
-  if (swapIdx >= 0) {
-    const tmp = preds[maxPredIdx];
-    preds[maxPredIdx] = preds[swapIdx];
-    preds[swapIdx] = tmp;
-  }
-  return preds;
-}
-
-function computeRightPredictions(data) {
-  return data.map((_, i) => {
-    const val = PRED_RIGHT.a * (i - PRED_RIGHT.c) ** 2 + PRED_RIGHT.d;
-    return Math.max(0, val);
-  });
-}
+// Prediction computation imported from prediction-utils.js
 
 // ── Helpers: world-to-screen for HTML overlays ───────────────
 function worldToScreen(worldPos) {
@@ -812,8 +757,8 @@ function transitionToLines() {
   const barPositions = chartBars.map(b => b.mesh.position.x);
 
   // Compute predictions
-  leftPredictions = computeLeftPredictions(chartDataSorted, COMPARISON.k);
-  rightPredictions = computeRightPredictions(chartDataSorted);
+  leftPredictions = computeLeftPredictions(chartDataSorted, COMPARISON.k, PRED_LEFT);
+  rightPredictions = computeRightPredictions(chartDataSorted, PRED_RIGHT);
 
   // Create lines
   const leftResult = createPredictionLine(
