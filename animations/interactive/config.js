@@ -421,3 +421,33 @@ export const PERTURBED_OPT = {
     distBarGrow: 400,
   },
 };
+
+// ── How to Rank animation ────────────────────────────────────
+export const HOW_TO_RANK = {
+  barWidth: 0.20,
+  barGap: 0.03,
+  frustum: 9,
+  chartOffsetX: 5.0,
+  ridgeOffsetX: -6.5,
+  heightScale: 8,
+
+  ridge: {
+    xRange: 8,
+    ySpacing: 0.35,
+    curveHeight: 0.3,
+    sigma: 1.5,
+    zeroSigma: 0.8,
+    curvePoints: 80,
+    fillOpacity: 0.85,
+    lineOpacity: 1.0,
+    axisRadius: 0.025,
+  },
+
+  timing: {
+    barStagger: 15,
+    barAppear: 500,
+    axesAppear: 500,
+    morphDelay: 50,
+    morphDuration: 600,
+  },
+};

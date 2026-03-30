@@ -579,6 +579,14 @@ Existing decision-aware methods sacrifice model likelihood.
 :::
 
 
+## How to Rank {background-iframe="animations/interactive/how-to-rank.html" background-interactive="true"}
+
+::: {.fragment .rank-step}
+:::
+::: {.fragment .rank-step}
+:::
+
+
 ## Decision-Aware Maximum Likelihood (DAML)
 
 <!-- TODO: flesh out Chapter 4 slides -->

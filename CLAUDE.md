@@ -27,9 +27,12 @@ animations/
   src/media/                # Manim build artifacts (gitignored)
   rendered/                 # Final .mp4 files embedded via {{< video >}} shortcode
   interactive/              # Browser-based Three.js animations (embedded via background-iframe)
-    opioid-grid.html        # HTML shell — canvas + CDN imports
-    config.js               # All tunables: colors, timing, camera, layout, MA outline, datasets
-    opioid-grid.js          # Three.js scene: 9-phase hex grid → bar chart → model comparison
+    config.js               # All tunables: colors, timing, camera, layout, datasets, model params
+    prediction-utils.js     # Shared: seeded PRNG, Gaussian RNG, prediction computation
+    opioid-grid.{html,js}   # 9-phase: hex map → bar chart → model comparison → evaluation
+    mse-gradient.{html,js}  # 10-phase: MSE has gradients, BPR does not
+    perturbed-opt.{html,js} # 8-phase: perturbation smooths BPR into differentiable objective
+    how-to-rank.{html,js}   # 2-phase: bar chart → Joy Division ridgeline of distributions
     gen_ma_outline.py       # One-shot script: GeoJSON → MA polygon coordinates for config.js
     NOTES.md                # Developer notes: what to read, restyling, dataset adjustment
     TUNING.md               # Section-by-section config.js reference
@@ -69,11 +72,38 @@ Files live in `animations/interactive/`. Embedded in slides via:
 ## {background-iframe="animations/interactive/opioid-grid.html" background-interactive="true"}
 ```
 
+Each animation is a standalone ES module (`.js`) loaded by an HTML shell (`.html`).
+Shared data and prediction logic live in `config.js` and `prediction-utils.js`.
+
+| Animation | File | Phases | What it shows |
+|-----------|------|--------|---------------|
+| Opioid grid | `opioid-grid.js` | 9 | Hex map → bar chart → model comparison → evaluation |
+| MSE vs BPR gradient | `mse-gradient.js` | 10 | MSE has gradients, BPR does not |
+| Perturbed optimizers | `perturbed-opt.js` | 8 | Perturbation smooths BPR into a differentiable objective |
+| How to Rank | `how-to-rank.js` | 2 | Bar chart → Joy Division ridgeline of distributions |
+
 Tunables are in `config.js` — see `animations/interactive/TUNING.md` for a section-by-section guide.
 
 For a higher-level overview (what to read, how to restyle, how to adjust datasets and prediction models), see `animations/interactive/NOTES.md`.
 
 Test standalone by opening the `.html` file in a browser (click / arrow to advance).
+
+#### Key patterns for new animations
+
+- **Shared data**: Import `BAR_CHART_DATA`, `PRED_LEFT`, colors, etc. from `config.js`. Import `computeLeftPredictions`, `makeGaussRNG` from `prediction-utils.js`.
+- **Thick lines**: Use `TubeGeometry` around a `CatmullRomCurve3` (not `Line2` addons — they break module loading). Circle markers via `SphereGeometry`.
+- **Phase controller**: `advancePhase()` with `transitioning` gate. Click, ArrowRight/Space, and Reveal.js `fragmentshown` all call it.
+- **Event propagation**: Animations MUST remove click/keydown listeners after the final phase so Reveal.js can advance to the next slide. Pattern:
+  ```js
+  function onClick() { advancePhase(); }
+  function onKeyDown(e) { if (e.key === "ArrowRight" || e.key === " ") advancePhase(); }
+  function removeListeners() {
+    canvas.removeEventListener("click", onClick);
+    document.removeEventListener("keydown", onKeyDown);
+  }
+  // In advancePhase(): if (currentPhase >= MAX_PHASE) removeListeners();
+  ```
+- **Slide embedding**: One `## Title {background-iframe="..." background-interactive="true"}` plus N empty `.fragment` divs (one per phase). The `_quarto.yml` glob `animations/interactive/**` auto-includes new files.
 
 ## Quarto / Reveal.js notes
 
