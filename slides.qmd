@@ -503,7 +503,7 @@ Kyle Heuton, Frederick Muench, Shikhar Shrestha, Thomas J. Stopka, Michael C. Hu
 
 ::: {.fragment}
 ::: {.contribution-item}
-::: {.contribution-num .accent-purple}
+::: {.contribution-num .accent-purple-light}
 1
 :::
 ::: {.contribution-body}
@@ -525,7 +525,7 @@ Given a probabilistic model for events, it isn't clear how to best rank location
 
 ::: {.fragment}
 ::: {.contribution-item}
-::: {.contribution-num .accent-purple}
+::: {.contribution-num .accent-purple-dark}
 3
 :::
 ::: {.contribution-body}
@@ -734,29 +734,37 @@ window.addEventListener('load', function () {
 ```
 
 
-## Decision-Aware Maximum Likelihood (DAML)
+## {background-image="figures/daml/slide01.png" background-size="contain" background-color="white"}
 
-<!-- TODO: flesh out Chapter 4 slides -->
+## {background-image="figures/daml/slide02.png" background-size="contain" background-color="white"}
 
-## Motivation: Training Probabilistic Models
+## {background-image="figures/daml/slide03.png" background-size="contain" background-color="white"}
 
-<!-- TODO -->
+## {background-image="figures/daml/slide04.png" background-size="contain" background-color="white"}
 
-## The DAML Method
+## {background-image="figures/daml/slide05.png" background-size="contain" background-color="white"}
 
-<!-- TODO: show the joint objective -->
+## {background-image="figures/daml/slide06.png" background-size="contain" background-color="white"}
 
-## Results: Public Health Setting
+## {background-image="figures/daml/slide07.png" background-size="contain" background-color="white"}
 
-<!-- TODO -->
+## {background-image="figures/daml/slide08.png" background-size="contain" background-color="white"}
 
-## Results: Beyond Public Health
+## {background-image="figures/daml/slide09.png" background-size="contain" background-color="white"}
 
-<!-- TODO: generalization experiments -->
+## Training takeaways
 
-## Chapter 4 Takeaways
+::: {.fragment .card .card-purple-light}
+Differentiable perturbed optimizers allow us to train models that make better decisions
+:::
 
-<!-- TODO -->
+::: {.fragment .card .card-purple}
+When we care about ranking, the ratio estimator is superior to taking the mean of a distribution
+:::
+
+::: {.fragment .card .card-purple-dark}
+The Decision-Aware Maximum Likelihood objective can deliver high-quality decisions and high-likelihood models
+:::
 
 
 # Benchmarking {background-color="#2a1a0a"}
@@ -764,65 +772,73 @@ window.addEventListener('load', function () {
 
 <!-- TODO: flesh out Chapter 5 slides -->
 
-## Problems with Existing Benchmarks
+## {background-image="figures/ch5/slide01.png" background-size="contain" background-color="white"}
 
-<!-- TODO -->
+## {background-image="figures/ch5/slide02.png" background-size="contain" background-color="black"}
 
-## Our Benchmark Setup
+## {background-image="figures/ch5/slide03.png" background-size="contain" background-color="white"}
 
-<!-- TODO -->
+## {background-image="figures/ch5/slide04.png" background-size="contain" background-color="white"}
 
-## Results
+## {background-image="figures/ch5/slide05.png" background-size="contain" background-color="white"}
 
-<!-- TODO -->
+## {background-image="figures/ch5/slide06.png" background-size="contain" background-color="white"}
 
-## Practical Guidance
+## {background-image="figures/ch5/slide07.png" background-size="contain" background-color="white"}
 
-<!-- TODO: the decision tree / guidance summary for practitioners -->
+## {background-image="figures/ch5/slide08.png" background-size="contain" background-color="white"}
 
-## Chapter 5 Takeaways
+## {background-image="figures/ch5/slide09.png" background-size="contain" background-color="white"}
 
-<!-- TODO -->
+## {background-image="figures/ch5/slide10.png" background-size="contain" background-color="white"}
+
+## {background-image="figures/ch5/slide11.png" background-size="contain" background-color="white"}
+
+## {background-image="figures/ch5/slide12.png" background-size="contain" background-color="white"}
+
+## {background-image="figures/ch5/slide13.png" background-size="contain" background-color="white"}
+
+## Benchmarking takeaways
+
+::: {.fragment .card .card-coral}
+Existing decision-aware benchmarks don't use decision-aware tasks
+:::
+
+::: {.fragment .card .card-coral-dark}
+Future efforts should focus on the loss landscape induced by a given method
+:::
 
 
 # Conclusion and Future Work {background-color="#1a1a2e"}
 
-## Three Contributions
+## Conclusion
 
-::: {.contribution-item}
-::: {.contribution-num .accent-teal}
-Ch. 3
-:::
-::: {.contribution-body}
-**Best Possible Reach** — a decision-oriented evaluation metric
-for opioid overdose forecasts
-:::
+::: {.fragment .card .card-teal}
+**Best Possible Reach** — a decision-oriented evaluation metric shows that simpler models can be just as strong, and that error-based metrics miss what matters for policy
 :::
 
-::: {.contribution-item}
-::: {.contribution-num .accent-purple}
-Ch. 4
-:::
-::: {.contribution-body}
-**DAML** — jointly optimizes decision quality and probabilistic
-maximum likelihood; generalizes beyond public health
-:::
+::: {.fragment .card .card-purple}
+**DAML** — by jointly optimizing decision quality and likelihood, we can navigate the training frontier and avoid sacrificing calibration for performance
 :::
 
-::: {.contribution-item}
-::: {.contribution-num .accent-coral}
-Ch. 5
-:::
-::: {.contribution-body}
-**Benchmarking** — identifies shortcomings in existing evaluations
-and provides practical guidance for DFL practitioners
-:::
+::: {.fragment .card .card-coral}
+**Benchmarking** — existing evaluations don't use decision-aware tasks; the loss landscape induced by a method is a better lens for understanding when DFL helps
 :::
 
 
 ## Future Directions
 
-<!-- TODO -->
+::: {.fragment .card .card-coral}
+Better benchmarks and deeper understanding of the loss landscape of decision-aware methods
+:::
+
+::: {.fragment .card .card-purple}
+More intelligent training methods for decision-aware learning — which samples matter the most?
+:::
+
+::: {.fragment .card .card-teal}
+Decision-aware model training and inference
+:::
 
 
 ## Thank You
