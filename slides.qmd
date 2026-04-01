@@ -113,9 +113,7 @@ Christopher Ratigan, Kyle Heuton, Carissa Wang, Lenore Cowen, Michael C. Hughes
 
 If we can **accurately model our environment**, we can make the world a better place.
 
-::: {style="width: 650px; height: 650px; background: var(--bg-card); border: 2px dashed var(--border); margin: 0.6em auto; display: flex; align-items: center; justify-content: center; color: var(--muted); font-style: italic;"}
-<!-- TODO: figure -->
-:::
+![](figures/1990daly.png){style="max-height: 580px; max-width: 650px; display: block; margin: 0.6em auto;"}
 
 ---
 
@@ -128,9 +126,7 @@ If we can **predict the future**, we can make the world a better place.
 :::
 ::::
 
-::: {style="width: 650px; height: 650px; background: var(--bg-card); border: 2px dashed var(--border); margin: 0.6em auto; display: flex; align-items: center; justify-content: center; color: var(--muted); font-style: italic;"}
-<!-- TODO: figure -->
-:::
+![](figures/2023daly.png){style="max-height: 580px; max-width: 650px; display: block; margin: 0.6em auto;"}
 
 ## {background-iframe="animations/interactive/opioid-grid.html" background-interactive="true"}
 
@@ -225,9 +221,7 @@ Kyle Heuton, Jyontika Kapoor, Shikhar Shrestha, Thomas J. Stopka, Michael C. Hug
 ::::
 
 :::: {.column width="25%" style="display: flex; justify-content: center; align-items: flex-start; padding-top: 0.3em;"}
-::: {style="width: 110px; height: 110px; background: var(--bg-card); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.5em; text-align: center;"}
-AJE logo
-:::
+![](figures/aje.svg){width="330px" height="330px"}
 ::::
 
 :::::
@@ -270,9 +264,7 @@ Code rarely shared, data nearly never shared.
 
 ## The Task
 
-::: {style="width: 100%; height: 440px; background: var(--bg-card); border: 2px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-style: italic; margin-bottom: 0.8em;"}
-<!-- TODO: choropleth map of MA opioid overdose deaths -->
-:::
+<iframe src="figures/choropleth.pdf" style="width: 100%; height: 440px; border: none;" title="MA opioid overdose deaths choropleth"></iframe>
 
 ::: {style="font-size: 0.85em; line-height: 1.4;"}
 **Prediction Target**
@@ -340,9 +332,18 @@ Prediction error for fatal opioid-related overdose models in Cook County, Illino
 :::
 
 
-## Best Possible Reach (BPR)
+## % Best Possible Reach {background-iframe="animations/interactive/bpr-eval.html" background-interactive="true"}
 
-<!-- TODO: flesh out Chapter 3 slides -->
+::: {.fragment .opioid-step}
+:::
+::: {.fragment .opioid-step}
+:::
+
+::: notes
+Continuation of intro animation — starts at phase 7 (two models, RMSE comparison established):
+(8) top-K bars highlighted — each model selects its K highest-ranked predictions,
+(9) BPR evaluation — overdoses captured vs true top-K = reach percentage.
+:::
 
 ## Chicago Results
 
