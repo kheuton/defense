@@ -82,6 +82,7 @@ Shared data and prediction logic live in `config.js` and `prediction-utils.js`.
 | Perturbed optimizers | `perturbed-opt.js` | 8 | Perturbation smooths BPR into a differentiable objective |
 | How to Rank | `how-to-rank.js` | 2 | Bar chart → Joy Division ridgeline of distributions |
 | Training Results | `training-results.js` | 3 | Half-violin BPR distributions for Cook/MA/Cranes, NLL→BPR→DAML reveal |
+| The Opportunity | `opportunity.js` | 4 | Cook→SPO+/PG reveal→gap arrow→3-panel zoom-out→motivating question |
 
 Tunables are in `config.js` — see `animations/interactive/TUNING.md` for a section-by-section guide.
 

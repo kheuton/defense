@@ -246,3 +246,60 @@ Click, ArrowRight/Space, and `Reveal.fragmentshown` all call `advancePhase()`. A
 ```
 
 Three fragment divs per slide — one per method reveal. The fragments are invisible; their only purpose is to let Reveal.js drive `advancePhase()` via `fragmentshown`.
+
+---
+
+# Opportunity Animation — Developer Notes
+
+5-phase half-violin animation replacing `figures/ch5/slide01.png` ("The Opportunity") in the Benchmarking chapter. Shows how SPO+ and PG fall short of BPR-only across all three real datasets, building up from a Cook County-only view to a full 3-panel comparison with the motivating question.
+
+## Files
+
+| File | Role |
+|------|------|
+| `opportunity.js` | All logic: embedded data, KDE, SVG rendering, phase controller |
+| `opportunity.html` | HTML shell (no URL params needed — single mode) |
+
+## Phase summary
+
+| Phase | Trigger | What happens |
+|-------|---------|-------------|
+| 0 (load) | — | Big Cook County chart, NLL/BPR/DAML visible, SPO+/PG hidden |
+| 1 | 1st click | SPO+ and PG fade in on big Cook chart |
+| 2 | 2nd click | Dotted coral vertical line at BPR-only + double-headed arrow from SPO+ to BPR-only |
+| 3 | 3rd click | Big Cook fades out; small 3-panel left layout (Cook + MA + Cranes) fades in with all methods + arrows |
+| 4 | 4th click | Right-half text fades in: "Why do these methods come to such different solutions?" |
+
+## Data source
+
+Same JSON files as training-results animation (`frozen_plot_data/`). Row indices:
+
+| Dataset | NLL | BPR | DAML | SPO+ | PG |
+|---------|-----|-----|------|------|-----|
+| Cook `cook_2021_2022.json` | 8 | 0 | 7 | 10 | 9 |
+| MA `ma_2020_2021.json` | 8 | 0 | 7 | 10 | 9 |
+| Cranes `asurv_2009_2010.json` | 6 | 0 | 5 | 8 | 7 |
+
+Method key: `(bw=0, nw=1)` = NLL Only; `(bw=30, nw=0)` = BPR Only; `(bw=30, nw=1)` = DAML; `(bw=10, nw=10)` = SPO+; `(bw=20, nw=20)` = PG.
+
+## Special cases
+
+**MA SPO+/PG off-scale NLL**: SPO+ test_nll=90.26, PG test_nll=163.09 — both way below the MA chart's yRange bottom (-6.3). These are drawn as dots clamped near the bottom of the chart (no violin), with a downward triangle indicator below the bottom axis.
+
+**Cranes PG zero variance**: All 200 BPR samples are identical (0.345884). The violin is skipped; only a dot is shown.
+
+**X-axis ranges differ from training-results**: Cook is `[0.720, 0.840]` (wider to fit SPO+ distribution min=0.736); Cranes is `[0.14, 0.42]` (much wider to fit SPO+ distribution min=0.147).
+
+## Re-extracting data
+
+If source JSON changes, run the same extraction script as in the Training Results section above, adding rows for SPO+ and PG:
+
+```python
+DATASETS = [
+    ('cook',   'cook_2021_2022.json',   {'nll': 8, 'bpr': 0, 'daml': 7, 'spo': 10, 'pg': 9}),
+    ('ma',     'ma_2020_2021.json',     {'nll': 8, 'bpr': 0, 'daml': 7, 'spo': 10, 'pg': 9}),
+    ('cranes', 'asurv_2009_2010.json',  {'nll': 6, 'bpr': 0, 'daml': 5, 'spo': 8,  'pg': 7}),
+]
+```
+
+Paste the output into the `const DATA = { ... }` block at the top of `opportunity.js`.

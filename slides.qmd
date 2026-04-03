@@ -713,7 +713,16 @@ Kyle Heuton, Michael C. Hughes
 
 <!-- TODO: flesh out Chapter 5 slides -->
 
-## {background-image="figures/ch5/slide01.png" background-size="contain" background-color="white"}
+## {background-iframe="animations/interactive/opportunity.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
 
 ## {background-image="figures/ch5/slide02.png" background-size="contain" background-color="black"}
 
