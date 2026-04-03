@@ -284,7 +284,7 @@ Method key: `(bw=0, nw=1)` = NLL Only; `(bw=30, nw=0)` = BPR Only; `(bw=30, nw=1
 
 ## Special cases
 
-**MA SPO+/PG off-scale NLL**: SPO+ test_nll=90.26, PG test_nll=163.09 — both way below the MA chart's yRange bottom (-6.3). These are drawn as dots clamped near the bottom of the chart (no violin), with a downward triangle indicator below the bottom axis.
+**MA log-scale y-axis**: SPO+ test_nll=90.26, PG test_nll=163.09 are orders of magnitude larger than NLL/BPR/DAML (1–5). A linear y-axis either cuts them off or squashes everything else to the top. Solution: `logScaleY: true` in `buildPanel`, using `ys = v => tm + (log(-v) - log(-yMax)) / (log(-yMin) - log(-yMax)) * CH`. MA yRange is `[-300, -0.5]` with ticks at `[-1, -2, -5, -20, -100]`. All five methods spread nicely across the chart height.
 
 **Cranes PG zero variance**: All 200 BPR samples are identical (0.345884). The violin is skipped; only a dot is shown.
 
@@ -303,3 +303,13 @@ DATASETS = [
 ```
 
 Paste the output into the `const DATA = { ... }` block at the top of `opportunity.js`.
+
+## Hard-won implementation lessons
+
+**Arrow coordinate system**: The `xs()` function returns coordinates local to a panel's `<g>` (which has `transform="translate(panelX, 0)"`). Any arrow or overlay group appended *outside* that panel `<g>` must carry the same translate — otherwise x-positions look correct in isolation but are offset by `panelX` when rendered. Fix: `arrowGroup.setAttribute('transform', \`translate(${panelX}, 0)\`)` before appending to the parent.
+
+**`hideMethods` parameter**: Don't hardcode `isHidden = method === 'spo' || method === 'pg'` inside `buildPanel`. The same function is reused for panels where those methods should be visible from load (phase-3 small layout). Pass `hideMethods: ['spo', 'pg']` for the big Cook phase-0 panel and `hideMethods: []` (default) for small panels. Same principle applies to the inline legend.
+
+**Legend placement**: BPR-only dots (highest BPR = rightmost, lowest NLL = bottommost) tend to cluster in the lower-right of each chart. Place the legend lower-left (`x = lm + 8, y = tm + CH - boxH - 8`) to avoid overlap.
+
+**Log-scale y for mixed-magnitude NLL**: When comparing optimization-based methods (SPO+, PG) against likelihood-based ones on the same chart, NLL values can differ by 1–2 orders of magnitude. A linear y-axis makes both views useless. Use a log scale; the formula above handles negative values cleanly as long as all NLL values are strictly positive (which they are for proper probability models).
