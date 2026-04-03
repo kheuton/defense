@@ -91,6 +91,7 @@ function buildPanel(parent, opts) {
     yFmt = v => v.toString(),
     maxViolinHalf = 42,
     methods = ['nll', 'bpr', 'daml', 'spo', 'pg'],
+    hideMethods = [],
     showYLabel = false,
     clipId,
   } = opts;
@@ -192,7 +193,7 @@ function buildPanel(parent, opts) {
     const d = DATA[`${id}_${method}`];
     if (!d) return;
     const color = COLORS[method];
-    const isHidden = method === 'spo' || method === 'pg';
+    const isHidden = hideMethods.includes(method);
     const opac0 = isHidden ? '0' : '1';
 
     let rawYBase = ys(-d.nll);
@@ -250,39 +251,46 @@ function buildPanel(parent, opts) {
 }
 
 // ── Arrow group builder ───────────────────────────────────────────────────────
-// Builds dotted vertical BPR line + horizontal double-headed arrow from spoAvg to bprAvg.
+// Builds dotted vertical BPR line + two horizontal double-headed arrows:
+// one from spoAvg→bprAvg, one from pgAvg→bprAvg, at specified Y positions.
 
-function buildArrowGroup(parent, xs, ys, tm, CH, spoAvg, bprAvg, arrowY) {
+function buildArrowGroup(parent, xs, tm, CH, spoAvg, pgAvg, bprAvg, spoArrowY, pgArrowY) {
   const ag = el('g');
 
-  // Dotted vertical at BPR avg
+  // Dotted vertical at BPR avg (full chart height)
+  const bx = xs(bprAvg);
   ag.appendChild(el('line', {
-    x1: xs(bprAvg).toFixed(2), y1: tm,
-    x2: xs(bprAvg).toFixed(2), y2: tm + CH,
+    x1: bx.toFixed(2), y1: tm,
+    x2: bx.toFixed(2), y2: tm + CH,
     stroke: COLORS.bpr, 'stroke-width': 1.5, 'stroke-dasharray': '6 4',
   }));
 
-  // Horizontal double-headed arrow
-  const x1 = xs(spoAvg);
-  const x2 = xs(bprAvg);
-  const ay = arrowY;
-  const hw = 8, hh = 5;
-
-  if (Math.abs(x2 - x1) > hw * 2 + 2) {
+  // Helper: draw one horizontal arrow from x1 to x2 at height ay, colored for the method
+  function drawArrow(fromAvg, color, ay) {
+    const x1 = xs(fromAvg);
+    const x2 = bx;
+    const hw = 7, hh = 4;
+    if (Math.abs(x2 - x1) < hw * 2 + 2) return;
+    // Arrow points right (from left x1 toward right x2)
     ag.appendChild(el('line', {
       x1: (x1 + hw).toFixed(2), y1: ay.toFixed(2),
       x2: (x2 - hw).toFixed(2), y2: ay.toFixed(2),
-      stroke: COLORS.muted, 'stroke-width': 2,
+      stroke: color, 'stroke-width': 2,
     }));
+    // Left arrowhead (at x1, pointing left)
     ag.appendChild(el('polygon', {
-      points: `${x1.toFixed(2)},${ay.toFixed(2)} ${(x1 + hw).toFixed(2)},${(ay - hh).toFixed(2)} ${(x1 + hw).toFixed(2)},${(ay + hh).toFixed(2)}`,
-      fill: COLORS.muted,
+      points: `${x1.toFixed(2)},${ay.toFixed(2)} ${(x1+hw).toFixed(2)},${(ay-hh).toFixed(2)} ${(x1+hw).toFixed(2)},${(ay+hh).toFixed(2)}`,
+      fill: color,
     }));
+    // Right arrowhead (at x2, pointing right)
     ag.appendChild(el('polygon', {
-      points: `${x2.toFixed(2)},${ay.toFixed(2)} ${(x2 - hw).toFixed(2)},${(ay - hh).toFixed(2)} ${(x2 - hw).toFixed(2)},${(ay + hh).toFixed(2)}`,
-      fill: COLORS.muted,
+      points: `${x2.toFixed(2)},${ay.toFixed(2)} ${(x2-hw).toFixed(2)},${(ay-hh).toFixed(2)} ${(x2-hw).toFixed(2)},${(ay+hh).toFixed(2)}`,
+      fill: color,
     }));
   }
+
+  drawArrow(spoAvg, COLORS.spo, spoArrowY);
+  drawArrow(pgAvg,  COLORS.pg,  pgArrowY);
 
   if (parent) parent.appendChild(ag);
   return ag;
@@ -290,7 +298,7 @@ function buildArrowGroup(parent, xs, ys, tm, CH, spoAvg, bprAvg, arrowY) {
 
 // ── Build inline legend ───────────────────────────────────────────────────────
 
-function buildInlineLegend(parent, lx, ly, items, fontSize, rowH, dotR, boxPad) {
+function buildInlineLegend(parent, lx, ly, items, fontSize, rowH, dotR, boxPad, hideMethods = []) {
   const boxW = fontSize * 8;
   const boxH = items.length * rowH + boxPad;
   const lg = el('g', { transform: `translate(${lx}, ${ly})` });
@@ -298,7 +306,7 @@ function buildInlineLegend(parent, lx, ly, items, fontSize, rowH, dotR, boxPad) 
   items.forEach(({label, color, method}, i) => {
     const cy = boxPad / 2 + (i + 0.5) * rowH;
     const cx = boxPad + dotR;
-    const isHidden = method === 'spo' || method === 'pg';
+    const isHidden = hideMethods.includes(method);
     const circ = el('circle', { cx, cy, r: dotR, fill: color });
     const txt = el('text', { x: cx + dotR + 5, y: cy + 5, fill: COLORS.title, 'font-size': fontSize, 'font-family': 'Inter, system-ui, sans-serif' }, label);
     if (isHidden) {
@@ -348,11 +356,12 @@ function buildBigCook(svg) {
     yFmt: v => v.toString(),
     maxViolinHalf: 42,
     methods: ['nll', 'bpr', 'daml', 'spo', 'pg'],
+    hideMethods: ['spo', 'pg'],
     showYLabel: true,
     clipId: 'bigCookClip',
   });
 
-  // Legend
+  // Legend — upper left so it doesn't overlap BPR-only dots (which are lower right)
   const legendItems = [
     { label: 'NLL Only', color: COLORS.nll,  method: 'nll'  },
     { label: 'BPR Only', color: COLORS.bpr,  method: 'bpr'  },
@@ -360,15 +369,16 @@ function buildBigCook(svg) {
     { label: 'SPO+',     color: COLORS.spo,  method: 'spo'  },
     { label: 'PG',       color: COLORS.pg,   method: 'pg'   },
   ];
-  buildInlineLegend(bigCookGroup, panelX + lm + 12, tm + CH - 5 * 28 - 18,
-    legendItems, 18, 28, 7, 10);
+  buildInlineLegend(bigCookGroup, panelX + lm + 12, tm + 12,
+    legendItems, 18, 28, 7, 10, ['spo', 'pg']);
 
   // Arrow group (hidden until phase 2)
-  bigCookArrow = el('g', { id: 'bigCookArrow' });
+  bigCookArrow = el('g', { id: 'bigCookArrow', transform: `translate(${panelX}, 0)` });
   bigCookArrow.style.opacity = '0';
   bigCookArrow.style.transition = 'opacity 0.4s ease';
-  buildArrowGroup(bigCookArrow, xs, ys, tm, CH,
-    DATA.cook_spo.avgBpr, DATA.cook_bpr.avgBpr, ys(-3));
+  buildArrowGroup(bigCookArrow, xs, tm, CH,
+    DATA.cook_spo.avgBpr, DATA.cook_pg.avgBpr, DATA.cook_bpr.avgBpr,
+    ys(-DATA.cook_spo.nll), ys(-DATA.cook_pg.nll));
   bigCookGroup.appendChild(bigCookArrow);
 
   svg.appendChild(bigCookGroup);
@@ -408,11 +418,12 @@ function buildSmallLayout(svg) {
   });
 
   const ckArrowG = el('g');
-  buildArrowGroup(ckArrowG, ckXs, ckYs, ckTm, ckCH,
-    DATA.cook_spo.avgBpr, DATA.cook_bpr.avgBpr, ckYs(-3));
+  buildArrowGroup(ckArrowG, ckXs, ckTm, ckCH,
+    DATA.cook_spo.avgBpr, DATA.cook_pg.avgBpr, DATA.cook_bpr.avgBpr,
+    ckYs(-DATA.cook_spo.nll), ckYs(-DATA.cook_pg.nll));
   smallGroup.appendChild(ckArrowG);
 
-  // Small legend in cook small (upper right area)
+  // Small legend in cook small — upper left so it doesn't overlap BPR-only (lower right)
   const smLegendItems = [
     { label: 'NLL Only', color: COLORS.nll,  method: 'nll'  },
     { label: 'BPR Only', color: COLORS.bpr,  method: 'bpr'  },
@@ -420,12 +431,11 @@ function buildSmallLayout(svg) {
     { label: 'SPO+',     color: COLORS.spo,  method: 'spo'  },
     { label: 'PG',       color: COLORS.pg,   method: 'pg'   },
   ];
-  // No hidden items in small layout (all visible from load)
   const smRowH = 22, smDotR = 6, smBoxPad = 8, smFs = 14;
   const smBoxW = smFs * 9;
   const smBoxH = smLegendItems.length * smRowH + smBoxPad;
-  const smLgX = ckLm + ckCW - smBoxW - 4;
-  const smLgY = ckTm + ckCH - smBoxH - 8;
+  const smLgX = ckLm + 8;
+  const smLgY = ckTm + 8;
   const smLg = el('g', { transform: `translate(${smLgX}, ${smLgY})` });
   smLg.appendChild(el('rect', { x: 0, y: 0, width: smBoxW, height: smBoxH, rx: 5, ry: 5, fill: '#1c1c2e', stroke: '#333348', 'stroke-width': 1 }));
   smLegendItems.forEach(({label, color}, i) => {
@@ -460,8 +470,11 @@ function buildSmallLayout(svg) {
   });
 
   const maArrowG = el('g', { transform: 'translate(0, 450)' });
-  buildArrowGroup(maArrowG, maXs, maYs, maTm, maCH,
-    DATA.ma_spo.avgBpr, DATA.ma_bpr.avgBpr, maYs(-3));
+  // MA SPO+/PG have off-scale NLL; clamp arrow Y to near the chart bottom
+  const maBottomY = maTm + maCH - 25;
+  buildArrowGroup(maArrowG, maXs, maTm, maCH,
+    DATA.ma_spo.avgBpr, DATA.ma_pg.avgBpr, DATA.ma_bpr.avgBpr,
+    maBottomY - 18, maBottomY - 4);
   smallGroup.appendChild(maArrowG);
 
   // ── Cranes small: bottom-right 400×450 (x=400, y=450) ───────────
@@ -489,8 +502,9 @@ function buildSmallLayout(svg) {
   });
 
   const crnArrowG = el('g', { transform: 'translate(400, 450)' });
-  buildArrowGroup(crnArrowG, crnXs, crnYs, crnTm, crnCH,
-    DATA.cranes_spo.avgBpr, DATA.cranes_bpr.avgBpr, crnYs(-1.1));
+  buildArrowGroup(crnArrowG, crnXs, crnTm, crnCH,
+    DATA.cranes_spo.avgBpr, DATA.cranes_pg.avgBpr, DATA.cranes_bpr.avgBpr,
+    crnYs(-DATA.cranes_spo.nll), crnYs(-DATA.cranes_pg.nll));
   smallGroup.appendChild(crnArrowG);
 
   // Divider line
