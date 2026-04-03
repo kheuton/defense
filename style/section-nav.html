@@ -1,0 +1,66 @@
+<style>
+  .section-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 2.4em;
+    padding-bottom: 14px;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.4s;
+  }
+  .section-nav.hidden {
+    opacity: 0;
+  }
+  .section-nav .sec {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #888899;
+    transition: color 0.35s ease, font-size 0.35s ease;
+  }
+  .section-nav .sec.active {
+    font-size: 14px;
+    color: var(--nav-color);
+  }
+</style>
+
+<div class="section-nav hidden" id="section-nav">
+  <span class="sec" data-id="introduction" style="--nav-color:#ffd166">Introduction</span>
+  <span class="sec" data-id="evaluation"   style="--nav-color:#50c8a8">Evaluation</span>
+  <span class="sec" data-id="training"     style="--nav-color:#7c6af7">Training</span>
+  <span class="sec" data-id="benchmarking" style="--nav-color:#ff7c57">Benchmarking</span>
+  <span class="sec" data-id="conclusion"   style="--nav-color:#ffd166">Conclusion</span>
+</div>
+
+<script>
+(function () {
+  // indexh=0 is the title slide; each # section maps to indexh 1..N in order.
+  const ORDER = ['introduction', 'evaluation', 'training', 'benchmarking', 'conclusion'];
+  const nav    = document.getElementById('section-nav');
+  const labels = Array.from(nav.querySelectorAll('.sec'));
+
+  function update(indexh) {
+    if (indexh === 0) { nav.classList.add('hidden'); return; }
+    nav.classList.remove('hidden');
+    const active = ORDER[indexh - 1] ?? null;
+    labels.forEach(el => el.classList.toggle('active', el.dataset.id === active));
+  }
+
+  function attach() {
+    Reveal.on('slidechanged', e => update(e.indexh));
+    update(Reveal.getState().indexh);
+  }
+
+  if (typeof Reveal !== 'undefined') {
+    Reveal.isReady() ? attach() : Reveal.on('ready', attach);
+  }
+})();
+</script>

@@ -29,5 +29,6 @@ format:
     progress: false
     # Speaker view
     chalkboard: false
+    include-after-body: style/section-nav.html
     resources:
       - "animations/interactive/**"
