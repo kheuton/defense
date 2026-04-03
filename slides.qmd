@@ -676,6 +676,25 @@ The Decision-Aware Maximum Likelihood objective can deliver high-quality decisio
 
 
 # Benchmarking {background-color="#2a1a0a"}
+
+::::: {.columns style="margin-top: 1.5em;"}
+
+:::: {.column width="75%"}
+**Many Decision-Aware Benchmarks do not benefit from Decision-Aware Learning**
+
+<br>
+
+Kyle Heuton, Michael C. Hughes
+
+[*OPTIMAL: Optimisation and Post-Bayesian Inference in Machine Learning* · AISTATS 2026]{.muted}
+::::
+
+:::: {.column width="25%" style="display: flex; justify-content: center; align-items: flex-start; padding-top: 0.3em;"}
+![](figures/AISTATS-logo.svg){style="width: 380px;"}
+::::
+
+:::::
+
 ## Evaluating DFL Methods in Practice
 
 <!-- TODO: flesh out Chapter 5 slides -->

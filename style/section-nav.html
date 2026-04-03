@@ -7,8 +7,8 @@
     display: flex;
     justify-content: center;
     align-items: baseline;
-    gap: 2.4em;
-    padding-bottom: 14px;
+    gap: 0.3em;
+    padding-bottom: 12px;
     z-index: 50;
     pointer-events: none;
     opacity: 1;
@@ -19,16 +19,34 @@
   }
   .section-nav .sec {
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: #888899;
     transition: color 0.35s ease, font-size 0.35s ease;
   }
   .section-nav .sec.active {
-    font-size: 14px;
+    font-size: 22px;
     color: var(--nav-color);
+  }
+
+  .slide-counter {
+    position: fixed;
+    bottom: 14px;
+    right: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #888899;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.4s;
+  }
+  .slide-counter.hidden {
+    opacity: 0;
   }
 </style>
 
@@ -40,23 +58,48 @@
   <span class="sec" data-id="conclusion"   style="--nav-color:#ffd166">Conclusion</span>
 </div>
 
+<div class="slide-counter hidden" id="slide-counter"></div>
+
 <script>
 (function () {
   // indexh=0 is the title slide; each # section maps to indexh 1..N in order.
-  const ORDER = ['introduction', 'evaluation', 'training', 'benchmarking', 'conclusion'];
-  const nav    = document.getElementById('section-nav');
-  const labels = Array.from(nav.querySelectorAll('.sec'));
+  const ORDER   = ['introduction', 'evaluation', 'training', 'benchmarking', 'conclusion'];
+  const nav     = document.getElementById('section-nav');
+  const counter = document.getElementById('slide-counter');
+  const labels  = Array.from(nav.querySelectorAll('.sec'));
 
-  function update(indexh) {
-    if (indexh === 0) { nav.classList.add('hidden'); return; }
+  function visibleChildren(section) {
+    return Array.from(section.querySelectorAll(':scope > section'))
+      .filter(s => s.getAttribute('data-visibility') !== 'hidden');
+  }
+
+  function update(indexh, indexv) {
+    if (indexh === 0) {
+      nav.classList.add('hidden');
+      counter.classList.add('hidden');
+      return;
+    }
+
+    // Section nav
     nav.classList.remove('hidden');
     const active = ORDER[indexh - 1] ?? null;
     labels.forEach(el => el.classList.toggle('active', el.dataset.id === active));
+
+    // Slide counter
+    const hSlides = Reveal.getHorizontalSlides();
+    const hSection = hSlides[indexh];
+    if (!hSection) { counter.classList.add('hidden'); return; }
+
+    const vSlides = visibleChildren(hSection);
+    const total   = vSlides.length || 1;
+    counter.classList.remove('hidden');
+    counter.textContent = `${indexv + 1} / ${total}`;
   }
 
   function attach() {
-    Reveal.on('slidechanged', e => update(e.indexh));
-    update(Reveal.getState().indexh);
+    Reveal.on('slidechanged', e => update(e.indexh, e.indexv));
+    const s = Reveal.getState();
+    update(s.indexh, s.indexv);
   }
 
   if (typeof Reveal !== 'undefined') {
