@@ -656,9 +656,23 @@ window.addEventListener('load', function () {
 
 ## {background-image="figures/daml/slide07.png" background-size="contain" background-color="white"}
 
-## {background-image="figures/daml/slide08.png" background-size="contain" background-color="white"}
+## {background-iframe="animations/interactive/training-results-cook.html" background-interactive="true"}
 
-## {background-image="figures/daml/slide09.png" background-size="contain" background-color="white"}
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
+## {background-iframe="animations/interactive/training-results-ma-cranes.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
 
 ## Training takeaways
 

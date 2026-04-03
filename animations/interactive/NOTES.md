@@ -128,3 +128,121 @@ Adjust `TARGET_POINTS` (simplification) and `WORLD_WIDTH` (scale) in the script.
 ## Debug logging
 
 `opioid-grid.js` currently has `console.log` calls for phase transitions and overlay positioning. Remove these once the animation is finalized — search for `console.log` and `console.error`.
+
+---
+
+# Training Results Animation — Developer Notes
+
+3-phase half-violin plot rendered in vanilla SVG (no Three.js). Shows test BPR vs. test log-likelihood for three datasets across three methods (NLL Only → BPR Only → DAML), embedded as two separate slides.
+
+## Files
+
+| File | Role |
+|------|------|
+| `training-results.js` | All logic: embedded data, KDE, SVG rendering, phase controller |
+| `training-results-cook.html` | HTML shell for Cook County slide (single centered panel) |
+| `training-results-ma-cranes.html` | HTML shell for MA + Cranes slide (two side-by-side panels) |
+
+The JS file is loaded by each HTML shell with a `?mode=` URL param (`cook` or `ma-cranes`), read at runtime via `new URL(import.meta.url).searchParams.get('mode')`.
+
+## Data source
+
+Raw data lives in `/cluster/tufts/hugheslab/kheuto01/code/prob_diff_topk/frozen_plot_data/`:
+
+| Dataset | File | NLL row | BPR row | DAML row |
+|---------|------|---------|---------|----------|
+| Cook County IL (2021–2022) | `cook_2021_2022.json` | 8 | 0 | 7 |
+| MA Fatal Overdoses (2020–2021) | `ma_2020_2021.json` | 8 | 0 | 7 |
+| ANWR TX Cranes (2009–2010) | `asurv_2009_2010.json` | 6 | 0 | 5 |
+
+Each row in `data["selected_rows"]` has `trial_test_bprs` (1000 values), `avg_test_bpr`, and `test_nll`.
+
+The data is **embedded directly** at the top of `training-results.js` as a `const DATA = {...}` block — 200 BPR values per method (subsampled with `numpy.random.default_rng(42)`), plus the scalar `avgBpr` and `nll`.
+
+### Re-extracting data
+
+If the source JSON changes, run this script to regenerate the embedded block:
+
+```python
+import json, numpy as np
+
+BASE = "/cluster/tufts/hugheslab/kheuto01/code/prob_diff_topk/frozen_plot_data/"
+DATASETS = [
+    ("cook",   "cook_2021_2022.json",  {"nll": 8, "bpr": 0, "daml": 7}),
+    ("ma",     "ma_2020_2021.json",    {"nll": 8, "bpr": 0, "daml": 7}),
+    ("cranes", "asurv_2009_2010.json", {"nll": 6, "bpr": 0, "daml": 5}),
+]
+rng = np.random.default_rng(42)
+
+for name, fname, rows in DATASETS:
+    with open(BASE + fname) as f:
+        data = json.load(f)
+    for method in ["nll", "bpr", "daml"]:
+        row = data["selected_rows"][rows[method]]
+        bprs = np.array(row["trial_test_bprs"])
+        idx  = rng.choice(len(bprs), 200, replace=False)
+        bprs_sub = bprs[idx].tolist()
+        print(f"  {name}_{method}: {{ nll: {row['test_nll']:.6f}, avgBpr: {row['avg_test_bpr']:.6f}, bprs: {[round(v,6) for v in bprs_sub]} }},")
+```
+
+Paste the output into the `const DATA = { ... }` block at the top of `training-results.js`.
+
+### Expected key values (for verification)
+
+| Dataset | Method | avg BPR | test NLL |
+|---------|--------|---------|----------|
+| Cook County | NLL Only | 0.7756 | 2.0000 |
+| Cook County | BPR Only | 0.8175 | 16.634 |
+| Cook County | DAML | 0.7985 | 3.425 |
+| MA | NLL Only | 0.5865 | 1.453 |
+| MA | BPR Only | 0.5997 | 5.368 |
+| MA | DAML | 0.6163 | 2.785 |
+| Cranes | NLL Only | 0.3775 | 0.272 |
+| Cranes | BPR Only | 0.3890 | 2.205 |
+| Cranes | DAML | 0.4036 | 1.959 |
+
+## Rendering approach
+
+Each method's distribution is drawn as a **symmetric half-violin** (SVG `<polygon>`):
+
+1. **KDE**: Scott's rule bandwidth (`h = 1.06 * σ * n^(-0.2)`), evaluated at 150 points spanning `[min(bprs) - 0.004, max(bprs) + 0.004]`
+2. **Shape**: top edge follows the KDE density curve; bottom edge mirrors it. Peak half-height is capped at `MAX_VIOLIN_HALF_PX = 42`.
+3. **Y position**: centered at `ys(-test_nll)` — Y axis is test log-likelihood, plotted as negative so higher likelihood = higher on screen.
+4. **Dot**: filled circle at `(avgBpr, -test_nll)`, same color.
+
+Elements get `data-method="nll|bpr|daml"` and start with `opacity: 0`. The phase controller queries `[data-method="..."]` to reveal each group.
+
+## Phase controller
+
+```
+Phase -1 (load):  all violins/dots hidden (opacity 0)
+Phase  0:         NLL Only revealed (opacity → 1, 400ms CSS transition)
+Phase  1:         BPR Only revealed
+Phase  2:         DAML revealed; listeners removed
+```
+
+Click, ArrowRight/Space, and `Reveal.fragmentshown` all call `advancePhase()`. After phase 2, `removeListeners()` unhooks click/keydown so Reveal.js can advance to the next slide. The HUD hint div also hides at that point.
+
+## Layout modes
+
+| Mode | Panels | Panel width | X offset |
+|------|--------|-------------|----------|
+| `cook` | `['cook']` | 1020px | `(1600 - 1020) / 2` (centered) |
+| `ma-cranes` | `['ma', 'cranes']` | 800px | 0 (left-aligned pair) |
+
+`bMargin: 130` keeps the X-axis label clear of the Reveal.js section-nav footer (which sits at the bottom of the viewport in `position: fixed`).
+
+## Slides embedding
+
+```markdown
+## {background-iframe="animations/interactive/training-results-cook.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+```
+
+Three fragment divs per slide — one per method reveal. The fragments are invisible; their only purpose is to let Reveal.js drive `advancePhase()` via `fragmentshown`.

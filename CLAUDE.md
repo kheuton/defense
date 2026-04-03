@@ -81,10 +81,11 @@ Shared data and prediction logic live in `config.js` and `prediction-utils.js`.
 | MSE vs BPR gradient | `mse-gradient.js` | 10 | MSE has gradients, BPR does not |
 | Perturbed optimizers | `perturbed-opt.js` | 8 | Perturbation smooths BPR into a differentiable objective |
 | How to Rank | `how-to-rank.js` | 2 | Bar chart → Joy Division ridgeline of distributions |
+| Training Results | `training-results.js` | 3 | Half-violin BPR distributions for Cook/MA/Cranes, NLL→BPR→DAML reveal |
 
 Tunables are in `config.js` — see `animations/interactive/TUNING.md` for a section-by-section guide.
 
-For a higher-level overview (what to read, how to restyle, how to adjust datasets and prediction models), see `animations/interactive/NOTES.md`.
+For a higher-level overview (what to read, how to restyle, how to adjust datasets and prediction models), see `animations/interactive/NOTES.md`. That file also contains a dedicated **Training Results** section covering the data source, KDE rendering approach, re-extraction script, and layout modes.
 
 Test standalone by opening the `.html` file in a browser (click / arrow to advance).
 
