@@ -92,6 +92,7 @@ function buildPanel(parent, opts) {
     maxViolinHalf = 42,
     methods = ['nll', 'bpr', 'daml', 'spo', 'pg'],
     hideMethods = [],
+    logScaleY = false,
     showYLabel = false,
     clipId,
   } = opts;
@@ -101,7 +102,9 @@ function buildPanel(parent, opts) {
   const [xMin, xMax] = xRange;
   const [yMin, yMax] = yRange;
   const xs = v => lm + (v - xMin) / (xMax - xMin) * CW;
-  const ys = v => tm + (yMax - v) / (yMax - yMin) * CH;
+  const ys = logScaleY
+    ? v => tm + (Math.log(-v) - Math.log(-yMax)) / (Math.log(-yMin) - Math.log(-yMax)) * CH
+    : v => tm + (yMax - v) / (yMax - yMin) * CH;
 
   const g = el('g', { transform: `translate(${x}, ${y})` });
 
@@ -369,7 +372,7 @@ function buildBigCook(svg) {
     { label: 'SPO+',     color: COLORS.spo,  method: 'spo'  },
     { label: 'PG',       color: COLORS.pg,   method: 'pg'   },
   ];
-  buildInlineLegend(bigCookGroup, panelX + lm + 12, tm + 12,
+  buildInlineLegend(bigCookGroup, panelX + lm + 12, tm + CH - (5 * 28 + 10) - 14,
     legendItems, 18, 28, 7, 10, ['spo', 'pg']);
 
   // Arrow group (hidden until phase 2)
@@ -435,7 +438,7 @@ function buildSmallLayout(svg) {
   const smBoxW = smFs * 9;
   const smBoxH = smLegendItems.length * smRowH + smBoxPad;
   const smLgX = ckLm + 8;
-  const smLgY = ckTm + 8;
+  const smLgY = ckTm + ckCH - smBoxH - 8;
   const smLg = el('g', { transform: `translate(${smLgX}, ${smLgY})` });
   smLg.appendChild(el('rect', { x: 0, y: 0, width: smBoxW, height: smBoxH, rx: 5, ry: 5, fill: '#1c1c2e', stroke: '#333348', 'stroke-width': 1 }));
   smLegendItems.forEach(({label, color}, i) => {
@@ -451,9 +454,9 @@ function buildSmallLayout(svg) {
   const maCH = 450 - maTm - maBm;
   const maCW = 400 - maLm - maRm;
   const maXRange = [0.535, 0.645];
-  const maYRange = [-6.3, -0.8];
+  const maYRange = [-300, -0.5];  // log scale — fits NLL/BPR/DAML/SPO+/PG
   const maXs = v => maLm + (v - maXRange[0]) / (maXRange[1] - maXRange[0]) * maCW;
-  const maYs = v => maTm + (maYRange[1] - v) / (maYRange[1] - maYRange[0]) * maCH;
+  const maYs = v => maTm + (Math.log(-v) - Math.log(-maYRange[1])) / (Math.log(-maYRange[0]) - Math.log(-maYRange[1])) * maCH;
 
   buildPanel(smallGroup, {
     id: 'ma', title: 'MA Fatal Overdoses',
@@ -461,20 +464,19 @@ function buildSmallLayout(svg) {
     lm: maLm, rm: maRm, tm: maTm, bm: maBm,
     xRange: maXRange, yRange: maYRange,
     xTicks: [0.55, 0.57, 0.59, 0.61, 0.63],
-    yTicks: [-1, -2, -3, -4, -5, -6],
+    yTicks: [-1, -2, -5, -20, -100],
     yFmt: v => v.toString(),
     maxViolinHalf: 25,
     methods: ['nll', 'bpr', 'daml', 'spo', 'pg'],
+    logScaleY: true,
     showYLabel: true,
     clipId: 'maSmClip',
   });
 
   const maArrowG = el('g', { transform: 'translate(0, 450)' });
-  // MA SPO+/PG have off-scale NLL; clamp arrow Y to near the chart bottom
-  const maBottomY = maTm + maCH - 25;
   buildArrowGroup(maArrowG, maXs, maTm, maCH,
     DATA.ma_spo.avgBpr, DATA.ma_pg.avgBpr, DATA.ma_bpr.avgBpr,
-    maBottomY - 18, maBottomY - 4);
+    maYs(-DATA.ma_spo.nll), maYs(-DATA.ma_pg.nll));
   smallGroup.appendChild(maArrowG);
 
   // ── Cranes small: bottom-right 400×450 (x=400, y=450) ───────────
@@ -539,13 +541,6 @@ function buildTextPanel(svg) {
     'font-size': 40, 'font-weight': 700,
     'font-family': 'Inter, system-ui, sans-serif',
   }, 'different solutions?'));
-
-  textGroup.appendChild(el('text', {
-    x: cx, y: cy + 76,
-    'text-anchor': 'middle', fill: COLORS.muted,
-    'font-size': 22,
-    'font-family': 'Inter, system-ui, sans-serif',
-  }, 'Trained on theoretically similar objectives…'));
 
   svg.appendChild(textGroup);
 }
