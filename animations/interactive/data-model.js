@@ -49,6 +49,7 @@
 
   const X_MAX = 12;
   const SIGMA = 1.4;
+  const BAR_H = PLOT_H * 0.75;   // fixed height for all observed-value bars
 
   // Three census tract examples
   const PLOTS = [
@@ -200,11 +201,6 @@
     setTimeout(() => eqBox.classList.add('visible'),              350);
     setTimeout(() => document.getElementById('eq1').classList.add('visible'), 480);
     setTimeout(() => document.getElementById('eq2').classList.add('visible'), 720);
-    setTimeout(() => {
-      ['lbl-1','lbl-2','lbl-3'].forEach(id =>
-        document.getElementById(id).classList.add('visible'));
-    }, 980);
-
     setTimeout(() => { transitioning = false; }, 1150);
   }
 
@@ -261,9 +257,9 @@
 
     PLOTS.forEach((p, i) => {
       const delay = i * 220;
-      // Fixed height — y-axis is probability so all bars represent P(y = observed) = 1
-      const barH = PLOT_H * 0.75;
-      const barW = Math.max(xSc(1.0) - xSc(0), 14);
+      const barH = BAR_H;
+      // ~1/5 of one death-unit wide — a thin spike marking the observation
+      const barW = Math.max(Math.round((xSc(1.0) - xSc(0)) / 5), 3);
       const barX = xSc(p.actual) - barW / 2;
 
       PE[i].g.append('rect')
@@ -297,16 +293,17 @@
       curve.transition().delay(delay).duration(450).attr('stroke-opacity', 0.9);
       PE[i].gaussCurve = curve;
 
-      // Mean dot (shown in phase 8)
+      // Mean dot at bar-top height (shown in phase 8)
+      const dotY = PLOT_H - BAR_H;
       const dot = PE[i].g.append('circle')
-        .attr('cx', xSc(p.finalMu)).attr('cy', PLOT_H)
+        .attr('cx', xSc(p.finalMu)).attr('cy', dotY)
         .attr('r', 0).attr('fill', p.color).attr('opacity', 0);
       PE[i].meanDot = dot;
 
-      // Gap line (shown in phase 8)
+      // Gap line at bar-top height from observation to prediction (shown in phase 8)
       const gap = PE[i].g.append('line')
-        .attr('x1', xSc(p.actual)).attr('y1', PLOT_H)
-        .attr('x2', xSc(p.finalMu)).attr('y2', PLOT_H)
+        .attr('x1', xSc(p.actual)).attr('y1', dotY)
+        .attr('x2', xSc(p.finalMu)).attr('y2', dotY)
         .attr('stroke','#ff7c57').attr('stroke-width', 2.5)
         .attr('stroke-dasharray','5,3').attr('stroke-opacity', 0);
       PE[i].gapLine = gap;

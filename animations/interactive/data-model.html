@@ -23,9 +23,9 @@ svg {
 }
 
 /* ── Math font helpers (KaTeX fonts, no JS required) ───────────── */
-.mi   { font-family: KaTeX_Math, serif; font-style: italic; }       /* italic math */
-.mcal { font-family: KaTeX_Caligraphic, serif; font-weight: bold; } /* \mathcal */
-.mrm  { font-family: KaTeX_Main, serif; font-style: normal; }       /* upright */
+.mi   { font-family: KaTeX_Math, serif; font-style: italic; }
+.mcal { font-family: KaTeX_Caligraphic, serif; font-weight: bold; }
+.mrm  { font-family: KaTeX_Main, serif; font-style: normal; }
 
 /* ── Equation overlay ──────────────────────────────────────────── */
 #eq-overlay {
@@ -47,40 +47,40 @@ svg {
 }
 .eq-line1.visible { opacity: 1; }
 
-/* Line 2: flex row so labels sit below each θᵢxᵢ group */
+/* Line 2: inline layout so all elements baseline-align naturally */
 .eq-terms {
-  display: flex; align-items: flex-start;
-  font-size: 28px; color: #c8c8e0;
+  font-size: 28px; color: #c8c8e0; line-height: 1.55;
+  white-space: nowrap; margin-top: 4px;
   opacity: 0; transition: opacity 0.4s;
-  white-space: nowrap; margin-top: 6px;
 }
 .eq-terms.visible { opacity: 1; }
 
-.plain { font-size: 28px; color: #c8c8e0; line-height: 1.4; }
-
-/* Each θᵢxᵢ group stacks the term + label vertically */
+/* Each θᵢxᵢ group — inline-flex so baseline aligns with surrounding text */
 .theta-grp {
-  display: inline-flex; flex-direction: column; align-items: center;
+  display: inline-flex; flex-direction: column; align-items: flex-start;
+  vertical-align: baseline;
 }
 .theta-main {
-  display: flex; align-items: baseline;
-  font-size: 28px; color: #c8c8e0; line-height: 1.4;
+  display: inline; /* plain inline so baseline is natural */
+  font-size: 28px; color: #c8c8e0;
 }
+
+/* Subscripts: numeric (0,1,2,3) and text (loc/time/demo) */
 .msub {
   font-family: KaTeX_Main, serif; font-style: normal;
-  font-size: 0.62em; vertical-align: -0.25em;
+  font-size: 0.58em; vertical-align: -0.3em; line-height: 0;
+  display: inline-block;
 }
-.theta-label {
-  font-size: 12px; color: #888899;
-  margin-top: 4px; text-align: center;
-  opacity: 0; transition: opacity 0.4s;
+.msub-x {
+  font-family: Inter, system-ui, sans-serif; font-style: normal;
+  font-size: 0.45em; vertical-align: -0.35em; line-height: 0;
+  display: inline-block; letter-spacing: -0.01em;
 }
-.theta-label.visible { opacity: 1; }
 
 /* ── Slot machine ──────────────────────────────────────────────── */
 .slot-wrap {
   display: inline-block; overflow: hidden;
-  height: 0.88em; vertical-align: 0.01em;
+  height: 0.88em; vertical-align: -0.01em;
 }
 .slot-reel {
   display: flex; flex-direction: column;
@@ -116,67 +116,19 @@ svg {
     <!-- Line 1: y ∼ 𝒩(μ, σ²) -->
     <div class="eq-line1" id="eq1"><span class="mi">y</span>&thinsp;∼&thinsp;<span class="mcal">N</span>(<span class="mi">μ</span>,&thinsp;<span class="mi">σ</span><sup class="mrm" style="font-size:0.65em">2</sup>)</div>
 
-    <!-- Line 2: μ = θ₀ + θ₁x₁ + θ₂x₂ + θ₃x₃ -->
-    <div class="eq-terms" id="eq2">
-      <span class="plain"><span class="mi">μ</span>&thinsp;=&thinsp;</span>
-
-      <!-- θ₀ (intercept, no label) -->
-      <span class="theta-grp">
-        <span class="theta-main">
-          <span class="slot-wrap"><span class="slot-reel" id="reel-0">
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-          </span></span><span class="msub">0</span>
-        </span>
-      </span>
-
-      <span class="plain">&thinsp;+&thinsp;</span>
-
-      <!-- θ₁x₁ (location) -->
-      <span class="theta-grp">
-        <span class="theta-main">
-          <span class="slot-wrap"><span class="slot-reel" id="reel-1">
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-          </span></span><span class="msub">1</span><span class="mi">x</span><span class="msub">1</span>
-        </span>
-        <span class="theta-label" id="lbl-1">location</span>
-      </span>
-
-      <span class="plain">&thinsp;+&thinsp;</span>
-
-      <!-- θ₂x₂ (time) -->
-      <span class="theta-grp">
-        <span class="theta-main">
-          <span class="slot-wrap"><span class="slot-reel" id="reel-2">
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-          </span></span><span class="msub">2</span><span class="mi">x</span><span class="msub">2</span>
-        </span>
-        <span class="theta-label" id="lbl-2">time</span>
-      </span>
-
-      <span class="plain">&thinsp;+&thinsp;</span>
-
-      <!-- θ₃x₃ (demo) -->
-      <span class="theta-grp">
-        <span class="theta-main">
-          <span class="slot-wrap"><span class="slot-reel" id="reel-3">
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-            <span><span class="mi">θ</span></span>
-          </span></span><span class="msub">3</span><span class="mi">x</span><span class="msub">3</span>
-        </span>
-        <span class="theta-label" id="lbl-3">demo</span>
-      </span>
-    </div>
+    <!-- Line 2: μ = θ₀ + θ₁x_{loc} + θ₂x_{time} + θ₃x_{demo} -->
+    <div class="eq-terms" id="eq2"><span class="mi">μ</span>&thinsp;=&thinsp;<!--
+      --><!-- θ₀ (intercept) --><!--
+      --><span class="slot-wrap"><span class="slot-reel" id="reel-0"><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span></span></span><span class="msub">0</span><!--
+      -->&thinsp;+&thinsp;<!--
+      --><!-- θ₁x_{loc} --><!--
+      --><span class="slot-wrap"><span class="slot-reel" id="reel-1"><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span></span></span><span class="msub">1</span><span class="mi">x</span><span class="msub-x">loc</span><!--
+      -->&thinsp;+&thinsp;<!--
+      --><!-- θ₂x_{time} --><!--
+      --><span class="slot-wrap"><span class="slot-reel" id="reel-2"><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span></span></span><span class="msub">2</span><span class="mi">x</span><span class="msub-x">time</span><!--
+      -->&thinsp;+&thinsp;<!--
+      --><!-- θ₃x_{demo} --><!--
+      --><span class="slot-wrap"><span class="slot-reel" id="reel-3"><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span></span></span><span class="msub">3</span><span class="mi">x</span><span class="msub-x">demo</span></div>
 
   </div>
 </div>
