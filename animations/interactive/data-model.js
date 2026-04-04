@@ -261,8 +261,8 @@
 
     PLOTS.forEach((p, i) => {
       const delay = i * 220;
-      // Map deaths → height: keep bars visually distinguishable (30%–85% of PLOT_H)
-      const barH = PLOT_H * (0.30 + 0.55 * p.actual / X_MAX);
+      // Fixed height — y-axis is probability so all bars represent P(y = observed) = 1
+      const barH = PLOT_H * 0.75;
       const barW = Math.max(xSc(1.0) - xSc(0), 14);
       const barX = xSc(p.actual) - barW / 2;
 
