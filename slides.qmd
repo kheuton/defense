@@ -214,6 +214,34 @@ $x$ = Location, Time, Demographics, Last year's overdose counts, Social Vulnerab
 :::
 
 
+## {background-iframe="animations/interactive/data-model.html" background-interactive="true"}
+
+::: {.fragment .data-model-step}
+:::
+::: {.fragment .data-model-step}
+:::
+::: {.fragment .data-model-step}
+:::
+::: {.fragment .data-model-step}
+:::
+::: {.fragment .data-model-step}
+:::
+::: {.fragment .data-model-step}
+:::
+::: {.fragment .data-model-step}
+:::
+::: {.fragment .data-model-step}
+:::
+
+::: notes
+8 phases: (1) map slides right + equation appears, (2) plot axes appear,
+(3) observed death bars, (4) initial Gaussians at mean=5,
+(5) θ slot machines spin + Gaussians drift, (6) slots stop staggered + Gaussians settle
+(high tract ≈7.8, moderate tract ≈6.0 off by 2, low tract ≈0.7),
+(7) area under each curve shades, (8) curves collapse to point estimates + gap lines.
+:::
+
+
 ## Prior State-of-the-Art
 
 ::: {style="font-size: 0.82em; margin-bottom: auto;"}
