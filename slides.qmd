@@ -111,6 +111,37 @@ This is the thesis overview dressed up as open questions. Each maps to a chapter
 :::
 
 
+## Three Open Questions
+
+::: {.contribution-item}
+::: {.contribution-num .accent-teal}
+1
+:::
+::: {.contribution-body}
+**Evaluation:** How do we measure whether a forecast is good
+for the *decision* it informs?
+:::
+:::
+
+::: {.contribution-item style="opacity: 0.25;"}
+::: {.contribution-num .accent-purple}
+2
+:::
+::: {.contribution-body}
+**Training:** Can we design a DFL method that is both
+decision-aware *and* probabilistically well-calibrated?
+:::
+:::
+
+::: {.contribution-item style="opacity: 0.25;"}
+::: {.contribution-num .accent-coral}
+3
+:::
+::: {.contribution-body}
+**Benchmarking:** Which DFL methods actually work, and when?
+What guidance can we give practitioners?
+:::
+:::
 
 
 # Evaluation {background-color="#0a2a1a"}
@@ -384,6 +415,39 @@ If these models will be used for decision-making, we should use decision-based m
 
 ::: {.fragment .card style="border-left: 4px solid var(--teal-dark);"}
 Our code and *data* are available at <https://github.com/tufts-ml/opioid-overdose-models>
+:::
+
+
+## Three Open Questions
+
+::: {.contribution-item style="opacity: 0.25;"}
+::: {.contribution-num .accent-teal}
+1
+:::
+::: {.contribution-body}
+**Evaluation:** How do we measure whether a forecast is good
+for the *decision* it informs?
+:::
+:::
+
+::: {.contribution-item}
+::: {.contribution-num .accent-purple}
+2
+:::
+::: {.contribution-body}
+**Training:** Can we design a DFL method that is both
+decision-aware *and* probabilistically well-calibrated?
+:::
+:::
+
+::: {.contribution-item style="opacity: 0.25;"}
+::: {.contribution-num .accent-coral}
+3
+:::
+::: {.contribution-body}
+**Benchmarking:** Which DFL methods actually work, and when?
+What guidance can we give practitioners?
+:::
 :::
 
 
@@ -689,6 +753,39 @@ The Decision-Aware Maximum Likelihood objective can deliver high-quality decisio
 :::
 
 
+## Three Open Questions
+
+::: {.contribution-item style="opacity: 0.25;"}
+::: {.contribution-num .accent-teal}
+1
+:::
+::: {.contribution-body}
+**Evaluation:** How do we measure whether a forecast is good
+for the *decision* it informs?
+:::
+:::
+
+::: {.contribution-item style="opacity: 0.25;"}
+::: {.contribution-num .accent-purple}
+2
+:::
+::: {.contribution-body}
+**Training:** Can we design a DFL method that is both
+decision-aware *and* probabilistically well-calibrated?
+:::
+:::
+
+::: {.contribution-item}
+::: {.contribution-num .accent-coral}
+3
+:::
+::: {.contribution-body}
+**Benchmarking:** Which DFL methods actually work, and when?
+What guidance can we give practitioners?
+:::
+:::
+
+
 # Benchmarking {background-color="#2a1a0a"}
 
 ::::: {.columns style="margin-top: 1.5em;"}
@@ -756,6 +853,39 @@ Existing decision-aware benchmarks don't use decision-aware tasks
 
 ::: {.fragment .card .card-coral-dark}
 Future efforts should focus on the loss landscape induced by a given method
+:::
+
+
+## Three Open Questions
+
+::: {.contribution-item}
+::: {.contribution-num .accent-teal}
+1
+:::
+::: {.contribution-body}
+**Evaluation:** How do we measure whether a forecast is good
+for the *decision* it informs?
+:::
+:::
+
+::: {.contribution-item}
+::: {.contribution-num .accent-purple}
+2
+:::
+::: {.contribution-body}
+**Training:** Can we design a DFL method that is both
+decision-aware *and* probabilistically well-calibrated?
+:::
+:::
+
+::: {.contribution-item}
+::: {.contribution-num .accent-coral}
+3
+:::
+::: {.contribution-body}
+**Benchmarking:** Which DFL methods actually work, and when?
+What guidance can we give practitioners?
+:::
 :::
 
 
