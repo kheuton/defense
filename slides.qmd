@@ -16,24 +16,21 @@ date: "2026"
 4. [Benchmarking decision making modeling approaches]{.muted}
 
 
----
+## {background-iframe="animations/interactive/daly-anim.html" background-interactive="true"}
 
-If we can **accurately model our environment**, we can make the world a better place.
-
-<iframe src="animations/interactive/daly-1990.html" style="width:100%; height:780px; border:none; display:block;"></iframe>
-
----
-
-:::: {style="position: relative; min-height: 1.6em;"}
-::: {.fragment .fade-out fragment-index=1 style="position: absolute; width: 100%;"}
+:::: {style="position: relative; min-height: 1.6em; margin-top: -1.5rem;"}
+::: {.fragment .fade-out fragment-index=2 style="position: absolute; width: 100%;"}
 If we can **accurately model our environment**, we can make the world a better place.
 :::
-::: {.fragment .fade-down fragment-index=1 style="position: absolute; width: 100%;"}
+::: {.fragment .fade-down fragment-index=2 style="position: absolute; width: 100%;"}
 If we can **predict the future**, we can make the world a better place.
 :::
 ::::
 
-<iframe src="animations/interactive/daly-2023.html" style="width:100%; height:780px; border:none; display:block;"></iframe>
+::: {.fragment .daly-step fragment-index=1}
+:::
+::: {.fragment fragment-index=2}
+:::
 
 ## {background-iframe="animations/interactive/opioid-grid.html" background-interactive="true"}
 
@@ -202,7 +199,7 @@ Code rarely shared, data nearly never shared.
 
 ## The Task
 
-<iframe src="figures/choropleth.pdf" style="width: 100%; height: 440px; border: none;" title="MA opioid overdose deaths choropleth"></iframe>
+<iframe src="animations/interactive/ma-choropleth.html" style="width: 100%; height: 440px; border: none;" title="MA opioid overdose deaths choropleth"></iframe>
 
 ::: {style="font-size: 0.85em; line-height: 1.4;"}
 **Prediction Target**

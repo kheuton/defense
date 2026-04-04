@@ -32,3 +32,4 @@ format:
     include-after-body: style/section-nav.html
     resources:
       - "animations/interactive/**"
+      - "data/**"

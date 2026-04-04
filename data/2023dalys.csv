@@ -1,0 +1,753 @@
+Population,Location,Year,Age,Sex,Cause of death or injury,Measure,Value,Lower bound,Upper bound
+All Population,Global,2023,All ages,Both,All causes,Percent of total DALYs,1,1,1
+All Population,Global,1990 - 2023,All ages,Both,All causes,DALYs annual % change,-0.01189023249617832,,
+All Population,Global,2023,All ages,Both,"Communicable, maternal, neonatal, and nutritional diseases",Percent of total DALYs,0.2436826964261842,0.22868475810535177,0.259723872995963
+All Population,Global,1990 - 2023,All ages,Both,"Communicable, maternal, neonatal, and nutritional diseases",DALYs annual % change,-0.03193518401341906,,
+All Population,Global,2023,All ages,Both,Tuberculosis,Percent of total DALYs,0.015608776773331329,0.012723249245800063,0.019453297330714596
+All Population,Global,1990 - 2023,All ages,Both,Tuberculosis,DALYs annual % change,-0.03339751820205711,,
+All Population,Global,2023,All ages,Both,HIV/AIDS,Percent of total DALYs,0.016142804430253847,0.014121672261815208,0.01894733490821775
+All Population,Global,1990 - 2023,All ages,Both,HIV/AIDS,DALYs annual % change,0.01008586083558299,,
+All Population,Global,2023,All ages,Both,HIV/AIDS resulting in other diseases,Percent of total DALYs,0.012216592681874416,0.010310763025698623,0.015024332542139527
+All Population,Global,1990 - 2023,All ages,Both,HIV/AIDS resulting in other diseases,DALYs annual % change,0.015136990867915387,,
+All Population,Global,2023,All ages,Both,Diarrheal diseases,Percent of total DALYs,0.0202042210706484,0.015573410355498103,0.026927833275759802
+All Population,Global,1990 - 2023,All ages,Both,Diarrheal diseases,DALYs annual % change,-0.053453883339736434,,
+All Population,Global,2023,All ages,Both,Typhoid fever,Percent of total DALYs,0.0019376698136291434,0.0009728063842975577,0.0031712116630513753
+All Population,Global,1990 - 2023,All ages,Both,Typhoid fever,DALYs annual % change,-0.05509730271835922,,
+All Population,Global,2023,All ages,Both,Paratyphoid fever,Percent of total DALYs,0.0002887439912494343,0.0001359296435278635,0.0005511795684250571
+All Population,Global,1990 - 2023,All ages,Both,Paratyphoid fever,DALYs annual % change,-0.060645300897162024,,
+All Population,Global,2023,All ages,Both,Other intestinal infectious diseases,Percent of total DALYs,0.00003404665566752972,0.000025609327503474953,0.0000428606330917346
+All Population,Global,1990 - 2023,All ages,Both,Other intestinal infectious diseases,DALYs annual % change,-0.013728544185875352,,
+All Population,Global,2023,All ages,Both,Lower respiratory infections,Percent of total DALYs,0.035343331382516864,0.029982364425992742,0.04162422700254147
+All Population,Global,1990 - 2023,All ages,Both,Lower respiratory infections,DALYs annual % change,-0.03428144477659587,,
+All Population,Global,2023,All ages,Both,Upper respiratory infections,Percent of total DALYs,0.0022320368628006093,0.001394333333146872,0.0036797758621455387
+All Population,Global,1990 - 2023,All ages,Both,Upper respiratory infections,DALYs annual % change,-0.012321369764786384,,
+All Population,Global,2023,All ages,Both,Otitis media,Percent of total DALYs,0.0008904349124175157,0.0005688622381294006,0.0013728644614812544
+All Population,Global,1990 - 2023,All ages,Both,Otitis media,DALYs annual % change,-0.0073228691922785005,,
+All Population,Global,2023,All ages,Both,Meningitis,Percent of total DALYs,0.006254110367460555,0.004865439044421636,0.008362560455451414
+All Population,Global,1990 - 2023,All ages,Both,Meningitis,DALYs annual % change,-0.03488580740644248,,
+All Population,Global,2023,All ages,Both,Encephalitis,Percent of total DALYs,0.001529863689193525,0.0011052983255070339,0.0022619385174030087
+All Population,Global,1990 - 2023,All ages,Both,Encephalitis,DALYs annual % change,-0.02127375775466775,,
+All Population,Global,2023,All ages,Both,Diphtheria,Percent of total DALYs,0.00011806295534986937,0.00008449884007705069,0.00015536545904707628
+All Population,Global,1990 - 2023,All ages,Both,Diphtheria,DALYs annual % change,-0.0838569117460819,,
+All Population,Global,2023,All ages,Both,Pertussis,Percent of total DALYs,0.0036291730285946755,0.0020981389144094816,0.006154799816876616
+All Population,Global,1990 - 2023,All ages,Both,Pertussis,DALYs annual % change,-0.03953116916332085,,
+All Population,Global,2023,All ages,Both,Tetanus,Percent of total DALYs,0.0004451057500652367,0.00026086343080362434,0.0007046128942584128
+All Population,Global,1990 - 2023,All ages,Both,Tetanus,DALYs annual % change,-0.10179464185460284,,
+All Population,Global,2023,All ages,Both,Measles,Percent of total DALYs,0.004463354932798097,0.0018778942691499365,0.00807387369404227
+All Population,Global,1990 - 2023,All ages,Both,Measles,DALYs annual % change,-0.07426793829184591,,
+All Population,Global,2023,All ages,Both,Varicella and herpes zoster,Percent of total DALYs,0.00029567534384215534,0.0002561108825309559,0.00033092388606430136
+All Population,Global,1990 - 2023,All ages,Both,Varicella and herpes zoster,DALYs annual % change,-0.021741970413513657,,
+All Population,Global,2023,All ages,Both,Neglected tropical diseases and malaria,Percent of total DALYs,0.025353340134437675,0.014325040610513817,0.039758675373080116
+All Population,Global,1990 - 2023,All ages,Both,Neglected tropical diseases and malaria,DALYs annual % change,-0.02290669354742727,,
+All Population,Global,2023,All ages,Both,Malaria,Percent of total DALYs,0.018494010205932873,0.00752149670638263,0.03329554892509721
+All Population,Global,1990 - 2023,All ages,Both,Malaria,DALYs annual % change,-0.019400116690431794,,
+All Population,Global,2023,All ages,Both,Chagas disease,Percent of total DALYs,0.00010193632036816968,0.00009198646237523399,0.00011253484075032439
+All Population,Global,1990 - 2023,All ages,Both,Chagas disease,DALYs annual % change,-0.029447823087041403,,
+All Population,Global,2023,All ages,Both,Leishmaniasis,Percent of total DALYs,0.0003870680080465169,0.0002949370492537712,0.0005165399920019989
+All Population,Global,1990 - 2023,All ages,Both,Leishmaniasis,DALYs annual % change,-0.06537305439507707,,
+All Population,Global,2023,All ages,Both,Visceral leishmaniasis,Percent of total DALYs,0.00011910602941139126,0.00004915407574814884,0.0002197273912511778
+All Population,Global,1990 - 2023,All ages,Both,Visceral leishmaniasis,DALYs annual % change,-0.09819053611794946,,
+All Population,Global,2023,All ages,Both,Cutaneous and mucocutaneous leishmaniasis,Percent of total DALYs,0.0002679619786351257,0.00019177181736838676,0.00037577713211600064
+All Population,Global,1990 - 2023,All ages,Both,Cutaneous and mucocutaneous leishmaniasis,DALYs annual % change,-0.005582258080561393,,
+All Population,Global,2023,All ages,Both,African trypanosomiasis,Percent of total DALYs,0.00003041598927484721,0.000014413376536400393,0.00005366156941409053
+All Population,Global,1990 - 2023,All ages,Both,African trypanosomiasis,DALYs annual % change,-0.09934243982331359,,
+All Population,Global,2023,All ages,Both,Schistosomiasis,Percent of total DALYs,0.0007376499154616949,0.0004746694474166327,0.0011476118304316748
+All Population,Global,1990 - 2023,All ages,Both,Schistosomiasis,DALYs annual % change,-0.013275453341617173,,
+All Population,Global,2023,All ages,Both,Cysticercosis,Percent of total DALYs,0.00042194484213355576,0.00028674810106939995,0.0006003412306221813
+All Population,Global,1990 - 2023,All ages,Both,Cysticercosis,DALYs annual % change,-0.010704727073538069,,
+All Population,Global,2023,All ages,Both,Cystic echinococcosis,Percent of total DALYs,0.000034644784524592326,0.000026713561152828082,0.000042631270033581086
+All Population,Global,1990 - 2023,All ages,Both,Cystic echinococcosis,DALYs annual % change,-0.04919280178393608,,
+All Population,Global,2023,All ages,Both,Lymphatic filariasis,Percent of total DALYs,0.0005304384501075936,0.00032286442993989886,0.0008051654706726086
+All Population,Global,1990 - 2023,All ages,Both,Lymphatic filariasis,DALYs annual % change,-0.04133716453643554,,
+All Population,Global,2023,All ages,Both,Onchocerciasis,Percent of total DALYs,0.00030992935425950505,0.00018867963670213367,0.00044367044421420336
+All Population,Global,1990 - 2023,All ages,Both,Onchocerciasis,DALYs annual % change,-0.026346859421486957,,
+All Population,Global,2023,All ages,Both,Trachoma,Percent of total DALYs,0.00005168426331886294,0.000034828726480188153,0.00007358113433808067
+All Population,Global,1990 - 2023,All ages,Both,Trachoma,DALYs annual % change,-0.026704211477816996,,
+All Population,Global,2023,All ages,Both,Dengue,Percent of total DALYs,0.0010785517768153465,0.0005444080629805688,0.0020657705227524366
+All Population,Global,1990 - 2023,All ages,Both,Dengue,DALYs annual % change,0.010882397906432625,,
+All Population,Global,2023,All ages,Both,Yellow fever,Percent of total DALYs,0.00011102700423921832,0.000039690296509284845,0.0002363894458925772
+All Population,Global,1990 - 2023,All ages,Both,Yellow fever,DALYs annual % change,-0.05676370320595696,,
+All Population,Global,2023,All ages,Both,Rabies,Percent of total DALYs,0.00031144334617758774,0.00012614216400226493,0.0005695987732863191
+All Population,Global,1990 - 2023,All ages,Both,Rabies,DALYs annual % change,-0.03907230884813306,,
+All Population,Global,2023,All ages,Both,Intestinal nematode infections,Percent of total DALYs,0.0005483648487346284,0.0003879574912385106,0.0008013013969294141
+All Population,Global,1990 - 2023,All ages,Both,Intestinal nematode infections,DALYs annual % change,-0.059816743421904954,,
+All Population,Global,2023,All ages,Both,Ascariasis,Percent of total DALYs,0.00028654609311103493,0.00021339913233825106,0.000388478377586673
+All Population,Global,1990 - 2023,All ages,Both,Ascariasis,DALYs annual % change,-0.056006961591094154,,
+All Population,Global,2023,All ages,Both,Trichuriasis,Percent of total DALYs,0.00010021884298749393,0.00005547438816516603,0.00016517869541308506
+All Population,Global,1990 - 2023,All ages,Both,Trichuriasis,DALYs annual % change,-0.04974078182566767,,
+All Population,Global,2023,All ages,Both,Hookworm disease,Percent of total DALYs,0.00016159991263609979,0.00010251161077113356,0.00025220107833725397
+All Population,Global,1990 - 2023,All ages,Both,Hookworm disease,DALYs annual % change,-0.06966041362293564,,
+All Population,Global,2023,All ages,Both,Food-borne trematodiases,Percent of total DALYs,0.00036806370030806676,0.00021818509482192576,0.0006012005960425717
+All Population,Global,1990 - 2023,All ages,Both,Food-borne trematodiases,DALYs annual % change,-0.018400496014493846,,
+All Population,Global,2023,All ages,Both,Other neglected tropical diseases,Percent of total DALYs,0.0018295352089708508,0.0013114047342704226,0.002642808841950061
+All Population,Global,1990 - 2023,All ages,Both,Other neglected tropical diseases,DALYs annual % change,-0.007454479313529924,,
+All Population,Global,2023,All ages,Both,Maternal disorders,Percent of total DALYs,0.005572640709066351,0.0047629582889937684,0.006483361683237427
+All Population,Global,1990 - 2023,All ages,Both,Maternal disorders,DALYs annual % change,-0.029391724112780154,,
+All Population,Global,2023,All ages,Both,Maternal hemorrhage,Percent of total DALYs,0.001140031412362325,0.0007849555767600417,0.0015141119236416131
+All Population,Global,1990 - 2023,All ages,Both,Maternal hemorrhage,DALYs annual % change,-0.04560347210973522,,
+All Population,Global,2023,All ages,Both,Maternal sepsis and other maternal infections,Percent of total DALYs,0.0005974860887678028,0.00041991960899671627,0.0008067799753691748
+All Population,Global,1990 - 2023,All ages,Both,Maternal sepsis and other maternal infections,DALYs annual % change,-0.026831358528982805,,
+All Population,Global,2023,All ages,Both,Maternal hypertensive disorders,Percent of total DALYs,0.0011038977165457168,0.000847080708687522,0.001379524307289963
+All Population,Global,1990 - 2023,All ages,Both,Maternal hypertensive disorders,DALYs annual % change,-0.024316975093295716,,
+All Population,Global,2023,All ages,Both,Maternal obstructed labor and uterine rupture,Percent of total DALYs,0.00040255791394422895,0.00029228753813377654,0.0005467074909549102
+All Population,Global,1990 - 2023,All ages,Both,Maternal obstructed labor and uterine rupture,DALYs annual % change,-0.031595418428228064,,
+All Population,Global,2023,All ages,Both,Ectopic pregnancy,Percent of total DALYs,0.00027891721086322434,0.00018380090880537687,0.0003912476094907762
+All Population,Global,1990 - 2023,All ages,Both,Ectopic pregnancy,DALYs annual % change,-0.002140586857296027,,
+All Population,Global,2023,All ages,Both,Indirect maternal deaths,Percent of total DALYs,0.0005043612126940344,0.0003570498358902713,0.0007098573369664691
+All Population,Global,1990 - 2023,All ages,Both,Indirect maternal deaths,DALYs annual % change,-0.027901185358737413,,
+All Population,Global,2023,All ages,Both,Late maternal deaths,Percent of total DALYs,0.00017332236647949763,0.00014330007340969904,0.0002186153324429999
+All Population,Global,1990 - 2023,All ages,Both,Late maternal deaths,DALYs annual % change,-0.009609418197023326,,
+All Population,Global,2023,All ages,Both,Neonatal disorders,Percent of total DALYs,0.060832919522463176,0.0557693552849674,0.06692510748140215
+All Population,Global,1990 - 2023,All ages,Both,Neonatal disorders,DALYs annual % change,-0.029217131886266564,,
+All Population,Global,2023,All ages,Both,Neonatal preterm birth,Percent of total DALYs,0.02511382755584569,0.0211659079990972,0.029228602953720588
+All Population,Global,1990 - 2023,All ages,Both,Neonatal preterm birth,DALYs annual % change,-0.03239555838929885,,
+All Population,Global,2023,All ages,Both,Neonatal encephalopathy due to birth asphyxia and trauma,Percent of total DALYs,0.019667592674230506,0.01607730615911153,0.02337225791419906
+All Population,Global,1990 - 2023,All ages,Both,Neonatal encephalopathy due to birth asphyxia and trauma,DALYs annual % change,-0.025431828374662742,,
+All Population,Global,2023,All ages,Both,Neonatal sepsis and other neonatal infections,Percent of total DALYs,0.008121271649761902,0.00598522259647543,0.011162275858094874
+All Population,Global,1990 - 2023,All ages,Both,Neonatal sepsis and other neonatal infections,DALYs annual % change,-0.024028043858098036,,
+All Population,Global,2023,All ages,Both,Hemolytic disease and other neonatal jaundice,Percent of total DALYs,0.0016722655849860004,0.0012085165778622305,0.0022392609213613005
+All Population,Global,1990 - 2023,All ages,Both,Hemolytic disease and other neonatal jaundice,DALYs annual % change,-0.04601262867763245,,
+All Population,Global,2023,All ages,Both,Other neonatal disorders,Percent of total DALYs,0.006257962057639041,0.004137061937563848,0.008935627441473974
+All Population,Global,1990 - 2023,All ages,Both,Other neonatal disorders,DALYs annual % change,-0.027055559449841823,,
+All Population,Global,2023,All ages,Both,Nutritional deficiencies,Percent of total DALYs,0.020773520898175427,0.01589023811975801,0.02829221555081294
+All Population,Global,1990 - 2023,All ages,Both,Nutritional deficiencies,DALYs annual % change,-0.023726902027081057,,
+All Population,Global,2023,All ages,Both,Protein-energy malnutrition,Percent of total DALYs,0.005029114482435309,0.003970652869849102,0.006288365479848241
+All Population,Global,1990 - 2023,All ages,Both,Protein-energy malnutrition,DALYs annual % change,-0.04461447627249283,,
+All Population,Global,2023,All ages,Both,Iodine deficiency,Percent of total DALYs,0.0007978931064127577,0.0004330927973715433,0.0013679292169474005
+All Population,Global,1990 - 2023,All ages,Both,Iodine deficiency,DALYs annual % change,-0.015230348511335094,,
+All Population,Global,2023,All ages,Both,Vitamin A deficiency,Percent of total DALYs,0.00038331432911138707,0.0002530340884454687,0.0005541889823393396
+All Population,Global,1990 - 2023,All ages,Both,Vitamin A deficiency,DALYs annual % change,-0.032941078611315705,,
+All Population,Global,2023,All ages,Both,Dietary iron deficiency,Percent of total DALYs,0.013960245107156795,0.00929234691513486,0.02070654385687225
+All Population,Global,1990 - 2023,All ages,Both,Dietary iron deficiency,DALYs annual % change,-0.009673640541436431,,
+All Population,Global,2023,All ages,Both,Other nutritional deficiencies,Percent of total DALYs,0.0006029538730591939,0.000456442585392859,0.0007956408992162171
+All Population,Global,1990 - 2023,All ages,Both,Other nutritional deficiencies,DALYs annual % change,-0.035562221591928185,,
+All Population,Global,2023,All ages,Both,Sexually transmitted infections excluding HIV,Percent of total DALYs,0.002869011828943984,0.001414913602091275,0.005133077915900415
+All Population,Global,1990 - 2023,All ages,Both,Sexually transmitted infections excluding HIV,DALYs annual % change,-0.01264984272003265,,
+All Population,Global,2023,All ages,Both,Syphilis,Percent of total DALYs,0.0024484631786688923,0.0009009173943585623,0.004733174850049536
+All Population,Global,1990 - 2023,All ages,Both,Syphilis,DALYs annual % change,-0.014340937372218749,,
+All Population,Global,2023,All ages,Both,Chlamydial infection,Percent of total DALYs,0.00006559162468626569,0.00004688810140086591,0.00008979489326530535
+All Population,Global,1990 - 2023,All ages,Both,Chlamydial infection,DALYs annual % change,-0.002951996716303852,,
+All Population,Global,2023,All ages,Both,Gonococcal infection,Percent of total DALYs,0.00002787732447107971,0.00002081035973843603,0.00003812836254782071
+All Population,Global,1990 - 2023,All ages,Both,Gonococcal infection,DALYs annual % change,-0.005920430256467322,,
+All Population,Global,2023,All ages,Both,Trichomoniasis,Percent of total DALYs,0.00008467594952477518,0.0000334688727207003,0.00016951974047346643
+All Population,Global,1990 - 2023,All ages,Both,Trichomoniasis,DALYs annual % change,0.005582187971156756,,
+All Population,Global,2023,All ages,Both,Genital herpes,Percent of total DALYs,0.00007706329285928973,0.00003428659304136243,0.00016130725399304992
+All Population,Global,1990 - 2023,All ages,Both,Genital herpes,DALYs annual % change,0.004759016249881907,,
+All Population,Global,2023,All ages,Both,Other sexually transmitted infections,Percent of total DALYs,0.00016534045873368338,0.00012379639417553923,0.0002272208750042281
+All Population,Global,1990 - 2023,All ages,Both,Other sexually transmitted infections,DALYs annual % change,-0.003247263646891791,,
+All Population,Global,2023,All ages,Both,Acute hepatitis,Percent of total DALYs,0.001988353793534816,0.001384132137451745,0.00266265916023057
+All Population,Global,1990 - 2023,All ages,Both,Acute hepatitis,DALYs annual % change,-0.03831281338442098,,
+All Population,Global,2023,All ages,Both,Acute hepatitis A,Percent of total DALYs,0.000834693145170967,0.0005170986886336611,0.001236451810778378
+All Population,Global,1990 - 2023,All ages,Both,Acute hepatitis A,DALYs annual % change,-0.052543099042563796,,
+All Population,Global,2023,All ages,Both,Acute hepatitis B,Percent of total DALYs,0.000911343886447523,0.0005511001360060464,0.0013684413308575295
+All Population,Global,1990 - 2023,All ages,Both,Acute hepatitis B,DALYs annual % change,-0.020764681339232056,,
+All Population,Global,2023,All ages,Both,Acute hepatitis C,Percent of total DALYs,0.00011611186912007575,0.00005512021521629101,0.00020094660114688745
+All Population,Global,1990 - 2023,All ages,Both,Acute hepatitis C,DALYs annual % change,-0.03571907502838037,,
+All Population,Global,2023,All ages,Both,Acute hepatitis E,Percent of total DALYs,0.00012620489279625214,0.00007545661029344736,0.00020663320170531127
+All Population,Global,1990 - 2023,All ages,Both,Acute hepatitis E,DALYs annual % change,-0.00025902229941493146,,
+All Population,Global,2023,All ages,Both,Leprosy,Percent of total DALYs,0.000006593646802132293,0.0000045673097620609024,0.000009050903092356937
+All Population,Global,1990 - 2023,All ages,Both,Leprosy,DALYs annual % change,-0.023576626375940685,,
+All Population,Global,2023,All ages,Both,Other unspecified infectious diseases,Percent of total DALYs,0.0033058191306098686,0.002149557204635761,0.0049774443361408575
+All Population,Global,1990 - 2023,All ages,Both,Other unspecified infectious diseases,DALYs annual % change,-0.0018945178615003067,,
+All Population,Global,2023,All ages,Both,Non-communicable diseases,Percent of total DALYs,0.6435742906791344,0.6267671665918664,0.6590464131709174
+All Population,Global,1990 - 2023,All ages,Both,Non-communicable diseases,DALYs annual % change,0.0012478054518663797,,
+All Population,Global,2023,All ages,Both,Neoplasms,Percent of total DALYs,0.09880369943902335,0.0898196423144213,0.11026532998898476
+All Population,Global,1990 - 2023,All ages,Both,Neoplasms,DALYs annual % change,0.0005640751921024965,,
+All Population,Global,2023,All ages,Both,Esophageal cancer,Percent of total DALYs,0.0050237866270078585,0.0043573098596780425,0.005856590369285667
+All Population,Global,1990 - 2023,All ages,Both,Esophageal cancer,DALYs annual % change,-0.0030583382985696966,,
+All Population,Global,2023,All ages,Both,Stomach cancer,Percent of total DALYs,0.008051206391302086,0.00689903029835778,0.009493583677632984
+All Population,Global,1990 - 2023,All ages,Both,Stomach cancer,DALYs annual % change,-0.015365606127739607,,
+All Population,Global,2023,All ages,Both,Liver cancer,Percent of total DALYs,0.004984856823395347,0.00420950731009479,0.005920838891037325
+All Population,Global,1990 - 2023,All ages,Both,Liver cancer,DALYs annual % change,0.004726149907347007,,
+All Population,Global,2023,All ages,Both,Liver cancer due to hepatitis B,Percent of total DALYs,0.002153232952490541,0.0017930187550361468,0.0026016059802205418
+All Population,Global,1990 - 2023,All ages,Both,Liver cancer due to hepatitis B,DALYs annual % change,0.0006188826110261383,,
+All Population,Global,2023,All ages,Both,Liver cancer due to hepatitis C,Percent of total DALYs,0.0012143438294978084,0.001010406745368312,0.0015143055785954386
+All Population,Global,1990 - 2023,All ages,Both,Liver cancer due to hepatitis C,DALYs annual % change,0.0087247913887025,,
+All Population,Global,2023,All ages,Both,Liver cancer due to alcohol use,Percent of total DALYs,0.0008732170825217287,0.0006863638348272833,0.0011117694047169525
+All Population,Global,1990 - 2023,All ages,Both,Liver cancer due to alcohol use,DALYs annual % change,0.012997984192572462,,
+All Population,Global,2023,All ages,Both,Liver cancer due to other causes,Percent of total DALYs,0.00025528052465618615,0.0001951300544224365,0.00033530595780755445
+All Population,Global,1990 - 2023,All ages,Both,Liver cancer due to other causes,DALYs annual % change,0.0028106103658833257,,
+All Population,Global,2023,All ages,Both,Larynx cancer,Percent of total DALYs,0.0012751814138282675,0.0010668734819021578,0.0015876768154369611
+All Population,Global,1990 - 2023,All ages,Both,Larynx cancer,DALYs annual % change,0.0003111686999909167,,
+All Population,Global,2023,All ages,Both,"Tracheal, bronchus, and lung cancer",Percent of total DALYs,0.0167021059935049,0.014526920696847787,0.01912975184642195
+All Population,Global,1990 - 2023,All ages,Both,"Tracheal, bronchus, and lung cancer",DALYs annual % change,0.0020742854108057747,,
+All Population,Global,2023,All ages,Both,Breast cancer,Percent of total DALYs,0.008808504781210025,0.007641135035684799,0.010112445918652353
+All Population,Global,1990 - 2023,All ages,Both,Breast cancer,DALYs annual % change,0.009716614502139315,,
+All Population,Global,2023,All ages,Both,Cervical cancer,Percent of total DALYs,0.004746112347150143,0.0036314141753708206,0.006250129762565137
+All Population,Global,1990 - 2023,All ages,Both,Cervical cancer,DALYs annual % change,0.0037105184552766587,,
+All Population,Global,2023,All ages,Both,Uterine cancer,Percent of total DALYs,0.001037883045130669,0.0008744516210245444,0.001233315193677911
+All Population,Global,1990 - 2023,All ages,Both,Uterine cancer,DALYs annual % change,0.00481357018325499,,
+All Population,Global,2023,All ages,Both,Prostate cancer,Percent of total DALYs,0.003188040849206333,0.0027412438198997652,0.0036955171503639164
+All Population,Global,1990 - 2023,All ages,Both,Prostate cancer,DALYs annual % change,0.00993368543107442,,
+All Population,Global,2023,All ages,Both,Colon and rectum cancer,Percent of total DALYs,0.009363949963631782,0.008268599137851163,0.010531888512211283
+All Population,Global,1990 - 2023,All ages,Both,Colon and rectum cancer,DALYs annual % change,0.004671498297417191,,
+All Population,Global,2023,All ages,Both,Lip and oral cavity cancer,Percent of total DALYs,0.0023091467347682417,0.001964095161580664,0.0027577421357555445
+All Population,Global,1990 - 2023,All ages,Both,Lip and oral cavity cancer,DALYs annual % change,0.010990195213374833,,
+All Population,Global,2023,All ages,Both,Nasopharynx cancer,Percent of total DALYs,0.0009251989612368889,0.0007421349697554703,0.001121062209986573
+All Population,Global,1990 - 2023,All ages,Both,Nasopharynx cancer,DALYs annual % change,-0.009114425533698808,,
+All Population,Global,2023,All ages,Both,Other pharynx cancer,Percent of total DALYs,0.0011918567943809064,0.0009316092707838228,0.001527685293094146
+All Population,Global,1990 - 2023,All ages,Both,Other pharynx cancer,DALYs annual % change,0.014650542992969744,,
+All Population,Global,2023,All ages,Both,Gallbladder and biliary tract cancer,Percent of total DALYs,0.001432927791695154,0.0012129906833796495,0.0017597112895601902
+All Population,Global,1990 - 2023,All ages,Both,Gallbladder and biliary tract cancer,DALYs annual % change,0.003093033893848686,,
+All Population,Global,2023,All ages,Both,Pancreatic cancer,Percent of total DALYs,0.004396141698125565,0.003941867584668817,0.004873605242359446
+All Population,Global,1990 - 2023,All ages,Both,Pancreatic cancer,DALYs annual % change,0.012191918936123694,,
+All Population,Global,2023,All ages,Both,Malignant skin melanoma,Percent of total DALYs,0.0006528630590739909,0.000573546990953516,0.0007578039976005738
+All Population,Global,1990 - 2023,All ages,Both,Malignant skin melanoma,DALYs annual % change,0.004554539981502412,,
+All Population,Global,2023,All ages,Both,Non-melanoma skin cancer,Percent of total DALYs,0.00047738554160099006,0.00040435496194525923,0.0005557431384133429
+All Population,Global,1990 - 2023,All ages,Both,Non-melanoma skin cancer,DALYs annual % change,0.013155335476752336,,
+All Population,Global,2023,All ages,Both,Ovarian cancer,Percent of total DALYs,0.0023186622487273894,0.0019431314104108774,0.002769785244359887
+All Population,Global,1990 - 2023,All ages,Both,Ovarian cancer,DALYs annual % change,0.009188855519814947,,
+All Population,Global,2023,All ages,Both,Testicular cancer,Percent of total DALYs,0.00021042589868627002,0.00016397788446015168,0.00026419380561958664
+All Population,Global,1990 - 2023,All ages,Both,Testicular cancer,DALYs annual % change,-0.0004348498583217362,,
+All Population,Global,2023,All ages,Both,Kidney cancer,Percent of total DALYs,0.0014539266891326742,0.0012683314680422683,0.0016507046579589783
+All Population,Global,1990 - 2023,All ages,Both,Kidney cancer,DALYs annual % change,0.00429325298760547,,
+All Population,Global,2023,All ages,Both,Bladder cancer,Percent of total DALYs,0.0016558952296775828,0.0014769588924678282,0.0018753846363983656
+All Population,Global,1990 - 2023,All ages,Both,Bladder cancer,DALYs annual % change,0.0033035374862085804,,
+All Population,Global,2023,All ages,Both,Brain and central nervous system cancer,Percent of total DALYs,0.003281198556603024,0.0028106745365871133,0.004010602105544037
+All Population,Global,1990 - 2023,All ages,Both,Brain and central nervous system cancer,DALYs annual % change,-0.0018033927545243167,,
+All Population,Global,2023,All ages,Both,Thyroid cancer,Percent of total DALYs,0.0005583980346399785,0.00047499687121438686,0.0006741800678388751
+All Population,Global,1990 - 2023,All ages,Both,Thyroid cancer,DALYs annual % change,0.01021753345920089,,
+All Population,Global,2023,All ages,Both,Mesothelioma,Percent of total DALYs,0.00022352619269767502,0.0001941706056859567,0.0002547197743416722
+All Population,Global,1990 - 2023,All ages,Both,Mesothelioma,DALYs annual % change,0.005523422691063765,,
+All Population,Global,2023,All ages,Both,Hodgkin lymphoma,Percent of total DALYs,0.00042414325937727317,0.00030918295321309675,0.0005659949275707023
+All Population,Global,1990 - 2023,All ages,Both,Hodgkin lymphoma,DALYs annual % change,-0.017638531887792845,,
+All Population,Global,2023,All ages,Both,Non-Hodgkin lymphoma,Percent of total DALYs,0.0029760464982967385,0.0025626220800773936,0.003495872334450606
+All Population,Global,1990 - 2023,All ages,Both,Non-Hodgkin lymphoma,DALYs annual % change,0.001502401725602583,,
+All Population,Global,2023,All ages,Both,Multiple myeloma,Percent of total DALYs,0.0010067991063403712,0.0008866964208567227,0.0011458936716608077
+All Population,Global,1990 - 2023,All ages,Both,Multiple myeloma,DALYs annual % change,0.014168134305489287,,
+All Population,Global,2023,All ages,Both,Leukemia,Percent of total DALYs,0.004362437218823844,0.0037434022683778398,0.00508767095761692
+All Population,Global,1990 - 2023,All ages,Both,Leukemia,DALYs annual % change,-0.014746438932940784,,
+All Population,Global,2023,All ages,Both,Other malignant neoplasms,Percent of total DALYs,0.0023940689762796895,0.0020176002760685175,0.002824238323998239
+All Population,Global,1990 - 2023,All ages,Both,Other malignant neoplasms,DALYs annual % change,-0.008498376358733078,,
+All Population,Global,2023,All ages,Both,Other neoplasms,Percent of total DALYs,0.0011989295980670653,0.0010077296629899533,0.0015081851029745724
+All Population,Global,1990 - 2023,All ages,Both,Other neoplasms,DALYs annual % change,0.005853343955474783,,
+All Population,Global,2023,All ages,Both,Cardiovascular diseases,Percent of total DALYs,0.15610540081189583,0.14133486959740393,0.16966544269786044
+All Population,Global,1990 - 2023,All ages,Both,Cardiovascular diseases,DALYs annual % change,-0.0031431196789797502,,
+All Population,Global,2023,All ages,Both,Rheumatic heart disease,Percent of total DALYs,0.005172706792598348,0.0037418363211480527,0.007100760313635225
+All Population,Global,1990 - 2023,All ages,Both,Rheumatic heart disease,DALYs annual % change,-0.02070289656033074,,
+All Population,Global,2023,All ages,Both,Ischemic heart disease,Percent of total DALYs,0.06886556798702306,0.06135898799964272,0.076920634733018
+All Population,Global,1990 - 2023,All ages,Both,Ischemic heart disease,DALYs annual % change,0.00006020327208401481,,
+All Population,Global,2023,All ages,Both,Stroke,Percent of total DALYs,0.055974899857712854,0.04962202563178486,0.06306613518790825
+All Population,Global,1990 - 2023,All ages,Both,Stroke,DALYs annual % change,-0.007603656206478028,,
+All Population,Global,2023,All ages,Both,Ischemic stroke,Percent of total DALYs,0.023948799011703978,0.021345723043318665,0.027070747008702524
+All Population,Global,1990 - 2023,All ages,Both,Ischemic stroke,DALYs annual % change,-0.004770017546787291,,
+All Population,Global,2023,All ages,Both,Intracerebral hemorrhage,Percent of total DALYs,0.02799795550128657,0.02390172924560027,0.03242664418760016
+All Population,Global,1990 - 2023,All ages,Both,Intracerebral hemorrhage,DALYs annual % change,-0.00928617475909695,,
+All Population,Global,2023,All ages,Both,Subarachnoid hemorrhage,Percent of total DALYs,0.004028145344722315,0.003349791184960191,0.005101936374652005
+All Population,Global,1990 - 2023,All ages,Both,Subarachnoid hemorrhage,DALYs annual % change,-0.011424225334082244,,
+All Population,Global,2023,All ages,Both,Hypertensive heart disease,Percent of total DALYs,0.010166775609739545,0.008020139626712096,0.012461490491120898
+All Population,Global,1990 - 2023,All ages,Both,Hypertensive heart disease,DALYs annual % change,0.005552837241024427,,
+All Population,Global,2023,All ages,Both,Cardiomyopathy and myocarditis,Percent of total DALYs,0.00429222062489524,0.0035079298772181513,0.005186937124850797
+All Population,Global,1990 - 2023,All ages,Both,Cardiomyopathy and myocarditis,DALYs annual % change,-0.003921168142798594,,
+All Population,Global,2023,All ages,Both,Atrial fibrillation and flutter,Percent of total DALYs,0.0033078591986766635,0.0027924358552794838,0.003919730304890483
+All Population,Global,1990 - 2023,All ages,Both,Atrial fibrillation and flutter,DALYs annual % change,0.017635943355145244,,
+All Population,Global,2023,All ages,Both,Aortic aneurysm,Percent of total DALYs,0.0012236989130743534,0.001066228404696622,0.0013947684239676466
+All Population,Global,1990 - 2023,All ages,Both,Aortic aneurysm,DALYs annual % change,0.004961885489066274,,
+All Population,Global,2023,All ages,Both,Lower extremity peripheral arterial disease,Percent of total DALYs,0.0006650021129447061,0.0005170230518755959,0.0008668323281118506
+All Population,Global,1990 - 2023,All ages,Both,Lower extremity peripheral arterial disease,DALYs annual % change,0.007201851026998201,,
+All Population,Global,2023,All ages,Both,Endocarditis,Percent of total DALYs,0.0008364113464814458,0.0006817268984264224,0.0010431625118082584
+All Population,Global,1990 - 2023,All ages,Both,Endocarditis,DALYs annual % change,0.0008172689029732597,,
+All Population,Global,2023,All ages,Both,Non-rheumatic valvular heart disease,Percent of total DALYs,0.001226049714882641,0.001018947183273578,0.0014268330533369158
+All Population,Global,1990 - 2023,All ages,Both,Non-rheumatic valvular heart disease,DALYs annual % change,0.009793054952555558,,
+All Population,Global,2023,All ages,Both,Other cardiovascular and circulatory diseases,Percent of total DALYs,0.004123583091794757,0.0034091290857617973,0.004927705594979892
+All Population,Global,1990 - 2023,All ages,Both,Other cardiovascular and circulatory diseases,DALYs annual % change,0.006613710718803595,,
+All Population,Global,2023,All ages,Both,Chronic respiratory diseases,Percent of total DALYs,0.039095986776882065,0.03517648450088426,0.04543480262746982
+All Population,Global,1990 - 2023,All ages,Both,Chronic respiratory diseases,DALYs annual % change,0.0020394839115418176,,
+All Population,Global,2023,All ages,Both,Chronic obstructive pulmonary disease,Percent of total DALYs,0.02678611673542042,0.02320788347347448,0.03169596097627745
+All Population,Global,1990 - 2023,All ages,Both,Chronic obstructive pulmonary disease,DALYs annual % change,0.0033817727386497524,,
+All Population,Global,2023,All ages,Both,Pneumoconiosis,Percent of total DALYs,0.00019023846252409613,0.00014993510315759365,0.0002357523816964963
+All Population,Global,1990 - 2023,All ages,Both,Pneumoconiosis,DALYs annual % change,-0.0023432657068818475,,
+All Population,Global,2023,All ages,Both,Silicosis,Percent of total DALYs,0.00012452327438278995,0.00009278962459077952,0.00016083147438636716
+All Population,Global,1990 - 2023,All ages,Both,Silicosis,DALYs annual % change,-0.0004103450702938583,,
+All Population,Global,2023,All ages,Both,Asbestosis,Percent of total DALYs,0.000020727480886334083,0.000016608794406205966,0.000028173260056770924
+All Population,Global,1990 - 2023,All ages,Both,Asbestosis,DALYs annual % change,0.010933039192055788,,
+All Population,Global,2023,All ages,Both,Coal workers pneumoconiosis,Percent of total DALYs,0.000021636832922713034,0.00001643932720381905,0.000027755728839187446
+All Population,Global,1990 - 2023,All ages,Both,Coal workers pneumoconiosis,DALYs annual % change,-0.02168789455944322,,
+All Population,Global,2023,All ages,Both,Other pneumoconiosis,Percent of total DALYs,0.000023350874332259037,0.000016850628521849885,0.00003308568230311008
+All Population,Global,1990 - 2023,All ages,Both,Other pneumoconiosis,DALYs annual % change,0.003814155464266912,,
+All Population,Global,2023,All ages,Both,Asthma,Percent of total DALYs,0.009218907374837541,0.007364216934046771,0.011734694061573694
+All Population,Global,1990 - 2023,All ages,Both,Asthma,DALYs annual % change,-0.0023937001512277546,,
+All Population,Global,2023,All ages,Both,Interstitial lung disease and pulmonary sarcoidosis,Percent of total DALYs,0.0015962751987583141,0.0013167401609484742,0.001996711560800115
+All Population,Global,1990 - 2023,All ages,Both,Interstitial lung disease and pulmonary sarcoidosis,DALYs annual % change,0.024654414389863995,,
+All Population,Global,2023,All ages,Both,Other chronic respiratory diseases,Percent of total DALYs,0.001304449005341695,0.0009794029144822285,0.0017792180650448768
+All Population,Global,1990 - 2023,All ages,Both,Other chronic respiratory diseases,DALYs annual % change,-0.00800784871722127,,
+All Population,Global,2023,All ages,Both,Cirrhosis and other chronic liver diseases,Percent of total DALYs,0.01534691717522352,0.013173250995710593,0.01759356826898384
+All Population,Global,1990 - 2023,All ages,Both,Cirrhosis and other chronic liver diseases,DALYs annual % change,-0.007458744870554231,,
+All Population,Global,2023,All ages,Both,Chronic hepatitis B including cirrhosis,Percent of total DALYs,0.004681106249778211,0.0038100767572559107,0.0056060403059110114
+All Population,Global,1990 - 2023,All ages,Both,Chronic hepatitis B including cirrhosis,DALYs annual % change,-0.010845008724866332,,
+All Population,Global,2023,All ages,Both,Chronic hepatitis C including cirrhosis,Percent of total DALYs,0.003940234865454695,0.0031160433828041245,0.004926751247092662
+All Population,Global,1990 - 2023,All ages,Both,Chronic hepatitis C including cirrhosis,DALYs annual % change,-0.005291596982017794,,
+All Population,Global,2023,All ages,Both,Cirrhosis due to alcohol,Percent of total DALYs,0.003463742302220354,0.0028686843172155466,0.004150015136005584
+All Population,Global,1990 - 2023,All ages,Both,Cirrhosis due to alcohol,DALYs annual % change,-0.0023233543467678637,,
+All Population,Global,2023,All ages,Both,Cirrhosis due to other causes,Percent of total DALYs,0.0023561638248094283,0.0018020242707952137,0.0030453863411674105
+All Population,Global,1990 - 2023,All ages,Both,Cirrhosis due to other causes,DALYs annual % change,-0.014767796935388804,,
+All Population,Global,2023,All ages,Both,Digestive diseases,Percent of total DALYs,0.031648664076122844,0.028563472531736668,0.03516845297580846
+All Population,Global,1990 - 2023,All ages,Both,Digestive diseases,DALYs annual % change,-0.00755180003363633,,
+All Population,Global,2023,All ages,Both,Peptic ulcer disease,Percent of total DALYs,0.0021416023508236642,0.0016873108596931093,0.0028095351451789324
+All Population,Global,1990 - 2023,All ages,Both,Peptic ulcer disease,DALYs annual % change,-0.024387126794349588,,
+All Population,Global,2023,All ages,Both,Gastritis and duodenitis,Percent of total DALYs,0.0010434806087491317,0.0008278455923985004,0.0013421204910173763
+All Population,Global,1990 - 2023,All ages,Both,Gastritis and duodenitis,DALYs annual % change,-0.009495993607569413,,
+All Population,Global,2023,All ages,Both,Appendicitis,Percent of total DALYs,0.0005212405247233138,0.0003869508640632203,0.0007313908531092314
+All Population,Global,1990 - 2023,All ages,Both,Appendicitis,DALYs annual % change,-0.019305887288024157,,
+All Population,Global,2023,All ages,Both,Paralytic ileus and intestinal obstruction,Percent of total DALYs,0.0025759075513084456,0.0020250652889516898,0.003247839641506828
+All Population,Global,1990 - 2023,All ages,Both,Paralytic ileus and intestinal obstruction,DALYs annual % change,-0.013563056637960303,,
+All Population,Global,2023,All ages,Both,"Inguinal, femoral, and abdominal hernia",Percent of total DALYs,0.0008577753080996628,0.0006970707347301793,0.0010396982315179243
+All Population,Global,1990 - 2023,All ages,Both,"Inguinal, femoral, and abdominal hernia",DALYs annual % change,-0.010360661835692973,,
+All Population,Global,2023,All ages,Both,Inflammatory bowel disease,Percent of total DALYs,0.0005791490456661856,0.0005065488744739003,0.0006598829323462906
+All Population,Global,1990 - 2023,All ages,Both,Inflammatory bowel disease,DALYs annual % change,0.003149143071977113,,
+All Population,Global,2023,All ages,Both,Vascular intestinal disorders,Percent of total DALYs,0.0006164305193851383,0.0005347037568210729,0.0007164027948633088
+All Population,Global,1990 - 2023,All ages,Both,Vascular intestinal disorders,DALYs annual % change,0.00022216653680481326,,
+All Population,Global,2023,All ages,Both,Gallbladder and biliary diseases,Percent of total DALYs,0.0029110376101991802,0.002355409484801266,0.003502195667688307
+All Population,Global,1990 - 2023,All ages,Both,Gallbladder and biliary diseases,DALYs annual % change,0.0038368583552918106,,
+All Population,Global,2023,All ages,Both,Pancreatitis,Percent of total DALYs,0.0015043981813336828,0.0012558740800471145,0.0018624155145030518
+All Population,Global,1990 - 2023,All ages,Both,Pancreatitis,DALYs annual % change,-0.0003181397341277831,,
+All Population,Global,2023,All ages,Both,Gastroesophageal reflux disease,Percent of total DALYs,0.002286510794454542,0.0012276744625348596,0.003901610589842117
+All Population,Global,1990 - 2023,All ages,Both,Gastroesophageal reflux disease,DALYs annual % change,0.006214573137461717,,
+All Population,Global,2023,All ages,Both,Neurological disorders,Percent of total DALYs,0.04170160877727288,0.03166902993705295,0.057263451228405766
+All Population,Global,1990 - 2023,All ages,Both,Neurological disorders,DALYs annual % change,0.008455821155733368,,
+All Population,Global,2023,All ages,Both,Alzheimer's disease and other dementias,Percent of total DALYs,0.01421926060654024,0.006414879540340364,0.029146738734684607
+All Population,Global,1990 - 2023,All ages,Both,Alzheimer's disease and other dementias,DALYs annual % change,0.02025540083183267,,
+All Population,Global,2023,All ages,Both,Parkinson's disease,Percent of total DALYs,0.0028529099332382465,0.0025649581875225483,0.003187185755001009
+All Population,Global,1990 - 2023,All ages,Both,Parkinson's disease,DALYs annual % change,0.019788338682659206,,
+All Population,Global,2023,All ages,Both,Idiopathic epilepsy,Percent of total DALYs,0.0055064441028768295,0.004395567959972287,0.006740593276685409
+All Population,Global,1990 - 2023,All ages,Both,Idiopathic epilepsy,DALYs annual % change,-0.0054579411622414096,,
+All Population,Global,2023,All ages,Both,Multiple sclerosis,Percent of total DALYs,0.00038164888970667455,0.00033798522473193636,0.0004280430290649944
+All Population,Global,1990 - 2023,All ages,Both,Multiple sclerosis,DALYs annual % change,0.006034013944998763,,
+All Population,Global,2023,All ages,Both,Migraine,Percent of total DALYs,0.014556748468729622,0.010615754274448747,0.018578125330109177
+All Population,Global,1990 - 2023,All ages,Both,Migraine,DALYs annual % change,0.002594759007464374,,
+All Population,Global,2023,All ages,Both,Tension-type headache,Percent of total DALYs,0.0016469148629792612,0.0011745626625912903,0.0022245853135845427
+All Population,Global,1990 - 2023,All ages,Both,Tension-type headache,DALYs annual % change,0.003269267629238851,,
+All Population,Global,2023,All ages,Both,Motor neuron disease,Percent of total DALYs,0.00043613909776468246,0.0003886592690137133,0.0005032483282126121
+All Population,Global,1990 - 2023,All ages,Both,Motor neuron disease,DALYs annual % change,0.01122619678495853,,
+All Population,Global,2023,All ages,Both,Other neurological disorders,Percent of total DALYs,0.002101542815437304,0.0018620964580371108,0.0023819172853265205
+All Population,Global,1990 - 2023,All ages,Both,Other neurological disorders,DALYs annual % change,0.032861970118603145,,
+All Population,Global,2023,All ages,Both,Mental disorders,Percent of total DALYs,0.06098553748650415,0.04834331419955459,0.07588900539042555
+All Population,Global,1990 - 2023,All ages,Both,Mental disorders,DALYs annual % change,0.009201860626604082,,
+All Population,Global,2023,All ages,Both,Schizophrenia,Percent of total DALYs,0.006058939270365805,0.004396360262564547,0.007527731920035842
+All Population,Global,1990 - 2023,All ages,Both,Schizophrenia,DALYs annual % change,0.004923598237676096,,
+All Population,Global,2023,All ages,Both,Alcohol use disorders,Percent of total DALYs,0.006429712755421069,0.005415459341357104,0.0076029227038222815
+All Population,Global,1990 - 2023,All ages,Both,Alcohol use disorders,DALYs annual % change,-0.0033491537344125084,,
+All Population,Global,2023,All ages,Both,Drug use disorders,Percent of total DALYs,0.006280073821968767,0.005366446206782342,0.007093827995241417
+All Population,Global,1990 - 2023,All ages,Both,Drug use disorders,DALYs annual % change,0.007366486237434268,,
+All Population,Global,2023,All ages,Both,Opioid use disorders,Percent of total DALYs,0.004569869594856096,0.0038213112030210435,0.005279815488818432
+All Population,Global,1990 - 2023,All ages,Both,Opioid use disorders,DALYs annual % change,0.013267083235125357,,
+All Population,Global,2023,All ages,Both,Cocaine use disorders,Percent of total DALYs,0.0005193562644279431,0.0004271294546180861,0.0006180739067682171
+All Population,Global,1990 - 2023,All ages,Both,Cocaine use disorders,DALYs annual % change,0.014185901877428868,,
+All Population,Global,2023,All ages,Both,Amphetamine use disorders,Percent of total DALYs,0.0006267348711252086,0.0004674305376962644,0.0008076065751977369
+All Population,Global,1990 - 2023,All ages,Both,Amphetamine use disorders,DALYs annual % change,-0.011235071411082315,,
+All Population,Global,2023,All ages,Both,Cannabis use disorders,Percent of total DALYs,0.0002234758321384472,0.00013829738304356316,0.0003277052813706146
+All Population,Global,1990 - 2023,All ages,Both,Cannabis use disorders,DALYs annual % change,-0.003839872072341574,,
+All Population,Global,2023,All ages,Both,Other drug use disorders,Percent of total DALYs,0.0003406372594210747,0.00029616399971274304,0.0003917458697508657
+All Population,Global,1990 - 2023,All ages,Both,Other drug use disorders,DALYs annual % change,-0.0108737755434865,,
+All Population,Global,2023,All ages,Both,Depressive disorders,Percent of total DALYs,0.01992415134716758,0.01479011677908847,0.027045927103825848
+All Population,Global,1990 - 2023,All ages,Both,Depressive disorders,DALYs annual % change,0.011529370747364705,,
+All Population,Global,2023,All ages,Both,Major depressive disorder,Percent of total DALYs,0.016899540919308186,0.012134571376532535,0.023081659510420998
+All Population,Global,1990 - 2023,All ages,Both,Major depressive disorder,DALYs annual % change,0.012632104486329511,,
+All Population,Global,2023,All ages,Both,Dysthymia,Percent of total DALYs,0.0030246104278593756,0.0021396046058212983,0.004058619790405386
+All Population,Global,1990 - 2023,All ages,Both,Dysthymia,DALYs annual % change,0.006019602021409969,,
+All Population,Global,2023,All ages,Both,Bipolar disorder,Percent of total DALYs,0.002717400662368321,0.0018648988229812828,0.0037493305144946087
+All Population,Global,1990 - 2023,All ages,Both,Bipolar disorder,DALYs annual % change,0.003118095964100286,,
+All Population,Global,2023,All ages,Both,Anxiety disorders,Percent of total DALYs,0.019709152962265077,0.013713768573058968,0.027711675684649627
+All Population,Global,1990 - 2023,All ages,Both,Anxiety disorders,DALYs annual % change,0.01598782199396873,,
+All Population,Global,2023,All ages,Both,Eating disorders,Percent of total DALYs,0.001359692728391533,0.0008787332302730349,0.0019565013902539045
+All Population,Global,1990 - 2023,All ages,Both,Eating disorders,DALYs annual % change,0.0036487851902311246,,
+All Population,Global,2023,All ages,Both,Anorexia nervosa,Percent of total DALYs,0.00030111597178498583,0.00018269934005327764,0.00044848759975455734
+All Population,Global,1990 - 2023,All ages,Both,Anorexia nervosa,DALYs annual % change,0.0012273660255244711,,
+All Population,Global,2023,All ages,Both,Bulimia nervosa,Percent of total DALYs,0.0010585767566065462,0.0006267586085699949,0.001614248833175631
+All Population,Global,1990 - 2023,All ages,Both,Bulimia nervosa,DALYs annual % change,0.0043731926674188,,
+All Population,Global,2023,All ages,Both,Autism spectrum disorders,Percent of total DALYs,0.003522460556396749,0.0016647612838201517,0.006580694270871882
+All Population,Global,1990 - 2023,All ages,Both,Autism spectrum disorders,DALYs annual % change,0.004119911205743482,,
+All Population,Global,2023,All ages,Both,Attention-deficit/hyperactivity disorder,Percent of total DALYs,0.0013249222403097023,0.0008064768905552589,0.0018757100361235985
+All Population,Global,1990 - 2023,All ages,Both,Attention-deficit/hyperactivity disorder,DALYs annual % change,-0.004338517638000699,,
+All Population,Global,2023,All ages,Both,Conduct disorder,Percent of total DALYs,0.0017104587993386508,0.0010322682093239963,0.002624781377172648
+All Population,Global,1990 - 2023,All ages,Both,Conduct disorder,DALYs annual % change,-0.005009548264740708,,
+All Population,Global,2023,All ages,Both,Idiopathic developmental intellectual disability,Percent of total DALYs,0.0012948683862631968,0.000641641052626065,0.002351962149950276
+All Population,Global,1990 - 2023,All ages,Both,Idiopathic developmental intellectual disability,DALYs annual % change,-0.0053432072653076005,,
+All Population,Global,2023,All ages,Both,Other mental disorders,Percent of total DALYs,0.0033634905336375827,0.002310307032927959,0.004558429833984684
+All Population,Global,1990 - 2023,All ages,Both,Other mental disorders,DALYs annual % change,0.005588597326928268,,
+All Population,Global,2023,All ages,Both,Diabetes mellitus,Percent of total DALYs,0.03217456045962644,0.028376408896681967,0.035931418846589284
+All Population,Global,1990 - 2023,All ages,Both,Diabetes mellitus,DALYs annual % change,0.019566502793365026,,
+All Population,Global,2023,All ages,Both,Acute glomerulonephritis,Percent of total DALYs,0.00011655257436609046,0.00007025319585936413,0.00017009434697613034
+All Population,Global,1990 - 2023,All ages,Both,Acute glomerulonephritis,DALYs annual % change,-0.0380321514791293,,
+All Population,Global,2023,All ages,Both,Chronic kidney disease,Percent of total DALYs,0.016509074409937038,0.014535764275933432,0.018589275255431154
+All Population,Global,1990 - 2023,All ages,Both,Chronic kidney disease,DALYs annual % change,0.009214954274010137,,
+All Population,Global,2023,All ages,Both,Chronic kidney disease due to hypertension,Percent of total DALYs,0.0033817589062764843,0.002782256232397956,0.004037264311533027
+All Population,Global,1990 - 2023,All ages,Both,Chronic kidney disease due to hypertension,DALYs annual % change,0.0177776795447857,,
+All Population,Global,2023,All ages,Both,Chronic kidney disease due to glomerulonephritis,Percent of total DALYs,0.0026393754779819533,0.002168206320339678,0.0031263856170736636
+All Population,Global,1990 - 2023,All ages,Both,Chronic kidney disease due to glomerulonephritis,DALYs annual % change,0.0040096186575635335,,
+All Population,Global,2023,All ages,Both,Chronic kidney disease due to other and unspecified causes,Percent of total DALYs,0.005968894750701717,0.005147301943635291,0.006748289941138501
+All Population,Global,1990 - 2023,All ages,Both,Chronic kidney disease due to other and unspecified causes,DALYs annual % change,0.004118535875857935,,
+All Population,Global,2023,All ages,Both,Urinary diseases and male infertility,Percent of total DALYs,0.004275987655869627,0.0038902741444568614,0.00473507011836059
+All Population,Global,1990 - 2023,All ages,Both,Urinary diseases and male infertility,DALYs annual % change,0.008946688055900421,,
+All Population,Global,2023,All ages,Both,Urinary tract infections and interstitial nephritis,Percent of total DALYs,0.00220811213593112,0.0019378112740281248,0.0024909377975059375
+All Population,Global,1990 - 2023,All ages,Both,Urinary tract infections and interstitial nephritis,DALYs annual % change,0.011471032746723857,,
+All Population,Global,2023,All ages,Both,Urolithiasis,Percent of total DALYs,0.0003535745671555455,0.0003080679770275274,0.0004090048389217095
+All Population,Global,1990 - 2023,All ages,Both,Urolithiasis,DALYs annual % change,-0.0032097954833012273,,
+All Population,Global,2023,All ages,Both,Benign prostatic hyperplasia,Percent of total DALYs,0.0008428923149228654,0.0005704297246619675,0.0012374381121093398
+All Population,Global,1990 - 2023,All ages,Both,Benign prostatic hyperplasia,DALYs annual % change,0.013662180374933204,,
+All Population,Global,2023,All ages,Both,Male infertility,Percent of total DALYs,0.00011633371561416032,0.00004552096140077131,0.0002528412471170867
+All Population,Global,1990 - 2023,All ages,Both,Male infertility,DALYs annual % change,0.0053464888137018385,,
+All Population,Global,2023,All ages,Both,Other urinary diseases,Percent of total DALYs,0.0007550749222459333,0.0005891414021016022,0.0009737866198040947
+All Population,Global,1990 - 2023,All ages,Both,Other urinary diseases,DALYs annual % change,0.004852768169091393,,
+All Population,Global,2023,All ages,Both,Gynecological diseases,Percent of total DALYs,0.010357758845757294,0.007719115289537348,0.013359722230091449
+All Population,Global,1990 - 2023,All ages,Both,Gynecological diseases,DALYs annual % change,0.0032188057287161,,
+All Population,Global,2023,All ages,Both,Uterine fibroids,Percent of total DALYs,0.00008036475588915085,0.000048363577338673855,0.000137355096465375
+All Population,Global,1990 - 2023,All ages,Both,Uterine fibroids,DALYs annual % change,0.013386750217805589,,
+All Population,Global,2023,All ages,Both,Polycystic ovarian syndrome,Percent of total DALYs,0.00023197038155411943,0.00010400022723966077,0.00047288780979400503
+All Population,Global,1990 - 2023,All ages,Both,Polycystic ovarian syndrome,DALYs annual % change,0.006256245815380358,,
+All Population,Global,2023,All ages,Both,Female infertility,Percent of total DALYs,0.0002226284584131937,0.00008066875707876919,0.0005783314026267472
+All Population,Global,1990 - 2023,All ages,Both,Female infertility,DALYs annual % change,0.0071267326603479016,,
+All Population,Global,2023,All ages,Both,Endometriosis,Percent of total DALYs,0.0006778454491370796,0.00043830148320125125,0.0009708903392413375
+All Population,Global,1990 - 2023,All ages,Both,Endometriosis,DALYs annual % change,-0.005091666525300479,,
+All Population,Global,2023,All ages,Both,Genital prolapse,Percent of total DALYs,0.00015426739428518678,0.00008960272353348794,0.00025719125589957815
+All Population,Global,1990 - 2023,All ages,Both,Genital prolapse,DALYs annual % change,0.0050303796492312215,,
+All Population,Global,2023,All ages,Both,Premenstrual syndrome,Percent of total DALYs,0.002927320582829061,0.0019537786578722616,0.004154043180067219
+All Population,Global,1990 - 2023,All ages,Both,Premenstrual syndrome,DALYs annual % change,-0.00027790084215080296,,
+All Population,Global,2023,All ages,Both,Other gynecological diseases,Percent of total DALYs,0.006063361823649497,0.004302643647633288,0.00830192432180973
+All Population,Global,1990 - 2023,All ages,Both,Other gynecological diseases,DALYs annual % change,0.005783003015472881,,
+All Population,Global,2023,All ages,Both,Hemoglobinopathies and hemolytic anemias,Percent of total DALYs,0.005278016882960968,0.0038903439707140696,0.00722118396363442
+All Population,Global,1990 - 2023,All ages,Both,Hemoglobinopathies and hemolytic anemias,DALYs annual % change,-0.00819279777487731,,
+All Population,Global,2023,All ages,Both,Thalassemias,Percent of total DALYs,0.000358450529346008,0.0002383169319680074,0.0005230434622089119
+All Population,Global,1990 - 2023,All ages,Both,Thalassemias,DALYs annual % change,-0.025782090315442364,,
+All Population,Global,2023,All ages,Both,Sickle cell disorders,Percent of total DALYs,0.0015345393883651655,0.0008555138126429384,0.0029050806692404096
+All Population,Global,1990 - 2023,All ages,Both,Sickle cell disorders,DALYs annual % change,-0.0007346718890383926,,
+All Population,Global,2023,All ages,Both,G6PD deficiency,Percent of total DALYs,0.00019743681399161443,0.00012296824936524012,0.0002976691728892547
+All Population,Global,1990 - 2023,All ages,Both,G6PD deficiency,DALYs annual % change,-0.005723494723266033,,
+All Population,Global,2023,All ages,Both,Other hemoglobinopathies and hemolytic anemias,Percent of total DALYs,0.00158957985914915,0.0011553499286440136,0.002170187424721105
+All Population,Global,1990 - 2023,All ages,Both,Other hemoglobinopathies and hemolytic anemias,DALYs annual % change,-0.009972642620429338,,
+All Population,Global,2023,All ages,Both,"Endocrine, metabolic, blood, and immune disorders",Percent of total DALYs,0.005178083781810969,0.004265970627766039,0.006311135216164069
+All Population,Global,1990 - 2023,All ages,Both,"Endocrine, metabolic, blood, and immune disorders",DALYs annual % change,0.0026152006812175453,,
+All Population,Global,2023,All ages,Both,"Other endocrine, metabolic, blood, and immune disorders",Percent of total DALYs,0.0026109675607755016,0.0022933962269628934,0.002946622193635925
+All Population,Global,1990 - 2023,All ages,Both,"Other endocrine, metabolic, blood, and immune disorders",DALYs annual % change,0.003481636982452776,,
+All Population,Global,2023,All ages,Both,Musculoskeletal disorders,Percent of total DALYs,0.0583434936124229,0.046372357380567296,0.07215600814324005
+All Population,Global,1990 - 2023,All ages,Both,Musculoskeletal disorders,DALYs annual % change,0.0069267205534089965,,
+All Population,Global,2023,All ages,Both,Rheumatoid arthritis,Percent of total DALYs,0.0011899105523104365,0.0009558544370601847,0.0014414100620947369
+All Population,Global,1990 - 2023,All ages,Both,Rheumatoid arthritis,DALYs annual % change,0.00892332663660302,,
+All Population,Global,2023,All ages,Both,Osteoarthritis,Percent of total DALYs,0.007917387898849836,0.0040841159980406026,0.016127714177007087
+All Population,Global,1990 - 2023,All ages,Both,Osteoarthritis,DALYs annual % change,0.015209919865626998,,
+All Population,Global,2023,All ages,Both,Low back pain,Percent of total DALYs,0.025051601867117048,0.019261248309394383,0.03119539281106318
+All Population,Global,1990 - 2023,All ages,Both,Low back pain,DALYs annual % change,0.0022624407470476526,,
+All Population,Global,2023,All ages,Both,Neck pain,Percent of total DALYs,0.007361825605610156,0.005259360495706316,0.009996827575056731
+All Population,Global,1990 - 2023,All ages,Both,Neck pain,DALYs annual % change,0.00554335555308405,,
+All Population,Global,2023,All ages,Both,Gout,Percent of total DALYs,0.0006370597660082815,0.0004468791807179277,0.000886743397724103
+All Population,Global,1990 - 2023,All ages,Both,Gout,DALYs annual % change,0.01626480338806354,,
+All Population,Global,2023,All ages,Both,Other musculoskeletal disorders,Percent of total DALYs,0.01618570792252712,0.011940460525619024,0.021012190663755308
+All Population,Global,1990 - 2023,All ages,Both,Other musculoskeletal disorders,DALYs annual % change,0.011723491598606287,,
+All Population,Global,2023,All ages,Both,Other non-communicable diseases,Percent of total DALYs,0.0540063764240418,0.046519548688043984,0.0615180317718321
+All Population,Global,1990 - 2023,All ages,Both,Other non-communicable diseases,DALYs annual % change,-0.008544715787746852,,
+All Population,Global,2023,All ages,Both,Congenital birth defects,Percent of total DALYs,0.01958423215072122,0.015589348834424461,0.02395617643829539
+All Population,Global,1990 - 2023,All ages,Both,Congenital birth defects,DALYs annual % change,-0.01912103315734068,,
+All Population,Global,2023,All ages,Both,Neural tube defects,Percent of total DALYs,0.0014363588040200612,0.0008960910621065031,0.00234714950934111
+All Population,Global,1990 - 2023,All ages,Both,Neural tube defects,DALYs annual % change,-0.029393053333382494,,
+All Population,Global,2023,All ages,Both,Congenital heart anomalies,Percent of total DALYs,0.009486623671022857,0.007418567010381224,0.012408471465477593
+All Population,Global,1990 - 2023,All ages,Both,Congenital heart anomalies,DALYs annual % change,-0.023294891415407616,,
+All Population,Global,2023,All ages,Both,Orofacial clefts,Percent of total DALYs,0.0001977823304935109,0.00010845890128288503,0.000401225607197328
+All Population,Global,1990 - 2023,All ages,Both,Orofacial clefts,DALYs annual % change,-0.053345566820803526,,
+All Population,Global,2023,All ages,Both,Down syndrome,Percent of total DALYs,0.0008707434724424436,0.0005254320482315479,0.0013159619752662137
+All Population,Global,1990 - 2023,All ages,Both,Down syndrome,DALYs annual % change,-0.007599891304231445,,
+All Population,Global,2023,All ages,Both,Turner syndrome,Percent of total DALYs,0.0000033455477857650003,0.0000014904875828388987,0.0000056962237202177496
+All Population,Global,1990 - 2023,All ages,Both,Turner syndrome,DALYs annual % change,-0.004178068979536501,,
+All Population,Global,2023,All ages,Both,Klinefelter syndrome,Percent of total DALYs,0.0000023643128985850833,0.0000011416482598789143,0.000004623190411556684
+All Population,Global,1990 - 2023,All ages,Both,Klinefelter syndrome,DALYs annual % change,-0.0025293357052104002,,
+All Population,Global,2023,All ages,Both,Other chromosomal abnormalities,Percent of total DALYs,0.0008469406561059572,0.0006056797772265004,0.0012603218537228433
+All Population,Global,1990 - 2023,All ages,Both,Other chromosomal abnormalities,DALYs annual % change,0.00011053767559894392,,
+All Population,Global,2023,All ages,Both,Congenital musculoskeletal and limb anomalies,Percent of total DALYs,0.0012647270819675885,0.0009525704339072109,0.0016781068944434702
+All Population,Global,1990 - 2023,All ages,Both,Congenital musculoskeletal and limb anomalies,DALYs annual % change,-0.009148162692665837,,
+All Population,Global,2023,All ages,Both,Urogenital congenital anomalies,Percent of total DALYs,0.0005556718950800096,0.00032193606642522187,0.0009931727103343361
+All Population,Global,1990 - 2023,All ages,Both,Urogenital congenital anomalies,DALYs annual % change,-0.0043810791323173155,,
+All Population,Global,2023,All ages,Both,Digestive congenital anomalies,Percent of total DALYs,0.0021722222132241884,0.0013628169501282861,0.0030614800281791007
+All Population,Global,1990 - 2023,All ages,Both,Digestive congenital anomalies,DALYs annual % change,-0.012006173232057223,,
+All Population,Global,2023,All ages,Both,Other congenital birth defects,Percent of total DALYs,0.0027474521656802474,0.0017136845181133526,0.004800272628276793
+All Population,Global,1990 - 2023,All ages,Both,Other congenital birth defects,DALYs annual % change,-0.010285748469025439,,
+All Population,Global,2023,All ages,Both,Skin and subcutaneous diseases,Percent of total DALYs,0.013028228580481516,0.009623383553751369,0.01726913986390544
+All Population,Global,1990 - 2023,All ages,Both,Skin and subcutaneous diseases,DALYs annual % change,-0.0003596389617066882,,
+All Population,Global,2023,All ages,Both,Dermatitis,Percent of total DALYs,0.005384134838928851,0.003394672852087372,0.008084037388339438
+All Population,Global,1990 - 2023,All ages,Both,Dermatitis,DALYs annual % change,-0.004120417933928634,,
+All Population,Global,2023,All ages,Both,Psoriasis,Percent of total DALYs,0.0009433687177058814,0.000739638855327165,0.0011746551925530184
+All Population,Global,1990 - 2023,All ages,Both,Psoriasis,DALYs annual % change,0.011069960102339411,,
+All Population,Global,2023,All ages,Both,Cellulitis,Percent of total DALYs,0.0004046032089191338,0.00028056376317394706,0.0005953944317303665
+All Population,Global,1990 - 2023,All ages,Both,Cellulitis,DALYs annual % change,0.018891390227872715,,
+All Population,Global,2023,All ages,Both,Pyoderma,Percent of total DALYs,0.0006408302388253423,0.00045530313553708785,0.0008847505544829347
+All Population,Global,1990 - 2023,All ages,Both,Pyoderma,DALYs annual % change,0.01027252765569817,,
+All Population,Global,2023,All ages,Both,Scabies,Percent of total DALYs,0.0011361926842002928,0.0006839707901779338,0.0017102931227099332
+All Population,Global,1990 - 2023,All ages,Both,Scabies,DALYs annual % change,-0.001722330753519703,,
+All Population,Global,2023,All ages,Both,Fungal skin diseases,Percent of total DALYs,0.0007068297958966435,0.00027795140963316313,0.0014529640990809762
+All Population,Global,1990 - 2023,All ages,Both,Fungal skin diseases,DALYs annual % change,-0.00425417577875227,,
+All Population,Global,2023,All ages,Both,Viral skin diseases,Percent of total DALYs,0.000643975410383229,0.00045485930380373765,0.0008926509137108591
+All Population,Global,1990 - 2023,All ages,Both,Viral skin diseases,DALYs annual % change,-0.00021918497355997705,,
+All Population,Global,2023,All ages,Both,Acne vulgaris,Percent of total DALYs,0.00041670373875181405,0.0002711560892499228,0.0006353817372143566
+All Population,Global,1990 - 2023,All ages,Both,Acne vulgaris,DALYs annual % change,0.010371107338814476,,
+All Population,Global,2023,All ages,Both,Alopecia areata,Percent of total DALYs,0.00004114608471604345,0.000029290448024501835,0.000054822003082441066
+All Population,Global,1990 - 2023,All ages,Both,Alopecia areata,DALYs annual % change,-0.0006363426876118694,,
+All Population,Global,2023,All ages,Both,Pruritus,Percent of total DALYs,0.000040443598295076316,0.000020383158174603035,0.00007434401264267771
+All Population,Global,1990 - 2023,All ages,Both,Pruritus,DALYs annual % change,0.00858669294926546,,
+All Population,Global,2023,All ages,Both,Urticaria,Percent of total DALYs,0.001787925525127649,0.0012578246978878125,0.0023988785644950333
+All Population,Global,1990 - 2023,All ages,Both,Urticaria,DALYs annual % change,-0.003303988761075711,,
+All Population,Global,2023,All ages,Both,Decubitus ulcer,Percent of total DALYs,0.0003948781597722149,0.00028300122841126273,0.0005561819332729361
+All Population,Global,1990 - 2023,All ages,Both,Decubitus ulcer,DALYs annual % change,0.015132900782576121,,
+All Population,Global,2023,All ages,Both,Other skin and subcutaneous diseases,Percent of total DALYs,0.00048719657895934435,0.00029718616891965735,0.0007461927006302297
+All Population,Global,1990 - 2023,All ages,Both,Other skin and subcutaneous diseases,DALYs annual % change,0.004833065206793057,,
+All Population,Global,2023,All ages,Both,Sense organ diseases,Percent of total DALYs,0.028345320673167695,0.021640385625730556,0.03603644082380244
+All Population,Global,1990 - 2023,All ages,Both,Sense organ diseases,DALYs annual % change,0.00890523869037441,,
+All Population,Global,2023,All ages,Both,Glaucoma,Percent of total DALYs,0.00024336542674943893,0.00017887314375756392,0.00031668372051084045
+All Population,Global,1990 - 2023,All ages,Both,Glaucoma,DALYs annual % change,0.00020927581502153017,,
+All Population,Global,2023,All ages,Both,Cataract,Percent of total DALYs,0.002532113346160268,0.0020159119173030426,0.0031477813315431086
+All Population,Global,1990 - 2023,All ages,Both,Cataract,DALYs annual % change,0.004658143902154917,,
+All Population,Global,2023,All ages,Both,Age-related macular degeneration,Percent of total DALYs,0.0001838634696925889,0.0001353843509005834,0.0002450462461949166
+All Population,Global,1990 - 2023,All ages,Both,Age-related macular degeneration,DALYs annual % change,0.00704576789793287,,
+All Population,Global,2023,All ages,Both,Age-related and other hearing loss,Percent of total DALYs,0.018881238163553558,0.014426897678153205,0.02391633888494535
+All Population,Global,1990 - 2023,All ages,Both,Age-related and other hearing loss,DALYs annual % change,0.01035489538078256,,
+All Population,Global,2023,All ages,Both,Other sense organ diseases,Percent of total DALYs,0.0010692577829993872,0.000727967776728875,0.0014984222547684027
+All Population,Global,1990 - 2023,All ages,Both,Other sense organ diseases,DALYs annual % change,0.009043288742202489,,
+All Population,Global,2023,All ages,Both,Oral disorders,Percent of total DALYs,0.008510852515406385,0.005428268197562469,0.01223916109442171
+All Population,Global,1990 - 2023,All ages,Both,Oral disorders,DALYs annual % change,0.006422667948857569,,
+All Population,Global,2023,All ages,Both,Caries of deciduous teeth,Percent of total DALYs,0.00006904007672346023,0.0000318589532108974,0.00013104506317238092
+All Population,Global,1990 - 2023,All ages,Both,Caries of deciduous teeth,DALYs annual % change,-0.01150082667859548,,
+All Population,Global,2023,All ages,Both,Caries of permanent teeth,Percent of total DALYs,0.0007820958180481137,0.00036182289170254436,0.001413601484122114
+All Population,Global,1990 - 2023,All ages,Both,Caries of permanent teeth,DALYs annual % change,0.0002834542940713457,,
+All Population,Global,2023,All ages,Both,Periodontal diseases,Percent of total DALYs,0.002508847426216387,0.0010643436507051633,0.004685307277560403
+All Population,Global,1990 - 2023,All ages,Both,Periodontal diseases,DALYs annual % change,0.00768459710017945,,
+All Population,Global,2023,All ages,Both,Edentulism,Percent of total DALYs,0.0035756101767784806,0.0026066820738522727,0.004495942136381196
+All Population,Global,1990 - 2023,All ages,Both,Edentulism,DALYs annual % change,0.009888483141969188,,
+All Population,Global,2023,All ages,Both,Other oral disorders,Percent of total DALYs,0.001575259017639946,0.0010513739357346972,0.002144431112029213
+All Population,Global,1990 - 2023,All ages,Both,Other oral disorders,DALYs annual % change,0.001840028075230156,,
+All Population,Global,2023,All ages,Both,Sudden infant death syndrome,Percent of total DALYs,0.0008214445915153621,0.0005180883904115547,0.0012583465544213392
+All Population,Global,1990 - 2023,All ages,Both,Sudden infant death syndrome,DALYs annual % change,-0.04647832605205703,,
+All Population,Global,2023,All ages,Both,Injuries,Percent of total DALYs,0.11274301289468124,0.1021157910622118,0.12210630874648548
+All Population,Global,1990 - 2023,All ages,Both,Injuries,DALYs annual % change,-0.01141808891029149,,
+All Population,Global,2023,All ages,Both,Transport injuries,Percent of total DALYs,0.02860378452036614,0.023498939451355706,0.0332810161153253
+All Population,Global,1990 - 2023,All ages,Both,Transport injuries,DALYs annual % change,-0.01234780608748169,,
+All Population,Global,2023,All ages,Both,Road injuries,Percent of total DALYs,0.026918205160144443,0.02187595019466445,0.031538440116682484
+All Population,Global,1990 - 2023,All ages,Both,Road injuries,DALYs annual % change,-0.012369412142093968,,
+All Population,Global,2023,All ages,Both,Pedestrian road injuries,Percent of total DALYs,0.007525383772101344,0.005515557026777096,0.009986115715531527
+All Population,Global,1990 - 2023,All ages,Both,Pedestrian road injuries,DALYs annual % change,-0.025439885658536013,,
+All Population,Global,2023,All ages,Both,Cyclist road injuries,Percent of total DALYs,0.001763940425705311,0.0013480498175614379,0.0023370277963436136
+All Population,Global,1990 - 2023,All ages,Both,Cyclist road injuries,DALYs annual % change,-0.000529083642530553,,
+All Population,Global,2023,All ages,Both,Motorcyclist road injuries,Percent of total DALYs,0.006493556274455299,0.0046823401885144195,0.008191121123066119
+All Population,Global,1990 - 2023,All ages,Both,Motorcyclist road injuries,DALYs annual % change,0.005918041711012477,,
+All Population,Global,2023,All ages,Both,Motor vehicle road injuries,Percent of total DALYs,0.010709684977205956,0.008619546875376255,0.013587074788233656
+All Population,Global,1990 - 2023,All ages,Both,Motor vehicle road injuries,DALYs annual % change,-0.010952105593550844,,
+All Population,Global,2023,All ages,Both,Other road injuries,Percent of total DALYs,0.0004256397106765378,0.00032538608218655936,0.000551150692481017
+All Population,Global,1990 - 2023,All ages,Both,Other road injuries,DALYs annual % change,-0.008304379441365294,,
+All Population,Global,2023,All ages,Both,Other transport injuries,Percent of total DALYs,0.0016855793602217027,0.0012164965707124756,0.0022394884361773247
+All Population,Global,1990 - 2023,All ages,Both,Other transport injuries,DALYs annual % change,-0.012000928574115237,,
+All Population,Global,2023,All ages,Both,Unintentional injuries,Percent of total DALYs,0.05562622595009417,0.04850790979850537,0.061969295626517755
+All Population,Global,1990 - 2023,All ages,Both,Unintentional injuries,DALYs annual % change,-0.012090862551150088,,
+All Population,Global,2023,All ages,Both,Falls,Percent of total DALYs,0.026455990857528172,0.022360592796279985,0.031206692917388763
+All Population,Global,1990 - 2023,All ages,Both,Falls,DALYs annual % change,0.0025627137055190107,,
+All Population,Global,2023,All ages,Both,Drowning,Percent of total DALYs,0.006091634583342768,0.004636317762594175,0.00807462007530758
+All Population,Global,1990 - 2023,All ages,Both,Drowning,DALYs annual % change,-0.03535477356432865,,
+All Population,Global,2023,All ages,Both,"Fire, heat, and hot substances",Percent of total DALYs,0.0038129565152677553,0.002833150068247429,0.004995602024065852
+All Population,Global,1990 - 2023,All ages,Both,"Fire, heat, and hot substances",DALYs annual % change,-0.010512914120015631,,
+All Population,Global,2023,All ages,Both,Poisonings,Percent of total DALYs,0.0013167322880204108,0.0009970043084614546,0.001741114958602463
+All Population,Global,1990 - 2023,All ages,Both,Poisonings,DALYs annual % change,-0.020871964085317905,,
+All Population,Global,2023,All ages,Both,Poisoning by carbon monoxide,Percent of total DALYs,0.00048070838952837174,0.00037811579811984354,0.0006510565841423802
+All Population,Global,1990 - 2023,All ages,Both,Poisoning by carbon monoxide,DALYs annual % change,-0.02597795679877062,,
+All Population,Global,2023,All ages,Both,Poisoning by other means,Percent of total DALYs,0.0008360238984920387,0.0005521732316930857,0.0012072621751974284
+All Population,Global,1990 - 2023,All ages,Both,Poisoning by other means,DALYs annual % change,-0.01749160952553519,,
+All Population,Global,2023,All ages,Both,Exposure to mechanical forces,Percent of total DALYs,0.0038198460645151294,0.0030474224488765246,0.004938006987894981
+All Population,Global,1990 - 2023,All ages,Both,Exposure to mechanical forces,DALYs annual % change,-0.01710642888356415,,
+All Population,Global,2023,All ages,Both,Unintentional firearm injuries,Percent of total DALYs,0.0004359567527808029,0.00030895659677776776,0.0006395900460202952
+All Population,Global,1990 - 2023,All ages,Both,Unintentional firearm injuries,DALYs annual % change,-0.02735747048957052,,
+All Population,Global,2023,All ages,Both,Other exposure to mechanical forces,Percent of total DALYs,0.0033838893117343265,0.0026451578388840516,0.004409478560738302
+All Population,Global,1990 - 2023,All ages,Both,Other exposure to mechanical forces,DALYs annual % change,-0.015496768816820366,,
+All Population,Global,2023,All ages,Both,Adverse effects of medical treatment,Percent of total DALYs,0.001408565618103016,0.001084460183021556,0.001909787130154212
+All Population,Global,1990 - 2023,All ages,Both,Adverse effects of medical treatment,DALYs annual % change,-0.018897649842895832,,
+All Population,Global,2023,All ages,Both,Animal contact,Percent of total DALYs,0.00202706584950498,0.0012869641736652636,0.002917500901033459
+All Population,Global,1990 - 2023,All ages,Both,Animal contact,DALYs annual % change,-0.018461381822890855,,
+All Population,Global,2023,All ages,Both,Venomous animal contact,Percent of total DALYs,0.001711918508541176,0.0010203087591996241,0.0025192641587678455
+All Population,Global,1990 - 2023,All ages,Both,Venomous animal contact,DALYs annual % change,-0.019097923641709882,,
+All Population,Global,2023,All ages,Both,Non-venomous animal contact,Percent of total DALYs,0.00031514734096380455,0.00021235929602524521,0.0004365116485887345
+All Population,Global,1990 - 2023,All ages,Both,Non-venomous animal contact,DALYs annual % change,-0.01475728581941537,,
+All Population,Global,2023,All ages,Both,Foreign body,Percent of total DALYs,0.002354373087268109,0.001790675346742065,0.0030760739528281145
+All Population,Global,1990 - 2023,All ages,Both,Foreign body,DALYs annual % change,-0.015925731320295865,,
+All Population,Global,2023,All ages,Both,Pulmonary aspiration and foreign body in airway,Percent of total DALYs,0.0019757276782095346,0.0014099988921212896,0.0026671262800170535
+All Population,Global,1990 - 2023,All ages,Both,Pulmonary aspiration and foreign body in airway,DALYs annual % change,-0.016341510193742262,,
+All Population,Global,2023,All ages,Both,Foreign body in eyes,Percent of total DALYs,0.00012460488486067535,0.00006762507126460807,0.00020586549703752798
+All Population,Global,1990 - 2023,All ages,Both,Foreign body in eyes,DALYs annual % change,-0.0024534407631937615,,
+All Population,Global,2023,All ages,Both,Foreign body in other body part,Percent of total DALYs,0.00025404052419789795,0.00019468637158382644,0.0003248196848071283
+All Population,Global,1990 - 2023,All ages,Both,Foreign body in other body part,DALYs annual % change,-0.017966299329697615,,
+All Population,Global,2023,All ages,Both,Other unintentional injuries,Percent of total DALYs,0.0045517466951335,0.0034274609361534124,0.00586219337310282
+All Population,Global,1990 - 2023,All ages,Both,Other unintentional injuries,DALYs annual % change,-0.019517552038399878,,
+All Population,Global,2023,All ages,Both,Self-harm and interpersonal violence,Percent of total DALYs,0.02851300242422089,0.02545067877185797,0.03195589775496781
+All Population,Global,1990 - 2023,All ages,Both,Self-harm and interpersonal violence,DALYs annual % change,-0.009049558556647212,,
+All Population,Global,2023,All ages,Both,Self-harm,Percent of total DALYs,0.012611184863624853,0.010668110138324634,0.01471248260046316
+All Population,Global,1990 - 2023,All ages,Both,Self-harm,DALYs annual % change,-0.011066983767684314,,
+All Population,Global,2023,All ages,Both,Self-harm by firearm,Percent of total DALYs,0.0010564909142783611,0.0007932545570447122,0.0014026087033551869
+All Population,Global,1990 - 2023,All ages,Both,Self-harm by firearm,DALYs annual % change,-0.012055958632066337,,
+All Population,Global,2023,All ages,Both,Interpersonal violence,Percent of total DALYs,0.010803342771387676,0.009562125638841679,0.012395477656712112
+All Population,Global,1990 - 2023,All ages,Both,Interpersonal violence,DALYs annual % change,-0.010745753367479235,,
+All Population,Global,2023,All ages,Both,Physical violence by firearm,Percent of total DALYs,0.003890582527428517,0.0033616708122510314,0.004476205224686955
+All Population,Global,1990 - 2023,All ages,Both,Physical violence by firearm,DALYs annual % change,-0.0009217286972311397,,
+All Population,Global,2023,All ages,Both,Physical violence by sharp object,Percent of total DALYs,0.002045300959373381,0.001586131651760938,0.0026988451450285053
+All Population,Global,1990 - 2023,All ages,Both,Physical violence by sharp object,DALYs annual % change,-0.017102985485448034,,
+All Population,Global,2023,All ages,Both,Physical violence by other means,Percent of total DALYs,0.0041298430895359535,0.003351570419731242,0.0050235948882381
+All Population,Global,1990 - 2023,All ages,Both,Physical violence by other means,DALYs annual % change,-0.016149248139602057,,
+All Population,Global,2023,All ages,Both,Exposure to forces of nature,Percent of total DALYs,0.001713298744234949,0.0015206485547533228,0.001957316130372174
+All Population,Global,1990 - 2023,All ages,Both,Exposure to forces of nature,DALYs annual % change,-0.003239290626178419,,
+All Population,Global,2023,All ages,Both,Maternal deaths aggravated by HIV/AIDS,Percent of total DALYs,0.00003442025681652577,0.000021507802012903252,0.00004769116806665543
+All Population,Global,1990 - 2023,All ages,Both,Maternal deaths aggravated by HIV/AIDS,DALYs annual % change,-0.006261946927736277,,
+All Population,Global,2023,All ages,Both,Thalassemias trait,Percent of total DALYs,0.0007526243950532675,0.0005305206663918406,0.0010524214443647783
+All Population,Global,1990 - 2023,All ages,Both,Thalassemias trait,DALYs annual % change,-0.015458288401761208,,
+All Population,Global,2023,All ages,Both,Sickle cell trait,Percent of total DALYs,0.0008400083772512022,0.0005694888786750842,0.0012052742121093966
+All Population,Global,1990 - 2023,All ages,Both,Sickle cell trait,DALYs annual % change,0.0015270502962073907,,
+All Population,Global,2023,All ages,Both,G6PD trait,Percent of total DALYs,0.000005377519804565788,0.0000037082024939129338,0.00000781835441154731
+All Population,Global,1990 - 2023,All ages,Both,G6PD trait,DALYs annual % change,-0.0028604899708819663,,
+All Population,Global,2023,All ages,Both,Environmental heat and cold exposure,Percent of total DALYs,0.0011324733732879034,0.0009842251254690922,0.001327455267515422
+All Population,Global,1990 - 2023,All ages,Both,Environmental heat and cold exposure,DALYs annual % change,-0.006210643052425319,,
+All Population,Global,2023,All ages,Both,Ebola,Percent of total DALYs,1.2575764648075213e-9,0,5.931912772005112e-9
+All Population,Global,1990 - 2023,All ages,Both,Ebola,DALYs annual % change,0,,
+All Population,Global,2023,All ages,Both,Acute lymphoid leukemia,Percent of total DALYs,0.0015665101359937754,0.001095657588387025,0.0019941152119156806
+All Population,Global,1990 - 2023,All ages,Both,Acute lymphoid leukemia,DALYs annual % change,-0.02293006894486124,,
+All Population,Global,2023,All ages,Both,Chronic lymphoid leukemia,Percent of total DALYs,0.00035193588233960855,0.00030575534276812205,0.00041949583980570857
+All Population,Global,1990 - 2023,All ages,Both,Chronic lymphoid leukemia,DALYs annual % change,-0.006122305127899752,,
+All Population,Global,2023,All ages,Both,Acute myeloid leukemia,Percent of total DALYs,0.0015111194948249996,0.0011880193585916696,0.001884939557698978
+All Population,Global,1990 - 2023,All ages,Both,Acute myeloid leukemia,DALYs annual % change,-0.006712576366970285,,
+All Population,Global,2023,All ages,Both,Chronic myeloid leukemia,Percent of total DALYs,0.00028533660552495675,0.00021371012455904755,0.00038424156110549286
+All Population,Global,1990 - 2023,All ages,Both,Chronic myeloid leukemia,DALYs annual % change,-0.02790179294747966,,
+All Population,Global,2023,All ages,Both,Non-melanoma skin cancer (squamous-cell carcinoma),Percent of total DALYs,0.0004764565365899419,0.00040363959984501195,0.0005547131083004677
+All Population,Global,1990 - 2023,All ages,Both,Non-melanoma skin cancer (squamous-cell carcinoma),DALYs annual % change,0.013156479054922537,,
+All Population,Global,2023,All ages,Both,Non-melanoma skin cancer (basal-cell carcinoma),Percent of total DALYs,9.290050110482206e-7,4.6825502642539836e-7,0.000001679579857319846
+All Population,Global,1990 - 2023,All ages,Both,Non-melanoma skin cancer (basal-cell carcinoma),DALYs annual % change,0.012578153168219445,,
+All Population,Global,2023,All ages,Both,Police conflict and executions,Percent of total DALYs,0.0003733526013994995,0.00027400809694785524,0.0004897784495301625
+All Population,Global,1990 - 2023,All ages,Both,Police conflict and executions,DALYs annual % change,0.01480710646574332,,
+All Population,Global,2023,All ages,Both,Drug-susceptible tuberculosis,Percent of total DALYs,0.014193157360879506,0.011133279159662704,0.018018382422216286
+All Population,Global,1990 - 2023,All ages,Both,Drug-susceptible tuberculosis,DALYs annual % change,-0.03604015699972321,,
+All Population,Global,2023,All ages,Both,Zika virus,Percent of total DALYs,3.7128441294149395e-8,2.492120125246898e-8,6.212887569915898e-8
+All Population,Global,1990 - 2023,All ages,Both,Zika virus,DALYs annual % change,0,,
+All Population,Global,2023,All ages,Both,Guinea worm disease,Percent of total DALYs,8.294384983894402e-11,4.238257300856478e-11,1.4862799598268074e-10
+All Population,Global,1990 - 2023,All ages,Both,Guinea worm disease,DALYs annual % change,-0.3631166459482431,,
+All Population,Global,2023,All ages,Both,Alcoholic cardiomyopathy,Percent of total DALYs,0.0007716323348505793,0.0006778653302571371,0.0008956500523341316
+All Population,Global,1990 - 2023,All ages,Both,Alcoholic cardiomyopathy,DALYs annual % change,-0.007483189846920584,,
+All Population,Global,2023,All ages,Both,Electrocution,Percent of total DALYs,0.0009415422738874986,0.0004870543945974168,0.0013281261517538044
+All Population,Global,1990 - 2023,All ages,Both,Electrocution,DALYs annual % change,-0.023713912003391253,,
+All Population,Global,2023,All ages,Both,Myocarditis,Percent of total DALYs,0.0002323323977138426,0.00015335106294482421,0.000355167480041211
+All Population,Global,1990 - 2023,All ages,Both,Myocarditis,DALYs annual % change,-0.03126183118607638,,
+All Population,Global,2023,All ages,Both,Other leukemia,Percent of total DALYs,0.0006475351001405063,0.000480167910262183,0.0008522281733307317
+All Population,Global,1990 - 2023,All ages,Both,Other leukemia,DALYs annual % change,-0.0034123510863101063,,
+All Population,Global,2023,All ages,Both,Other cardiomyopathy,Percent of total DALYs,0.00328825589233082,0.0025699017631431167,0.004097048965761515
+All Population,Global,1990 - 2023,All ages,Both,Other cardiomyopathy,DALYs annual % change,0.0003964777100921231,,
+All Population,Global,2023,All ages,Both,Conflict and terrorism,Percent of total DALYs,0.0047251221878088475,0.003701530968473912,0.006318434867555037
+All Population,Global,1990 - 2023,All ages,Both,Conflict and terrorism,DALYs annual % change,0.0005767194435501892,,
+All Population,Global,2023,All ages,Both,Multidrug-resistant tuberculosis without extensive drug resistance,Percent of total DALYs,0.0013285303760159639,0.00044700039489155974,0.0030197085981037725
+All Population,Global,1990 - 2023,All ages,Both,Multidrug-resistant tuberculosis without extensive drug resistance,DALYs annual % change,0.03869364216790205,,
+All Population,Global,2023,All ages,Both,Extensively drug-resistant tuberculosis,Percent of total DALYs,0.00008708903643587713,0.0000344798008237044,0.0001867294863902919
+All Population,Global,1990 - 2023,All ages,Both,Extensively drug-resistant tuberculosis,DALYs annual % change,0,,
+All Population,Global,2023,All ages,Both,HIV/AIDS - Drug-susceptible Tuberculosis,Percent of total DALYs,0.0035704734771610713,0.002399605328566388,0.004701936022070775
+All Population,Global,1990 - 2023,All ages,Both,HIV/AIDS - Drug-susceptible Tuberculosis,DALYs annual % change,-0.004445138797904107,,
+All Population,Global,2023,All ages,Both,HIV/AIDS - Multidrug-resistant Tuberculosis without extensive drug resistance,Percent of total DALYs,0.0003414317394170671,0.00012114110711389501,0.0007167882637907578
+All Population,Global,1990 - 2023,All ages,Both,HIV/AIDS - Multidrug-resistant Tuberculosis without extensive drug resistance,DALYs annual % change,0.0801725796807711,,
+All Population,Global,2023,All ages,Both,HIV/AIDS - Extensively drug-resistant Tuberculosis,Percent of total DALYs,0.000014306531801291061,0.000005766263859521186,0.00002867795037762184
+All Population,Global,1990 - 2023,All ages,Both,HIV/AIDS - Extensively drug-resistant Tuberculosis,DALYs annual % change,0,,
+All Population,Global,2023,All ages,Both,Latent tuberculosis infection,Percent of total DALYs,0,0,0
+All Population,Global,1990 - 2023,All ages,Both,Latent tuberculosis infection,DALYs annual % change,0,,
+All Population,Global,2023,All ages,Both,HIV/AIDS and sexually transmitted infections,Percent of total DALYs,0.019011816259197838,0.016306856105661228,0.02261730227931391
+All Population,Global,1990 - 2023,All ages,Both,HIV/AIDS and sexually transmitted infections,DALYs annual % change,0.005364383628352437,,
+All Population,Global,2023,All ages,Both,Respiratory infections and tuberculosis,Percent of total DALYs,0.06555113978491256,0.05815460750152676,0.07285541439584374
+All Population,Global,1990 - 2023,All ages,Both,Respiratory infections and tuberculosis,DALYs annual % change,-0.027221864722355757,,
+All Population,Global,2023,All ages,Both,Enteric infections,Percent of total DALYs,0.024557800126482503,0.01941877679286758,0.03131454418944642
+All Population,Global,1990 - 2023,All ages,Both,Enteric infections,DALYs annual % change,-0.051578250826849636,,
+All Population,Global,2023,All ages,Both,Typhoid and paratyphoid,Percent of total DALYs,0.0022264138048785774,0.0011368303581515994,0.003729738516844326
+All Population,Global,1990 - 2023,All ages,Both,Typhoid and paratyphoid,DALYs annual % change,-0.05587641286676612,,
+All Population,Global,2023,All ages,Both,Invasive Non-typhoidal Salmonella (iNTS),Percent of total DALYs,0.0020931185952879805,0.0015522722496877648,0.002816146812339587
+All Population,Global,1990 - 2023,All ages,Both,Invasive Non-typhoidal Salmonella (iNTS),DALYs annual % change,-0.007387859776090335,,
+All Population,Global,2023,All ages,Both,Other infectious diseases,Percent of total DALYs,0.022029518991448806,0.017533848876111424,0.027066141273554247
+All Population,Global,1990 - 2023,All ages,Both,Other infectious diseases,DALYs annual % change,-0.04976594456885293,,
+All Population,Global,2023,All ages,Both,Maternal and neonatal disorders,Percent of total DALYs,0.06640556023152949,0.06125117353635923,0.07221859374311346
+All Population,Global,1990 - 2023,All ages,Both,Maternal and neonatal disorders,DALYs annual % change,-0.029231823380051238,,
+All Population,Global,2023,All ages,Both,"Myelodysplastic, myeloproliferative, and other hematopoietic neoplasms",Percent of total DALYs,0.00043688870695140255,0.00037543017059481394,0.0005115485400545612
+All Population,Global,1990 - 2023,All ages,Both,"Myelodysplastic, myeloproliferative, and other hematopoietic neoplasms",DALYs annual % change,0.020244199490532484,,
+All Population,Global,2023,All ages,Both,Benign and in situ intestinal neoplasms,Percent of total DALYs,0,0,0
+All Population,Global,1990 - 2023,All ages,Both,Benign and in situ intestinal neoplasms,DALYs annual % change,0,,
+All Population,Global,2023,All ages,Both,Benign and in situ cervical and uterine neoplasms,Percent of total DALYs,0,0,0
+All Population,Global,1990 - 2023,All ages,Both,Benign and in situ cervical and uterine neoplasms,DALYs annual % change,0,,
+All Population,Global,2023,All ages,Both,Non-rheumatic calcific aortic valve disease,Percent of total DALYs,0.0008419500318048942,0.0006991325134010204,0.000981695490391598
+All Population,Global,1990 - 2023,All ages,Both,Non-rheumatic calcific aortic valve disease,DALYs annual % change,0.0131616511320519,,
+All Population,Global,2023,All ages,Both,Non-rheumatic degenerative mitral valve disease,Percent of total DALYs,0.00036570205932950943,0.0002916003365886736,0.000476115432379368
+All Population,Global,1990 - 2023,All ages,Both,Non-rheumatic degenerative mitral valve disease,DALYs annual % change,0.002997914978330093,,
+All Population,Global,2023,All ages,Both,Other non-rheumatic valve diseases,Percent of total DALYs,0.000018397623748237082,0.00001210863164942159,0.00002930808263763614
+All Population,Global,1990 - 2023,All ages,Both,Other non-rheumatic valve diseases,DALYs annual % change,0.016048796295461482,,
+All Population,Global,2023,All ages,Both,Nonalcoholic fatty liver disease including cirrhosis,Percent of total DALYs,0.0009056699329608332,0.00061967569907519,0.0012378686274451746
+All Population,Global,1990 - 2023,All ages,Both,Nonalcoholic fatty liver disease including cirrhosis,DALYs annual % change,0.009261262862375358,,
+All Population,Global,2023,All ages,Both,Headache disorders,Percent of total DALYs,0.016203663331708886,0.011971224863293137,0.020905689801353027
+All Population,Global,1990 - 2023,All ages,Both,Headache disorders,DALYs annual % change,0.0026627476477114054,,
+All Population,Global,2023,All ages,Both,Substance use disorders,Percent of total DALYs,0.01270978657738983,0.011215821314004518,0.014295340185567943
+All Population,Global,1990 - 2023,All ages,Both,Substance use disorders,DALYs annual % change,0.0014690567245309934,,
+All Population,Global,2023,All ages,Both,Diabetes and kidney diseases,Percent of total DALYs,0.04880018744392954,0.044655134585694124,0.05305478148405782
+All Population,Global,1990 - 2023,All ages,Both,Diabetes and kidney diseases,DALYs annual % change,0.015303271801230922,,
+All Population,Global,2023,All ages,Both,Diabetes mellitus type 1,Percent of total DALYs,0.0011227904825776409,0.0009025428269269282,0.001406236457460394
+All Population,Global,1990 - 2023,All ages,Both,Diabetes mellitus type 1,DALYs annual % change,-0.005758623572933265,,
+All Population,Global,2023,All ages,Both,Diabetes mellitus type 2,Percent of total DALYs,0.031051769977048782,0.027410920768892743,0.034785071625728095
+All Population,Global,1990 - 2023,All ages,Both,Diabetes mellitus type 2,DALYs annual % change,0.021029640673360345,,
+All Population,Global,2023,All ages,Both,Atopic dermatitis,Percent of total DALYs,0.003928481526699259,0.0021010208669219703,0.006492359529558466
+All Population,Global,1990 - 2023,All ages,Both,Atopic dermatitis,DALYs annual % change,-0.006682382748899026,,
+All Population,Global,2023,All ages,Both,Contact dermatitis,Percent of total DALYs,0.0013282033317316235,0.000904597871113049,0.0018736517000135003
+All Population,Global,1990 - 2023,All ages,Both,Contact dermatitis,DALYs annual % change,0.004347816801809051,,
+All Population,Global,2023,All ages,Both,Seborrhoeic dermatitis,Percent of total DALYs,0.00012744998049796767,0.00007615229077986142,0.00018745245800951712
+All Population,Global,1990 - 2023,All ages,Both,Seborrhoeic dermatitis,DALYs annual % change,0.0019698381960323932,,
+All Population,Global,2023,All ages,Both,Bacterial skin diseases,Percent of total DALYs,0.0010454334477444749,0.000784952147667863,0.001379503961005244
+All Population,Global,1990 - 2023,All ages,Both,Bacterial skin diseases,DALYs annual % change,0.013324257442335338,,
+All Population,Global,2023,All ages,Both,Blindness and vision loss,Percent of total DALYs,0.008394824726614758,0.006186010209906637,0.011283393849290642
+All Population,Global,1990 - 2023,All ages,Both,Blindness and vision loss,DALYs annual % change,0.005862791832176758,,
+All Population,Global,2023,All ages,Both,Upper digestive system diseases,Percent of total DALYs,0.005471593754027338,0.004251499742073868,0.007149022089266842
+All Population,Global,1990 - 2023,All ages,Both,Upper digestive system diseases,DALYs annual % change,-0.011765186570457048,,
+All Population,Global,2023,All ages,Both,Maternal abortion and miscarriage,Percent of total DALYs,0.00045109066532464604,0.00030501706575153766,0.0006946941400812185
+All Population,Global,1990 - 2023,All ages,Both,Maternal abortion and miscarriage,DALYs annual % change,-0.0368400236741611,,
+All Population,Global,2023,All ages,Both,Liver cancer due to NASH,Percent of total DALYs,0.00037850314535339846,0.0002790474178981708,0.0004958372855618146
+All Population,Global,1990 - 2023,All ages,Both,Liver cancer due to NASH,DALYs annual % change,0.015032263885967161,,
+All Population,Global,2023,All ages,Both,Chronic kidney disease due to diabetes mellitus type 1,Percent of total DALYs,0.0010958029382495608,0.0008154114508593123,0.0014260028563154875
+All Population,Global,1990 - 2023,All ages,Both,Chronic kidney disease due to diabetes mellitus type 1,DALYs annual % change,0.009251019668932423,,
+All Population,Global,2023,All ages,Both,Chronic kidney disease due to diabetes mellitus type 2,Percent of total DALYs,0.003423242336727316,0.002836001672231756,0.004033365649892895
+All Population,Global,1990 - 2023,All ages,Both,Chronic kidney disease due to diabetes mellitus type 2,DALYs annual % change,0.016755981336965764,,
+All Population,Global,2023,All ages,Both,Refraction disorders,Percent of total DALYs,0.0018352468759612896,0.0013799801901735193,0.0024289540590935474
+All Population,Global,1990 - 2023,All ages,Both,Refraction disorders,DALYs annual % change,0.0012373329245550179,,
+All Population,Global,2023,All ages,Both,Near vision loss,Percent of total DALYs,0.0020026153489863044,0.0008727075078551747,0.003843699751819327
+All Population,Global,1990 - 2023,All ages,Both,Near vision loss,DALYs annual % change,0.014498653673461172,,
+All Population,Global,2023,All ages,Both,Pulmonary Arterial Hypertension,Percent of total DALYs,0.00025062556207225835,0.00017779850142602674,0.0003551415955357526
+All Population,Global,1990 - 2023,All ages,Both,Pulmonary Arterial Hypertension,DALYs annual % change,-0.01944198448173766,,
+All Population,Global,2023,All ages,Both,Hepatoblastoma,Percent of total DALYs,0.00011027928887568358,0.00007428330511483319,0.00016561388542918874
+All Population,Global,1990 - 2023,All ages,Both,Hepatoblastoma,DALYs annual % change,-0.01994281588038999,,
+All Population,Global,2023,All ages,Both,Burkitt lymphoma,Percent of total DALYs,0.00013337046871945564,0.0000948833589574939,0.00020505231428248394
+All Population,Global,1990 - 2023,All ages,Both,Burkitt lymphoma,DALYs annual % change,-0.0036457827071539805,,
+All Population,Global,2023,All ages,Both,Other non-Hodgkin lymphoma,Percent of total DALYs,0.0028426760295772813,0.002435759351174691,0.0033090220946898653
+All Population,Global,1990 - 2023,All ages,Both,Other non-Hodgkin lymphoma,DALYs annual % change,0.0017667063273491639,,
+All Population,Global,2023,All ages,Both,Eye cancer,Percent of total DALYs,0.00017506606020533497,0.00010055934757745771,0.0003026916155081199
+All Population,Global,1990 - 2023,All ages,Both,Eye cancer,DALYs annual % change,-0.016636255638352162,,
+All Population,Global,2023,All ages,Both,Retinoblastoma,Percent of total DALYs,0.00010135356519695562,0.000040094517865107695,0.0002228856596739287
+All Population,Global,1990 - 2023,All ages,Both,Retinoblastoma,DALYs annual % change,-0.02412006629748361,,
+All Population,Global,2023,All ages,Both,Other eye cancers,Percent of total DALYs,0.00007371249500837933,0.00005497874365885946,0.00009847745513478189
+All Population,Global,1990 - 2023,All ages,Both,Other eye cancers,DALYs annual % change,-0.0019419842296477484,,
+All Population,Global,2023,All ages,Both,Soft tissue and other extraosseous sarcomas,Percent of total DALYs,0.0007962070370645231,0.00059229810734136,0.0010428737774472914
+All Population,Global,1990 - 2023,All ages,Both,Soft tissue and other extraosseous sarcomas,DALYs annual % change,0.0014527872855597968,,
+All Population,Global,2023,All ages,Both,Malignant neoplasm of bone and articular cartilage,Percent of total DALYs,0.001081653013078228,0.0007894672807740165,0.0014330641914055756
+All Population,Global,1990 - 2023,All ages,Both,Malignant neoplasm of bone and articular cartilage,DALYs annual % change,0.0016131187606396524,,
+All Population,Global,2023,All ages,Both,Neuroblastoma and other peripheral nervous cell tumors,Percent of total DALYs,0.0001191670050765148,0.0000944222334564479,0.00015431943781189908
+All Population,Global,1990 - 2023,All ages,Both,Neuroblastoma and other peripheral nervous cell tumors,DALYs annual % change,-0.0032356140858959817,,
+All Population,Global,2023,All ages,Both,Osteoarthritis hip,Percent of total DALYs,0.00042429599480994226,0.00020234271971434178,0.0008613855379798755
+All Population,Global,1990 - 2023,All ages,Both,Osteoarthritis hip,DALYs annual % change,0.014413487074932669,,
+All Population,Global,2023,All ages,Both,Osteoarthritis knee,Percent of total DALYs,0.004456889010859495,0.002309111643720187,0.00918583934602561
+All Population,Global,1990 - 2023,All ages,Both,Osteoarthritis knee,DALYs annual % change,0.014466578406757788,,
+All Population,Global,2023,All ages,Both,Osteoarthritis hand,Percent of total DALYs,0.0023004326647507356,0.0011164573714430648,0.004870519697733031
+All Population,Global,1990 - 2023,All ages,Both,Osteoarthritis hand,DALYs annual % change,0.017064743904953394,,
+All Population,Global,2023,All ages,Both,Osteoarthritis other,Percent of total DALYs,0.0007357702284296668,0.00036021556256122806,0.0015461688519577135
+All Population,Global,1990 - 2023,All ages,Both,Osteoarthritis other,DALYs annual % change,0.0146116849606239,,
+All Population,Global,2023,All ages,Both,Ulcerative colitis,Percent of total DALYs,0.0004316095023503216,0.0003732410540757845,0.0005013420501739728
+All Population,Global,1990 - 2023,All ages,Both,Ulcerative colitis,DALYs annual % change,0.004216349593667556,,
+All Population,Global,2023,All ages,Both,Crohn's disease,Percent of total DALYs,0.00014753954331586444,0.00012266670089315412,0.00017566574482736854
+All Population,Global,1990 - 2023,All ages,Both,Crohn's disease,DALYs annual % change,0.00023274738099618377,,
+All Population,Global,2023,All ages,Both,Thyroid diseases,Percent of total DALYs,0.0025671162210354685,0.0017823851783586057,0.003696607728598032
+All Population,Global,1990 - 2023,All ages,Both,Thyroid diseases,DALYs annual % change,0.0017625934710072135,,
+All Population,Global,2023,All ages,Both,COVID-19,Percent of total DALYs,0.011476559853846262,0.009089809743521422,0.01558635647508607
+All Population,Global,1990 - 2023,All ages,Both,COVID-19,DALYs annual % change,0,,
+All Population,Global,2023,All ages,Both,Other direct maternal disorders,Percent of total DALYs,0.0008865558652683483,0.000661841892359,0.0012258641756767675
+All Population,Global,1990 - 2023,All ages,Both,Other direct maternal disorders,DALYs annual % change,-0.007761341124463245,,
+All Population,Global,2023,All ages,Both,Other digestive diseases,Percent of total DALYs,0.001264214406156368,0.0010584311736213353,0.001519079271666703
+All Population,Global,1990 - 2023,All ages,Both,Other digestive diseases,DALYs annual % change,-0.0045080546470991235,,
+All Population,Global,2023,All ages,Both,Other vision loss,Percent of total DALYs,0.0015976202590648678,0.0012545598271122668,0.0019975422064876817
+All Population,Global,1990 - 2023,All ages,Both,Other vision loss,DALYs annual % change,0.004954944164319507,,
+All Population,Global,2023,All ages,Both,Self-harm by other specified means,Percent of total DALYs,0.011554693949346493,0.009682387990206282,0.013542920183403955
+All Population,Global,1990 - 2023,All ages,Both,Self-harm by other specified means,DALYs annual % change,-0.010974909073955916,,
+All Population,Global,2023,All ages,Both,Other benign and in situ neoplasms,Percent of total DALYs,0.0007620408911156621,0.0005825514574613917,0.0010073415138398022
+All Population,Global,1990 - 2023,All ages,Both,Other benign and in situ neoplasms,DALYs annual % change,-0.00009057719416906147,,
+
+"Institute for Health Metrics and Evaluation (IHME). GBD Compare Data Visualization. Global Burden of Disease (GBD) Study 2023. Seattle, WA: IHME, University of Washington, 2025. Available from https://vizhub.healthdata.org/gbd-compare/. (Accessed 4/4/2026). For terms and conditions of use, please visit http://www.healthdata.org/about/terms-and-conditions"
