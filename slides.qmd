@@ -20,7 +20,7 @@ date: "2026"
 
 If we can **accurately model our environment**, we can make the world a better place.
 
-![](figures/1990daly.png){style="max-height: 580px; max-width: 650px; display: block; margin: 0.6em auto;"}
+<iframe src="animations/interactive/daly-1990.html" style="width:100%; height:780px; border:none; display:block;"></iframe>
 
 ---
 
@@ -33,7 +33,7 @@ If we can **predict the future**, we can make the world a better place.
 :::
 ::::
 
-![](figures/2023daly.png){style="max-height: 580px; max-width: 650px; display: block; margin: 0.6em auto;"}
+<iframe src="animations/interactive/daly-2023.html" style="width:100%; height:780px; border:none; display:block;"></iframe>
 
 ## {background-iframe="animations/interactive/opioid-grid.html" background-interactive="true"}
 
