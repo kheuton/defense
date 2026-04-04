@@ -232,9 +232,6 @@ const rmseRight = Math.sqrt(rightPredictions.reduce((s, p, i) => s + (p - chartD
 
 // ── Show initial overlays after first render ──────────────────
 requestAnimationFrame(() => {
-  const labelY = GRID.HEIGHT_SCALE + 1.5;
-  showOverlay("left-label",  PRED_LEFT.label,  new THREE.Vector3(-offset, labelY, 0));
-  showOverlay("right-label", PRED_RIGHT.label, new THREE.Vector3( offset, labelY, 0));
   showOverlay("left-rmse",
     `RMSE = <span class="value">${rmseLeft.toFixed(2)}</span>`,
     new THREE.Vector3(-offset, -1.5, 0));

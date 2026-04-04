@@ -736,12 +736,6 @@ function transitionToSplit() {
     .to({ x: offset }, TIMING_COMPARISON.splitDuration)
     .easing(EASING_COMPARISON.split)
     .onComplete(() => {
-      // Show labels above each chart
-      const labelY = GRID.HEIGHT_SCALE + 1.5;
-      showOverlay("left-label", PRED_LEFT.label,
-        new THREE.Vector3(-offset, labelY, 0));
-      showOverlay("right-label", PRED_RIGHT.label,
-        new THREE.Vector3(offset, labelY, 0));
       transitioning = false;
     })
     .start();
