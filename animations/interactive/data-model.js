@@ -190,11 +190,12 @@
       el.style.transform = `translateY(${currentY}px)`;
       requestAnimationFrame(() => requestAnimationFrame(() => {
         el.style.transform = 'translateY(0)';
-        // Delay gold + lock until AFTER the 300ms CSS transition finishes
-        // so no sliver of the next reel character is ever gold-colored
+        // Delay gold until AFTER the 300ms CSS transition finishes
         setTimeout(() => {
           el.classList.add('gold');
-          el.classList.add('locked');   // max-height clips any sub-pixel overflow
+          // Remove the extra 3 reel spans — only the first θ remains,
+          // so there is nothing below to roll over into the clip window
+          Array.from(el.querySelectorAll('span')).slice(1).forEach(s => s.remove());
         }, 320);
       }));
     }, delay);
@@ -287,9 +288,6 @@
         .transition().delay(delay).duration(480).ease(d3.easeBackOut.overshoot(0.4))
         .attr('y', PLOT_H - barH).attr('height', barH);
     });
-
-    // Show RMSE equation as bars appear
-    setTimeout(() => document.getElementById('rmse-eq').classList.add('visible'), 2 * 220 + 200);
 
     setTimeout(() => { transitioning = false; }, 2 * 220 + 480);
   }
@@ -402,6 +400,9 @@
       PE[i].gapLine.transition().delay(480 + i * 80).duration(420)
         .attr('stroke-opacity', 1);
     });
+
+    // RMSE equation appears with the gap lines
+    setTimeout(() => document.getElementById('rmse-eq').classList.add('visible'), 520);
 
     setTimeout(() => {
       removeListeners();
