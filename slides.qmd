@@ -731,19 +731,22 @@ window.addEventListener('load', function () {
 ```
 
 
-## {background-image="figures/daml/slide01.png" background-size="contain" background-color="white"}
+## {background-iframe="animations/interactive/frontier.html" background-interactive="true"}
 
-## {background-image="figures/daml/slide02.png" background-size="contain" background-color="white"}
-
-## {background-image="figures/daml/slide03.png" background-size="contain" background-color="white"}
-
-## {background-image="figures/daml/slide04.png" background-size="contain" background-color="white"}
-
-## {background-image="figures/daml/slide05.png" background-size="contain" background-color="white"}
-
-## {background-image="figures/daml/slide06.png" background-size="contain" background-color="white"}
-
-## {background-image="figures/daml/slide07.png" background-size="contain" background-color="white"}
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
 
 ## {background-iframe="animations/interactive/training-results-cook.html" background-interactive="true"}
 

@@ -1,0 +1,37 @@
+[
+  {
+    "bpr":1.0,
+    "logLikelihood":-8.1954979427,
+    "optimization":"BPR Only"
+  },
+  {
+    "bpr":0.8566292399,
+    "logLikelihood":-3.6553328539,
+    "optimization":"DAML, $\\epsilon$=0.5"
+  },
+  {
+    "bpr":0.8915590665,
+    "logLikelihood":-3.6852879253,
+    "optimization":"DAML, $\\epsilon$=0.86"
+  },
+  {
+    "bpr":0.962241633,
+    "logLikelihood":-3.7512539121,
+    "optimization":"DAML, $\\epsilon$=0.91"
+  },
+  {
+    "bpr":0.9665003727,
+    "logLikelihood":-3.7728406351,
+    "optimization":"DAML, $\\epsilon$=0.94"
+  },
+  {
+    "bpr":1.0,
+    "logLikelihood":-3.9677646264,
+    "optimization":"DAML, $\\epsilon$=1.0"
+  },
+  {
+    "bpr":0.8613414776,
+    "logLikelihood":-3.6553328539,
+    "optimization":"NLL Only"
+  }
+]
