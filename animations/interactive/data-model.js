@@ -1,6 +1,20 @@
 (async function () {
   'use strict';
 
+  // ── Render secondary KaTeX equations (synchronous, runs before await) ────
+  if (window.katex) {
+    katex.render(
+      '\\text{RMSE} = \\displaystyle\\sqrt{\\frac{1}{n}\\sum_i (\\hat{y}_i - y_i)^2}',
+      document.getElementById('rmse-eq'),
+      { throwOnError: false, displayMode: false }
+    );
+    katex.render(
+      'p(y \\mid x;\\,\\theta) = \\mathcal{N}\\!\\left(y;\\;\\mu_\\theta(x),\\,\\sigma^2\\right)',
+      document.getElementById('likelihood-eq'),
+      { throwOnError: false, displayMode: false }
+    );
+  }
+
   // ── Color helpers (matching config.js / ma-choropleth.html) ──────────────
   function hexToRgb(hex) {
     return [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5),16), parseInt(hex.slice(5,7),16)];
@@ -169,15 +183,19 @@
   function stopSlot(reelId, delay) {
     setTimeout(() => {
       const el = document.getElementById(reelId);
-      // Capture current animated position via computed style
+      // Capture current animated position, then start transition toward 0
       const matrix = new DOMMatrix(window.getComputedStyle(el).transform);
-      const currentY = matrix.m42;   // translateY in px
+      const currentY = matrix.m42;
       el.classList.remove('spinning');
       el.style.transform = `translateY(${currentY}px)`;
-      // Double-rAF so browser registers the non-animated starting value
       requestAnimationFrame(() => requestAnimationFrame(() => {
         el.style.transform = 'translateY(0)';
-        setTimeout(() => el.classList.add('gold'), 280);
+        // Delay gold + lock until AFTER the 300ms CSS transition finishes
+        // so no sliver of the next reel character is ever gold-colored
+        setTimeout(() => {
+          el.classList.add('gold');
+          el.classList.add('locked');   // max-height clips any sub-pixel overflow
+        }, 320);
       }));
     }, delay);
   }
@@ -270,6 +288,9 @@
         .attr('y', PLOT_H - barH).attr('height', barH);
     });
 
+    // Show RMSE equation as bars appear
+    setTimeout(() => document.getElementById('rmse-eq').classList.add('visible'), 2 * 220 + 200);
+
     setTimeout(() => { transitioning = false; }, 2 * 220 + 480);
   }
 
@@ -354,12 +375,13 @@
     }, 2200);
   }
 
-  // ── Phase 7: area under curve shades in ───────────────────────────────────
+  // ── Phase 7: area under curve shades in + likelihood equation ───────────────
   function phase7() {
     transitioning = true;
     PLOTS.forEach((p, i) => {
       PE[i].gaussFill.transition().duration(650).attr('fill-opacity', 0.18);
     });
+    setTimeout(() => document.getElementById('likelihood-eq').classList.add('visible'), 300);
     setTimeout(() => { transitioning = false; }, 750);
   }
 

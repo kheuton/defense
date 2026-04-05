@@ -22,12 +22,12 @@ svg {
   width: 100vw; height: 100vh;
 }
 
-/* ── Math font helpers (KaTeX fonts, no JS required) ───────────── */
+/* ── Math font helpers (KaTeX fonts, no extra JS required for main eq) ─ */
 .mi   { font-family: KaTeX_Math, serif; font-style: italic; }
 .mcal { font-family: KaTeX_Caligraphic, serif; font-weight: bold; }
 .mrm  { font-family: KaTeX_Main, serif; font-style: normal; }
 
-/* ── Equation overlay ──────────────────────────────────────────── */
+/* ── Equation overlay ──────────────────────────────────────────────── */
 #eq-overlay {
   position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   pointer-events: none; z-index: 5;
@@ -35,8 +35,7 @@ svg {
 
 #eq-box {
   position: absolute;
-  opacity: 0;
-  transition: opacity 0.5s;
+  opacity: 0; transition: opacity 0.5s;
 }
 #eq-box.visible { opacity: 1; }
 
@@ -47,7 +46,7 @@ svg {
 }
 .eq-line1.visible { opacity: 1; }
 
-/* Line 2: inline layout so all elements baseline-align naturally */
+/* Line 2: inline so baseline aligns naturally */
 .eq-terms {
   font-size: 28px; color: #c8c8e0; line-height: 1.55;
   white-space: nowrap; margin-top: 4px;
@@ -55,17 +54,16 @@ svg {
 }
 .eq-terms.visible { opacity: 1; }
 
-/* Each θᵢxᵢ group — inline-flex so baseline aligns with surrounding text */
 .theta-grp {
   display: inline-flex; flex-direction: column; align-items: flex-start;
   vertical-align: baseline;
 }
 .theta-main {
-  display: inline; /* plain inline so baseline is natural */
+  display: inline;
   font-size: 28px; color: #c8c8e0;
 }
 
-/* Subscripts: numeric (0,1,2,3) and text (loc/time/demo) */
+/* Subscripts */
 .msub {
   font-family: KaTeX_Main, serif; font-style: normal;
   font-size: 0.58em; vertical-align: -0.3em; line-height: 0;
@@ -77,7 +75,7 @@ svg {
   display: inline-block; letter-spacing: -0.01em;
 }
 
-/* ── Slot machine ──────────────────────────────────────────────── */
+/* ── Slot machine ──────────────────────────────────────────────────── */
 .slot-wrap {
   display: inline-block; overflow: hidden;
   height: 0.88em; vertical-align: -0.01em;
@@ -88,6 +86,11 @@ svg {
   transition: transform 0.3s ease-out, color 0.4s;
 }
 .slot-reel.gold { color: #ffd166; }
+/* Lock out extra reel spans after stopping to prevent sub-pixel sliver */
+.slot-reel.locked {
+  max-height: 0.88em;
+  overflow: hidden;
+}
 .slot-reel > span {
   display: flex; align-items: center; justify-content: center;
   height: 0.88em; line-height: 1;
@@ -97,10 +100,20 @@ svg {
 }
 @keyframes slotScroll {
   from { transform: translateY(0); }
-  to   { transform: translateY(-2.64em); }  /* 3 × 0.88em */
+  to   { transform: translateY(-2.64em); }
 }
 
-/* ── SVG elements ──────────────────────────────────────────────── */
+/* ── Secondary equations (RMSE, likelihood) ───────────────────────── */
+.sec-eq {
+  color: #c8c8e0; font-size: 22px;
+  margin-top: 18px;
+  opacity: 0; transition: opacity 0.5s;
+}
+.sec-eq.visible { opacity: 1; }
+/* KaTeX inherits our color */
+.sec-eq .katex { color: inherit; }
+
+/* ── SVG elements ──────────────────────────────────────────────────── */
 .tract { stroke: #222233; stroke-width: 0.3; }
 .legend-label { fill: #888899; font-size: 11px; font-family: Inter, system-ui, sans-serif; }
 .legend-title { fill: #888899; font-size: 11px; font-family: Inter, system-ui, sans-serif; font-weight: 600; }
@@ -118,23 +131,26 @@ svg {
 
     <!-- Line 2: μ = θ₀ + θ₁x_{loc} + θ₂x_{time} + θ₃x_{demo} -->
     <div class="eq-terms" id="eq2"><span class="mi">μ</span>&thinsp;=&thinsp;<!--
-      --><!-- θ₀ (intercept) --><!--
       --><span class="slot-wrap"><span class="slot-reel" id="reel-0"><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span></span></span><span class="msub">0</span><!--
       -->&thinsp;+&thinsp;<!--
-      --><!-- θ₁x_{loc} --><!--
       --><span class="slot-wrap"><span class="slot-reel" id="reel-1"><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span></span></span><span class="msub">1</span><span class="mi">x</span><span class="msub-x">loc</span><!--
       -->&thinsp;+&thinsp;<!--
-      --><!-- θ₂x_{time} --><!--
       --><span class="slot-wrap"><span class="slot-reel" id="reel-2"><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span></span></span><span class="msub">2</span><span class="mi">x</span><span class="msub-x">time</span><!--
       -->&thinsp;+&thinsp;<!--
-      --><!-- θ₃x_{demo} --><!--
       --><span class="slot-wrap"><span class="slot-reel" id="reel-3"><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span><span><span class="mi">θ</span></span></span></span><span class="msub">3</span><span class="mi">x</span><span class="msub-x">demo</span></div>
+
+    <!-- Phase 3: RMSE definition -->
+    <div class="sec-eq" id="rmse-eq"></div>
+
+    <!-- Phase 7: likelihood of y -->
+    <div class="sec-eq" id="likelihood-eq"></div>
 
   </div>
 </div>
 
 <svg id="main-svg"></svg>
 
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js"></script>
 <script src="data-model.js"></script>
 </body>
