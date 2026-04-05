@@ -193,9 +193,9 @@
         // Delay gold until AFTER the 300ms CSS transition finishes
         setTimeout(() => {
           el.classList.add('gold');
-          // Remove the extra 3 reel spans — only the first θ remains,
-          // so there is nothing below to roll over into the clip window
-          Array.from(el.querySelectorAll('span')).slice(1).forEach(s => s.remove());
+          // Remove the extra 3 reel spans added when spinning started
+          // Use el.children (direct children only) so the inner .mi span is untouched
+          Array.from(el.children).slice(1).forEach(s => s.remove());
         }, 320);
       }));
     }, delay);
@@ -335,8 +335,16 @@
   function phase5() {
     transitioning = true;
 
-    ['reel-0','reel-1','reel-2','reel-3'].forEach(id =>
-      document.getElementById(id).classList.add('spinning'));
+    ['reel-0','reel-1','reel-2','reel-3'].forEach(id => {
+      const el = document.getElementById(id);
+      // Add 3 extra spans so the reel has content to scroll through
+      for (let k = 0; k < 3; k++) {
+        const s = document.createElement('span');
+        s.innerHTML = '<span class="mi">\u03B8</span>';
+        el.appendChild(s);
+      }
+      el.classList.add('spinning');
+    });
 
     gaussDrifting = true;
     startRAF();
