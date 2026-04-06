@@ -848,20 +848,68 @@ Kyle Heuton, Michael C. Hughes
 :::
 ::: {.fragment .results-step}
 :::
+::: {.fragment .results-step}
+:::
 
 ## {background-image="figures/ch5/slide02.png" background-size="contain" background-color="black"}
 
-## {background-image="figures/ch5/slide03.png" background-size="contain" background-color="white"}
+## {background-iframe="animations/interactive/bench-bump-original.html" background-interactive="true"}
 
-## {background-image="figures/ch5/slide04.png" background-size="contain" background-color="white"}
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
 
 ## {background-image="figures/ch5/slide05.png" background-size="contain" background-color="white"}
 
-## {background-image="figures/ch5/slide06.png" background-size="contain" background-color="white"}
+## {background-iframe="animations/interactive/bench-bump-rerun-main.html" background-interactive="true"}
 
-## {background-image="figures/ch5/slide07.png" background-size="contain" background-color="white"}
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
 
-## {background-image="figures/ch5/slide08.png" background-size="contain" background-color="white"}
+## {background-iframe="animations/interactive/bench-bump-rerun-budget.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
+## {background-iframe="animations/interactive/bench-bump-rerun-portfolio.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
 
 ## {background-image="figures/ch5/slide09.png" background-size="contain" background-color="white"}
 
