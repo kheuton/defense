@@ -1,0 +1,613 @@
+dataset,dataset_title,panel,method_pair,line_name,alpha,y_normalized,y_raw,pg_sigma_used,pg_sigma_plotted
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.0,0.17932550757339125,0.7516255974769592,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.02,0.4804635962303296,0.7544581294059753,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.04,0.6160397379502739,0.7557333707809448,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.06,0.7899789533777455,0.7573694586753845,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.08,0.5226414321400258,0.7548548579216003,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.1,0.5723537402397202,0.7553224563598633,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.12,0.9999999893685898,0.7593449354171753,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.14,0.37051986831067385,0.7534239888191223,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.16,0.6714234948389074,0.7562543153762817,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.18,0.640544198807064,0.7559638619422913,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.2,0.7530226524424467,0.7570218443870544,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.22,0.18013661980242385,0.7516332268714905,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.24,0.6178077091369935,0.7557500004768372,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.26,0.4276969436431841,0.7539618015289307,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.28,0.5744829098409309,0.7553424835205078,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.3,0.7444933004090256,0.7569416165351868,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.32,0.536404992776423,0.7549843192100525,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.34,0.8836180581309877,0.7582502365112305,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.36,0.5080984433460425,0.7547180652618408,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.38,0.5996844202695459,0.7555795311927795,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.4,0.366489654422668,0.7533860802650452,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.42,0.7458937363669648,0.7569547891616821,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.44,0.561365704262044,0.7552191019058228,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.46,0.5939749505948709,0.7555258274078369,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.48,0.5309680061161888,0.7549331784248352,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.5,0.5388890239778354,0.7550076842308044,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.52,0.3989975117268659,0.7536918520927429,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.54,0.4306562359162953,0.7539896368980408,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.56,0.5402767863071959,0.7550207376480103,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.58,0.36529833333627637,0.7533748745918274,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.6,0.5619233439195039,0.755224347114563,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.62,0.7081706809026587,0.7565999627113342,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.64,0.5014067674565234,0.754655122756958,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.66,0.2683894324097464,0.7524633407592773,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.68,0.629898350801011,0.7558637261390686,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.7000000000000001,0.36814989976646917,0.7534016966819763,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.72,0.5888928255348385,0.755478024482727,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.74,0.4589311012752293,0.7542555928230286,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.76,0.0,0.7499388456344604,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.78,0.5047082477012577,0.754686176776886,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.8,0.5502762792557386,0.7551147937774658,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.8200000000000001,0.2988821827699414,0.7527501583099365,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.84,0.3216059988114333,0.7529639005661011,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.86,0.5004182244273898,0.754645824432373,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.88,0.4212397298823698,0.7539010643959045,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.9,0.5031303809432177,0.7546713352203369,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.92,0.6253802022127277,0.7558212280273438,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.94,0.19323481493844277,0.7517564296722412,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.96,0.90383249571391,0.758440375328064,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.98,0.7201345862808898,0.7567124962806702,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,1.0,0.38975209967875196,0.7536048889160156,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.0,0.09630979911808661,0.39390480518341064,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.02,0.21692124962096018,0.4002857208251953,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.04,0.0,0.38880956172943115,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.06,0.4653456413847768,0.41342854499816895,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.08,0.4680473270602853,0.41357147693634033,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.1,0.5787578544120459,0.41942858695983887,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.12,0.6696665354615804,0.42423808574676514,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.14,0.6696665354615804,0.42423808574676514,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.16,0.6696665354615804,0.42423808574676514,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.18,0.7056694826869977,0.4261428117752075,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.2,0.7452743019326823,0.4282380938529968,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.22,0.8172813230247494,0.43204760551452637,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.24,0.8172813230247494,0.43204760551452637,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.26,0.8172813230247494,0.43204760551452637,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.28,0.8172813230247494,0.43204760551452637,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.3,0.8739874295383839,0.43504762649536133,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.32,0.8739874295383839,0.43504762649536133,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.34,0.8739874295383839,0.43504762649536133,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.36,0.8559859559256753,0.43409526348114014,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.38,0.8739874295383839,0.43504762649536133,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.4,0.8739874295383839,0.43504762649536133,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.42,0.8739874295383839,0.43504762649536133,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.44,0.8739874295383839,0.43504762649536133,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.46,0.9459944506304512,0.43885713815689087,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.48,0.9459944506304512,0.43885713815689087,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.5,0.9459944506304512,0.43885713815689087,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.52,0.9459944506304512,0.43885713815689087,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.54,0.9459944506304512,0.43885713815689087,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.56,0.9459944506304512,0.43885713815689087,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.58,0.9459944506304512,0.43885713815689087,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.6,0.9099903767638013,0.4369523525238037,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.62,0.92799185037651,0.4379047155380249,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.64,0.9459944506304512,0.43885713815689087,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.66,0.9459944506304512,0.43885713815689087,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.68,0.9099903767638013,0.4369523525238037,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.7000000000000001,0.9999999981098097,0.4417142868041992,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.72,0.92799185037651,0.4379047155380249,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.74,0.8730872431936253,0.4350000023841858,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.76,0.7992798494120408,0.4310952425003052,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.78,0.7794780031098147,0.4300476312637329,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.8,0.8532853968913993,0.4339523911476135,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.8200000000000001,0.7983796630672821,0.43104761838912964,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.84,0.8919889031510927,0.4359999895095825,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.86,0.8541855832361579,0.43400001525878906,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.88,0.8865889117237731,0.4357143044471741,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.9,0.9090913170602751,0.43690478801727295,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.92,0.7974794767225234,0.4309999942779541,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.94,0.7785778167650561,0.4300000071525574,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.96,0.7425737428984063,0.4280952215194702,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.98,0.8730872431936253,0.4350000023841858,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,1.0,0.8325833642444146,0.4328571557998657,0.08,0.1
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.0,0.22313887053599438,0.3971904516220093,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.02,0.40289235718992944,0.4013333320617676,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.04,0.41322147159294237,0.4015713930130005,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.06,0.8512416106897633,0.4116666913032532,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.08,0.8181827550528794,0.41090476512908936,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.1,0.0,0.392047643661499,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.12,0.6446308748932922,0.40690481662750244,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.14,0.7747947850129826,0.4099047780036926,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.16,0.6466946288476247,0.4069523811340332,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.18,0.35330536681352237,0.40019047260284424,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.2,0.22727155076033456,0.39728569984436035,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.22,0.6095056791442381,0.4060952663421631,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.24,0.5351251935796275,0.4043809771537781,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.26,0.35950180099219514,0.4003332853317261,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.28,0.2747947871824091,0.39838099479675293,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.3,0.23140423098467475,0.3973809480667114,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.32,0.5743804833951842,0.40528571605682373,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.34,0.6219011336594211,0.40638095140457153,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.36,0.40495869730209955,0.4013809561729431,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.38,0.7045469796727122,0.4082857370376587,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.4,0.9999999956611471,0.4150952100753784,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.42,0.5826458438438645,0.4054762125015259,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.44,0.6219011336594211,0.40638095140457153,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.46,0.665289103699318,0.40738093852996826,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.48,0.5805769175738569,0.40542852878570557,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.5,0.665289103699318,0.40738093852996826,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.52,0.7066107336270447,0.40833330154418945,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.54,0.7066107336270447,0.40833330154418945,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.56,0.665289103699318,0.40738093852996826,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.58,0.747934949712609,0.4092857241630554,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.6,0.8719024256536267,0.41214287281036377,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.62,0.7500012898247791,0.40933334827423096,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.64,0.747934949712609,0.4092857241630554,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.66,0.7045469796727122,0.4082857370376587,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.68,0.5826458438438645,0.4054762125015259,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.7000000000000001,0.7024780534027045,0.4082380533218384,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.72,0.6177710395929185,0.40628576278686523,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.74,0.7066107336270447,0.40833330154418945,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.76,0.6611564234749778,0.4072856903076172,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.78,0.49380097749406326,0.4034285545349121,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.8,0.6611564234749778,0.4072856903076172,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.8200000000000001,0.6198347935472511,0.406333327293396,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.84,0.6177710395929185,0.40628576278686523,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.86,0.49380097749406326,0.4034285545349121,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.88,0.5764468235073542,0.40533334016799927,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.9,0.5764468235073542,0.40533334016799927,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.92,0.6177710395929185,0.40628576278686523,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.94,0.6198347935472511,0.406333327293396,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.96,0.6198347935472511,0.406333327293396,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.98,0.6590926695206453,0.4072381258010864,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,1.0,0.6198347935472511,0.406333327293396,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.0,0.9999999988918511,0.0712378174066543,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.02,0.9676791834641782,0.0683211684226989,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.04,0.9297793025215079,0.0649010613560676,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.06,0.8930070742922563,0.0615827143192291,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.08,0.8614694565245253,0.0587367415428161,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.1,0.813097630062273,0.054371640086174,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.12,0.7845691227641025,0.0517972111701965,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.14,0.7506859576295895,0.0487395748496055,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.16,0.7124479790253693,0.0452889576554298,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.18,0.672323506289585,0.041668102145195,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.2,0.6417011878322187,0.0389047265052795,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.22,0.6059150158598386,0.03567536175251,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.24,0.5616328088040705,0.0316793099045753,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.26,0.5221699176463076,0.0281181558966636,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.28,0.48117167505650976,0.0244184508919715,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.3,0.44531540664587527,0.0211827605962753,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.32,0.4024132490193633,0.0173112452030181,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.34,0.36637170804401137,0.0140588358044624,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.36,0.33349623081162755,0.0110921338200569,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.38,0.27655909846304483,0.0059540942311286,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.4,0.25383943098807615,0.0039038583636283,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.42,0.2172645295991438,0.0006033182144165,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.44,0.1883289015270781,-0.0020078495144844,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.46,0.14063046322785402,-0.006312184035778,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.48,0.12942345458720264,-0.0073235109448432,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.5,0.09197593923369721,-0.010702796280384,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.52,0.0808760154934183,-0.0117044597864151,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.54,0.06591343949478777,-0.0130546912550926,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.56,0.05932841991182359,-0.0136489272117614,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.58,0.054567889248255154,-0.0140785202383995,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.6,0.053241258423888466,-0.0141982361674308,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.62,0.024706393733791104,-0.0167732387781143,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.64,0.025122596496153424,-0.0167356804013252,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.66,0.02524627666636156,-0.016724519431591,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.68,0.019682980785883177,-0.0172265544533729,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.7000000000000001,0.013741378804007564,-0.0177627280354499,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.72,0.005301404358516333,-0.0185243561863899,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.74,0.003153596649709992,-0.0187181755900383,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.76,0.0011447433644426151,-0.018899455666542,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.78,0.009318945801989057,-0.0181618109345436,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.8,0.002294275413712852,-0.018795721232891,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.8200000000000001,0.0038516713086612234,-0.0186551809310913,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.84,0.0037924732565656227,-0.0186605229973793,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.86,0.0033961683052986455,-0.0186962857842445,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.88,0.0,-0.0190027579665184,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.9,0.01294092536597874,-0.0178349614143371,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.92,0.008246197837027564,-0.0182586163282394,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.94,0.012355302236949467,-0.0178878083825111,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.96,0.008154222062920623,-0.0182669162750244,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.98,0.019593564481253132,-0.0172346234321594,,
+MA,Massachusetts Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,1.0,0.02202456510315207,-0.0170152485370636,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.0,0.466410258851729,0.9544463157653807,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.02,0.0,0.9516778588294984,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.04,0.9545207904741703,0.957343578338623,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.06,0.4677759400626916,0.9544544219970704,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.08,0.1457262186245821,0.9525428414344788,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.1,0.8174505807011686,0.956529974937439,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.12,0.41820974552497786,0.954160213470459,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.14,0.6135021586872736,0.9553194046020508,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.16,0.9999999831526996,0.9576135277748108,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.18,0.6234635981081394,0.955378532409668,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.2,0.5129036706648424,0.9547222852706908,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.22,0.6111825089834042,0.9553056359291076,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.24,0.36593227211267076,0.9538499116897584,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.26,0.3170991270484684,0.9535600543022156,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.28,0.13604594886477048,0.9524853825569152,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.3,0.5626004082595014,0.9550172686576844,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.32,0.5435612054954087,0.9549042582511902,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.34,0.5010242524845343,0.9546517729759216,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.36,0.46745460330717975,0.9544525146484376,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.38,0.5552498299771691,0.9549736380577089,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.4,0.2759579805693484,0.9533158540725708,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.42,0.3881948842054352,0.9539820551872252,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.44,0.8057418726721887,0.9564604759216307,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.46,0.3665146949819985,0.9538533687591552,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.48,0.6298903332183754,0.9554166793823242,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.5,0.14148859016127027,0.9525176882743835,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.52,0.7131065111223402,0.955910623073578,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.54,0.6131607383845424,0.9553173780441284,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.56,0.3518737890590109,0.9537664651870728,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.58,0.7521790522378157,0.9561425447463988,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.6,0.4326799412966373,0.9542461037635804,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.62,0.5378775616322751,0.9548705220222472,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.64,0.4012190645772915,0.954059362411499,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.66,0.04381225825927443,0.9519379138946532,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.68,0.7139399783319303,0.9559155702590942,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.7000000000000001,0.7292637248604179,0.9560065269470216,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.72,0.5273738664365205,0.9548081755638124,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.74,0.44083386146774917,0.954294502735138,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.76,0.6093649479600406,0.9552948474884032,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.78,0.6350216795329544,0.9554471373558044,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.8,0.36776991668323517,0.9538608193397522,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.8200000000000001,0.6610499567294289,0.9556016325950624,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.84,0.5539443994079024,0.954965889453888,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.86,0.6006386466932107,0.9552430510520936,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.88,0.5039062415105308,0.9546688795089722,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.9,0.5700212789570647,0.9550613164901732,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.92,0.5865500383187215,0.9551594257354736,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.94,0.7466962438469144,0.9561100006103516,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.96,0.2991444358342466,0.9534534811973572,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,0.98,0.3599473750412448,0.9538143873214722,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,PG loss,1.0,0.49348288050359806,0.9546070098876952,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.0,0.1450599894846167,0.6108599305152893,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.02,0.1010507974433968,0.6084268689155579,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.04,0.0,0.60284024477005,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.06,0.15278262159121292,0.6112868785858154,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.08,0.04381890241860168,0.6052627861499786,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.1,0.11646102249095135,0.6092788279056549,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.12,0.11646102249095135,0.6092788279056549,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.14,0.11646102249095135,0.6092788279056549,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.16,0.1404833353882184,0.6106069087982178,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.18,0.1223217272419575,0.6096028387546539,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.2,0.1569727667374207,0.611518532037735,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.22,0.06141988391465595,0.6062358617782593,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.24,0.09607092341011914,0.6081515550613403,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.26,0.12038163559379055,0.6094955801963806,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.28,0.08406057555761572,0.6074875593185425,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.3,0.08406057555761572,0.6074875593185425,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.32,0.10808181032670929,0.6088155806064606,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.34,0.14176522978647932,0.6106777787208557,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.36,0.1874595361628395,0.6132040023803711,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.38,0.17977032602962095,0.612778902053833,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.4,0.17977032602962095,0.612778902053833,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.42,0.38649924703696614,0.6242079734802246,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.44,0.48941358902821325,0.6298976242542267,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.46,0.33138964732165516,0.6211612224578857,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.48,0.28939655496483213,0.6188396215438843,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.5,0.291223982218871,0.6189406514167786,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.52,0.3093850513010452,0.61994469165802,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.54,0.3334062860701388,0.6212727129459381,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.56,0.5851211832438715,0.6351888477802277,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.58,0.7801631948507556,0.645971804857254,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.6,0.762837675103024,0.6450139582157135,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.62,0.762837675103024,0.6450139582157135,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.64,0.8237395184303256,0.6483809351921082,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.66,0.8742643780879372,0.6511742174625397,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.68,0.8742643780879372,0.6511742174625397,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.7000000000000001,0.8742643780879372,0.6511742174625397,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.72,0.8742643780879372,0.6511742174625397,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.74,0.8742643780879372,0.6511742174625397,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.76,0.9182741091932439,0.6536073088645935,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.78,0.9519569895889272,0.6554694771766663,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.8,0.9519569895889272,0.6554694771766663,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.8200000000000001,0.999999998191201,0.6581255495548248,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.84,0.9519569895889272,0.6554694771766663,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.86,0.999999998191201,0.6581255495548248,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.88,0.9274700034488927,0.6541157066822052,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.9,0.9274700034488927,0.6541157066822052,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.92,0.9274700034488927,0.6541157066822052,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.94,0.9274700034488927,0.6541157066822052,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.96,0.9274700034488927,0.6541157066822052,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,0.98,0.9274700034488927,0.6541157066822052,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_PG,BPR_to_PG,Regret,1.0,0.9274700034488927,0.6541157066822052,1.0,1.0
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.0,0.040340343159897624,0.6097494661808014,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.02,0.045107798713172546,0.6108599305152893,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.04,0.045107798713172546,0.6108599305152893,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.06,0.02112350915348284,0.6052733659744263,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.08,0.02112350915348284,0.6052733659744263,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.1,0.02112350915348284,0.6052733659744263,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.12,0.045107798713172546,0.6108599305152893,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.14,0.02112350915348284,0.6052733659744263,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.16,0.00972056307530544,0.6026173233985901,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.18,0.056510872738950745,0.6135160028934479,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.2,0.03466215658415387,0.6084268689155579,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.22,0.02208068515504076,0.6054963171482086,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.24,0.02208068515504076,0.6054963171482086,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.26,0.04203577681805081,0.6101443767547607,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.28,0.0437635812192055,0.6105468273162842,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.3,0.0677481266740968,0.616133451461792,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.32,0.0677481266740968,0.616133451461792,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.34,0.04606510266233127,0.611082911491394,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.36,0.055411163110105625,0.6132598519325256,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.38,0.07536625477311568,0.6179079115390778,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.4,0.09877695523843509,0.6233608722686768,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.42,0.044008217031928226,0.6106038093566895,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.44,0.09877695523843509,0.6233608722686768,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.46,0.043365664180728666,0.6104541420936584,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.48,0.008620981394061119,0.6023612022399902,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.5,0.03538723563786711,0.6085957586765289,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.52,0.0,0.6003531515598297,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.54,0.0,0.6003531515598297,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.56,0.023984417507290506,0.6059397459030151,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.58,0.10277429418251645,0.6242919564247131,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.6,0.09415344073605612,0.622283935546875,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.62,0.08737388121265689,0.6207047998905182,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.64,0.12272938584552649,0.6289400160312653,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.66,0.06981908654058744,0.6166158318519592,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.68,0.06610067336624226,0.615749716758728,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.7000000000000001,0.09036337690526494,0.6214011311531067,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.72,0.08544583881625584,0.620255708694458,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.74,0.10459396496104295,0.6247158050537109,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.76,0.07967552996793867,0.6189116537570953,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.78,0.12206879238261464,0.6287861466407776,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.8,0.12274742645723878,0.6289442181587219,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.8200000000000001,0.14443032252140353,0.6339947283267975,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.84,0.18712694869756777,0.643939882516861,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.86,0.1526748820739216,0.6359151005744934,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.88,0.23940851349219328,0.6561176180839539,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.9,0.3414990556960537,0.6798971593379974,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.92,0.42171836296737714,0.6985823214054108,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.94,0.5661886051402291,0.7322331964969635,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.96,0.7652062361702107,0.7785895764827729,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,0.98,0.8095684202397422,0.7889226824045182,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,Regret,1.0,0.9999999995706791,0.8332791477441788,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.0,0.9971472766962945,0.8869368433952332,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.02,0.9989138539644014,0.888161838054657,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.04,0.999999999855789,0.8889150023460388,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.06,0.9977064235009382,0.8873245716094971,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.08,0.9963905159786801,0.8864120841026306,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.1,0.9974874064281892,0.8871726989746094,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.12,0.9915209103250802,0.8830353617668152,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.14,0.9944877836700575,0.8850926756858826,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.16,0.9911427018792028,0.8827731013298035,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.18,0.9890107236784996,0.8812947273254395,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.2,0.9844353470044992,0.8781220316886902,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.22,0.9834306018854402,0.8774253129959106,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.24,0.9807904490638218,0.8755945563316345,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.26,0.976755652598031,0.8727967143058777,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.28,0.9773448841654148,0.873205304145813,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.3,0.96253527290244,0.8629359006881714,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.32,0.9613976390885342,0.8621470332145691,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.34,0.9517928636925506,0.8554868102073669,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.36,0.9449965438766008,0.8507740497589111,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.38,0.9399573461176108,0.8472797274589539,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.4,0.9267026013495165,0.8380885124206543,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.42,0.9247369489085344,0.8367254734039307,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.44,0.9109766082134741,0.8271836638450623,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.46,0.903691196111833,0.8221317529678345,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.48,0.8927178218805636,0.8145225048065186,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.5,0.8897789703431671,0.812484622001648,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.52,0.8766386336299508,0.8033727407455444,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.54,0.8601274281863881,0.7919234037399292,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.56,0.8524424044790916,0.7865943908691406,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.58,0.8407715794910384,0.7785015106201172,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.6,0.828244800024793,0.7698150873184204,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.62,0.8041307452544472,0.7530937194824219,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.64,0.7985550931975662,0.7492274045944214,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.66,0.7765235057040998,0.7339500784873962,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.68,0.7544142135662986,0.7186188697814941,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.7000000000000001,0.7321991949765816,0.7032143473625183,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.72,0.7222871252183227,0.6963410377502441,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.74,0.6705757158911014,0.6604828834533691,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.76,0.6410698699424501,0.6400226950645447,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.78,0.6139933256068406,0.6212470531463623,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.8,0.5220291913848999,0.5574765205383301,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.8200000000000001,0.4903226020635677,0.5354902744293213,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.84,0.44639962207100425,0.5050328373908997,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.86,0.3722642769659511,0.4536252915859222,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.88,0.35637019596265584,0.4426038861274719,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.9,0.2917795856628033,0.397814929485321,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.92,0.2601270199797061,0.3758661448955536,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.94,0.1086900804041199,0.2708554863929748,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.96,0.15572949799071215,0.303473949432373,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.98,0.11329433845035096,0.2740482091903686,,
+asurv,Aransas National Wildlife Reserve Whooping Cranes,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,1.0,0.0,0.1954867094755172,,
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.0,0.993544847397992,0.716090738773346,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.02,0.9701594442034672,0.7144107818603516,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.04,0.9778135277397273,0.7149606347084045,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.06,0.9999999986079761,0.7165544629096985,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.08,0.9571844243292087,0.713478684425354,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.1,0.8850186548188245,0.7082944512367249,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.12,0.8754960622176692,0.7076103687286377,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.14,0.9408382888551858,0.712304413318634,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.16,0.8087018414133823,0.7028120160102844,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.18,0.8827029315505641,0.7081280946731567,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.2,0.797629348753069,0.7020165920257568,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.22,0.8085433666214663,0.7028006315231323,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.24,0.7879657052899989,0.7013223767280579,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.26,0.7504030310511298,0.6986239552497864,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.28,0.7026490171834389,0.6951934099197388,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.3,0.7795043129970146,0.7007145285606384,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.32,0.7160289360024882,0.6961545944213867,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.34,0.6932965153275338,0.6945215463638306,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.36,0.7081989537443107,0.6955921053886414,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.38,0.6308408530935563,0.6900348663330078,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.4,0.5976797954573821,0.6876526474952698,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.42,0.592991098865143,0.687315821647644,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.44,0.5599727515127885,0.6849438548088074,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.46,0.5238064808068762,0.6823457479476929,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.48,0.5371747836725913,0.683306097984314,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.5,0.5345072629604963,0.6831144690513611,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.52,0.49131997817503575,0.6800119876861572,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.54,0.4669729399866329,0.6782629489898682,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.56,0.43216739524272235,0.6757625937461853,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.58,0.4555810086096301,0.677444577217102,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.6,0.4099726272649492,0.6741681694984436,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.62,0.3424515796663248,0.6693176031112671,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.64,0.35398539161619486,0.6701461672782898,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.66,0.3707082158626255,0.6713474988937378,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.68,0.31520719083200105,0.6673604249954224,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.7000000000000001,0.2556580060644213,0.6630825400352478,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.72,0.25860845821129835,0.6632944941520691,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.74,0.2682729313853209,0.6639887690544128,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.76,0.2598248144675756,0.6633818745613098,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.78,0.2096853816116192,0.659779965877533,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.8,0.24766540045956564,0.6625083684921265,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.8200000000000001,0.17378544812144017,0.6572009921073914,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.84,0.1853615753298847,0.6580325961112976,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.86,0.13493174364057428,0.6544098258018494,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.88,0.0759774616258941,0.6501746773719788,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.9,0.12622309748376281,0.6537842154502869,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.92,0.01448177496388983,0.6457569599151611,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.94,0.06798568573199087,0.6496005654335022,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.96,0.027526490558153375,0.6466940641403198,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,0.98,0.0,0.6447166204452515,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,PG loss,1.0,0.05275551148900006,0.6485064625740051,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.0,0.35931554439363805,0.18209511041641235,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.02,0.24434740656959858,0.17910557985305786,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.04,0.4407646799168376,0.1842130422592163,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.06,0.4144134215943007,0.18352782726287842,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.08,0.21918809799721126,0.17845135927200317,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.1,0.3305735099376282,0.18134772777557373,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.12,0.2515128583368437,0.17929190397262573,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.14,0.4215765811504879,0.1837140917778015,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.16,0.36409251223846817,0.18221932649612427,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.18,0.276672166909231,0.17994612455368042,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.2,0.1389309122241613,0.17636442184448242,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.22,0.2503186163756362,0.17926084995269775,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.24,0.16767523889122915,0.17711186408996582,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.26,0.10660844409558683,0.17552393674850464,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.28,0.19164030550240893,0.17773503065109253,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.3,0.13654472051280422,0.17630237340927124,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.32,0.19283454746361645,0.1777660846710205,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.34,0.22277082388083383,0.1785445213317871,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.36,0.049124375183567076,0.1740291714668274,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.38,0.13654472051280422,0.17630237340927124,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.4,0.19283454746361645,0.1777660846710205,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.42,0.19283454746361645,0.1777660846710205,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.44,0.19164030550240893,0.17773503065109253,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.46,0.1353504785515967,0.17627131938934326,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.48,0.19164030550240893,0.17773503065109253,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.5,0.276672166909231,0.17994612455368042,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.52,0.1353504785515967,0.17627131938934326,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.54,0.0,0.172751784324646,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.56,0.19402878942482396,0.1777971386909485,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.58,0.3628982702772606,0.1821882724761963,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.6,0.2203823399584188,0.17848241329193115,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.62,0.16409251300760658,0.17701870203018188,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.64,0.2503186163756362,0.17926084995269775,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.66,0.44554164776166766,0.18433725833892822,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.68,0.3353504777824583,0.18147194385528564,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.7000000000000001,0.276672166909231,0.17994612455368042,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.72,0.5593155436244996,0.18729573488235474,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.74,0.3940287886556856,0.18299776315689087,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.76,0.736547010416447,0.19190430641174316,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.78,0.5030257166736875,0.18583202362060547,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.8,0.6191880964589345,0.18885260820388794,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.8200000000000001,0.6515151490096249,0.18969321250915527,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.84,0.9365470096473085,0.19710493087768555,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.86,0.8539036321629015,0.1949559450149536,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.88,0.7928345451562012,0.19336795806884766,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.9,0.886226100291476,0.1957964301109314,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.92,0.9389354935697236,0.1971670389175415,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.94,0.8826433744078535,0.19570326805114746,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.96,0.9976115122318929,0.19869279861450195,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,0.98,0.9999999961543079,0.1987549066543579,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_PG,BPR_to_PG,Regret,1.0,0.9952230283094778,0.198630690574646,0.01,0.01
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.0,0.09711961454275514,0.18349671363830566,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.02,0.04514256707546488,0.17922979593276978,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.04,0.0,0.17552393674850464,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.06,0.017451776341008682,0.17695659399032593,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.08,0.051977047467290254,0.17979085445404053,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.1,0.051977047467290254,0.17979085445404053,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.12,0.11495039850774479,0.1849604845046997,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.14,0.061081943261775566,0.18053829669952393,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.16,0.034903552682017364,0.17838925123214722,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.18,0.07891127509027486,0.18200194835662842,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.2,0.10698034738046686,0.18430620431900024,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.22,0.06980783143227991,0.18125462532043457,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.24,0.051599491979799635,0.17975986003875732,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.26,0.13164561173728187,0.18633103370666504,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.28,0.10735862893620265,0.18433725833892822,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.3,0.08004611975748224,0.18209511041641235,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.32,0.08042440131321804,0.18212616443634033,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.34,0.14150561850674842,0.18714046478271484,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.36,0.034903552682017364,0.17838925123214722,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.38,0.05386845524596922,0.17994612455368042,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.4,0.12405384216573974,0.18570780754089355,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.42,0.12443284978972072,0.1857389211654663,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.44,0.12481040527721134,0.1857699155807495,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.46,0.1862706300947227,0.19081532955169678,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.48,0.14264118924220098,0.18723368644714355,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.5,0.07056366847550631,0.18131667375564575,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.52,0.06183778030500198,0.1806003451347351,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.54,0.10660206582473106,0.18427515029907227,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.56,0.11608451710670699,0.18505358695983887,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.58,0.07132023158697791,0.1813787817955017,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.6,0.08915028948372238,0.18284249305725098,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.62,0.08118096442468963,0.1821882724761963,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.64,0.05424673680170501,0.1799771785736084,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.66,0.06221606186073777,0.18063139915466309,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.68,0.09976758543290569,0.1837140917778015,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.7000000000000001,0.06448575119515253,0.18081772327423096,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.72,0.04589913018693646,0.17929190397262573,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.74,0.0735891948531475,0.1815650463104248,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.76,0.07245507625418528,0.18147194385528564,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.78,0.0735891948531475,0.1815650463104248,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.8,0.1096283182706174,0.1845235824584961,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.8200000000000001,0.10849347360341002,0.18443042039871216,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.84,0.1699529723526762,0.18947577476501465,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.86,0.17033197997665717,0.1895068883895874,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.88,0.25113466284561103,0.19614017009735107,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.9,0.34028567839757856,0.2034587860107422,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.92,0.35622432851564406,0.20476722717285156,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.94,0.6430191071547441,0.22831088304519653,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.96,0.6619840097186959,0.22986775636672974,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,0.98,0.7242000715794337,0.23497521877288818,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,Regret,1.0,0.9999999987818597,0.2576162815093994,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.0,0.9999999997154753,-0.1877670288085937,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.02,0.9879103120612492,-0.1920161098241806,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.04,0.9766073522954467,-0.1959886848926544,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.06,0.9625354546300408,-0.2009344398975372,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.08,0.9506060718985424,-0.2051271796226501,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.1,0.9366358434224249,-0.2100372016429901,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.12,0.9259295435819178,-0.2138000726699829,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.14,0.9086484948424365,-0.2198737263679504,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.16,0.8999519209863577,-0.2229302525520324,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.18,0.8780606960018075,-0.2306242138147354,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.2,0.8630143767444832,-0.2359124422073364,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.22,0.8488939339490792,-0.2408752590417862,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.24,0.8344865449180182,-0.2459389269351959,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.26,0.8165002562725208,-0.2522604465484619,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.28,0.7988651036677609,-0.2584585547447204,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.3,0.7804567903724806,-0.26492840051651,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.32,0.7625533464291808,-0.2712208032608032,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.34,0.7386324262407891,-0.2796281278133392,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.36,0.7243415031242301,-0.2846508622169494,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.38,0.6971021311236535,-0.2942245006561279,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.4,0.6749374847038564,-0.30201455950737,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.42,0.652982451491667,-0.3097309470176697,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.44,0.6310744794972051,-0.3174307942390442,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.46,0.6061030342161556,-0.3262073397636413,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.48,0.5842039656953179,-0.3339040577411651,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.5,0.5592078450730814,-0.3426892757415771,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.52,0.5305239904707272,-0.35277059674263,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.54,0.5023628121676015,-0.3626682162284851,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.56,0.4803734369857191,-0.3703966736793518,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.58,0.4511361255038933,-0.3806725144386291,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.6,0.4229716401962785,-0.3905712962150574,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.62,0.3958774372132683,-0.4000939130783081,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.64,0.36126514110206304,-0.4122588634490967,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.66,0.3340606198411008,-0.4218202531337738,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.68,0.30451821599642215,-0.4322033226490021,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.7000000000000001,0.2763690785814357,-0.4420967102050781,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.72,0.24359598573601005,-0.4536152482032776,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.74,0.22332192834405187,-0.4607408344745636,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.76,0.19556607007829024,-0.4704959988594055,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.78,0.16894434476226594,-0.479852557182312,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.8,0.15221972072679776,-0.4857306480407715,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.8200000000000001,0.11916383660007311,-0.4973485767841339,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.84,0.1061231307703124,-0.50193190574646,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.86,0.08104433503585218,-0.5107461810112,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.88,0.05807659529516093,-0.5188184976577759,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.9,0.03765864081043983,-0.5259946584701538,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.92,0.021368336697854238,-0.5317201018333435,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.94,0.010136392733577363,-0.5356677174568176,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.96,0.012149086542546683,-0.5349603295326233,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,0.98,0.0,-0.5392302870750427,,
+cook,Cook County IL Fatal Overdoses,DPO_to_SPO+,BPR_to_SPO,SPO+ loss,1.0,0.019355134118963543,-0.5324276685714722,,

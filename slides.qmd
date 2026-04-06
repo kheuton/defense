@@ -871,7 +871,24 @@ Kyle Heuton, Michael C. Hughes
 
 ## {background-image="figures/ch5/slide12.png" background-size="contain" background-color="white"}
 
-## {background-image="figures/ch5/slide13.png" background-size="contain" background-color="white"}
+## {background-iframe="animations/interactive/surrogate-interp.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
 
 ## Benchmarking takeaways
 
