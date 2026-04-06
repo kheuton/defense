@@ -80,12 +80,18 @@ function build(svg) {
     const ya = YAXIS[task];
     const tt = TASK_TITLES[task];
 
+    // Label group: hidden until phase 1 (MSE appears on all axes simultaneously)
+    const lg = el('g', { 'data-group': 'ph-mse' });
+    lg.style.opacity = '0';
+    lg.style.transition = 'opacity 0.4s';
+    g.appendChild(lg);
+
     buildAxis(g, {
       cl, cr, ct: G.ct, cb: G.cb,
       yMin: ya.yMin, yMax: ya.yMax, type: ya.type,
-      ticks: ya.ticks, tickFmt: ya.tickFmt, labels: ci === 0,
+      ticks: ya.ticks, tickFmt: ya.tickFmt, labels: true,
       title: tt[0], title2: tt[1], titleX: colTitleX(ci), titleY: G.titleY1,
-    });
+    }, lg);
 
     const taskData = DATA.regret[task];
     RERUN_METHODS.forEach((m, mi) => {

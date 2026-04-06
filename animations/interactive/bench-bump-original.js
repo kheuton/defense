@@ -146,6 +146,12 @@ function buildGrid(svg) {
   g.style.transition = 'opacity 0.5s';
   svg.appendChild(g);
 
+  // data-group used for each column's label reveal:
+  // TopK (ci=0)      → 'grid-topk'   (pre-revealed at crossfade)
+  // Knapsack Gen (1) → 'grid-kgen-ts' (pre-revealed at crossfade with MSE)
+  // subsequent cols  → same group as the column's data markers
+  const LABEL_GROUPS = ['grid-topk','grid-kgen-ts','grid-kenergy','grid-sched','grid-budget','grid-bipartite','grid-portfolio'];
+
   // Task columns
   TASK_ORDER.forEach((task, ci) => {
     const cl = colChartL(ci), cr = colChartR(ci), cx = colCx(ci);
@@ -153,12 +159,18 @@ function buildGrid(svg) {
     const tt = TASK_TITLES[task];
     const titleX = colLeft(ci) + G.colW / 2;
 
+    // Label group: hidden initially, revealed alongside first data for this column
+    const lg = el('g', { 'data-group': LABEL_GROUPS[ci] });
+    lg.style.opacity = '0';
+    lg.style.transition = 'opacity 0.4s';
+    g.appendChild(lg);
+
     buildAxis(g, {
       cl, cr, ct: G.ct, cb: G.cb,
       yMin: ya.yMin, yMax: ya.yMax, type: ya.type,
-      ticks: ya.ticks, tickFmt: ya.tickFmt, labels: ci === 0,
+      ticks: ya.ticks, tickFmt: ya.tickFmt, labels: true,
       title: tt[0], title2: tt[1], titleX, titleY: G.titleY1,
-    });
+    }, lg);
 
     const taskData = DATA.regret[task];
     ORIG_METHODS.forEach((m, mi) => {

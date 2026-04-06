@@ -83,7 +83,9 @@ export function jitter(s1, s2, range) {
 // Draw axis: gridlines, left spine, optional tick labels, and 1–2 line title.
 // cfg: { cl, cr, ct, cb, yMin, yMax, type ('log'|'lin'),
 //        ticks, tickFmt, labels (bool), title, title2, titleX, titleY }
-export function buildAxis(g, cfg) {
+// labelGroup: optional <g> to place labels into (enables deferred reveal).
+//   If null, labels go directly into g (always visible with the axis).
+export function buildAxis(g, cfg, labelGroup = null) {
   const { cl, cr, ct, cb } = cfg;
   const H = cb - ct;
   const ys = v => cfg.type === 'log'
@@ -101,12 +103,23 @@ export function buildAxis(g, cfg) {
   }));
 
   if (cfg.labels) {
+    const target = labelGroup || g;
+
+    // Opaque background strip behind labels so gridlines don't bleed through.
+    target.appendChild(el('rect', {
+      x: cl - 52, y: ct - 6, width: 50, height: cb - ct + 12,
+      fill: '#11111e'
+    }));
+
+    // Tick marks (dashes) + labels
     cfg.ticks.forEach(t => {
       const yp = ys(t).toFixed(1);
-      g.appendChild(el('line', { x1: cl - 3, y1: yp, x2: cl, y2: yp, stroke: '#383858', 'stroke-width': 1 }));
-      g.appendChild(el('text', {
-        x: cl - 5, y: +yp + 4, 'text-anchor': 'end',
-        fill: '#5a5a72', 'font-size': 9, 'font-family': font
+      target.appendChild(el('line', {
+        x1: cl - 4, y1: yp, x2: cl, y2: yp, stroke: '#383858', 'stroke-width': 1.5
+      }));
+      target.appendChild(el('text', {
+        x: cl - 7, y: +yp + 5, 'text-anchor': 'end',
+        fill: '#b8b8d0', 'font-size': 13, 'font-weight': 700, 'font-family': font
       }, cfg.tickFmt(t)));
     });
   }
