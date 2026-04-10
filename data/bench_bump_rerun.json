@@ -1,0 +1,310 @@
+{
+  "problems": [
+    "knapsack",
+    "knapsack-real",
+    "energy",
+    "budgetalloc",
+    "cubic",
+    "bipartitematching",
+    "portfolio"
+  ],
+  "problem_display": {
+    "knapsack": "Knapsack\n(Gen)",
+    "knapsack-real": "Knapsack\n(Real)",
+    "energy": "Scheduling\n(Energy)",
+    "budgetalloc": "Budget Allocation",
+    "cubic": "TopK\n(Cubic)",
+    "bipartitematching": "Bipartite\nMatch.",
+    "portfolio": "Portfolio"
+  },
+  "methods": [
+    "mse",
+    "dfl",
+    "identity",
+    "spo",
+    "nce",
+    "blackbox",
+    "pointLTR",
+    "pairLTR",
+    "listLTR",
+    "lodl",
+    "perturb",
+    "qptl",
+    "cpLayer"
+  ],
+  "method_display": {
+    "mse": "MSE",
+    "dfl": "DFL",
+    "identity": "Identity",
+    "spo": "SPO+",
+    "nce": "NCE",
+    "blackbox": "Blackbox",
+    "pointLTR": "pt-LTR",
+    "pairLTR": "pr-LTR",
+    "listLTR": "L-LTR",
+    "lodl": "LODL",
+    "perturb": "Perturb",
+    "qptl": "QPTL",
+    "cpLayer": "cpLayer"
+  },
+  "absolute_tasks": [
+    "portfolio"
+  ],
+  "regret": {
+    "knapsack": {
+      "MSE": 5.438524025884621,
+      "DFL": 6.705218229381798,
+      "Identity": 23.846895222359908,
+      "SPO+": 6.264628941208867,
+      "NCE": 14.828583230070219,
+      "Blackbox": 24.315021341043646,
+      "pt-LTR": 5.796502822525127,
+      "pr-LTR": 7.889301941346552,
+      "L-LTR": 5.8515764835467445,
+      "LODL": 24.02588462068016,
+      "Perturb": 12.129973840011015,
+      "QPTL": 20.074349442379184,
+      "cpLayer": 24.315021341043646
+    },
+    "knapsack-real": {
+      "MSE": 7.631500817567272,
+      "DFL": 7.112785952879857,
+      "Identity": 35.13607508024181,
+      "SPO+": 7.0088850622473995,
+      "NCE": 12.050007934854273,
+      "Blackbox": 36.56853757622899,
+      "pt-LTR": 8.423831002047528,
+      "pr-LTR": 10.984774234405007,
+      "L-LTR": 7.175740971931009,
+      "LODL": 9.922076548106457,
+      "Perturb": 9.150741871555939,
+      "QPTL": null,
+      "cpLayer": null
+    },
+    "energy": {
+      "MSE": 1.9954314366724986,
+      "DFL": 13.912462664991757,
+      "Identity": 13.973322966423355,
+      "SPO+": 1.809187728030688,
+      "NCE": 1.89137962963647,
+      "Blackbox": 6.618864968604172,
+      "pt-LTR": 1.993119096120594,
+      "pr-LTR": 2.037133823257703,
+      "L-LTR": 2.0052184726059217,
+      "LODL": 2.437851281308021,
+      "Perturb": 1.9703623626398294,
+      "QPTL": null,
+      "cpLayer": null
+    },
+    "budgetalloc": {
+      "MSE": 36.5720459961674,
+      "DFL": 33.21703373202611,
+      "Identity": 14.652133026414472,
+      "SPO+": 5.096380672176944,
+      "NCE": 8.631370173088348,
+      "Blackbox": 10.625070732300436,
+      "pt-LTR": 4.161804504574299,
+      "pr-LTR": 7.8607567505410785,
+      "L-LTR": 3.6267089075315866,
+      "LODL": 56.10756784558142,
+      "Perturb": 7.77717199914663,
+      "QPTL": null,
+      "cpLayer": null
+    },
+    "cubic": {
+      "MSE": 0.0324411744628851,
+      "DFL": 2.202238558048411,
+      "Identity": 13.893718510010258,
+      "SPO+": 160.40789493384875,
+      "NCE": 142.60177895483167,
+      "Blackbox": 13.893718510010258,
+      "pt-LTR": 0.053238916059300694,
+      "pr-LTR": 0.41780203186596576,
+      "L-LTR": 0.008826526676447179,
+      "LODL": 4.21801736583804,
+      "Perturb": 13.544017718110835,
+      "QPTL": null,
+      "cpLayer": null
+    },
+    "bipartitematching": {
+      "MSE": 91.85259758325495,
+      "DFL": 93.69406092094069,
+      "Identity": 92.22840395668416,
+      "SPO+": 92.20166671693919,
+      "NCE": 89.99874182902724,
+      "Blackbox": 92.6355488302041,
+      "pt-LTR": 92.14692773377259,
+      "pr-LTR": 90.93640782039112,
+      "L-LTR": 89.80296343108635,
+      "LODL": 93.91833204660736,
+      "Perturb": 93.85418019393225,
+      "QPTL": 92.04599143924304,
+      "cpLayer": 92.00295517505658
+    },
+    "portfolio": {
+      "MSE": 0.22056179671967918,
+      "DFL": 0.27609344731555047,
+      "Identity": 0.2803567127782108,
+      "SPO+": 0.22976810848140516,
+      "NCE": 0.30992167912792296,
+      "Blackbox": 0.26819531696729054,
+      "pt-LTR": 0.25181460726115956,
+      "pr-LTR": 0.2554331496096115,
+      "L-LTR": 0.23836139117293648,
+      "LODL": 0.24207795983621444,
+      "Perturb": 0.3036768480448132,
+      "QPTL": 0.28610658400563976,
+      "cpLayer": 0.27906579246859553
+    }
+  },
+  "extra_points": {
+    "dfl_direct": {
+      "label": "DFL (no surrogate)",
+      "style": {
+        "marker": "h",
+        "color": "#27ae60",
+        "size": 55,
+        "alpha": 0.95
+      },
+      "group": "surrogate_gradient",
+      "values": {
+        "portfolio": 0.25484
+      }
+    }
+  },
+  "avg_rank": {
+    "mse": 3.8571,
+    "dfl": 7.1429,
+    "identity": 9.4286,
+    "spo": 4.2857,
+    "nce": 7.1429,
+    "blackbox": 9.2857,
+    "pointLTR": 4.0,
+    "pairLTR": 5.5714,
+    "listLTR": 2.5714,
+    "lodl": 8.5714,
+    "perturb": 7.2857,
+    "qptl": 8.6667,
+    "cpLayer": 9.0
+  },
+  "style": {
+    "MSE": {
+      "marker": "*",
+      "color": "#1f77b4",
+      "size": 80,
+      "alpha": 1.0
+    },
+    "DFL": {
+      "marker": "h",
+      "color": "#bbbbbb",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "Blackbox": {
+      "marker": "h",
+      "color": "#888888",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "Identity": {
+      "marker": "h",
+      "color": "#444444",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "Perturb": {
+      "marker": "h",
+      "color": "#222222",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "SPO+": {
+      "marker": "h",
+      "color": "#666666",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "LODL": {
+      "marker": "o",
+      "color": "#888888",
+      "size": 44,
+      "alpha": 0.85
+    },
+    "cpLayer": {
+      "marker": "^",
+      "color": "#bbbbbb",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "QPTL": {
+      "marker": "^",
+      "color": "#888888",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "NCE": {
+      "marker": "s",
+      "color": "#bbbbbb",
+      "size": 44,
+      "alpha": 0.85
+    },
+    "pt-LTR": {
+      "marker": "s",
+      "color": "#888888",
+      "size": 44,
+      "alpha": 0.85
+    },
+    "pr-LTR": {
+      "marker": "s",
+      "color": "#444444",
+      "size": 44,
+      "alpha": 0.85
+    },
+    "L-LTR": {
+      "marker": "s",
+      "color": "#e67e22",
+      "size": 50,
+      "alpha": 0.9
+    }
+  },
+  "method_groups": {
+    "Decision-Unaware": [
+      "MSE"
+    ],
+    "Surrogate Gradient": [
+      "DFL",
+      "Blackbox",
+      "Identity",
+      "Perturb",
+      "SPO+"
+    ],
+    "Trained Surrogate": [
+      "LODL"
+    ],
+    "Continuous": [
+      "cpLayer",
+      "QPTL"
+    ],
+    "Statistical": [
+      "NCE",
+      "pt-LTR",
+      "pr-LTR",
+      "L-LTR"
+    ]
+  },
+  "chart_groupings": {
+    "rest": [
+      "knapsack",
+      "knapsack-real",
+      "energy",
+      "cubic",
+      "bipartitematching"
+    ],
+    "budgetalloc": [
+      "budgetalloc"
+    ],
+    "portfolio": [
+      "portfolio"
+    ]
+  }
+}

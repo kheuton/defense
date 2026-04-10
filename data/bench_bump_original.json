@@ -1,0 +1,224 @@
+{
+  "tasks": [
+    "Knapsack (Gen)",
+    "Knapsack (Energy)",
+    "Scheduling (Energy)",
+    "Budget Allocation",
+    "TopK (Cubic)",
+    "Bipartite Matching",
+    "Portfolio"
+  ],
+  "methods": [
+    "Two-stage",
+    "DFL",
+    "Blackbox",
+    "Identity",
+    "CPLayer",
+    "SPO",
+    "NCE",
+    "point-LTR",
+    "pair-LTR",
+    "list-LTR",
+    "LODL"
+  ],
+  "absolute_tasks": [
+    "Portfolio"
+  ],
+  "regret": {
+    "Knapsack (Gen)": {
+      "Two-stage": 6.595,
+      "DFL": 11.744,
+      "Blackbox": 24.274,
+      "Identity": 31.874,
+      "CPLayer": 24.769,
+      "SPO": 6.223,
+      "NCE": 13.438,
+      "point-LTR": 6.402,
+      "pair-LTR": 7.82,
+      "list-LTR": 6.031,
+      "LODL": 6.044
+    },
+    "Knapsack (Energy)": {
+      "Two-stage": 8.745,
+      "DFL": 8.353,
+      "Blackbox": 35.705,
+      "Identity": 17.156,
+      "CPLayer": 36.402,
+      "SPO": 8.407,
+      "NCE": 11.932,
+      "point-LTR": 8.236,
+      "pair-LTR": 9.022,
+      "list-LTR": 8.083,
+      "LODL": 9.567
+    },
+    "Scheduling (Energy)": {
+      "Two-stage": 1.793,
+      "DFL": 6.272,
+      "Blackbox": 6.503,
+      "Identity": 5.69,
+      "CPLayer": null,
+      "SPO": 1.505,
+      "NCE": 1.663,
+      "point-LTR": 4.548,
+      "pair-LTR": 1.54,
+      "list-LTR": 1.551,
+      "LODL": 1.786
+    },
+    "Budget Allocation": {
+      "Two-stage": 20.332,
+      "DFL": 35.97,
+      "Blackbox": 26.905,
+      "Identity": 14.799,
+      "CPLayer": null,
+      "SPO": 5.559,
+      "NCE": 9.979,
+      "point-LTR": 69.663,
+      "pair-LTR": 5.958,
+      "list-LTR": 5.742,
+      "LODL": 25.7
+    },
+    "TopK (Cubic)": {
+      "Two-stage": 0.11,
+      "DFL": 1.974,
+      "Blackbox": 13.944,
+      "Identity": 13.944,
+      "CPLayer": null,
+      "SPO": 160.408,
+      "NCE": 160.408,
+      "point-LTR": 1.149,
+      "pair-LTR": 5.072,
+      "list-LTR": 0.193,
+      "LODL": 0.172
+    },
+    "Bipartite Matching": {
+      "Two-stage": 92.963,
+      "DFL": 91.364,
+      "Blackbox": 91.988,
+      "Identity": 91.868,
+      "CPLayer": 92.007,
+      "SPO": 93.327,
+      "NCE": 92.622,
+      "point-LTR": 91.035,
+      "pair-LTR": 92.285,
+      "list-LTR": 91.831,
+      "LODL": 91.113
+    },
+    "Portfolio": {
+      "Two-stage": 0.243,
+      "DFL": 0.38,
+      "Blackbox": 0.286,
+      "Identity": 0.28,
+      "CPLayer": 0.309,
+      "SPO": 0.245,
+      "NCE": 0.367,
+      "point-LTR": 0.214,
+      "pair-LTR": 0.255,
+      "list-LTR": 0.249,
+      "LODL": 0.16
+    }
+  },
+  "avg_rank": {
+    "Two-stage": 5.1429,
+    "DFL": 6.7143,
+    "Blackbox": 8.2857,
+    "Identity": 7.5714,
+    "CPLayer": 9.25,
+    "SPO": 4.7143,
+    "NCE": 7.5714,
+    "point-LTR": 4.2857,
+    "pair-LTR": 5.2857,
+    "list-LTR": 2.7143,
+    "LODL": 3.7143
+  },
+  "style": {
+    "Two-stage": {
+      "marker": "*",
+      "color": "#1f77b4",
+      "size": 80,
+      "alpha": 1.0
+    },
+    "DFL": {
+      "marker": "h",
+      "color": "#bbbbbb",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "Blackbox": {
+      "marker": "h",
+      "color": "#888888",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "Identity": {
+      "marker": "h",
+      "color": "#444444",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "SPO": {
+      "marker": "h",
+      "color": "#666666",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "LODL": {
+      "marker": "o",
+      "color": "#888888",
+      "size": 44,
+      "alpha": 0.85
+    },
+    "CPLayer": {
+      "marker": "^",
+      "color": "#bbbbbb",
+      "size": 50,
+      "alpha": 0.9
+    },
+    "NCE": {
+      "marker": "s",
+      "color": "#bbbbbb",
+      "size": 44,
+      "alpha": 0.85
+    },
+    "point-LTR": {
+      "marker": "s",
+      "color": "#888888",
+      "size": 44,
+      "alpha": 0.85
+    },
+    "pair-LTR": {
+      "marker": "s",
+      "color": "#444444",
+      "size": 44,
+      "alpha": 0.85
+    },
+    "list-LTR": {
+      "marker": "s",
+      "color": "#e67e22",
+      "size": 50,
+      "alpha": 0.9
+    }
+  },
+  "method_groups": {
+    "Decision-Unaware": [
+      "Two-stage"
+    ],
+    "Surrogate Gradient": [
+      "DFL",
+      "Blackbox",
+      "Identity",
+      "SPO"
+    ],
+    "Trained Surrogate": [
+      "LODL"
+    ],
+    "Continuous": [
+      "CPLayer"
+    ],
+    "Statistical": [
+      "NCE",
+      "point-LTR",
+      "pair-LTR",
+      "list-LTR"
+    ]
+  }
+}
