@@ -7,8 +7,8 @@ const TASK = new URL(import.meta.url).searchParams.get('task') || 'budgetalloc';
 
 // ── Embedded data ─────────────────────────────────────────────────────────────
 const REGRET = {
-  budgetalloc: { MSE:36.572,DFL:33.217,'Identity':14.6521,'SPO+':5.0964,NCE:8.6314,Blackbox:10.6251,'pt-LTR':4.1618,'pr-LTR':7.8608,'L-LTR':3.6267,LODL:56.1076,Perturb:7.7772,QPTL:null,cpLayer:null },
-  portfolio:   { MSE:0.2206,DFL:0.2761,'Identity':0.2804,'SPO+':0.2298,NCE:0.3099,Blackbox:0.2682,'pt-LTR':0.2518,'pr-LTR':0.2554,'L-LTR':0.2384,LODL:0.2421,Perturb:0.3037,QPTL:0.2861,cpLayer:0.2791 },
+  budgetalloc: { MSE:36.572,DFL:33.217,'Identity':14.6521,'SPO+':5.0964,NCE:8.6314,Blackbox:10.6251,'pt-LTR':4.1618,'pr-LTR':7.8608,'L-LTR':3.6267,LODL:56.1076,Perturb:7.7772,PG:null,QPTL:null,cpLayer:null },
+  portfolio:   { MSE:0.2206,DFL:0.2761,'Identity':0.2804,'SPO+':0.2298,NCE:0.3099,Blackbox:0.2682,'pt-LTR':0.2518,'pr-LTR':0.2554,'L-LTR':0.2384,LODL:0.2421,Perturb:0.3037,PG:0.3563,QPTL:0.2861,cpLayer:0.2791 },
 };
 
 const TASK_CFG = {

@@ -38,6 +38,9 @@ export function markerPath(shape, r) {
       const s = (r * 0.88).toFixed(2);
       return `M${-s},${-s}L${s},${-s}L${s},${s}L${-s},${s}Z`;
     }
+    case 'diamond': {
+      return `M0,${(-r).toFixed(2)}L${r.toFixed(2)},0L0,${r.toFixed(2)}L${(-r).toFixed(2)},0Z`;
+    }
     default:
       return null;
   }
@@ -195,7 +198,8 @@ export const ORIG_METHODS = [
 
 export const RERUN_METHODS = [
   { key: 'mse',      display: 'MSE',      shape: 'star',     color: '#ff7c57', group: 'decision-unaware' },
-  { key: 'spo',      display: 'SPO+',     shape: 'hex',      color: '#50c8a8', group: 'surrogate-gradient' },
+  { key: 'spo',      display: 'SPO+',     shape: 'diamond',  color: '#50c8a8', group: 'surrogate-gradient' },
+  { key: 'pg',       display: 'PG',       shape: 'diamond',  color: '#70dcbc', group: 'surrogate-gradient' },
   { key: 'dfl',      display: 'DFL',      shape: 'hex',      color: '#3aaa90', group: 'surrogate-gradient' },
   { key: 'blackbox', display: 'Blackbox', shape: 'hex',      color: '#2a8870', group: 'surrogate-gradient' },
   { key: 'identity', display: 'Identity', shape: 'hex',      color: '#1a6650', group: 'surrogate-gradient' },
@@ -238,11 +242,12 @@ export const RERUN_LEGEND_GROUPS = [
     { display: 'MSE', shape: 'star', color: '#ff7c57' },
   ]},
   { head: 'Surrogate Gradient', items: [
-    { display: 'SPO+',     shape: 'hex', color: '#50c8a8' },
-    { display: 'DFL',      shape: 'hex', color: '#3aaa90' },
-    { display: 'Blackbox', shape: 'hex', color: '#2a8870' },
-    { display: 'Identity', shape: 'hex', color: '#1a6650' },
-    { display: 'Perturb',  shape: 'hex', color: '#0e4a38' },
+    { display: 'SPO+',     shape: 'diamond', color: '#50c8a8' },
+    { display: 'PG',       shape: 'diamond', color: '#70dcbc' },
+    { display: 'DFL',      shape: 'hex',     color: '#3aaa90' },
+    { display: 'Blackbox', shape: 'hex',     color: '#2a8870' },
+    { display: 'Identity', shape: 'hex',     color: '#1a6650' },
+    { display: 'Perturb',  shape: 'hex',     color: '#0e4a38' },
   ]},
   { head: 'Trained Surrogate', items: [
     { display: 'LODL', shape: 'circle', color: '#ffd166' },
