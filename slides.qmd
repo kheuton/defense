@@ -576,161 +576,6 @@ Existing decision-aware methods sacrifice model likelihood.
 :::
 
 
-## How to Rank {background-iframe="animations/interactive/how-to-rank.html" background-interactive="true"}
-
-::: {.fragment .rank-step}
-:::
-::: {.fragment .rank-step}
-:::
-
-
-## Optimal Ranking Score
-
-:::::: {.ranking-math-slide style="margin-top: 0.4em; font-size: 0.86em;"}
-
-:::: {.math-scroll-inner style="display: grid; grid-template-columns: 63% 37%; gap: 0 1.2em;"}
-
-::: {.fragment fragment-index=1 style="grid-column: 1; grid-row: 1;"}
-A natural framework: minimize the expected loss
-
-$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} \; \mathbb{E}_{\mathbf{y} \sim p_{\theta}} \!\left[ L( \mathbf{s}, \mathbf{y} ) \right]$$
-:::
-
-::: {.fragment fragment-index=3 style="grid-column: 2; grid-row: 1; align-self: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
-[Why not just the mean?]{.accent-yellow style="font-weight: bold; font-size: 1.05em;"}
-
-$$\bar{\mathbf{s}} = \mathbb{E}_{p_\theta}[\mathbf{y}]$$
-:::
-
-::: {.fragment fragment-index=2 style="grid-column: 1; grid-row: 2;"}
-Define the **BPR loss** ($\mathbf{s}$ = score vector):
-
-$$L^{\text{BPR}}(\mathbf{s}, \mathbf{y}) = -\frac{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{s}, K)}{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{y}, K)}$$
-:::
-
-::: {.fragment fragment-index=4 style="grid-column: 1; grid-row: 3;"}
-Sub in $L^{\text{BPR}}$:
-
-$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} \; \mathbb{E}_{\mathbf{y} \sim p_{\theta}} \!\left[ -\frac{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{s}, K)}{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{y}, K)} \right]$$
-:::
-
-::: {.fragment fragment-index=5 style="grid-column: 1; grid-row: 4;"}
-Bound denominator:
-
-$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} \; \mathbb{E}_{\mathbf{y} \sim p_{\theta}} \!\left[ - \underbrace{\frac{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{s}, K)}{K \cdot U}}_{\leq \;\text{BPR}(\mathbf{s}, \mathbf{y})} \right]$$
-:::
-
-::: {.fragment fragment-index=5 style="grid-column: 2; grid-row: 4; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
-[Extreme Upper Bound]{.accent-coral style="font-weight: bold; font-size: 1.05em;"}
-
-$U \geq y_i$ for any $i$
-:::
-
-::: {.fragment fragment-index=6 style="grid-column: 1; grid-row: 5;"}
-Linearity of expectation:
-
-$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} - \underbrace{\frac{\mathbb{E}_{p_{\theta}}[\mathbf{y}] \cdot \operatorname{TopKMask}(\mathbf{s}, K)}{K \cdot U}}_{\leq \;\text{BPR}(\mathbf{s}, \mathbf{y})}$$
-:::
-
-::: {.fragment fragment-index=7 style="grid-column: 1; grid-row: 6;"}
-**$\mathbf{s} = \mathbb{E}_{p_\theta}[\mathbf{y}]$ is a valid solution.**
-:::
-
-::: {.fragment fragment-index=7 style="grid-column: 2; grid-row: 6; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
-$\mathbf{s}$ can be any $\mathbf{s}$ such that
-
-$\operatorname{TopKMask}(\mathbf{s}, K) = \operatorname{TopKMask}(\mathbb{E}_{p_\theta}[\mathbf{y}], K)$
-:::
-
-::: {.fragment fragment-index=8 style="grid-column: 1; grid-row: 7; border-top: 1px solid var(--separator); padding-top: 0.8em; margin-top: 0.4em;"}
-Tighter bound:
-
-$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} - \underbrace{\mathbb{E}_{\mathbf{y} \sim p_{\theta}}\!\left[\frac{\mathbf{y}}{\mathbf{1} \cdot \mathbf{y}}\right] \cdot \operatorname{TopKMask}(\mathbf{s}, K)}_{\leq \;\text{BPR}(\mathbf{s}, \mathbf{y})}$$
-:::
-
-::: {.fragment fragment-index=8 style="grid-column: 2; grid-row: 7; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
-[Tighter Bound]{.accent-teal style="font-weight: bold; font-size: 1.05em;"}
-
-$\mathbf{1} \cdot \mathbf{y} \geq \mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{y}, K)$
-:::
-
-::: {.fragment fragment-index=9 style="grid-column: 1; grid-row: 8;"}
-**The ratio estimator:**
-
-$$\mathbf{s}^* = \mathbb{E}_{\mathbf{y} \sim p_{\theta}}\!\left[\frac{\mathbf{y}}{\mathbf{1} \cdot \mathbf{y}}\right] \approx \frac{1}{M}\sum_{m=1}^{M} \frac{\mathbf{y}^{(m)}}{\mathbf{1} \cdot \mathbf{y}^{(m)}}$$
-:::
-
-::: {.fragment fragment-index=9 style="grid-column: 2; grid-row: 8; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
-$\mathbf{s}$ can be any $\mathbf{s}$ such that
-
-$\operatorname{TopKMask}(\mathbf{s}, K) = \operatorname{TopKMask}\!\left(\mathbb{E}_{p_\theta}\!\left[\tfrac{\mathbf{y}}{\mathbf{1} \cdot \mathbf{y}}\right], K\right)$
-:::
-
-::::
-
-::::::
-
-```{=html}
-<script>
-window.addEventListener('load', function () {
-  if (typeof Reveal === 'undefined') return;
-  var container = document.querySelector('.ranking-math-slide');
-  if (!container) return;
-
-  // Tune: scroll fires when bottom of new content exceeds THRESH of container height;
-  // PADDING keeps that much content visible above the bottom edge after scrolling.
-  var THRESH  = 0.6;
-  var PADDING = 260;
-
-  function inContainer(frags) {
-    return frags.filter(function (f) { return container.contains(f); });
-  }
-
-  function fragBounds(frags) {
-    var cr = container.getBoundingClientRect();
-    var minTop = Infinity, maxBot = -Infinity;
-    frags.forEach(function (f) {
-      var r = f.getBoundingClientRect();
-      var t = r.top    - cr.top + container.scrollTop;
-      var b = r.bottom - cr.top + container.scrollTop;
-      if (t < minTop) minTop = t;
-      if (b > maxBot) maxBot = b;
-    });
-    return { top: minTop, bottom: maxBot };
-  }
-
-  Reveal.on('fragmentshown', function (e) {
-    var frags = inContainer(e.fragments || [e.fragment]);
-    if (!frags.length) return;
-    var bounds  = fragBounds(frags);
-    var visible = container.clientHeight;
-    if (bounds.bottom > container.scrollTop + visible * THRESH) {
-      var target = bounds.bottom - visible + PADDING;
-      if (target > container.scrollTop)
-        container.scrollTo({ top: target, behavior: 'smooth' });
-    }
-  });
-
-  Reveal.on('fragmenthidden', function (e) {
-    var frags = inContainer(e.fragments || [e.fragment]);
-    if (!frags.length) return;
-    var bounds = fragBounds(frags);
-    var target = Math.max(0, bounds.bottom - container.clientHeight + PADDING);
-    if (target < container.scrollTop)
-      container.scrollTo({ top: target, behavior: 'smooth' });
-  });
-
-  Reveal.on('slidechanged', function () {
-    setTimeout(function () {
-      var c = document.querySelector('.present .ranking-math-slide');
-      if (c) c.scrollTop = 0;
-    }, 0);
-  });
-});
-</script>
-```
-
-
 ## {background-iframe="animations/interactive/frontier.html" background-interactive="true"}
 
 ::: {.fragment .results-step}
@@ -834,10 +679,6 @@ Kyle Heuton, Michael C. Hughes
 
 :::::
 
-## Evaluating DFL Methods in Practice
-
-<!-- TODO: flesh out Chapter 5 slides -->
-
 ## {background-iframe="animations/interactive/opportunity.html" background-interactive="true"}
 
 ::: {.fragment .results-step}
@@ -852,6 +693,21 @@ Kyle Heuton, Michael C. Hughes
 :::
 
 ## {background-image="figures/ch5/slide02.png" background-size="contain" background-color="black"}
+
+## {background-iframe="animations/interactive/loss-landscape.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
 
 ## {background-iframe="animations/interactive/bench-bump-original.html" background-interactive="true"}
 
@@ -1135,3 +991,157 @@ Christopher Ratigan, Kyle Heuton, Carissa Wang, Lenore Cowen, Michael C. Hughes
 ::: notes
 Keep this brief. Have a backup slide with key results ready.
 :::
+
+# Bonus Slides {background-color="#1a1a2e"}
+
+## How to Rank {background-iframe="animations/interactive/how-to-rank.html" background-interactive="true"}
+
+::: {.fragment .rank-step}
+:::
+::: {.fragment .rank-step}
+:::
+
+
+## Optimal Ranking Score
+
+:::::: {.ranking-math-slide style="margin-top: 0.4em; font-size: 0.86em;"}
+
+:::: {.math-scroll-inner style="display: grid; grid-template-columns: 63% 37%; gap: 0 1.2em;"}
+
+::: {.fragment fragment-index=1 style="grid-column: 1; grid-row: 1;"}
+A natural framework: minimize the expected loss
+
+$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} \; \mathbb{E}_{\mathbf{y} \sim p_{\theta}} \!\left[ L( \mathbf{s}, \mathbf{y} ) \right]$$
+:::
+
+::: {.fragment fragment-index=3 style="grid-column: 2; grid-row: 1; align-self: start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
+[Why not just the mean?]{.accent-yellow style="font-weight: bold; font-size: 1.05em;"}
+
+$$\bar{\mathbf{s}} = \mathbb{E}_{p_\theta}[\mathbf{y}]$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 1; grid-row: 2;"}
+Define the **BPR loss** ($\mathbf{s}$ = score vector):
+
+$$L^{\text{BPR}}(\mathbf{s}, \mathbf{y}) = -\frac{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{s}, K)}{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{y}, K)}$$
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 1; grid-row: 3;"}
+Sub in $L^{\text{BPR}}$:
+
+$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} \; \mathbb{E}_{\mathbf{y} \sim p_{\theta}} \!\left[ -\frac{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{s}, K)}{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{y}, K)} \right]$$
+:::
+
+::: {.fragment fragment-index=5 style="grid-column: 1; grid-row: 4;"}
+Bound denominator:
+
+$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} \; \mathbb{E}_{\mathbf{y} \sim p_{\theta}} \!\left[ - \underbrace{\frac{\mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{s}, K)}{K \cdot U}}_{\leq \;\text{BPR}(\mathbf{s}, \mathbf{y})} \right]$$
+:::
+
+::: {.fragment fragment-index=5 style="grid-column: 2; grid-row: 4; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
+[Extreme Upper Bound]{.accent-coral style="font-weight: bold; font-size: 1.05em;"}
+
+$U \geq y_i$ for any $i$
+:::
+
+::: {.fragment fragment-index=6 style="grid-column: 1; grid-row: 5;"}
+Linearity of expectation:
+
+$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} - \underbrace{\frac{\mathbb{E}_{p_{\theta}}[\mathbf{y}] \cdot \operatorname{TopKMask}(\mathbf{s}, K)}{K \cdot U}}_{\leq \;\text{BPR}(\mathbf{s}, \mathbf{y})}$$
+:::
+
+::: {.fragment fragment-index=7 style="grid-column: 1; grid-row: 6;"}
+**$\mathbf{s} = \mathbb{E}_{p_\theta}[\mathbf{y}]$ is a valid solution.**
+:::
+
+::: {.fragment fragment-index=7 style="grid-column: 2; grid-row: 6; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
+$\mathbf{s}$ can be any $\mathbf{s}$ such that
+
+$\operatorname{TopKMask}(\mathbf{s}, K) = \operatorname{TopKMask}(\mathbb{E}_{p_\theta}[\mathbf{y}], K)$
+:::
+
+::: {.fragment fragment-index=8 style="grid-column: 1; grid-row: 7; border-top: 1px solid var(--separator); padding-top: 0.8em; margin-top: 0.4em;"}
+Tighter bound:
+
+$$\mathbf{s}^* = \underset{\mathbf{s}}{\operatorname{arg\,min}} - \underbrace{\mathbb{E}_{\mathbf{y} \sim p_{\theta}}\!\left[\frac{\mathbf{y}}{\mathbf{1} \cdot \mathbf{y}}\right] \cdot \operatorname{TopKMask}(\mathbf{s}, K)}_{\leq \;\text{BPR}(\mathbf{s}, \mathbf{y})}$$
+:::
+
+::: {.fragment fragment-index=8 style="grid-column: 2; grid-row: 7; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
+[Tighter Bound]{.accent-teal style="font-weight: bold; font-size: 1.05em;"}
+
+$\mathbf{1} \cdot \mathbf{y} \geq \mathbf{y} \cdot \operatorname{TopKMask}(\mathbf{y}, K)$
+:::
+
+::: {.fragment fragment-index=9 style="grid-column: 1; grid-row: 8;"}
+**The ratio estimator:**
+
+$$\mathbf{s}^* = \mathbb{E}_{\mathbf{y} \sim p_{\theta}}\!\left[\frac{\mathbf{y}}{\mathbf{1} \cdot \mathbf{y}}\right] \approx \frac{1}{M}\sum_{m=1}^{M} \frac{\mathbf{y}^{(m)}}{\mathbf{1} \cdot \mathbf{y}^{(m)}}$$
+:::
+
+::: {.fragment fragment-index=9 style="grid-column: 2; grid-row: 8; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1em;"}
+$\mathbf{s}$ can be any $\mathbf{s}$ such that
+
+$\operatorname{TopKMask}(\mathbf{s}, K) = \operatorname{TopKMask}\!\left(\mathbb{E}_{p_\theta}\!\left[\tfrac{\mathbf{y}}{\mathbf{1} \cdot \mathbf{y}}\right], K\right)$
+:::
+
+::::
+
+::::::
+
+```{=html}
+<script>
+window.addEventListener('load', function () {
+  if (typeof Reveal === 'undefined') return;
+  var container = document.querySelector('.ranking-math-slide');
+  if (!container) return;
+
+  var THRESH  = 0.6;
+  var PADDING = 260;
+
+  function inContainer(frags) {
+    return frags.filter(function (f) { return container.contains(f); });
+  }
+
+  function fragBounds(frags) {
+    var cr = container.getBoundingClientRect();
+    var minTop = Infinity, maxBot = -Infinity;
+    frags.forEach(function (f) {
+      var r = f.getBoundingClientRect();
+      var t = r.top    - cr.top + container.scrollTop;
+      var b = r.bottom - cr.top + container.scrollTop;
+      if (t < minTop) minTop = t;
+      if (b > maxBot) maxBot = b;
+    });
+    return { top: minTop, bottom: maxBot };
+  }
+
+  Reveal.on('fragmentshown', function (e) {
+    var frags = inContainer(e.fragments || [e.fragment]);
+    if (!frags.length) return;
+    var bounds  = fragBounds(frags);
+    var visible = container.clientHeight;
+    if (bounds.bottom > container.scrollTop + visible * THRESH) {
+      var target = bounds.bottom - visible + PADDING;
+      if (target > container.scrollTop)
+        container.scrollTo({ top: target, behavior: 'smooth' });
+    }
+  });
+
+  Reveal.on('fragmenthidden', function (e) {
+    var frags = inContainer(e.fragments || [e.fragment]);
+    if (!frags.length) return;
+    var bounds = fragBounds(frags);
+    var target = Math.max(0, bounds.bottom - container.clientHeight + PADDING);
+    if (target < container.scrollTop)
+      container.scrollTo({ top: target, behavior: 'smooth' });
+  });
+
+  Reveal.on('slidechanged', function () {
+    setTimeout(function () {
+      var c = document.querySelector('.present .ranking-math-slide');
+      if (c) c.scrollTop = 0;
+    }, 0);
+  });
+});
+</script>
+```
