@@ -35,7 +35,7 @@ const G = {
   titleY1: 82, titleY2: 96,
   leftPad: 30, otherPad: 8, rightPad: 8,
   avgLeft: 1065, avgRight: 1205, avgCx: 1135,  // 75+7*140+20 gap
-  legendX: 1223, legendY: 112, legendW: 170,
+  legendX: 1218, legendY: 112, legendW: 200,
 };
 
 const TASK_ORDER = [
@@ -130,7 +130,7 @@ function buildLargePanel(svg) {
     if (val == null) return;
     const yp = scaleLog(val, ya.yMin, ya.yMax, L.ct, L.H);
     const xp = L.cx + jitter(99, mi, 100);
-    drawMarker(g, xp, yp, m.shape, m.color, 8, {
+    drawMarker(g, xp, yp, m.shape, m.color, 10, {
       'data-group': group, opacity: 0, transition: 'opacity 0.4s',
     });
   });
@@ -178,10 +178,10 @@ function buildGrid(svg) {
       if (val == null) return;
       const yp = ys(task, val, G.ct, G.H);
       if (yp == null) return;
-      const xp = cx + jitter(ci, mi, 13);
+      const xp = cx + jitter(ci, mi, 17);
       const group = gridGroup(task, ci, m);
       if (!group) return;
-      drawMarker(g, xp, yp, m.shape, m.color, 5, {
+      drawMarker(g, xp, yp, m.shape, m.color, 7, {
         'data-group': group, opacity: 0, transition: 'opacity 0.4s',
       });
     });
@@ -212,8 +212,8 @@ function buildGrid(svg) {
     const rank = DATA.avg_rank[m.key];
     if (rank == null) return;
     const yp = scaleLinear(rank, arYA.yMin, arYA.yMax, G.ct, G.H);
-    const xp = G.avgCx + jitter(7, mi, 15);
-    drawMarker(ag, xp, yp, m.shape, m.color, 5);
+    const xp = G.avgCx + jitter(7, mi, 19);
+    drawMarker(ag, xp, yp, m.shape, m.color, 7);
   });
 
   return g;

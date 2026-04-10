@@ -767,14 +767,6 @@ Kyle Heuton, Michael C. Hughes
 ::: {.fragment .results-step}
 :::
 
-## {background-image="figures/ch5/slide09.png" background-size="contain" background-color="white"}
-
-## {background-image="figures/ch5/slide10.png" background-size="contain" background-color="white"}
-
-## {background-image="figures/ch5/slide11.png" background-size="contain" background-color="white"}
-
-## {background-image="figures/ch5/slide12.png" background-size="contain" background-color="white"}
-
 ## {background-iframe="animations/interactive/surrogate-interp.html" background-interactive="true"}
 
 ::: {.fragment .results-step}
@@ -993,6 +985,14 @@ Keep this brief. Have a backup slide with key results ready.
 :::
 
 # Bonus Slides {background-color="#1a1a2e"}
+
+## {background-image="figures/ch5/slide09.png" background-size="contain" background-color="white"}
+
+## {background-image="figures/ch5/slide10.png" background-size="contain" background-color="white"}
+
+## {background-image="figures/ch5/slide11.png" background-size="contain" background-color="white"}
+
+## {background-image="figures/ch5/slide12.png" background-size="contain" background-color="white"}
 
 ## How to Rank {background-iframe="animations/interactive/how-to-rank.html" background-interactive="true"}
 

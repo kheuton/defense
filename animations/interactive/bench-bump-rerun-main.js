@@ -33,7 +33,7 @@ const G = {
   // avg rank column
   avgLeft: 1157, avgRight: 1307,
   // legend
-  legendX: 1321, legendY: 112, legendW: 148,
+  legendX: 1310, legendY: 112, legendW: 200,
 };
 
 const G_AVG_CL  = G.avgLeft + G.leftPad;   // 1185
@@ -100,8 +100,8 @@ function build(svg) {
       const yp = ya.type === 'log'
         ? scaleLog(val, ya.yMin, ya.yMax, G.ct, G.H)
         : scaleLinear(val, ya.yMin, ya.yMax, G.ct, G.H);
-      const xp = cx + jitter(ci, mi, 16);
-      drawMarker(g, xp, yp, m.shape, m.color, 5, {
+      const xp = cx + jitter(ci, mi, 20);
+      drawMarker(g, xp, yp, m.shape, m.color, 7, {
         'data-group': phaseGroup(m), opacity: 0, transition: 'opacity 0.4s',
       });
     });
@@ -132,8 +132,8 @@ function build(svg) {
     const rank = DATA.avg_rank[m.key];
     if (rank == null) return;
     const yp = scaleLinear(rank, arYA.yMin, arYA.yMax, G.ct, G.H);
-    const xp = G_AVG_CX + jitter(5, mi, 16);
-    drawMarker(ag, xp, yp, m.shape, m.color, 5);
+    const xp = G_AVG_CX + jitter(5, mi, 20);
+    drawMarker(ag, xp, yp, m.shape, m.color, 7);
   });
 
   // Legend

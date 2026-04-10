@@ -29,7 +29,7 @@ const P = {
   cl: 580, cr: 900, ct: 112, cb: 778, H: 666,
   cx: 740,
   titleX: 740, titleY: 86,
-  legendX: 930, legendY: 112, legendW: 165,
+  legendX: 930, legendY: 112, legendW: 200,
 };
 
 // ── Phase group mapping ───────────────────────────────────────────────────────
@@ -65,9 +65,9 @@ function build(svg) {
     const yp = cfg.type === 'log'
       ? scaleLog(val, cfg.yMin, cfg.yMax, P.ct, P.H)
       : scaleLinear(val, cfg.yMin, cfg.yMax, P.ct, P.H);
-    const xp = P.cx + jitter(0, mi, 60);
+    const xp = P.cx + jitter(0, mi, 70);
     const pg = phaseGroup(m);
-    drawMarker(g, xp, yp, m.shape, m.color, 7, {
+    drawMarker(g, xp, yp, m.shape, m.color, 9, {
       'data-group': pg, opacity: 0, transition: 'opacity 0.4s',
     });
   });
