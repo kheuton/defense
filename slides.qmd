@@ -1,9 +1,9 @@
 ---
-title: "Decision-Aware Machine Learning<br>for Resource Allocation"
+title: "Making Better Decisions with Limited Budgets"
 subtitle: "PhD Thesis Defense"
 author: "Kyle Heuton"
 institute: "Tufts University · Hughes Lab"
-date: "2026"
+date: "2026-04-17"
 ---
 
 # Introduction {visibility="hidden" background-color="#1a0a3a"}

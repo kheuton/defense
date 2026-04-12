@@ -323,6 +323,9 @@ function transitionToHeatmap() {
 function transitionToIsometric() {
   transitioning = true;
 
+  // Hide colorbar as we leave the top-down map view
+  document.getElementById("colorbar").classList.add("hidden");
+
   const start = CAMERA.topDown;
   const end   = CAMERA.isometric;
   const cam = { r: start.r, phi: start.phi, theta: start.theta };

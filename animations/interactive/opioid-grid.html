@@ -61,11 +61,53 @@
   .chart-text .result.good { color: #50c8a8; }
   .chart-text .result.bad { color: #ff7c57; }
   .visible { opacity: 1; }
+
+  /* ── Colorbar overlay (phases 0–1) ─────────────────────── */
+  #colorbar {
+    position: fixed;
+    right: 18%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+    user-select: none;
+  }
+  #colorbar.hidden { opacity: 0; }
+  #colorbar .cb-label {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 13px;
+    color: #888899;
+    letter-spacing: 0.04em;
+  }
+  #colorbar .cb-bar {
+    width: 18px;
+    height: 180px;
+    border-radius: 4px;
+    background: linear-gradient(
+      to top,
+      #50c8a8 0%,
+      #7c6af7 15%,
+      #ff7c57 50%,
+      #ffd166 100%
+    );
+  }
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
 <div id="hud">Click or press &rarr; to advance</div>
+
+<!-- Colorbar legend for Phase 0–1 (flat top-down map view) -->
+<div id="colorbar">
+  <span class="cb-label">High</span>
+  <div class="cb-bar"></div>
+  <span class="cb-label">Low</span>
+</div>
 
 <!-- Text overlays for comparison phases (positioned by JS) -->
 <div id="overlays">
