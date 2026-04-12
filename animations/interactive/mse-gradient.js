@@ -12,7 +12,7 @@ import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import {
   COLORS, valueColor, BAR_CHART_DATA, BAR_CHART,
-  PRED_LEFT, PRED_LINE, ERROR_FILL, COMPARISON,
+  PRED_LEFT, PRED_LINE, ERROR_FILL, COMPARISON, createIBar,
   LIGHTING, MSE_GRADIENT,
 } from "./config.js";
 import { computeLeftPredictions } from "./prediction-utils.js";
@@ -195,23 +195,18 @@ function createPredictionLine(preds, opacity) {
 
 function createFillQuads(preds, opacity) {
   // Remove old
-  fillQuads.forEach(f => { if (f) { chartGroup.remove(f.mesh); f.mesh.geometry.dispose(); } });
+  fillQuads.forEach(f => { if (f) chartGroup.remove(f.group); });
 
   fillQuads = preds.map((pred, i) => {
-    const actual = sortedValues[i];
-    const predY = pred * hScale;
-    const actualY = actual * hScale;
-    const height = Math.abs(predY - actualY);
-    if (height < 0.01) return null;
-    const geo = new THREE.PlaneGeometry(bw * 0.9, height);
+    const predY   = pred           * hScale;
+    const actualY = sortedValues[i] * hScale;
+    if (Math.abs(predY - actualY) < 0.01) return null;
     const mat = new THREE.MeshBasicMaterial({
       color: ERROR_FILL.color, transparent: true, opacity,
-      side: THREE.DoubleSide, depthWrite: false,
     });
-    const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.set(barPositions[i], (predY + actualY) / 2, 0.5);
-    chartGroup.add(mesh);
-    return { mesh, mat };
+    const ibar = createIBar(predY, actualY, barPositions[i], bw, mat);
+    chartGroup.add(ibar.group);
+    return ibar;
   });
 }
 
@@ -230,19 +225,14 @@ function rebuildVisuals(preds) {
   // Rebuild fills
   preds.forEach((pred, i) => {
     if (!fillQuads[i]) return;
-    const actual = sortedValues[i];
-    const predY = pred * hScale;
-    const actualY = actual * hScale;
-    const height = Math.abs(predY - actualY);
-    if (height < 0.01) {
-      fillQuads[i].mesh.visible = false;
+    const predY   = pred           * hScale;
+    const actualY = sortedValues[i] * hScale;
+    if (Math.abs(predY - actualY) < 0.01) {
+      fillQuads[i].group.visible = false;
       return;
     }
-    fillQuads[i].mesh.visible = true;
-    const oldGeo = fillQuads[i].mesh.geometry;
-    fillQuads[i].mesh.geometry = new THREE.PlaneGeometry(bw * 0.9, height);
-    oldGeo.dispose();
-    fillQuads[i].mesh.position.y = (predY + actualY) / 2;
+    fillQuads[i].group.visible = true;
+    fillQuads[i].update(predY, actualY);
   });
 }
 
