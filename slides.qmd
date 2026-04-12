@@ -169,7 +169,7 @@ Kyle Heuton, Jyontika Kapoor, Shikhar Shrestha, Thomas J. Stopka, Michael C. Hug
 1
 :::
 ::: {.contribution-body}
-Models were rarely compared to competitors or reasonable baselines, making the benefit of any model impossible to determine.
+Models were rarely compared to competitors or reasonable baselines.
 :::
 :::
 :::
@@ -180,7 +180,7 @@ Models were rarely compared to competitors or reasonable baselines, making the b
 2
 :::
 ::: {.contribution-body}
-Existing literature nearly unanimously used error-based metrics to compare models, making the effects of using such models to guide policy decisions unclear.
+Existing literature nearly unanimously used error-based metrics to compare models.
 :::
 :::
 :::
@@ -740,7 +740,19 @@ Kyle Heuton, Michael C. Hughes
 ::: {.fragment .results-step}
 :::
 
-## {background-image="figures/ch5/slide05.png" background-size="contain" background-color="white"}
+## Rerun Procedure
+
+- Original: 5 learning rates
+
+::: {.fragment}
+**Rerun**
+
+- Phase 1: 3 learning rates, 2 batch sizes
+:::
+
+::: {.fragment}
+- Phase 2: 4 new hyperparameter settings for methods with their own hyperparameters
+:::
 
 ## {background-iframe="animations/interactive/bench-bump-rerun-main.html" background-interactive="true"}
 
