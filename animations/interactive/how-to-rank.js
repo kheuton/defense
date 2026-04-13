@@ -240,6 +240,7 @@ for (let i = 0; i < n; i++) {
 
 let currentPhase = 0;
 let transitioning = false;
+let pendingAdvance = false;
 
 // ══════════════════════════════════════════════════════════════
 // PHASE 1: Show bar chart + ridgeline axes
@@ -323,7 +324,9 @@ function phase2() {
 // ══════════════════════════════════════════════════════════════
 
 function advancePhase() {
-  if (transitioning || currentPhase >= 2) return;
+  if (currentPhase >= 2) return;
+  if (transitioning) { pendingAdvance = true; return; }
+  pendingAdvance = false;
   currentPhase++;
   document.getElementById("hud").classList.add("hidden");
   switch (currentPhase) {
@@ -345,7 +348,13 @@ document.addEventListener("keydown", onKeyDown);
 
 try {
   const Reveal = window.parent && window.parent.Reveal;
-  if (Reveal) Reveal.on("fragmentshown", () => advancePhase());
+  if (Reveal) {
+    const myFile = window.location.pathname.split('/').pop();
+    Reveal.on("fragmentshown", () => {
+      const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
+      if (bgIframe.includes(myFile)) advancePhase();
+    });
+  }
 } catch (_) {}
 
 // ══════════════════════════════════════════════════════════════
@@ -355,6 +364,10 @@ try {
 function animate(time) {
   requestAnimationFrame(animate);
   TWEEN.update(time);
+  if (pendingAdvance && !transitioning) {
+    pendingAdvance = false;
+    advancePhase();
+  }
   renderer.render(scene, camera);
 }
 requestAnimationFrame(animate);

@@ -225,6 +225,7 @@ function buildGrid(svg) {
 const MAX_PHASE = 14;
 let currentPhase = 0;
 let transitioning = false;
+let pendingAdvance = false;
 let largePanelG, gridG, legendG;
 
 function reveal(group) {
@@ -273,12 +274,17 @@ const PHASE_ACTIONS = [
 ];
 
 function advancePhase() {
-  if (transitioning || currentPhase >= MAX_PHASE) return;
+  if (currentPhase >= MAX_PHASE) return;
+  if (transitioning) { pendingAdvance = true; return; }
+  pendingAdvance = false;
   currentPhase++;
   transitioning = true;
   document.getElementById('hud').classList.add('hidden');
   PHASE_ACTIONS[currentPhase]();
-  setTimeout(() => { transitioning = false; }, 550);
+  setTimeout(() => {
+    transitioning = false;
+    if (pendingAdvance) { pendingAdvance = false; advancePhase(); }
+  }, 550);
   if (currentPhase >= MAX_PHASE) removeListeners();
 }
 
@@ -304,7 +310,14 @@ function init() {
 
   document.getElementById('viz').addEventListener('click', onClick);
   document.addEventListener('keydown', onKeyDown);
-  try { window.parent.Reveal.on('fragmentshown', advancePhase); } catch (_) {}
+  try {
+    const _R = window.parent.Reveal;
+    const myFile = window.location.pathname.split('/').pop();
+    _R.on('fragmentshown', () => {
+      const bgIframe = _R.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
+      if (bgIframe.includes(myFile)) advancePhase();
+    });
+  } catch (_) {}
 }
 
 document.addEventListener('DOMContentLoaded', init);

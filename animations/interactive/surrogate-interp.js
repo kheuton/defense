@@ -698,6 +698,13 @@
 
   document.getElementById('main-svg').addEventListener('click', onClick);
   document.addEventListener('keydown', onKeyDown);
-  try { window.parent.Reveal.on('fragmentshown', advancePhase); } catch (_) {}
+  try {
+    const _R = window.parent.Reveal;
+    const myFile = window.location.pathname.split('/').pop();
+    _R.on('fragmentshown', () => {
+      const bgIframe = _R.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
+      if (bgIframe.includes(myFile)) advancePhase();
+    });
+  } catch (_) {}
 
 })();

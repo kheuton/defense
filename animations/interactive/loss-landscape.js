@@ -338,6 +338,7 @@ const legendMethodRows = METHODS.map(m =>
 
 let currentPhase = 0;
 let transitioning = false;
+let pendingAdvance = false;
 const MAX_PHASE = 6;
 
 const DIM_OPACITY  = 0.25;
@@ -420,8 +421,9 @@ function phaseMethod(idx) {
 // ──────────────────────────────────────────────────────────────
 
 function advancePhase() {
-  if (transitioning || currentPhase >= MAX_PHASE) return;
-  if (currentPhase === 0 && !dataReady) return;
+  if (currentPhase >= MAX_PHASE) return;
+  if (transitioning || (currentPhase === 0 && !dataReady)) { pendingAdvance = true; return; }
+  pendingAdvance = false;
   currentPhase++;
   document.getElementById("hud").classList.add("hidden");
 
@@ -447,7 +449,13 @@ document.addEventListener("keydown", onKeyDown);
 
 try {
   const Reveal = window.parent && window.parent.Reveal;
-  if (Reveal) Reveal.on("fragmentshown", () => advancePhase());
+  if (Reveal) {
+    const myFile = window.location.pathname.split('/').pop();
+    Reveal.on("fragmentshown", () => {
+      const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
+      if (bgIframe.includes(myFile)) advancePhase();
+    });
+  }
 } catch (_) {}
 
 // ──────────────────────────────────────────────────────────────
@@ -484,6 +492,10 @@ init();
 function animate(t) {
   requestAnimationFrame(animate);
   TWEEN.update(t);
+  if (pendingAdvance && !transitioning && !(currentPhase === 0 && !dataReady)) {
+    pendingAdvance = false;
+    advancePhase();
+  }
   renderer.render(scene, camera);
 }
 requestAnimationFrame(animate);
