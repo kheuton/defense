@@ -139,7 +139,7 @@ export function buildAxis(g, cfg, labelGroup = null) {
 
 // Build a legend <g>. groups: [{head, items:[{display,shape,color}]}]
 export function buildLegend(groups, x, y, w) {
-  const PAD = 8, HH = 23, RH = 26, GG = 5;
+  const PAD = 10, HH = 30, RH = 34, GG = 7;
   const font = 'Inter, system-ui, sans-serif';
   const g = el('g');
 
@@ -155,23 +155,23 @@ export function buildLegend(groups, x, y, w) {
   let cy = y + PAD;
   groups.forEach(grp => {
     g.appendChild(el('text', {
-      x: x + PAD, y: cy + 15, fill: '#52526a', 'font-size': 14,
+      x: x + PAD, y: cy + 20, fill: '#52526a', 'font-size': 18,
       'font-family': font, 'font-weight': 700
     }, grp.head.toUpperCase()));
     cy += HH;
 
     grp.items.forEach(item => {
-      const mx = x + PAD + 7, my = cy + 9;
+      const mx = x + PAD + 8, my = cy + 12;
       if (item.shape === 'circle') {
-        g.appendChild(el('circle', { cx: mx, cy: my, r: 6, fill: item.color }));
+        g.appendChild(el('circle', { cx: mx, cy: my, r: 8, fill: item.color }));
       } else {
         g.appendChild(el('path', {
-          d: markerPath(item.shape, 6),
+          d: markerPath(item.shape, 8),
           transform: `translate(${mx},${my})`, fill: item.color
         }));
       }
       g.appendChild(el('text', {
-        x: mx + 13, y: my + 5, fill: '#c0c0d8', 'font-size': 16, 'font-family': font
+        x: mx + 16, y: my + 7, fill: '#c0c0d8', 'font-size': 22, 'font-family': font
       }, item.display));
       cy += RH;
     });

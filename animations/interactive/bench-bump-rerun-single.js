@@ -29,7 +29,7 @@ const P = {
   cl: 580, cr: 900, ct: 112, cb: 778, H: 666,
   cx: 740,
   titleX: 740, titleY: 86,
-  legendX: 930, legendY: 112, legendW: 200,
+  legendX: 930, legendY: 112, legendW: 240,
 };
 
 // ── Phase group mapping ───────────────────────────────────────────────────────

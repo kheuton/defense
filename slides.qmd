@@ -1,5 +1,5 @@
 ---
-title: "Making Better Decisions with Limited Budgets"
+title: "How to Make Better Decisions with Limited Budgets"
 subtitle: "PhD Thesis Defense"
 author: "Kyle Heuton"
 institute: "Tufts University · Hughes Lab"
@@ -74,8 +74,7 @@ Interactive animation — 9 steps:
 1
 :::
 ::: {.contribution-body}
-**Evaluation:** How do we measure whether a forecast is good
-for the *decision* it informs?
+How do we measure if a prediction helps us make better decisions?
 :::
 :::
 
@@ -85,8 +84,7 @@ for the *decision* it informs?
 2
 :::
 ::: {.contribution-body}
-**Training:** Can we design a DFL method that is both
-decision-aware *and* probabilistically well-calibrated?
+How can we train models that make predictions that lead to better decisions?
 :::
 :::
 :::
@@ -97,8 +95,7 @@ decision-aware *and* probabilistically well-calibrated?
 3
 :::
 ::: {.contribution-body}
-**Benchmarking:** Which DFL methods actually work, and when?
-What guidance can we give practitioners?
+Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 :::
@@ -115,8 +112,7 @@ This is the thesis overview dressed up as open questions. Each maps to a chapter
 1
 :::
 ::: {.contribution-body}
-**Evaluation:** How do we measure whether a forecast is good
-for the *decision* it informs?
+How do we measure if a prediction helps us make better decisions?
 :::
 :::
 
@@ -125,8 +121,7 @@ for the *decision* it informs?
 2
 :::
 ::: {.contribution-body}
-**Training:** Can we design a DFL method that is both
-decision-aware *and* probabilistically well-calibrated?
+How can we train models that make predictions that lead to better decisions?
 :::
 :::
 
@@ -135,8 +130,7 @@ decision-aware *and* probabilistically well-calibrated?
 3
 :::
 ::: {.contribution-body}
-**Benchmarking:** Which DFL methods actually work, and when?
-What guidance can we give practitioners?
+Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 
@@ -239,24 +233,6 @@ $x$ = Location, Time, Demographics, Last year's overdose counts, Social Vulnerab
 (5) θ slot machines spin + Gaussians drift, (6) slots stop staggered + Gaussians settle
 (high tract ≈7.8, moderate tract ≈6.0 off by 2, low tract ≈0.7),
 (7) area under each curve shades, (8) curves collapse to point estimates + gap lines.
-:::
-
-
-## Prior State-of-the-Art
-
-::: {style="font-size: 0.82em; margin-bottom: auto;"}
-
-| Year | Base Model | + Social Determinants of Health |
-|:----:|:----------:|:-------------------------------:|
-| 2016 | 2.35       | 2.40                            |
-| 2017 | 2.04       | 1.94                            |
-| 2018 | 2.47       | 2.44                            |
-| 2019 | 2.19       | 2.18                            |
-
-:::
-
-::: {style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 1.5em;"}
-Bauer C, Zhang K, Li W, Bernson D, Dammann O, LaRochelle MR, Stopka TJ. Small Area Forecasting of Opioid-Related Mortality: Bayesian Spatiotemporal Dynamic Modeling Approach. *JMIR Public Health Surveill* 2023;9:e41450.
 :::
 
 
@@ -387,41 +363,41 @@ Continuation of intro animation — starts at phase 7 (two models, RMSE comparis
   <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">62.0 (60.0–63.7)</td>
   <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment" data-fragment-index="1">305.4</span></td>
 </tr>
-<tr>
-  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">Historical Average</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.28 (1.24–1.33)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">59.8 (56.8–62.9)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">295.4</span></span></td>
+<tr class="fragment" data-fragment-index="2">
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">Historical Average</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">1.28 (1.24–1.33)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">59.8 (56.8–62.9)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment" data-fragment-index="3">295.4</span></td>
 </tr>
-<tr>
-  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">Poisson GLM + SVI</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.38 (1.30–1.47)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">61.0 (57.4–65.1)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">301.3</span></span></td>
+<tr class="fragment" data-fragment-index="4">
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">Poisson GLM + SVI</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">1.38 (1.30–1.47)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">61.0 (57.4–65.1)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">301.3</td>
 </tr>
-<tr>
-  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">Gradient Boosted Trees + SVI</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.24 (1.18–1.30)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">59.5 (55.9–63.1)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">293.6</span></span></td>
+<tr class="fragment" data-fragment-index="4">
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">Gradient Boosted Trees + SVI</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">1.24 (1.18–1.30)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">59.5 (55.9–63.1)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">293.6</td>
 </tr>
-<tr>
-  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">Gaussian Process</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.28 (1.23–1.34)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">58.2 (55.2–61.2)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">287.2</span></span></td>
+<tr class="fragment" data-fragment-index="4">
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">Gaussian Process</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">1.28 (1.23–1.34)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">58.2 (55.2–61.2)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">287.2</td>
 </tr>
-<tr>
-  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">CASTNet + SVI</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">1.47 (1.36–1.58)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2">54.4 (52.0–56.6)</span></td>
-  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);"><span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">268.0</span></span></td>
+<tr class="fragment" data-fragment-index="4">
+  <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">CASTNet + SVI</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">1.47 (1.36–1.58)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">54.4 (52.0–56.6)</td>
+  <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">268.0</td>
 </tr>
-<tr>
+<tr class="fragment" data-fragment-index="4">
   <td style="padding: 0.4em 0.7em;">Negative Binomial Spatially Lagged + SVI</td>
   <td style="text-align: center; padding: 0.4em 0.7em; border-left: 1px solid var(--separator);">1.31 (1.27–1.35)</td>
   <td style="text-align: center; padding: 0.4em 0.7em;">62.0 (60.3–64.0)</td>
-  <td style="text-align: center; padding: 0.4em 0.7em;"><span class="fragment" data-fragment-index="1">305.4</span></td>
+  <td style="text-align: center; padding: 0.4em 0.7em;">305.4</td>
 </tr>
 </tbody>
 </table>
@@ -431,11 +407,11 @@ Continuation of intro animation — starts at phase 7 (two models, RMSE comparis
 ## Takeaways
 
 ::: {.fragment .card style="border-left: 4px solid var(--teal-light);"}
-Simple models can be strong — these should be included in future work
+Include simple models in future work
 :::
 
 ::: {.fragment .card .card-teal}
-If these models will be used for decision-making, we should use decision-based metrics like %BPR
+Use decision-aware metrics (like %BPR)
 :::
 
 ::: {.fragment .card style="border-left: 4px solid var(--teal-dark);"}
@@ -450,8 +426,7 @@ Our code and *data* are available at <https://github.com/tufts-ml/opioid-overdos
 1
 :::
 ::: {.contribution-body}
-**Evaluation:** How do we measure whether a forecast is good
-for the *decision* it informs?
+How do we measure if a prediction helps us make better decisions?
 :::
 :::
 
@@ -460,8 +435,7 @@ for the *decision* it informs?
 2
 :::
 ::: {.contribution-body}
-**Training:** Can we design a DFL method that is both
-decision-aware *and* probabilistically well-calibrated?
+How can we train models that make predictions that lead to better decisions?
 :::
 :::
 
@@ -470,8 +444,7 @@ decision-aware *and* probabilistically well-calibrated?
 3
 :::
 ::: {.contribution-body}
-**Benchmarking:** Which DFL methods actually work, and when?
-What guidance can we give practitioners?
+Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 
@@ -504,7 +477,7 @@ Kyle Heuton, Frederick Muench, Shikhar Shrestha, Thomas J. Stopka, Michael C. Hu
 1
 :::
 ::: {.contribution-body}
-Decision-aware metrics do not have informative gradients — it is unclear how to optimize for them.
+We can't use our best tool, gradient descent, to train decision-aware models
 :::
 :::
 :::
@@ -515,35 +488,25 @@ Decision-aware metrics do not have informative gradients — it is unclear how t
 2
 :::
 ::: {.contribution-body}
-Given a probabilistic model for events, it isn't clear how to best rank locations.
+Do we have to choose between prediction accuracy and decision quality?
 :::
 :::
 :::
 
 ::: {.fragment}
-::: {.contribution-item}
+::: {.contribution-item style="opacity: 0.4;"}
 ::: {.contribution-num .accent-purple-dark}
 3
 :::
 ::: {.contribution-body}
-Existing decision-aware methods sacrifice model likelihood.
+What's the best way to turn a probability distribution over predictions into a single number used for making a decision?
 :::
 :::
 :::
 
 
-## How to Train {background-iframe="animations/interactive/mse-gradient.html" background-interactive="true"}
+## How to Train {background-iframe="animations/interactive/mse-gradient-bpr.html" background-interactive="true"}
 
-::: {.fragment .mse-step}
-:::
-::: {.fragment .mse-step}
-:::
-::: {.fragment .mse-step}
-:::
-::: {.fragment .mse-step}
-:::
-::: {.fragment .mse-step}
-:::
 ::: {.fragment .mse-step}
 :::
 ::: {.fragment .mse-step}
@@ -617,12 +580,12 @@ Existing decision-aware methods sacrifice model likelihood.
 Differentiable perturbed optimizers allow us to train models that make better decisions
 :::
 
-::: {.fragment .card .card-purple}
-When we care about ranking, the ratio estimator is superior to taking the mean of a distribution
+::: {.fragment .card .card-purple-dark}
+Decision-Aware Maximum Likelihood (DAML) can make better decisions and still accurately model our world
 :::
 
-::: {.fragment .card .card-purple-dark}
-The Decision-Aware Maximum Likelihood objective can deliver high-quality decisions and high-likelihood models
+::: {.fragment .card .card-purple style="opacity: 0.4;"}
+The ratio estimator is superior to the mean when converting a distribution into a ranking
 :::
 
 
@@ -633,8 +596,7 @@ The Decision-Aware Maximum Likelihood objective can deliver high-quality decisio
 1
 :::
 ::: {.contribution-body}
-**Evaluation:** How do we measure whether a forecast is good
-for the *decision* it informs?
+How do we measure if a prediction helps us make better decisions?
 :::
 :::
 
@@ -643,8 +605,7 @@ for the *decision* it informs?
 2
 :::
 ::: {.contribution-body}
-**Training:** Can we design a DFL method that is both
-decision-aware *and* probabilistically well-calibrated?
+How can we train models that make predictions that lead to better decisions?
 :::
 :::
 
@@ -653,8 +614,7 @@ decision-aware *and* probabilistically well-calibrated?
 3
 :::
 ::: {.contribution-body}
-**Benchmarking:** Which DFL methods actually work, and when?
-What guidance can we give practitioners?
+Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 
@@ -692,8 +652,6 @@ Kyle Heuton, Michael C. Hughes
 ::: {.fragment .results-step}
 :::
 
-## {background-image="figures/ch5/slide02.png" background-size="contain" background-color="black"}
-
 ## {background-iframe="animations/interactive/loss-landscape.html" background-interactive="true"}
 
 ::: {.fragment .results-step}
@@ -708,6 +666,27 @@ Kyle Heuton, Michael C. Hughes
 :::
 ::: {.fragment .results-step}
 :::
+
+## {background-iframe="animations/interactive/surrogate-interp.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
+## {background-image="figures/ch5/slide02.png" background-size="contain" background-color="black"}
 
 ## {background-iframe="animations/interactive/bench-bump-original.html" background-interactive="true"}
 
@@ -779,66 +758,14 @@ Kyle Heuton, Michael C. Hughes
 ::: {.fragment .results-step}
 :::
 
-## {background-iframe="animations/interactive/surrogate-interp.html" background-interactive="true"}
-
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-
 ## Benchmarking takeaways
-
-::: {.fragment .card .card-coral}
-Existing decision-aware benchmarks don't use decision-aware tasks
-:::
 
 ::: {.fragment .card .card-coral-dark}
 Future efforts should focus on the loss landscape induced by a given method
 :::
 
-
-## Three Open Questions
-
-::: {.contribution-item}
-::: {.contribution-num .accent-teal}
-1
-:::
-::: {.contribution-body}
-**Evaluation:** How do we measure whether a forecast is good
-for the *decision* it informs?
-:::
-:::
-
-::: {.contribution-item}
-::: {.contribution-num .accent-purple}
-2
-:::
-::: {.contribution-body}
-**Training:** Can we design a DFL method that is both
-decision-aware *and* probabilistically well-calibrated?
-:::
-:::
-
-::: {.contribution-item}
-::: {.contribution-num .accent-coral}
-3
-:::
-::: {.contribution-body}
-**Benchmarking:** Which DFL methods actually work, and when?
-What guidance can we give practitioners?
-:::
+::: {.fragment .card .card-coral}
+Existing decision-aware benchmarks don't use decision-aware tasks
 :::
 
 
@@ -847,15 +774,24 @@ What guidance can we give practitioners?
 ## Conclusion
 
 ::: {.fragment .card .card-teal}
-**Best Possible Reach** — a decision-oriented evaluation metric shows that simpler models can be just as strong, and that error-based metrics miss what matters for policy
+**Best Possible Reach**
+
+- Simpler models can be just as strong
+- Error-based metrics miss what matters for policy
 :::
 
 ::: {.fragment .card .card-purple}
-**DAML** — by jointly optimizing decision quality and likelihood, we can navigate the training frontier and avoid sacrificing calibration for performance
+**DAML**
+
+- Decision-aware metrics can be optimized
+- We don't have to sacrifice accuracy for decision quality
 :::
 
 ::: {.fragment .card .card-coral}
-**Benchmarking** — existing evaluations don't use decision-aware tasks; the loss landscape induced by a method is a better lens for understanding when DFL helps
+**Benchmarking**
+
+- Existing benchmarks aren't asking the right questions
+- Understanding the loss landscape induced by a method is key to understanding its success
 :::
 
 
@@ -866,7 +802,7 @@ Better benchmarks and deeper understanding of the loss landscape of decision-awa
 :::
 
 ::: {.fragment .card .card-purple}
-More intelligent training methods for decision-aware learning — which samples matter the most?
+More intelligent training methods for decision-aware learning: which samples matter the most?
 :::
 
 ::: {.fragment .card .card-teal}
@@ -997,6 +933,36 @@ Keep this brief. Have a backup slide with key results ready.
 :::
 
 # Bonus Slides {background-color="#1a1a2e"}
+
+## Prior State-of-the-Art
+
+::: {style="font-size: 0.82em; margin-bottom: auto;"}
+
+| Year | Base Model | + Social Determinants of Health |
+|:----:|:----------:|:-------------------------------:|
+| 2016 | 2.35       | 2.40                            |
+| 2017 | 2.04       | 1.94                            |
+| 2018 | 2.47       | 2.44                            |
+| 2019 | 2.19       | 2.18                            |
+
+:::
+
+::: {style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 1.5em;"}
+Bauer C, Zhang K, Li W, Bernson D, Dammann O, LaRochelle MR, Stopka TJ. Small Area Forecasting of Opioid-Related Mortality: Bayesian Spatiotemporal Dynamic Modeling Approach. *JMIR Public Health Surveill* 2023;9:e41450.
+:::
+
+## How to Train — MSE {background-iframe="animations/interactive/mse-gradient-mse.html" background-interactive="true"}
+
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
+::: {.fragment .mse-step}
+:::
 
 ## {background-image="figures/ch5/slide09.png" background-size="contain" background-color="white"}
 

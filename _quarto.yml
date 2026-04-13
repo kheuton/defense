@@ -27,6 +27,7 @@ format:
     incremental: false
     controls: true
     progress: false
+    preload-iframes: true
     # Speaker view
     chalkboard: false
     include-after-body: style/section-nav.html

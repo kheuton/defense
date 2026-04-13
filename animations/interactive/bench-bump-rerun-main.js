@@ -33,7 +33,7 @@ const G = {
   // avg rank column
   avgLeft: 1157, avgRight: 1307,
   // legend
-  legendX: 1310, legendY: 112, legendW: 200,
+  legendX: 1310, legendY: 112, legendW: 240,
 };
 
 const G_AVG_CL  = G.avgLeft + G.leftPad;   // 1185
