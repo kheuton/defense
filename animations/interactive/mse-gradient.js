@@ -358,6 +358,7 @@ function createConnectLine(x1, y1, x2, y2, color) {
 
 let currentPhase = 0;
 let transitioning = false;
+let pendingAdvance = false;
 
 // ══════════════════════════════════════════════════════════════
 // PHASE 1: Bar chart + prediction line + error fills + axes
@@ -793,7 +794,9 @@ function phase1_bpr() {
 const MAX_PHASE = ANIM_SECTION === 'mse' ? 5 : ANIM_SECTION === 'bpr' ? 5 : 10;
 
 function advancePhase() {
-  if (transitioning || currentPhase >= MAX_PHASE) return;
+  if (currentPhase >= MAX_PHASE) return;
+  if (transitioning) { pendingAdvance = true; return; }
+  pendingAdvance = false;
   currentPhase++;
   document.getElementById("hud").classList.add("hidden");
 
@@ -839,7 +842,11 @@ document.addEventListener("keydown", onKeyDown);
 try {
   const Reveal = window.parent && window.parent.Reveal;
   if (Reveal) {
-    Reveal.on("fragmentshown", () => advancePhase());
+    const myFile = window.location.pathname.split('/').pop();
+    Reveal.on("fragmentshown", () => {
+      const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
+      if (bgIframe.includes(myFile)) advancePhase();
+    });
   }
 } catch (_) {}
 
@@ -850,6 +857,10 @@ try {
 function animate(time) {
   requestAnimationFrame(animate);
   TWEEN.update(time);
+  if (pendingAdvance && !transitioning) {
+    pendingAdvance = false;
+    advancePhase();
+  }
   renderer.render(scene, camera);
 }
 requestAnimationFrame(animate);

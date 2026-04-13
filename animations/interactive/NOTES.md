@@ -131,6 +131,111 @@ Adjust `TARGET_POINTS` (simplification) and `WORLD_WIDTH` (scale) in the script.
 
 ---
 
+# Cross-Animation Patterns
+
+These patterns are applied consistently across all animations in this directory. Any new animation should follow them.
+
+## 1. Fragment isolation — `fragmentshown` filtering
+
+**Problem:** `preload-iframes: true` in `_quarto.yml` loads background-iframe animations before you navigate to them. The global `Reveal.on("fragmentshown", ...)` listener then fires for fragments on *other* slides, causing the animation to advance spuriously before the user ever sees it.
+
+**Fix:** Check that the current slide's `data-background-iframe` attribute matches this file before advancing:
+
+```js
+try {
+  const Reveal = window.parent && window.parent.Reveal;
+  if (Reveal) {
+    const myFile = window.location.pathname.split('/').pop(); // e.g. 'opioid-grid.html'
+    Reveal.on("fragmentshown", () => {
+      const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
+      if (bgIframe.includes(myFile)) advancePhase();
+    });
+  }
+} catch (_) {}
+```
+
+`window.location.pathname.split('/').pop()` returns the iframe's own HTML filename. `dataset.backgroundIframe` is the value of the `data-background-iframe` attribute on the `<section>` element for the current slide, set by Quarto from the `background-iframe="..."` attribute in the markdown.
+
+**Why `getCurrentSlide().contains(event.fragment)` does NOT work:** `fragmentshown` only fires for the current slide's fragments, so that check is always `true` and provides no filtering.
+
+## 2. Pending advance — queued input during transitions
+
+**Problem:** Pressing right/space while a transition is running is silently dropped (`if (transitioning) return`). If the user clicks during a long tween, nothing happens.
+
+**Fix (TWEEN.js animations — render loop):** Queue one pending advance and flush it in the render loop as soon as `transitioning` clears:
+
+```js
+let pendingAdvance = false;
+
+function advancePhase() {
+  if (currentPhase >= MAX_PHASE) return;
+  if (transitioning) { pendingAdvance = true; return; }
+  pendingAdvance = false;
+  currentPhase++;
+  // ... start transitions ...
+}
+
+function animate(time) {
+  requestAnimationFrame(animate);
+  TWEEN.update(time);
+  if (pendingAdvance && !transitioning) {
+    pendingAdvance = false;
+    advancePhase();
+  }
+  renderer.render(scene, camera);
+}
+```
+
+**Fix (timeout-based animations — no render loop):** Fire the pending advance from inside the `setTimeout` completion callback:
+
+```js
+function advancePhase() {
+  if (currentPhase >= MAX_PHASE) return;
+  if (transitioning) { pendingAdvance = true; return; }
+  pendingAdvance = false;
+  currentPhase++;
+  transitioning = true;
+  // ... do work ...
+  setTimeout(() => {
+    transitioning = false;
+    if (pendingAdvance) { pendingAdvance = false; advancePhase(); }
+  }, DURATION_MS);
+}
+```
+
+Applied to: opioid-grid, bpr-eval, mse-gradient, perturbed-opt, how-to-rank, loss-landscape (TWEEN.js); bench-bump-original, bench-bump-rerun-main, bench-bump-rerun-single (timeout).
+
+Not applied to: data-model (D3 transitions with per-phase timeouts — too invasive), daly-anim (single-phase), frontier/surrogate-interp (KaTeX+CSS, no meaningful transitioning gate), training-results/opportunity (CSS opacity fades, no blocking transition).
+
+## 3. Backward navigation — snap to start
+
+**Problem:** Pressing left while on an animation slide either silently hides a Reveal.js fragment (leaving animation and fragment state out of sync) or does nothing.
+
+**Fix (opioid-grid only, applied 2026-04):** Listen to `fragmenthidden` for this slide, reset all fragment visibility in the parent DOM, and reload the iframe. The listener unregisters itself before reloading to prevent handler accumulation across reloads:
+
+```js
+function onFragmentHidden() {
+  const slide = Reveal.getCurrentSlide();
+  const bgIframe = slide?.dataset?.backgroundIframe ?? '';
+  if (!bgIframe.includes(myFile)) return;
+  Reveal.off('fragmenthidden', onFragmentHidden);   // prevent stacking on reload
+  slide.querySelectorAll('.fragment').forEach(f => {
+    f.classList.remove('visible', 'current-fragment');
+  });
+  Reveal.sync();          // re-sync Reveal.js fragment state from DOM
+  window.location.reload(); // reset animation to phase 0
+}
+Reveal.on('fragmenthidden', onFragmentHidden);
+```
+
+**Why `Reveal.sync()` is needed:** After removing `.visible` from all fragments, `Reveal.sync()` recalculates internal fragment indices so the next forward press advances fragment 1 (not fragment N+1). Without it, the next fragmentshown fires for the wrong index and the animation gets only one advance instead of 9.
+
+**To apply to other animations:** Copy the `onFragmentHidden` block into the Reveal.js integration section of any animation. No other changes needed — the `window.location.reload()` resets all Three.js/TWEEN state automatically.
+
+**Limitation:** The reload causes a brief visual flash (~1 frame). Acceptable in presentation context. A no-reload alternative would require a full `resetToPhase0()` function tracking all tween end states — significantly more complex.
+
+---
+
 # Training Results Animation — Developer Notes
 
 3-phase half-violin plot rendered in vanilla SVG (no Three.js). Shows test BPR vs. test log-likelihood for three datasets across three methods (NLL Only → BPR Only → DAML), embedded as two separate slides.

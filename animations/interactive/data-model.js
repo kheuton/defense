@@ -449,7 +449,13 @@
   // Reveal.js fragment integration
   try {
     const Reveal = window.parent && window.parent.Reveal;
-    if (Reveal) Reveal.on('fragmentshown', () => advancePhase());
+    if (Reveal) {
+      const myFile = window.location.pathname.split('/').pop();
+      Reveal.on('fragmentshown', () => {
+        const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
+        if (bgIframe.includes(myFile)) advancePhase();
+      });
+    }
   } catch (_) {}
 
 })();

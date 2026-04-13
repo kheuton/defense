@@ -236,6 +236,7 @@ requestAnimationFrame(() => {
 // ── Animation state ───────────────────────────────────────────
 let currentPhase = 0;
 let transitioning = false;
+let pendingAdvance = false;
 const MAX_PHASE = 2;
 
 // ── Phase 1: Highlight top-K, fade everything else ───────────
@@ -337,7 +338,9 @@ function transitionToEval() {
 
 // ── Phase controller ──────────────────────────────────────────
 function advancePhase() {
-  if (transitioning || currentPhase >= MAX_PHASE) return;
+  if (currentPhase >= MAX_PHASE) return;
+  if (transitioning) { pendingAdvance = true; return; }
+  pendingAdvance = false;
   currentPhase++;
   document.getElementById("hud").classList.add("hidden");
   if (currentPhase === 1) transitionToTopK();
@@ -359,13 +362,23 @@ document.addEventListener("keydown", onKeyDown);
 
 try {
   const Reveal = window.parent && window.parent.Reveal;
-  if (Reveal) Reveal.on("fragmentshown", () => advancePhase());
+  if (Reveal) {
+    const myFile = window.location.pathname.split('/').pop();
+    Reveal.on("fragmentshown", () => {
+      const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
+      if (bgIframe.includes(myFile)) advancePhase();
+    });
+  }
 } catch (_) {}
 
 // ── Render loop ───────────────────────────────────────────────
 function animate(time) {
   requestAnimationFrame(animate);
   TWEEN.update(time);
+  if (pendingAdvance && !transitioning) {
+    pendingAdvance = false;
+    advancePhase();
+  }
   renderer.render(scene, camera);
 }
 animate();

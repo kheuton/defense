@@ -457,6 +457,7 @@ function createConnectLine(x1, y1, x2, y2, color) {
 
 let currentPhase = 0;
 let transitioning = false;
+let pendingAdvance = false;
 let smoothBPR1 = 0;
 
 // ══════════════════════════════════════════════════════════════
@@ -713,7 +714,9 @@ function phase8() {
 // ══════════════════════════════════════════════════════════════
 
 function advancePhase() {
-  if (transitioning || currentPhase >= 8) return;
+  if (currentPhase >= 8) return;
+  if (transitioning) { pendingAdvance = true; return; }
+  pendingAdvance = false;
   currentPhase++;
   document.getElementById("hud").classList.add("hidden");
   switch (currentPhase) {
@@ -742,7 +745,13 @@ document.addEventListener("keydown", onKeyDown);
 
 try {
   const Reveal = window.parent && window.parent.Reveal;
-  if (Reveal) Reveal.on("fragmentshown", () => advancePhase());
+  if (Reveal) {
+    const myFile = window.location.pathname.split('/').pop();
+    Reveal.on("fragmentshown", () => {
+      const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
+      if (bgIframe.includes(myFile)) advancePhase();
+    });
+  }
 } catch (_) {}
 
 // ══════════════════════════════════════════════════════════════
@@ -752,6 +761,10 @@ try {
 function animate(time) {
   requestAnimationFrame(animate);
   TWEEN.update(time);
+  if (pendingAdvance && !transitioning) {
+    pendingAdvance = false;
+    advancePhase();
+  }
   renderer.render(scene, camera);
 }
 requestAnimationFrame(animate);
