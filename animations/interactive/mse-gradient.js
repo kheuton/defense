@@ -1,18 +1,21 @@
 /**
  * MSE vs BPR Gradient Animation
  *
- * 10-phase click-through showing:
- *   Phases 1-5: MSE has informative gradients (line descends)
- *   Phases 6-10: BPR does NOT (line stays flat)
+ * Controlled by window.ANIM_SECTION (set before module loads):
+ *   'full' (default) — 10-phase: MSE story (1-5) then BPR story (6-10)
+ *   'mse'            — 5-phase:  MSE story only (phases 1-5)
+ *   'bpr'            — 5-phase:  BPR story only (custom phase1 + phases 7-10)
  *
  * All tunables in config.js MSE_GRADIENT section.
  */
+
+const ANIM_SECTION = (typeof window !== 'undefined' && window.ANIM_SECTION) || 'full';
 
 import * as THREE from "three";
 import TWEEN from "@tweenjs/tween.js";
 import {
   COLORS, valueColor, BAR_CHART_DATA, BAR_CHART,
-  PRED_LEFT, PRED_LINE, ERROR_FILL, COMPARISON,
+  PRED_LEFT, PRED_LINE, ERROR_FILL, COMPARISON, createIBar,
   LIGHTING, MSE_GRADIENT,
 } from "./config.js";
 import { computeLeftPredictions } from "./prediction-utils.js";
@@ -195,23 +198,18 @@ function createPredictionLine(preds, opacity) {
 
 function createFillQuads(preds, opacity) {
   // Remove old
-  fillQuads.forEach(f => { if (f) { chartGroup.remove(f.mesh); f.mesh.geometry.dispose(); } });
+  fillQuads.forEach(f => { if (f) chartGroup.remove(f.group); });
 
   fillQuads = preds.map((pred, i) => {
-    const actual = sortedValues[i];
-    const predY = pred * hScale;
-    const actualY = actual * hScale;
-    const height = Math.abs(predY - actualY);
-    if (height < 0.01) return null;
-    const geo = new THREE.PlaneGeometry(bw * 0.9, height);
+    const predY   = pred           * hScale;
+    const actualY = sortedValues[i] * hScale;
+    if (Math.abs(predY - actualY) < 0.01) return null;
     const mat = new THREE.MeshBasicMaterial({
       color: ERROR_FILL.color, transparent: true, opacity,
-      side: THREE.DoubleSide, depthWrite: false,
     });
-    const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.set(barPositions[i], (predY + actualY) / 2, 0.5);
-    chartGroup.add(mesh);
-    return { mesh, mat };
+    const ibar = createIBar(predY, actualY, barPositions[i], bw, mat);
+    chartGroup.add(ibar.group);
+    return ibar;
   });
 }
 
@@ -230,19 +228,14 @@ function rebuildVisuals(preds) {
   // Rebuild fills
   preds.forEach((pred, i) => {
     if (!fillQuads[i]) return;
-    const actual = sortedValues[i];
-    const predY = pred * hScale;
-    const actualY = actual * hScale;
-    const height = Math.abs(predY - actualY);
-    if (height < 0.01) {
-      fillQuads[i].mesh.visible = false;
+    const predY   = pred           * hScale;
+    const actualY = sortedValues[i] * hScale;
+    if (Math.abs(predY - actualY) < 0.01) {
+      fillQuads[i].group.visible = false;
       return;
     }
-    fillQuads[i].mesh.visible = true;
-    const oldGeo = fillQuads[i].mesh.geometry;
-    fillQuads[i].mesh.geometry = new THREE.PlaneGeometry(bw * 0.9, height);
-    oldGeo.dispose();
-    fillQuads[i].mesh.position.y = (predY + actualY) / 2;
+    fillQuads[i].group.visible = true;
+    fillQuads[i].update(predY, actualY);
   });
 }
 
@@ -722,26 +715,113 @@ function phase10() {
 }
 
 // ══════════════════════════════════════════════════════════════
+// PHASE 1 (BPR-only mode): bars + prediction line + BPR graph axes + top-K + BPR calc
+// ══════════════════════════════════════════════════════════════
+
+function phase1_bpr() {
+  transitioning = true;
+
+  // Bars appear (staggered)
+  bars.forEach((b, i) => {
+    new TWEEN.Tween(b.mesh.scale)
+      .to({ y: 1 }, CFG.timing.barAppear)
+      .delay(i * CFG.timing.barStagger)
+      .easing(TWEEN.Easing.Back.Out)
+      .start();
+  });
+
+  const barsDone = n * CFG.timing.barStagger + CFG.timing.barAppear;
+
+  // Prediction line + error fills
+  setTimeout(() => {
+    createPredictionLine(predictions, 0);
+    createFillQuads(predictions, 0);
+
+    new TWEEN.Tween(predLine.mat).to({ opacity: 1 }, CFG.timing.lineAppear).start();
+    predMarkers.forEach(m => {
+      new TWEEN.Tween(m.mat).to({ opacity: 1 }, CFG.timing.lineAppear).start();
+    });
+    fillQuads.forEach((f, i) => {
+      if (f) {
+        new TWEEN.Tween(f.mat)
+          .to({ opacity: ERROR_FILL.opacity }, CFG.timing.fillAppear)
+          .delay(i * CFG.timing.fillStagger)
+          .start();
+      }
+    });
+  }, barsDone);
+
+  // Graph axes with BPR y-label
+  setTimeout(() => {
+    new TWEEN.Tween(yAxis.material).to({ opacity: 1 }, CFG.timing.axesAppear).start();
+    new TWEEN.Tween(xAxis.material).to({ opacity: 1 }, CFG.timing.axesAppear).start();
+    showOverlay("y-axis-label", "% Best Possible Reach",
+      graphWorldPos(0, G.height + 0.5));
+    showOverlay("x-axis-label", "θ",
+      graphWorldPos(G.width / 2, -0.6));
+  }, barsDone + CFG.timing.lineAppear);
+
+  // Highlight model's top-K bars
+  setTimeout(() => {
+    bars.forEach((b, i) => {
+      if (!modelTopK.has(i)) {
+        new TWEEN.Tween(b.mat).to({ opacity: 0.12 }, CFG.timing.topKFade).start();
+      }
+    });
+  }, barsDone + CFG.timing.lineAppear + CFG.timing.axesAppear);
+
+  // BPR calc overlay + set mapY
+  setTimeout(() => {
+    mapY = bprMapY;
+    const calcPos = new THREE.Vector3(CFG.chartOffsetX, -1.5, 0);
+    showOverlay("bpr-calc",
+      `Model's top ${k} overdoses = <span class="value">${modelTopKSum}</span>`
+      + `<br>True top ${k} overdoses = <span class="value">${trueTopKSum}</span>`
+      + `<br><span class="result bad">= ${bprPct.toFixed(1)}%</span>`,
+      calcPos);
+  }, barsDone + CFG.timing.lineAppear + CFG.timing.axesAppear + CFG.timing.topKFade);
+
+  const total = barsDone + CFG.timing.lineAppear + CFG.timing.axesAppear
+    + CFG.timing.topKFade + CFG.timing.bprCalcDelay;
+  setTimeout(() => { transitioning = false; }, total);
+}
+
+// ══════════════════════════════════════════════════════════════
 // PHASE CONTROLLER
 // ══════════════════════════════════════════════════════════════
 
+const MAX_PHASE = ANIM_SECTION === 'mse' ? 5 : ANIM_SECTION === 'bpr' ? 5 : 10;
+
 function advancePhase() {
-  if (transitioning || currentPhase >= 10) return;
+  if (transitioning || currentPhase >= MAX_PHASE) return;
   currentPhase++;
   document.getElementById("hud").classList.add("hidden");
-  switch (currentPhase) {
-    case 1:  phase1();  break;
-    case 2:  phase2();  break;
-    case 3:  phase3();  break;
-    case 4:  phase4();  break;
-    case 5:  phase5();  break;
-    case 6:  phase6();  break;
-    case 7:  phase7();  break;
-    case 8:  phase8();  break;
-    case 9:  phase9();  break;
-    case 10: phase10(); break;
+
+  if (ANIM_SECTION === 'bpr') {
+    switch (currentPhase) {
+      case 1: phase1_bpr(); break;
+      case 2: phase7();     break;
+      case 3: phase8();     break;
+      case 4: phase9();     break;
+      case 5: phase10();    break;
+    }
+  } else {
+    // 'full' or 'mse' — same phase functions; 'mse' just stops at 5
+    switch (currentPhase) {
+      case 1:  phase1();  break;
+      case 2:  phase2();  break;
+      case 3:  phase3();  break;
+      case 4:  phase4();  break;
+      case 5:  phase5();  break;
+      case 6:  phase6();  break;
+      case 7:  phase7();  break;
+      case 8:  phase8();  break;
+      case 9:  phase9();  break;
+      case 10: phase10(); break;
+    }
   }
-  if (currentPhase >= 10) removeListeners();
+
+  if (currentPhase >= MAX_PHASE) removeListeners();
 }
 
 function onClick() { advancePhase(); }

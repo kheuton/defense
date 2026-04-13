@@ -10,8 +10,8 @@
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Kyle Heuton">
-  <meta name="dcterms.date" content="2025-12-31">
-  <title>Decision-Aware Machine Learning for Resource Allocation</title>
+  <meta name="dcterms.date" content="2026-04-17">
+  <title>How to Make Better Decisions with Limited Budgets</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -145,7 +145,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Decision-Aware Machine Learning<br>for Resource Allocation</h1>
+  <h1 class="title">How to Make Better Decisions with Limited Budgets</h1>
   <p class="subtitle">PhD Thesis Defense</p>
 
 <div class="quarto-title-authors">
@@ -159,7 +159,7 @@ Kyle Heuton
     </div>
 </div>
 
-  <p class="date">2025-12-31</p>
+  <p class="date">2026-04-17</p>
 </section>
 <section>
 
@@ -239,7 +239,7 @@ Kyle Heuton
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p><strong>Evaluation:</strong> How do we measure whether a forecast is good for the <em>decision</em> it informs?</p>
+<p>How do we measure if a prediction helps us make better decisions?</p>
 </div>
 </div>
 <div class="fragment">
@@ -248,7 +248,7 @@ Kyle Heuton
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p><strong>Training:</strong> Can we design a DFL method that is both decision-aware <em>and</em> probabilistically well-calibrated?</p>
+<p>How can we train models that make predictions that lead to better decisions?</p>
 </div>
 </div>
 </div>
@@ -258,7 +258,7 @@ Kyle Heuton
 <p>3</p>
 </div>
 <div class="contribution-body">
-<p><strong>Benchmarking:</strong> Which DFL methods actually work, and when? What guidance can we give practitioners?</p>
+<p>Out of all the different ways to do decision-aware learning, how do we pick?</p>
 </div>
 </div>
 </div>
@@ -283,7 +283,7 @@ Kyle Heuton
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p><strong>Evaluation:</strong> How do we measure whether a forecast is good for the <em>decision</em> it informs?</p>
+<p>How do we measure if a prediction helps us make better decisions?</p>
 </div>
 </div>
 <div class="contribution-item" style="opacity: 0.25;">
@@ -291,7 +291,7 @@ Kyle Heuton
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p><strong>Training:</strong> Can we design a DFL method that is both decision-aware <em>and</em> probabilistically well-calibrated?</p>
+<p>How can we train models that make predictions that lead to better decisions?</p>
 </div>
 </div>
 <div class="contribution-item" style="opacity: 0.25;">
@@ -299,7 +299,7 @@ Kyle Heuton
 <p>3</p>
 </div>
 <div class="contribution-body">
-<p><strong>Benchmarking:</strong> Which DFL methods actually work, and when? What guidance can we give practitioners?</p>
+<p>Out of all the different ways to do decision-aware learning, how do we pick?</p>
 </div>
 </div>
 </section></section>
@@ -324,7 +324,7 @@ Kyle Heuton
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p>Models were rarely compared to competitors or reasonable baselines, making the benefit of any model impossible to determine.</p>
+<p>Models were rarely compared to competitors or reasonable baselines.</p>
 </div>
 </div>
 </div>
@@ -334,7 +334,7 @@ Kyle Heuton
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p>Existing literature nearly unanimously used error-based metrics to compare models, making the effects of using such models to guide policy decisions unclear.</p>
+<p>Existing literature nearly unanimously used error-based metrics to compare models.</p>
 </div>
 </div>
 </div>
@@ -401,45 +401,6 @@ Kyle Heuton
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="prior-state-of-the-art" class="slide level2">
-<h2>Prior State-of-the-Art</h2>
-<div style="font-size: 0.82em; margin-bottom: auto;">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Year</th>
-<th style="text-align: center;">Base Model</th>
-<th style="text-align: center;">+ Social Determinants of Health</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">2016</td>
-<td style="text-align: center;">2.35</td>
-<td style="text-align: center;">2.40</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2017</td>
-<td style="text-align: center;">2.04</td>
-<td style="text-align: center;">1.94</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2018</td>
-<td style="text-align: center;">2.47</td>
-<td style="text-align: center;">2.44</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2019</td>
-<td style="text-align: center;">2.19</td>
-<td style="text-align: center;">2.18</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 1.5em;">
-<p>Bauer C, Zhang K, Li W, Bernson D, Dammann O, LaRochelle MR, Stopka TJ. Small Area Forecasting of Opioid-Related Mortality: Bayesian Spatiotemporal Dynamic Modeling Approach. <em>JMIR Public Health Surveill</em> 2023;9:e41450.</p>
-</div>
 </section>
 <section id="simpler-models-can-be-just-as-strong" class="slide level2">
 <h2>Simpler models can be just as strong</h2>
@@ -662,77 +623,77 @@ Bayesian Spatiotemporal + SVI
 <span class="fragment" data-fragment-index="1">305.4</span>
 </td>
 </tr>
-<tr>
+<tr class="fragment" data-fragment-index="2">
 <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">Historical Average</span>
+Historical Average
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">1.28 (1.24–1.33)</span>
+1.28 (1.24–1.33)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">59.8 (56.8–62.9)</span>
+59.8 (56.8–62.9)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">295.4</span></span>
+<span class="fragment" data-fragment-index="3">295.4</span>
 </td>
 </tr>
-<tr>
+<tr class="fragment" data-fragment-index="4">
 <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">Poisson GLM + SVI</span>
+Poisson GLM + SVI
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">1.38 (1.30–1.47)</span>
+1.38 (1.30–1.47)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">61.0 (57.4–65.1)</span>
+61.0 (57.4–65.1)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">301.3</span></span>
+301.3
 </td>
 </tr>
-<tr>
+<tr class="fragment" data-fragment-index="4">
 <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">Gradient Boosted Trees + SVI</span>
+Gradient Boosted Trees + SVI
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">1.24 (1.18–1.30)</span>
+1.24 (1.18–1.30)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">59.5 (55.9–63.1)</span>
+59.5 (55.9–63.1)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">293.6</span></span>
+293.6
 </td>
 </tr>
-<tr>
+<tr class="fragment" data-fragment-index="4">
 <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">Gaussian Process</span>
+Gaussian Process
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">1.28 (1.23–1.34)</span>
+1.28 (1.23–1.34)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">58.2 (55.2–61.2)</span>
+58.2 (55.2–61.2)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">287.2</span></span>
+287.2
 </td>
 </tr>
-<tr>
+<tr class="fragment" data-fragment-index="4">
 <td style="padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">CASTNet + SVI</span>
+CASTNet + SVI
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator); border-left: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">1.47 (1.36–1.58)</span>
+1.47 (1.36–1.58)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2">54.4 (52.0–56.6)</span>
+54.4 (52.0–56.6)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em; border-bottom: 1px solid var(--separator);">
-<span class="fragment semi-fade-out" data-fragment-index="2"><span class="fragment" data-fragment-index="1">268.0</span></span>
+268.0
 </td>
 </tr>
-<tr>
+<tr class="fragment" data-fragment-index="4">
 <td style="padding: 0.4em 0.7em;">
 Negative Binomial Spatially Lagged + SVI
 </td>
@@ -743,7 +704,7 @@ Negative Binomial Spatially Lagged + SVI
 62.0 (60.3–64.0)
 </td>
 <td style="text-align: center; padding: 0.4em 0.7em;">
-<span class="fragment" data-fragment-index="1">305.4</span>
+305.4
 </td>
 </tr>
 </tbody>
@@ -753,10 +714,10 @@ Negative Binomial Spatially Lagged + SVI
 <section id="takeaways" class="slide level2">
 <h2>Takeaways</h2>
 <div class="fragment card" style="border-left: 4px solid var(--teal-light);">
-<p>Simple models can be strong — these should be included in future work</p>
+<p>Include simple models in future work</p>
 </div>
 <div class="fragment card card-teal">
-<p>If these models will be used for decision-making, we should use decision-based metrics like %BPR</p>
+<p>Use decision-aware metrics (like %BPR)</p>
 </div>
 <div class="fragment card" style="border-left: 4px solid var(--teal-dark);">
 <p>Our code and <em>data</em> are available at <a href="https://github.com/tufts-ml/opioid-overdose-models" class="uri">https://github.com/tufts-ml/opioid-overdose-models</a></p>
@@ -769,7 +730,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p><strong>Evaluation:</strong> How do we measure whether a forecast is good for the <em>decision</em> it informs?</p>
+<p>How do we measure if a prediction helps us make better decisions?</p>
 </div>
 </div>
 <div class="contribution-item">
@@ -777,7 +738,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p><strong>Training:</strong> Can we design a DFL method that is both decision-aware <em>and</em> probabilistically well-calibrated?</p>
+<p>How can we train models that make predictions that lead to better decisions?</p>
 </div>
 </div>
 <div class="contribution-item" style="opacity: 0.25;">
@@ -785,7 +746,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>3</p>
 </div>
 <div class="contribution-body">
-<p><strong>Benchmarking:</strong> Which DFL methods actually work, and when? What guidance can we give practitioners?</p>
+<p>Out of all the different ways to do decision-aware learning, how do we pick?</p>
 </div>
 </div>
 </section></section>
@@ -810,7 +771,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p>Decision-aware metrics do not have informative gradients — it is unclear how to optimize for them.</p>
+<p>We can’t use our best tool, gradient descent, to train decision-aware models</p>
 </div>
 </div>
 </div>
@@ -820,38 +781,23 @@ Negative Binomial Spatially Lagged + SVI
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p>Given a probabilistic model for events, it isn’t clear how to best rank locations.</p>
+<p>Do we have to choose between prediction accuracy and decision quality?</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<div class="contribution-item">
+<div class="contribution-item" style="opacity: 0.4;">
 <div class="contribution-num accent-purple-dark">
 <p>3</p>
 </div>
 <div class="contribution-body">
-<p>Existing decision-aware methods sacrifice model likelihood.</p>
+<p>What’s the best way to turn a probability distribution over predictions into a single number used for making a decision?</p>
 </div>
 </div>
 </div>
 </section>
-<section id="how-to-train" class="slide level2" data-background-iframe="animations/interactive/mse-gradient.html" data-background-interactive="true">
+<section id="how-to-train" class="slide level2" data-background-iframe="animations/interactive/mse-gradient-bpr.html" data-background-interactive="true">
 <h2>How to Train</h2>
-<div class="fragment mse-step">
-
-</div>
-<div class="fragment mse-step">
-
-</div>
-<div class="fragment mse-step">
-
-</div>
-<div class="fragment mse-step">
-
-</div>
-<div class="fragment mse-step">
-
-</div>
 <div class="fragment mse-step">
 
 </div>
@@ -948,11 +894,11 @@ Negative Binomial Spatially Lagged + SVI
 <div class="fragment card card-purple-light">
 <p>Differentiable perturbed optimizers allow us to train models that make better decisions</p>
 </div>
-<div class="fragment card card-purple">
-<p>When we care about ranking, the ratio estimator is superior to taking the mean of a distribution</p>
-</div>
 <div class="fragment card card-purple-dark">
-<p>The Decision-Aware Maximum Likelihood objective can deliver high-quality decisions and high-likelihood models</p>
+<p>Decision-Aware Maximum Likelihood (DAML) can make better decisions and still accurately model our world</p>
+</div>
+<div class="fragment card card-purple" style="opacity: 0.4;">
+<p>The ratio estimator is superior to the mean when converting a distribution into a ranking</p>
 </div>
 </section>
 <section id="three-open-questions-3" class="slide level2">
@@ -962,7 +908,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p><strong>Evaluation:</strong> How do we measure whether a forecast is good for the <em>decision</em> it informs?</p>
+<p>How do we measure if a prediction helps us make better decisions?</p>
 </div>
 </div>
 <div class="contribution-item" style="opacity: 0.25;">
@@ -970,7 +916,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p><strong>Training:</strong> Can we design a DFL method that is both decision-aware <em>and</em> probabilistically well-calibrated?</p>
+<p>How can we train models that make predictions that lead to better decisions?</p>
 </div>
 </div>
 <div class="contribution-item">
@@ -978,7 +924,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>3</p>
 </div>
 <div class="contribution-body">
-<p><strong>Benchmarking:</strong> Which DFL methods actually work, and when? What guidance can we give practitioners?</p>
+<p>Out of all the different ways to do decision-aware learning, how do we pick?</p>
 </div>
 </div>
 </section></section>
@@ -1013,10 +959,7 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-7" class="slide level2" data-background-image="figures/ch5/slide02.png" data-background-size="contain" data-background-color="black">
-<h2></h2>
-</section>
-<section id="section-8" class="slide level2" data-background-iframe="animations/interactive/loss-landscape.html" data-background-interactive="true">
+<section id="section-7" class="slide level2" data-background-iframe="animations/interactive/loss-landscape.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -1037,26 +980,8 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-9" class="slide level2" data-background-iframe="animations/interactive/bench-bump-original.html" data-background-interactive="true">
+<section id="section-8" class="slide level2" data-background-iframe="animations/interactive/surrogate-interp.html" data-background-interactive="true">
 <h2></h2>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
 <div class="fragment results-step">
 
 </div>
@@ -1082,8 +1007,70 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-10" class="slide level2" data-background-image="figures/ch5/slide05.png" data-background-size="contain" data-background-color="white">
+<section id="section-9" class="slide level2" data-background-image="figures/ch5/slide02.png" data-background-size="contain" data-background-color="black">
 <h2></h2>
+</section>
+<section id="section-10" class="slide level2" data-background-iframe="animations/interactive/bench-bump-original.html" data-background-interactive="true">
+<h2></h2>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+</section>
+<section id="rerun-procedure" class="slide level2">
+<h2>Rerun Procedure</h2>
+<ul>
+<li>Original: 5 learning rates</li>
+</ul>
+<div class="fragment">
+<p><strong>Rerun</strong></p>
+<ul>
+<li>Phase 1: 3 learning rates, 2 batch sizes</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Phase 2: 4 new hyperparameter settings for methods with their own hyperparameters</li>
+</ul>
+</div>
 </section>
 <section id="section-11" class="slide level2" data-background-iframe="animations/interactive/bench-bump-rerun-main.html" data-background-interactive="true">
 <h2></h2>
@@ -1118,67 +1105,13 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-14" class="slide level2" data-background-iframe="animations/interactive/surrogate-interp.html" data-background-interactive="true">
-<h2></h2>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-</section>
 <section id="benchmarking-takeaways" class="slide level2">
 <h2>Benchmarking takeaways</h2>
-<div class="fragment card card-coral">
-<p>Existing decision-aware benchmarks don’t use decision-aware tasks</p>
-</div>
 <div class="fragment card card-coral-dark">
 <p>Future efforts should focus on the loss landscape induced by a given method</p>
 </div>
-</section>
-<section id="three-open-questions-4" class="slide level2">
-<h2>Three Open Questions</h2>
-<div class="contribution-item">
-<div class="contribution-num accent-teal">
-<p>1</p>
-</div>
-<div class="contribution-body">
-<p><strong>Evaluation:</strong> How do we measure whether a forecast is good for the <em>decision</em> it informs?</p>
-</div>
-</div>
-<div class="contribution-item">
-<div class="contribution-num accent-purple">
-<p>2</p>
-</div>
-<div class="contribution-body">
-<p><strong>Training:</strong> Can we design a DFL method that is both decision-aware <em>and</em> probabilistically well-calibrated?</p>
-</div>
-</div>
-<div class="contribution-item">
-<div class="contribution-num accent-coral">
-<p>3</p>
-</div>
-<div class="contribution-body">
-<p><strong>Benchmarking:</strong> Which DFL methods actually work, and when? What guidance can we give practitioners?</p>
-</div>
+<div class="fragment card card-coral">
+<p>Existing decision-aware benchmarks don’t use decision-aware tasks</p>
 </div>
 </section></section>
 <section>
@@ -1189,13 +1122,25 @@ Negative Binomial Spatially Lagged + SVI
 <section id="conclusion" class="slide level2">
 <h2>Conclusion</h2>
 <div class="fragment card card-teal">
-<p><strong>Best Possible Reach</strong> — a decision-oriented evaluation metric shows that simpler models can be just as strong, and that error-based metrics miss what matters for policy</p>
+<p><strong>Best Possible Reach</strong></p>
+<ul>
+<li>Simpler models can be just as strong</li>
+<li>Error-based metrics miss what matters for policy</li>
+</ul>
 </div>
 <div class="fragment card card-purple">
-<p><strong>DAML</strong> — by jointly optimizing decision quality and likelihood, we can navigate the training frontier and avoid sacrificing calibration for performance</p>
+<p><strong>DAML</strong></p>
+<ul>
+<li>Decision-aware metrics can be optimized</li>
+<li>We don’t have to sacrifice accuracy for decision quality</li>
+</ul>
 </div>
 <div class="fragment card card-coral">
-<p><strong>Benchmarking</strong> — existing evaluations don’t use decision-aware tasks; the loss landscape induced by a method is a better lens for understanding when DFL helps</p>
+<p><strong>Benchmarking</strong></p>
+<ul>
+<li>Existing benchmarks aren’t asking the right questions</li>
+<li>Understanding the loss landscape induced by a method is key to understanding its success</li>
+</ul>
 </div>
 </section>
 <section id="future-directions" class="slide level2">
@@ -1204,7 +1149,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>Better benchmarks and deeper understanding of the loss landscape of decision-aware methods</p>
 </div>
 <div class="fragment card card-purple">
-<p>More intelligent training methods for decision-aware learning — which samples matter the most?</p>
+<p>More intelligent training methods for decision-aware learning: which samples matter the most?</p>
 </div>
 <div class="fragment card card-teal">
 <p>Decision-aware model training and inference</p>
@@ -1310,16 +1255,73 @@ Negative Binomial Spatially Lagged + SVI
 <h1>Bonus Slides</h1>
 
 </section>
-<section id="section-15" class="slide level2" data-background-image="figures/ch5/slide09.png" data-background-size="contain" data-background-color="white">
+<section id="prior-state-of-the-art" class="slide level2">
+<h2>Prior State-of-the-Art</h2>
+<div style="font-size: 0.82em; margin-bottom: auto;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Year</th>
+<th style="text-align: center;">Base Model</th>
+<th style="text-align: center;">+ Social Determinants of Health</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2016</td>
+<td style="text-align: center;">2.35</td>
+<td style="text-align: center;">2.40</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2017</td>
+<td style="text-align: center;">2.04</td>
+<td style="text-align: center;">1.94</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2018</td>
+<td style="text-align: center;">2.47</td>
+<td style="text-align: center;">2.44</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2019</td>
+<td style="text-align: center;">2.19</td>
+<td style="text-align: center;">2.18</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 1.5em;">
+<p>Bauer C, Zhang K, Li W, Bernson D, Dammann O, LaRochelle MR, Stopka TJ. Small Area Forecasting of Opioid-Related Mortality: Bayesian Spatiotemporal Dynamic Modeling Approach. <em>JMIR Public Health Surveill</em> 2023;9:e41450.</p>
+</div>
+</section>
+<section id="how-to-train-mse" class="slide level2" data-background-iframe="animations/interactive/mse-gradient-mse.html" data-background-interactive="true">
+<h2>How to Train — MSE</h2>
+<div class="fragment mse-step">
+
+</div>
+<div class="fragment mse-step">
+
+</div>
+<div class="fragment mse-step">
+
+</div>
+<div class="fragment mse-step">
+
+</div>
+<div class="fragment mse-step">
+
+</div>
+</section>
+<section id="section-14" class="slide level2" data-background-image="figures/ch5/slide09.png" data-background-size="contain" data-background-color="white">
 <h2></h2>
 </section>
-<section id="section-16" class="slide level2" data-background-image="figures/ch5/slide10.png" data-background-size="contain" data-background-color="white">
+<section id="section-15" class="slide level2" data-background-image="figures/ch5/slide10.png" data-background-size="contain" data-background-color="white">
 <h2></h2>
 </section>
-<section id="section-17" class="slide level2" data-background-image="figures/ch5/slide11.png" data-background-size="contain" data-background-color="white">
+<section id="section-16" class="slide level2" data-background-image="figures/ch5/slide11.png" data-background-size="contain" data-background-color="white">
 <h2></h2>
 </section>
-<section id="section-18" class="slide level2" data-background-image="figures/ch5/slide12.png" data-background-size="contain" data-background-color="white">
+<section id="section-17" class="slide level2" data-background-image="figures/ch5/slide12.png" data-background-size="contain" data-background-color="white">
 <h2></h2>
 </section>
 <section id="how-to-rank" class="slide level2" data-background-iframe="animations/interactive/how-to-rank.html" data-background-interactive="true">
@@ -1571,7 +1573,7 @@ window.addEventListener('load', function () {
         autoPlayMedia: null,
 
         // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
+        preloadIframes: true,
 
         // Number of milliseconds between automatically proceeding to the
         // next slide, disabled when set to 0, this value can be overwritten

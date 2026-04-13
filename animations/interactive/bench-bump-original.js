@@ -21,7 +21,7 @@ const DATA = {
 
 // ── Layout constants ──────────────────────────────────────────────────────────
 
-// Large panel (phases 1–6): TopK only, centered
+// Large panel (phases 1–6): Budget Allocation only, centered
 const L = {
   cl: 210, cr: 940, ct: 112, cb: 778,
   cx: 575, H: 666, titleX: 575, titleY: 86,
@@ -35,12 +35,12 @@ const G = {
   titleY1: 82, titleY2: 96,
   leftPad: 30, otherPad: 8, rightPad: 8,
   avgLeft: 1065, avgRight: 1205, avgCx: 1135,  // 75+7*140+20 gap
-  legendX: 1218, legendY: 112, legendW: 200,
+  legendX: 1218, legendY: 112, legendW: 240,
 };
 
 const TASK_ORDER = [
-  'TopK (Cubic)', 'Knapsack (Gen)', 'Knapsack (Energy)',
-  'Scheduling (Energy)', 'Budget Allocation', 'Bipartite Matching', 'Portfolio',
+  'Budget Allocation', 'Knapsack (Gen)', 'Knapsack (Energy)',
+  'Scheduling (Energy)', 'TopK (Cubic)', 'Bipartite Matching', 'Portfolio',
 ];
 
 const TASK_TITLES = {
@@ -72,7 +72,7 @@ function colChartR(i){ return colLeft(i) + G.colW - G.rightPad; }
 // ── Phase group helpers ───────────────────────────────────────────────────────
 
 function lgGroup(m) {
-  if (m.key === 'CPLayer') return null;  // null for TopK — skip
+  if (m.key === 'CPLayer') return null;  // null for Budget Allocation — skip
   if (m.key === 'Two-stage') return 'lg-ts';
   if (m.key === 'SPO')       return 'lg-spo';
   if (['DFL','Blackbox','Identity'].includes(m.key)) return 'lg-sg';
@@ -82,9 +82,9 @@ function lgGroup(m) {
 }
 
 function gridGroup(taskName, colIdx, m) {
-  if (colIdx === 0) return 'grid-topk';  // TopK: all pre-shown at crossfade
+  if (colIdx === 0) return 'grid-budget';  // Budget Allocation: pre-shown at crossfade
   if (colIdx === 1) return m.key === 'Two-stage' ? 'grid-kgen-ts' : 'grid-kgen-rest';
-  const map = { 2:'grid-kenergy', 3:'grid-sched', 4:'grid-budget', 5:'grid-bipartite', 6:'grid-portfolio' };
+  const map = { 2:'grid-kenergy', 3:'grid-sched', 4:'grid-topk', 5:'grid-bipartite', 6:'grid-portfolio' };
   return map[colIdx] || null;
 }
 
@@ -106,12 +106,13 @@ function buildLargePanel(svg) {
   g.style.transition = 'opacity 0.5s';
   svg.appendChild(g);
 
-  const ya = YAXIS['TopK (Cubic)'];
+  const ya = YAXIS['Budget Allocation'];
+  const tt = TASK_TITLES['Budget Allocation'];
   buildAxis(g, {
     cl: L.cl, cr: L.cr, ct: L.ct, cb: L.cb,
     yMin: ya.yMin, yMax: ya.yMax, type: ya.type,
     ticks: ya.ticks, tickFmt: ya.tickFmt, labels: true,
-    title: 'TopK (Cubic)', title2: null, titleX: L.titleX, titleY: L.titleY,
+    title: tt[0], title2: tt[1], titleX: L.titleX, titleY: L.titleY,
   });
 
   // Y-axis label
@@ -122,11 +123,11 @@ function buildLargePanel(svg) {
   }, 'Relative Regret'));
 
   // Markers
-  const topkData = DATA.regret['TopK (Cubic)'];
+  const budgetData = DATA.regret['Budget Allocation'];
   ORIG_METHODS.forEach((m, mi) => {
     const group = lgGroup(m);
     if (!group) return;
-    const val = topkData[m.key];
+    const val = budgetData[m.key];
     if (val == null) return;
     const yp = scaleLog(val, ya.yMin, ya.yMax, L.ct, L.H);
     const xp = L.cx + jitter(99, mi, 100);
@@ -150,7 +151,7 @@ function buildGrid(svg) {
   // TopK (ci=0)      → 'grid-topk'   (pre-revealed at crossfade)
   // Knapsack Gen (1) → 'grid-kgen-ts' (pre-revealed at crossfade with MSE)
   // subsequent cols  → same group as the column's data markers
-  const LABEL_GROUPS = ['grid-topk','grid-kgen-ts','grid-kenergy','grid-sched','grid-budget','grid-bipartite','grid-portfolio'];
+  const LABEL_GROUPS = ['grid-budget','grid-kgen-ts','grid-kenergy','grid-sched','grid-topk','grid-bipartite','grid-portfolio'];
 
   // Task columns
   TASK_ORDER.forEach((task, ci) => {
@@ -233,9 +234,9 @@ function reveal(group) {
 }
 
 function crossfade() {
-  // Pre-reveal TopK grid markers and Knapsack Gen MSE without animation
+  // Pre-reveal Budget Allocation grid markers and Knapsack Gen MSE without animation
   // (they're inside opacity=0 group so not visible yet)
-  ['grid-topk', 'grid-kgen-ts'].forEach(grp => {
+  ['grid-budget', 'grid-kgen-ts'].forEach(grp => {
     document.querySelectorAll(`[data-group="${grp}"]`).forEach(n => {
       n.style.transition = 'none';
       n.style.opacity = '1';
@@ -245,7 +246,7 @@ function crossfade() {
   gridG.style.opacity = '1';
   // Re-enable transitions after the group has faded in
   setTimeout(() => {
-    ['grid-topk', 'grid-kgen-ts'].forEach(grp => {
+    ['grid-budget', 'grid-kgen-ts'].forEach(grp => {
       document.querySelectorAll(`[data-group="${grp}"]`).forEach(n => {
         n.style.transition = 'opacity 0.4s';
       });
@@ -265,7 +266,7 @@ const PHASE_ACTIONS = [
   () => reveal('grid-kgen-rest'),       // 8: rest on Knapsack Gen
   () => reveal('grid-kenergy'),         // 9: Knapsack Energy
   () => reveal('grid-sched'),           // 10: Scheduling Energy
-  () => reveal('grid-budget'),          // 11: Budget Allocation
+  () => reveal('grid-topk'),            // 11: TopK (Cubic)
   () => reveal('grid-bipartite'),       // 12: Bipartite Matching
   () => reveal('grid-portfolio'),       // 13: Portfolio
   () => reveal('grid-avgrank'),         // 14: Avg Rank

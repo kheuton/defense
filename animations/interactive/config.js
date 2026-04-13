@@ -276,15 +276,63 @@ export const PRED_LEFT = {
 // ── Prediction line styling ──────────────────────────────────
 export const PRED_LINE = {
   tubeRadius: 0.04,      // tube radius in world units (controls line thickness)
-  markerRadius: 0.08,    // radius of circle markers at each data point
+  markerRadius: 0.11,    // radius of circle markers at each data point
   markerSegments: 16,    // geometry segments for marker spheres
 };
 
-// ── Error fill styling ───────────────────────────────────────
+// ── Error bar styling ────────────────────────────────────────
 export const ERROR_FILL = {
-  color: COLORS.coral,   // fill color (red)
-  opacity: 0.8,          // target opacity when fully visible
+  color: COLORS.yellow,     // bar color
+  opacity: 1.0,             // target opacity when fully visible
+  stemWidth: 0.08,          // width of the vertical stem
+  capHeight: 0.14,          // thickness of the horizontal end caps
+  capWidthFraction: 0.85,   // cap width as a fraction of bar width
 };
+
+/**
+ * Build a single I-bar (error bar) as a THREE.Group.
+ * All three parts (stem + top cap + bottom cap) share `mat` so opacity
+ * tweening works with a single tween.
+ *
+ * Returns { group, mat, update(newPredY, newActualY) }
+ */
+export function createIBar(predY, actualY, barX, bw, mat) {
+  const lo  = Math.min(predY, actualY);
+  const hi  = Math.max(predY, actualY);
+  const mid = (lo + hi) / 2;
+  const sw  = ERROR_FILL.stemWidth;
+  const cw  = bw * ERROR_FILL.capWidthFraction;
+  const ch  = ERROR_FILL.capHeight;
+
+  const group = new THREE.Group();
+  group.position.x = barX;
+
+  const stem = new THREE.Mesh(
+    new THREE.BoxGeometry(sw, Math.max(hi - lo, 0.001), sw), mat
+  );
+  stem.position.set(0, mid, 0.5);
+  group.add(stem);
+
+  const topCap = new THREE.Mesh(new THREE.BoxGeometry(cw, ch, sw), mat);
+  topCap.position.set(0, hi, 0.5);
+  group.add(topCap);
+
+  const botCap = new THREE.Mesh(new THREE.BoxGeometry(cw, ch, sw), mat);
+  botCap.position.set(0, lo, 0.5);
+  group.add(botCap);
+
+  function update(newPredY, newActualY) {
+    const nlo = Math.min(newPredY, newActualY);
+    const nhi = Math.max(newPredY, newActualY);
+    stem.geometry.dispose();
+    stem.geometry = new THREE.BoxGeometry(sw, Math.max(nhi - nlo, 0.001), sw);
+    stem.position.y = (nlo + nhi) / 2;
+    topCap.position.y = nhi;
+    botCap.position.y = nlo;
+  }
+
+  return { group, mat, update };
+}
 
 // Right model: "decision-aware" — high MSE, perfect top-K ranking.
 // Parabola: f(i) = a * (i - c)^2 + d, where i is bar index (ascending).

@@ -14,7 +14,7 @@ import TWEEN from "@tweenjs/tween.js";
 import {
   COLORS, valueColor,
   BAR_CHART, BAR_CHART_DATA, GRID, CAMERA,
-  COMPARISON, PRED_LEFT, PRED_RIGHT, PRED_LINE, ERROR_FILL,
+  COMPARISON, PRED_LEFT, PRED_RIGHT, PRED_LINE, ERROR_FILL, createIBar,
   TIMING_COMPARISON,
 } from "./config.js";
 import { computeLeftPredictions, computeRightPredictions } from "./prediction-utils.js";
@@ -187,25 +187,18 @@ function createPredictionLine(predictions, group) {
   return { mat, markers };
 }
 
-// ── Error fill helper ─────────────────────────────────────────
+// ── Error bar helper ──────────────────────────────────────────
 function createFillQuads(predictions, group) {
   return predictions.map((pred, i) => {
-    const actual = chartDataSorted[i];
-    const predY = pred * chartHScale;
-    const actualY = actual * chartHScale;
-    const height = Math.abs(predY - actualY);
-    if (height < 0.01) return null;
+    const predY   = pred              * chartHScale;
+    const actualY = chartDataSorted[i] * chartHScale;
+    if (Math.abs(predY - actualY) < 0.01) return null;
     const mat = new THREE.MeshBasicMaterial({
-      color: ERROR_FILL.color,
-      transparent: true,
-      opacity: ERROR_FILL.opacity,
-      side: THREE.DoubleSide,
-      depthWrite: false,
+      color: ERROR_FILL.color, transparent: true, opacity: ERROR_FILL.opacity,
     });
-    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(bw * 0.9, height), mat);
-    mesh.position.set(barPositions[i], (predY + actualY) / 2, 0.5);
-    group.add(mesh);
-    return { mesh, mat };
+    const ibar = createIBar(predY, actualY, barPositions[i], bw, mat);
+    group.add(ibar.group);
+    return ibar;
   });
 }
 

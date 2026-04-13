@@ -205,7 +205,8 @@ let dataReady    = false;
 
 const CURVE_STEP  = 4;    // subsample every 4th data point for smooth curves
 const REGRET_R    = 0.016; // tube radius for regret staircase  (~3.6px)
-const METHOD_R    = 0.012; // tube radius for method curves     (~2.7px)
+const METHOD_R    = 0.012; // tube radius for method curves (dimmed)
+const ACTIVE_R    = 0.036; // tube radius for active method curve (3× thicker)
 
 // Regret: build as a true staircase (piecewise-constant step function).
 // Separate horizontal tube per constant region + vertical connector at each jump.
@@ -248,13 +249,16 @@ function buildRegretStaircase(thetas, regrets) {
   return pieces;
 }
 
-// Method curves: smooth spline, colored, sit below regret (z=0.15)
-function buildMethodCurve(thetas, vals, method) {
+// Method curves: build two meshes per method — thick (active) and thin (dimmed).
+// Returns { thick: {mesh,mat}, thin: {mesh,mat} }, both starting at opacity 0.
+function buildMethodCurves(thetas, vals, method) {
   const pts = [];
   for (let i = 0; i < thetas.length; i += CURVE_STEP) {
     pts.push(new THREE.Vector3(toX(thetas[i]), toY(vals[i]), 0.15));
   }
-  return makeTube(pts, METHOD_R, method.color, 0);
+  const thick = makeTube(pts, ACTIVE_R, method.color, 0);
+  const thin  = makeTube(pts, METHOD_R,  method.color, 0);
+  return { thick, thin };
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -379,12 +383,12 @@ function phaseMethod(idx) {
 
   const method = METHODS[idx];
 
-  // Dim all previously shown method curves and push them below the active one
+  // Dim all previously shown method curves: hide thick, reveal thin at DIM_OPACITY
   for (let i = 0; i < idx; i++) {
     const pc = methodCurves[METHODS[i].dataKey];
     if (pc) {
-      tweenFade(pc.mat, DIM_OPACITY, 450);
-      pc.mesh.renderOrder = 0;
+      if (pc.thick) { tweenFade(pc.thick.mat, 0, 450); pc.thick.mesh.renderOrder = 0; }
+      if (pc.thin)  { tweenFade(pc.thin.mat,  DIM_OPACITY, 450); pc.thin.mesh.renderOrder = 0; }
     }
     setLegendOpacity("leg-" + METHODS[i].dataKey, 0.35);
   }
@@ -393,11 +397,11 @@ function phaseMethod(idx) {
   const delay = idx > 0 ? 280 : 0;
 
   setTimeout(() => {
-    // Fade in new curve, render it on top of all others
+    // Fade in thick (active) curve on top; thin stays hidden
     const cur = methodCurves[method.dataKey];
     if (cur) {
-      cur.mesh.renderOrder = 1;
-      tweenFade(cur.mat, FULL_OPACITY, 550);
+      if (cur.thick) { cur.thick.mesh.renderOrder = 1; tweenFade(cur.thick.mat, FULL_OPACITY, 550); }
+      if (cur.thin)  { cur.thin.mesh.renderOrder  = 1; }
     }
 
     // Swap equation
@@ -465,7 +469,7 @@ async function init() {
   regretPieces = buildRegretStaircase(theta, regret);
 
   for (const m of METHODS) {
-    methodCurves[m.dataKey] = buildMethodCurve(theta, data[m.dataKey], m);
+    methodCurves[m.dataKey] = buildMethodCurves(theta, data[m.dataKey], m);
   }
 
   dataReady = true;
