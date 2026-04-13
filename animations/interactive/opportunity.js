@@ -549,7 +549,6 @@ function buildTextPanel(svg) {
 
 const PHASES = 4;
 let currentPhase = -1;
-let transitioning = false;
 
 function applyPhase(n) {
   switch (n) {
@@ -574,12 +573,9 @@ function applyPhase(n) {
 }
 
 function advancePhase() {
-  if (transitioning) return;
   currentPhase++;
   if (currentPhase > PHASES) return;
-  transitioning = true;
   applyPhase(currentPhase);
-  setTimeout(() => { transitioning = false; }, 450);
   if (currentPhase >= PHASES) removeListeners();
 }
 
@@ -606,9 +602,26 @@ function init() {
   try {
     const _R = window.parent.Reveal;
     const myFile = window.location.pathname.split('/').pop();
+    const onThisSlide = () =>
+      (_R.getCurrentSlide()?.dataset?.backgroundIframe ?? '').includes(myFile);
+
     _R.on('fragmentshown', () => {
-      const bgIframe = _R.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
-      if (bgIframe.includes(myFile)) advancePhase();
+      if (onThisSlide()) advancePhase();
+    });
+
+    function onFragmentHidden() {
+      if (!onThisSlide()) return;
+      _R.off('fragmenthidden', onFragmentHidden);
+      _R.getCurrentSlide().querySelectorAll('.fragment').forEach(f => {
+        f.classList.remove('visible', 'current-fragment');
+      });
+      _R.sync();
+      window.location.reload();
+    }
+    _R.on('fragmenthidden', onFragmentHidden);
+
+    _R.on('slidechanged', () => {
+      if (onThisSlide() && currentPhase > -1) window.location.reload();
     });
   } catch (_) {}
 }

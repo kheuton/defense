@@ -339,7 +339,13 @@ function transitionToEval() {
 // ── Phase controller ──────────────────────────────────────────
 function advancePhase() {
   if (currentPhase >= MAX_PHASE) return;
-  if (transitioning) { pendingAdvance = true; return; }
+  if (transitioning) {
+    let guard = 20;
+    while (TWEEN.getAll().length && guard-- > 0) {
+      TWEEN.getAll().forEach(t => t.end());
+    }
+    if (transitioning) { pendingAdvance = true; return; }
+  }
   pendingAdvance = false;
   currentPhase++;
   document.getElementById("hud").classList.add("hidden");
@@ -364,9 +370,26 @@ try {
   const Reveal = window.parent && window.parent.Reveal;
   if (Reveal) {
     const myFile = window.location.pathname.split('/').pop();
+    const onThisSlide = () =>
+      (Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '').includes(myFile);
+
     Reveal.on("fragmentshown", () => {
-      const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
-      if (bgIframe.includes(myFile)) advancePhase();
+      if (onThisSlide()) advancePhase();
+    });
+
+    function onFragmentHidden() {
+      if (!onThisSlide()) return;
+      Reveal.off('fragmenthidden', onFragmentHidden);
+      Reveal.getCurrentSlide().querySelectorAll('.fragment').forEach(f => {
+        f.classList.remove('visible', 'current-fragment');
+      });
+      Reveal.sync();
+      window.location.reload();
+    }
+    Reveal.on('fragmenthidden', onFragmentHidden);
+
+    Reveal.on('slidechanged', () => {
+      if (onThisSlide() && currentPhase !== 0) window.location.reload();
     });
   }
 } catch (_) {}
