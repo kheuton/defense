@@ -1013,7 +1013,15 @@ function transitionToEval() {
 // ── Phase controller ──────────────────────────────────────────
 function advancePhase() {
   if (currentPhase >= 9) return;
-  if (transitioning) { pendingAdvance = true; return; }
+  if (transitioning) {
+    // Fast-forward: drain TWEEN queue (including .chain()ed tweens).
+    // onComplete handlers typically set transitioning = false.
+    let guard = 20;
+    while (TWEEN.getAll().length && guard-- > 0) {
+      TWEEN.getAll().forEach(t => t.end());
+    }
+    if (transitioning) { pendingAdvance = true; return; }
+  }
   pendingAdvance = false;
   currentPhase++;
   document.getElementById("hud").classList.add("hidden");
@@ -1049,28 +1057,31 @@ try {
   const Reveal = window.parent && window.parent.Reveal;
   if (Reveal) {
     const myFile = window.location.pathname.split('/').pop();
+    const onThisSlide = () =>
+      (Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '').includes(myFile);
 
     // Forward: only advance when this slide's fragments fire
     Reveal.on("fragmentshown", () => {
-      const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
-      if (bgIframe.includes(myFile)) advancePhase();
+      if (onThisSlide()) advancePhase();
     });
 
     // Backward: any backwards step on this slide resets to phase 0.
     // Remove the listener before reloading so repeated visits don't stack handlers.
     function onFragmentHidden() {
-      const slide = Reveal.getCurrentSlide();
-      const bgIframe = slide?.dataset?.backgroundIframe ?? '';
-      if (!bgIframe.includes(myFile)) return;
+      if (!onThisSlide()) return;
       Reveal.off('fragmenthidden', onFragmentHidden);
-      // Clear all visible fragment states so Reveal.js and animation stay in sync
-      slide.querySelectorAll('.fragment').forEach(f => {
+      Reveal.getCurrentSlide().querySelectorAll('.fragment').forEach(f => {
         f.classList.remove('visible', 'current-fragment');
       });
       Reveal.sync();
       window.location.reload();
     }
     Reveal.on('fragmenthidden', onFragmentHidden);
+
+    // Re-entry guard: returning to this slide mid-animation resets to phase 0.
+    Reveal.on('slidechanged', () => {
+      if (onThisSlide() && currentPhase !== 0) window.location.reload();
+    });
   }
 } catch (_) {
   // Cross-origin or no Reveal — standalone mode

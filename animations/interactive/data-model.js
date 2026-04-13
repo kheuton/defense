@@ -451,9 +451,26 @@
     const Reveal = window.parent && window.parent.Reveal;
     if (Reveal) {
       const myFile = window.location.pathname.split('/').pop();
+      const onThisSlide = () =>
+        (Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '').includes(myFile);
+
       Reveal.on('fragmentshown', () => {
-        const bgIframe = Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
-        if (bgIframe.includes(myFile)) advancePhase();
+        if (onThisSlide()) advancePhase();
+      });
+
+      function onFragmentHidden() {
+        if (!onThisSlide()) return;
+        Reveal.off('fragmenthidden', onFragmentHidden);
+        Reveal.getCurrentSlide().querySelectorAll('.fragment').forEach(f => {
+          f.classList.remove('visible', 'current-fragment');
+        });
+        Reveal.sync();
+        window.location.reload();
+      }
+      Reveal.on('fragmenthidden', onFragmentHidden);
+
+      Reveal.on('slidechanged', () => {
+        if (onThisSlide() && currentPhase !== 0) window.location.reload();
       });
     }
   } catch (_) {}

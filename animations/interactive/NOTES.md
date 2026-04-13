@@ -158,81 +158,112 @@ try {
 
 **Why `getCurrentSlide().contains(event.fragment)` does NOT work:** `fragmentshown` only fires for the current slide's fragments, so that check is always `true` and provides no filtering.
 
-## 2. Pending advance — queued input during transitions
+## 2. Fast-forward advance — drain transitions on forward click
 
-**Problem:** Pressing right/space while a transition is running is silently dropped (`if (transitioning) return`). If the user clicks during a long tween, nothing happens.
+**Problem:** Pressing right/space mid-animation should visibly jump to the next phase, not wait silently for the current tween to finish.
 
-**Fix (TWEEN.js animations — render loop):** Queue one pending advance and flush it in the render loop as soon as `transitioning` clears:
+**Fix (TWEEN.js animations):** On forward click during a transition, end all in-flight tweens (including `.chain()`ed ones), then advance immediately. `pendingAdvance` remains as a fallback if an `onComplete` handler fails to clear `transitioning`:
 
 ```js
-let pendingAdvance = false;
-
 function advancePhase() {
   if (currentPhase >= MAX_PHASE) return;
-  if (transitioning) { pendingAdvance = true; return; }
-  pendingAdvance = false;
-  currentPhase++;
-  // ... start transitions ...
-}
-
-function animate(time) {
-  requestAnimationFrame(animate);
-  TWEEN.update(time);
-  if (pendingAdvance && !transitioning) {
-    pendingAdvance = false;
-    advancePhase();
+  if (transitioning) {
+    let guard = 20;
+    while (TWEEN.getAll().length && guard-- > 0) {
+      TWEEN.getAll().forEach(t => t.end());
+    }
+    if (transitioning) { pendingAdvance = true; return; }
   }
-  renderer.render(scene, camera);
+  pendingAdvance = false;
+  currentPhase++;
+  // ... start next phase ...
 }
 ```
 
-**Fix (timeout-based animations — no render loop):** Fire the pending advance from inside the `setTimeout` completion callback:
+`tween.end()` snaps the tween to its final values and fires its `onComplete`; the loop handles chained tweens whose `onComplete` starts a follow-up. The `onComplete` handlers typically clear `transitioning = false`, so the loop terminates naturally.
+
+Applied to: opioid-grid, bpr-eval, mse-gradient, perturbed-opt, how-to-rank, loss-landscape.
+
+**Fix (CSS / timeout animations):** Drop the `transitioning` gate entirely and let fades overlap. Applying the next phase's opacity change while the previous one is still fading looks fine for simple crossfades and removes the need for timeout bookkeeping.
 
 ```js
 function advancePhase() {
   if (currentPhase >= MAX_PHASE) return;
-  if (transitioning) { pendingAdvance = true; return; }
-  pendingAdvance = false;
   currentPhase++;
-  transitioning = true;
-  // ... do work ...
-  setTimeout(() => {
-    transitioning = false;
-    if (pendingAdvance) { pendingAdvance = false; advancePhase(); }
-  }, DURATION_MS);
+  // ... apply next phase directly ...
+  if (currentPhase >= MAX_PHASE) removeListeners();
 }
 ```
 
-Applied to: opioid-grid, bpr-eval, mse-gradient, perturbed-opt, how-to-rank, loss-landscape (TWEEN.js); bench-bump-original, bench-bump-rerun-main, bench-bump-rerun-single (timeout).
+Applied to: training-results, opportunity, bench-bump-original, bench-bump-rerun-main, bench-bump-rerun-single.
 
-Not applied to: data-model (D3 transitions with per-phase timeouts — too invasive), daly-anim (single-phase), frontier/surrogate-interp (KaTeX+CSS, no meaningful transitioning gate), training-results/opportunity (CSS opacity fades, no blocking transition).
+Not applied to: data-model (D3 transitions with per-phase timeouts — too invasive), daly-anim (single-phase), frontier / surrogate-interp (KaTeX+CSS, no meaningful transitioning gate).
 
-## 3. Backward navigation — snap to start
+## 3. Backward navigation and re-entry — reload to phase 0
 
-**Problem:** Pressing left while on an animation slide either silently hides a Reveal.js fragment (leaving animation and fragment state out of sync) or does nothing.
+**Problem:** Pressing left on an animation slide silently hides a Reveal.js fragment while the iframe stays at its current phase — animation and fragment state desync. Worse, leaving a slide mid-animation and returning (with `preload-iframes: true`) leaves the iframe frozen at whatever phase it reached, with no way to get back to phase 0.
 
-**Fix (opioid-grid only, applied 2026-04):** Listen to `fragmenthidden` for this slide, reset all fragment visibility in the parent DOM, and reload the iframe. The listener unregisters itself before reloading to prevent handler accumulation across reloads:
+**Fix (applied 2026-04, universalized in later pass):** Listen to `fragmenthidden` on this slide to reset, and additionally guard re-entry via `slidechanged`:
 
 ```js
-function onFragmentHidden() {
-  const slide = Reveal.getCurrentSlide();
-  const bgIframe = slide?.dataset?.backgroundIframe ?? '';
-  if (!bgIframe.includes(myFile)) return;
-  Reveal.off('fragmenthidden', onFragmentHidden);   // prevent stacking on reload
-  slide.querySelectorAll('.fragment').forEach(f => {
-    f.classList.remove('visible', 'current-fragment');
-  });
-  Reveal.sync();          // re-sync Reveal.js fragment state from DOM
-  window.location.reload(); // reset animation to phase 0
-}
-Reveal.on('fragmenthidden', onFragmentHidden);
+try {
+  const Reveal = window.parent && window.parent.Reveal;
+  if (Reveal) {
+    const myFile = window.location.pathname.split('/').pop();
+    const onThisSlide = () =>
+      (Reveal.getCurrentSlide()?.dataset?.backgroundIframe ?? '').includes(myFile);
+
+    Reveal.on("fragmentshown", () => {
+      if (onThisSlide()) advancePhase();
+    });
+
+    function onFragmentHidden() {
+      if (!onThisSlide()) return;
+      Reveal.off('fragmenthidden', onFragmentHidden);
+      Reveal.getCurrentSlide().querySelectorAll('.fragment').forEach(f => {
+        f.classList.remove('visible', 'current-fragment');
+      });
+      Reveal.sync();
+      window.location.reload();
+    }
+    Reveal.on('fragmenthidden', onFragmentHidden);
+
+    Reveal.on('slidechanged', () => {
+      if (onThisSlide() && currentPhase !== 0) window.location.reload();
+    });
+  }
+} catch (_) {}
 ```
 
-**Why `Reveal.sync()` is needed:** After removing `.visible` from all fragments, `Reveal.sync()` recalculates internal fragment indices so the next forward press advances fragment 1 (not fragment N+1). Without it, the next fragmentshown fires for the wrong index and the animation gets only one advance instead of 9.
+**Why `Reveal.sync()` is needed:** after removing `.visible` from all fragments, `Reveal.sync()` recalculates internal fragment indices so the next forward press advances fragment 1 (not fragment N+1).
 
-**To apply to other animations:** Copy the `onFragmentHidden` block into the Reveal.js integration section of any animation. No other changes needed — the `window.location.reload()` resets all Three.js/TWEEN state automatically.
+**Re-entry guard:** `slidechanged` fires whenever Reveal swaps active slides. When the iframe is *entered* with `currentPhase !== 0`, the user is returning to a mid-animation state — reload resets it. The guard is inert during normal forward navigation because forward entry arrives at `currentPhase === 0`.
 
-**Limitation:** The reload causes a brief visual flash (~1 frame). Acceptable in presentation context. A no-reload alternative would require a full `resetToPhase0()` function tracking all tween end states — significantly more complex.
+**Adjust the guard for animations using `currentPhase = -1` as the initial state** (training-results, opportunity): use `currentPhase > -1` instead of `!== 0`.
+
+**Limitation:** reload causes a brief visual flash (~1 frame). Acceptable in presentation context. A no-reload alternative would require a full `resetToPhase0()` function tracking all tween end states — significantly more complex.
+
+## 4. Known limitation — fast-forward leaves compound transitions mid-state
+
+Rapid forward clicks on TWEEN animations can leave the scene stuck between two phases' end states. Observed example: opioid-grid at the heatmap→isometric→bar-chart boundary ends up with bars positioned for the bar-chart phase while the camera stays at the heatmap's isometric angle.
+
+**Why:** the `while (TWEEN.getAll().length && guard-- > 0) TWEEN.getAll().forEach(t => t.end())` loop drains tweens *currently in the TWEEN registry*. It does not drain transitions whose follow-up work is scheduled via:
+
+- `setTimeout` callbacks (e.g. a phase function that starts tween A, then `setTimeout` fires tween B 300 ms later)
+- `requestAnimationFrame` continuations
+- async DOM mutations (adding/removing scene objects that the next tween expects to exist)
+
+A phase transition that orchestrates several sequential tweens with non-`.chain()` glue is effectively opaque to the drain loop. When the next phase's transition runs on top of a half-completed previous one, geometry attached for phase N may never get cleaned up because the cleanup was scheduled to run *after* a tween that was ended early and whose `onComplete` set `transitioning = false` before the follow-up scheduling fired.
+
+**Current mitigation:** the `pendingAdvance` fallback at the end of the fast-forward block catches the case where the drain did not fully clear `transitioning`. In practice the fallback is rare, and when it does fire the user just experiences a tiny delay — not a stuck frame. The stuck frames come from transitions that *did* clear the gate cleanly but had non-TWEEN follow-up work.
+
+**If this becomes a problem:**
+
+1. **Simplest fix:** in the offending phase transition, replace `setTimeout`-based sequencing with TWEEN `.chain()` or `.delay()` so every step is visible to the drain loop.
+2. **Heavier fix:** add a per-phase `snapToEndState()` function that imperatively sets the final position/material/opacity for every scene object, and call it before advancing when fast-forwarding. This is `resetToPhase0()` but forward-oriented, and paid per phase.
+3. **Nuclear option:** on rapid advance, skip the drain and just `window.location.reload()` to snap back to phase 0, then advance to the target phase. Adds visual flash and forfeits any mid-presentation animation state.
+
+**Rule of thumb for future animations:** keep each phase transition expressible as a single TWEEN chain (or a flat set of parallel tweens) with no `setTimeout` or DOM-mutation glue. If a transition *needs* multi-stage async orchestration, it needs a hand-written `snapToEndState()` to pair with it.
 
 ---
 

@@ -106,6 +106,8 @@ Test standalone by opening the `.html` file in a browser (click / arrow to advan
   // In advancePhase(): if (currentPhase >= MAX_PHASE) removeListeners();
   ```
 - **Slide embedding**: One `## Title {background-iframe="..." background-interactive="true"}` plus N empty `.fragment` divs (one per phase). The `_quarto.yml` glob `animations/interactive/**` auto-includes new files.
+- **Navigation glue (forward + backward + re-entry)**: every animation must wire up `fragmentshown`, `fragmenthidden` → `window.location.reload()`, and a `slidechanged` re-entry guard that reloads when `currentPhase !== 0`. See the four cross-animation patterns in `animations/interactive/NOTES.md` (Fragment isolation, Fast-forward advance, Backward/re-entry reload, and the known fast-forward limitation) for the canonical snippets and when to adjust the guard for `-1`-indexed animations.
+- **Keep phase transitions TWEEN-native**: avoid orchestrating a single phase's transition with `setTimeout` chains or deferred DOM mutations. The fast-forward drain loop only sees tweens currently registered with TWEEN — `setTimeout` follow-ups are invisible to it and cause stuck mid-state frames on rapid forward clicks (see **Known limitation** in `NOTES.md`). Prefer `.chain()`/`.delay()` so every step of the transition is drainable.
 
 ## Quarto / Reveal.js notes
 

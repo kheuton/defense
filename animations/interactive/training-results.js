@@ -264,7 +264,6 @@ function buildLegend(svg) {
 
 const PHASES = ['nll', 'bpr', 'daml'];
 let currentPhase = -1;
-let transitioning = false;
 
 function revealMethod(method) {
   document.querySelectorAll(`[data-method="${method}"]`).forEach(el => {
@@ -273,12 +272,9 @@ function revealMethod(method) {
 }
 
 function advancePhase() {
-  if (transitioning) return;
   currentPhase++;
   if (currentPhase >= PHASES.length) return;
-  transitioning = true;
   revealMethod(PHASES[currentPhase]);
-  setTimeout(() => { transitioning = false; }, 450);
   if (currentPhase >= PHASES.length - 1) removeListeners();
 }
 
@@ -305,9 +301,26 @@ function init() {
   try {
     const _R = window.parent.Reveal;
     const myFile = window.location.pathname.split('/').pop();
+    const onThisSlide = () =>
+      (_R.getCurrentSlide()?.dataset?.backgroundIframe ?? '').includes(myFile);
+
     _R.on('fragmentshown', () => {
-      const bgIframe = _R.getCurrentSlide()?.dataset?.backgroundIframe ?? '';
-      if (bgIframe.includes(myFile)) advancePhase();
+      if (onThisSlide()) advancePhase();
+    });
+
+    function onFragmentHidden() {
+      if (!onThisSlide()) return;
+      _R.off('fragmenthidden', onFragmentHidden);
+      _R.getCurrentSlide().querySelectorAll('.fragment').forEach(f => {
+        f.classList.remove('visible', 'current-fragment');
+      });
+      _R.sync();
+      window.location.reload();
+    }
+    _R.on('fragmenthidden', onFragmentHidden);
+
+    _R.on('slidechanged', () => {
+      if (onThisSlide() && currentPhase > -1) window.location.reload();
     });
   } catch (_) {}
 }
