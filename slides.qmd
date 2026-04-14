@@ -652,6 +652,19 @@ Kyle Heuton, Michael C. Hughes
 ::: {.fragment .results-step}
 :::
 
+## {background-iframe="animations/interactive/bias-landscape.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
 ## {background-iframe="animations/interactive/loss-landscape.html" background-interactive="true"}
 
 ::: {.fragment .results-step}
