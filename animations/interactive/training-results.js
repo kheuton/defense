@@ -95,8 +95,8 @@ const VIOLIN_ALPHA = 0.65;
 
 const COLORS = {
   nll:       '#50c8a8',
-  bpr:       '#ff7c57',
-  daml:      '#7c6af7',
+  bpr:       '#7c6af7',
+  daml:      '#ff7c57',
   axis:      '#888899',   // axis lines, grid, divider
   tickLabel: '#c8c8de',   // tick text + axis label — noticeably brighter
   grid:      '#22223a',

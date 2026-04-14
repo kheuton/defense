@@ -630,7 +630,7 @@ Out of all the different ways to do decision-aware learning, how do we pick?
 
 Kyle Heuton, Michael C. Hughes
 
-[*OPTIMAL: Optimisation and Post-Bayesian Inference in Machine Learning* · AISTATS 2026]{.muted}
+[*OPTIMAL: Optimisation and Post-Bayesian Inference in Machine Learning* Workshop @ AISTATS 2026]{.muted}
 ::::
 
 :::: {.column width="25%" style="display: flex; justify-content: center; align-items: flex-start; padding-top: 0.3em;"}
@@ -774,14 +774,14 @@ Existing decision-aware benchmarks don't use decision-aware tasks
 ## Conclusion
 
 ::: {.fragment .card .card-teal}
-**Best Possible Reach**
+**Evaluation**
 
 - Simpler models can be just as strong
 - Error-based metrics miss what matters for policy
 :::
 
 ::: {.fragment .card .card-purple}
-**DAML**
+**Training**
 
 - Decision-aware metrics can be optimized
 - We don't have to sacrifice accuracy for decision quality

@@ -504,6 +504,8 @@ function phase1() {
       graphWorldPos(0, G.height + 0.5));
     showOverlay("x-axis-label", "θ",
       graphWorldPos(G.width / 2, -0.6));
+
+    document.getElementById("citations")?.classList.add("visible");
   }, barsDone + CFG.timing.lineAppear);
 
   const totalDuration = barsDone + CFG.timing.lineAppear + CFG.timing.axesAppear;
@@ -516,6 +518,22 @@ function phase1() {
 
 function phase2() {
   transitioning = true;
+
+  // Swap citations → DPO equation
+  const citEl = document.getElementById("citations");
+  const eqEl = document.getElementById("dpo-eq");
+  if (citEl && eqEl && window.katex) {
+    citEl.classList.remove("visible");
+    if (!eqEl.dataset.rendered) {
+      window.katex.render(
+        "\\mathcal{L}_\\text{DPO}(\\theta) = \\mathbb{E}_{\\varepsilon \\sim \\mathcal{N}(0,\\,I)}\\!\\left[\\operatorname{BPR}(r_\\theta + \\sigma\\varepsilon,\\; y)\\right]",
+        eqEl,
+        { throwOnError: false, displayMode: true }
+      );
+      eqEl.dataset.rendered = "1";
+    }
+    setTimeout(() => eqEl.classList.add("visible"), 300);
+  }
 
   // Show hard top-K distribution bars
   for (const idx of modelTopK) {

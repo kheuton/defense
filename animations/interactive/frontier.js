@@ -250,7 +250,11 @@
 
     if (currentPhase === 1)      showEq('eq1');
     else if (currentPhase === 2) showEq('eq2');
-    else if (currentPhase === 3) showEq('eq3');
+    else if (currentPhase === 3) {
+      showEq('eq3');
+      document.getElementById('eq-title').innerHTML =
+        'Contribution 2: Decision-Aware<br>Maximum Likelihood (DAML)';
+    }
     // phases 4-7: stay on eq3
 
     if (currentPhase >= MAX_PHASE) {

@@ -32,8 +32,8 @@ const W = 1600, H = 900;
 
 const COLORS = {
   nll:       '#50c8a8',
-  bpr:       '#ff7c57',
-  daml:      '#7c6af7',
+  bpr:       '#7c6af7',
+  daml:      '#ff7c57',
   spo:       '#d4962a',
   pg:        '#ffd166',
   axis:      '#888899',
