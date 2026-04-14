@@ -895,9 +895,11 @@ async function runForwardDrag(dragG, home, regretData, lossColor) {
   await animateValue(2600, (_eased, rawT) => {
     const a = rawT;
     const r = lerpTable(regretData, a);
-    const yFrac = 1 - (r - rEnd) / rSpan;
-    const dragX = home.x + (bprHome.x - home.x) * a;
-    const dragY = home.y + (bprHome.y - home.y) * yFrac;
+    // The interp plot's x-axis is progress ∝ (1 − regret), so the drag's x
+    // tracks that (racing across as regret drops), while y advances linearly.
+    const xFrac = 1 - (r - rEnd) / rSpan;
+    const dragX = home.x + (bprHome.x - home.x) * xFrac;
+    const dragY = home.y + (bprHome.y - home.y) * a;
     dragG.setAttribute("transform", `translate(${(dragX - home.x).toFixed(2)}, ${(dragY - home.y).toFixed(2)})`);
     setCursorPos(dragX, dragY);
     interpRegretPath.setAttribute("d", interpPartialD(regretData, 0, a));
