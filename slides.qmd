@@ -664,28 +664,21 @@ Kyle Heuton, Michael C. Hughes
 :::
 ::: {.fragment .results-step}
 :::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
 
 ## {background-iframe="animations/interactive/loss-landscape.html" background-interactive="true"}
 
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
-
-## {background-iframe="animations/interactive/surrogate-interp.html" background-interactive="true"}
-
-::: {.fragment .results-step}
-:::
-::: {.fragment .results-step}
-:::
 ::: {.fragment .results-step}
 :::
 ::: {.fragment .results-step}
@@ -990,6 +983,26 @@ Bauer C, Zhang K, Li W, Bernson D, Dammann O, LaRochelle MR, Stopka TJ. Small Ar
 ::: {.fragment .rank-step}
 :::
 ::: {.fragment .rank-step}
+:::
+
+
+## {background-iframe="animations/interactive/surrogate-interp.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
 :::
 
 

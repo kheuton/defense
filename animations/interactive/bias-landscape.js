@@ -8,9 +8,17 @@
  *   0  Axes + staircase decision regret + legend entry
  *   1  Idealized DPO curve appears (smooth, convex, min at θ=0)
  *   2  Idealized SPO+ curve appears (upper bound, convex, min at θ=0)
- *   3  "Local Minima" title appears; SPO+ deforms into a W-shape
+ *   3  "Local Minima" title appears; SPO+ deforms into a UUU-shape
  *   4  Title → "Larger Bias"; DPO & SPO+ shift sideways, SPO+ returns convex
- *      and moves higher (visibly larger loss at its minimum).
+ *   5  Right half fades to interpolation axes (SPO+ left, BPR right).
+ *   6  A retro hand cursor sweeps to the SPO+ result clump, grabs it, and drags
+ *      it onto BPR while the regret interpolation curve reveals (hockeystick).
+ *   7  The SPO+ clump slides back home while the SPO+ loss interpolation
+ *      reveals in SPO+ gold.
+ *   8  Refresh the interp axes (clear curves, relabel SPO+ → PG, reset y-label).
+ *   9  Repeat the drag for PG: cursor grabs PG and drags onto BPR while the
+ *      PG regret curve reveals.
+ *  10  PG clump slides back while the PG loss interpolation reveals in PG yellow.
  */
 
 import { COOK_DATA, METHOD_COLORS } from "./cook-data.js";
@@ -151,6 +159,10 @@ function buildCookPanel(svg) {
   const methods = ["nll", "bpr", "daml", "spo", "pg"];
   const BOTTOM_CLAMP_PX = tm + CH - maxViolinHalf;
 
+  // SPO+ / PG clusters live in their own groups so phases 5–10 can translate them.
+  spoDragG = el("g", { id: "spoDragG" });
+  pgDragG  = el("g", { id: "pgDragG" });
+
   methods.forEach(method => {
     const d = COOK_DATA[`cook_${method}`];
     if (!d) return;
@@ -158,6 +170,12 @@ function buildCookPanel(svg) {
     const rawYBase = ys(-d.nll);
     const isClamped = rawYBase > BOTTOM_CLAMP_PX;
     const yBase = isClamped ? BOTTOM_CLAMP_PX : rawYBase;
+
+    const isSpo = method === "spo";
+    const isPg  = method === "pg";
+    const host = isSpo ? spoDragG : (isPg ? pgDragG : null);
+    const violinHost = host || violinG;
+    const dotHost    = host || g;
 
     if (!isClamped) {
       const bprMin = Math.min(...d.bprs) - 0.004;
@@ -167,13 +185,13 @@ function buildCookPanel(svg) {
       const scale = maxViolinHalf / Math.max(...density);
       const topPts = evalPts.map((b, i) => `${xs(b).toFixed(2)},${(yBase - density[i] * scale).toFixed(2)}`);
       const botPts = evalPts.map((b, i) => `${xs(b).toFixed(2)},${(yBase + density[i] * scale).toFixed(2)}`).reverse();
-      violinG.appendChild(el("polygon", {
+      violinHost.appendChild(el("polygon", {
         points: [...topPts, ...botPts].join(" "),
         fill: color, "fill-opacity": 0.65,
       }));
     }
 
-    g.appendChild(el("circle", {
+    dotHost.appendChild(el("circle", {
       cx: xs(d.avgBpr).toFixed(2), cy: yBase.toFixed(2),
       r: 5, fill: color,
     }));
@@ -186,7 +204,25 @@ function buildCookPanel(svg) {
         fill: color,
       }));
     }
+
+    if (isSpo) spoHome = { x: xs(d.avgBpr), y: yBase };
+    if (isPg)  pgHome  = { x: xs(d.avgBpr), y: yBase };
   });
+
+  // Append drag groups AFTER the methods loop so they render on top of every
+  // other violin.  spoDragG last = on top initially; phases 6/9 re-append the
+  // active drag group so it stays on top during that drag.
+  violinG.appendChild(pgDragG);
+  violinG.appendChild(spoDragG);
+
+  // Stash BPR target position for phase 5.
+  {
+    const d = COOK_DATA.cook_bpr;
+    const rawYBase = ys(-d.nll);
+    const isClamped = rawYBase > BOTTOM_CLAMP_PX;
+    const yBase = isClamped ? BOTTOM_CLAMP_PX : rawYBase;
+    bprHome = { x: xs(d.avgBpr), y: yBase };
+  }
 
   // Legend (inline box, upper-left of plot area)
   const legendItems = [
@@ -318,6 +354,19 @@ let dpoPath, spoPath;
 let titleTextA, titleTextB;   // cross-faded titles ("Local Minima" / "Larger Bias")
 let dpoLegendRow, spoLegendRow;
 let regretLegendRow;
+let landscapeTitle;           // "Surrogate Loss Landscape" (fades out in phase 5)
+
+// Phase 5+ elements
+let spoDragG, pgDragG;        // Cook panel drag groups (SPO+ cluster / PG cluster)
+let spoHome, bprHome, pgHome; // Home positions in Cook-panel pixel coords
+let interpG;                  // Interpolation-axes overlay on right half
+let interpTitle;
+let interpYLabel;             // swaps between "Normalized Regret" / "Normalized Loss"
+let interpLeftLabel;          // swaps between "SPO+" / "PG" (gold / yellow)
+let interpRegretPath;         // revealed progressively during forward drag
+let interpLossPath;           // revealed progressively during slide-back
+let cursorG;                  // Retro hand cursor
+let cursorOpen, cursorClosed; // Two children of cursorG (toggle visibility)
 
 // Current loss-fn state (for interpolation start-points)
 let dpoCurrentFn = dpoConvex;
@@ -331,13 +380,15 @@ function buildLandscape(svg) {
     x: LS_PANEL_X, y: 0, width: LS_PANEL_W, height: H, fill: COLORS.bg,
   }));
 
-  // Panel title (static)
-  landscapeGroup.appendChild(el("text", {
+  // Panel title (fades out in phase 5)
+  landscapeTitle = el("text", {
     x: LS_PANEL_X + LS_PANEL_W / 2, y: 58,
     "text-anchor": "middle", fill: COLORS.title,
     "font-size": 30, "font-weight": 600,
     "font-family": "Inter, system-ui, sans-serif",
-  }, "Surrogate Loss Landscape"));
+  }, "Surrogate Loss Landscape");
+  landscapeTitle.style.transition = "opacity 0.5s ease";
+  landscapeGroup.appendChild(landscapeTitle);
 
   // Axes group (opacity 0 until phase 0)
   const axesG = el("g", { id: "axesG" });
@@ -512,9 +563,405 @@ function showAxes()          { document.getElementById("axesG").style.opacity = 
 function showRegret()        { regretPath.style.opacity = "0.95"; }
 function showLegendRow(row)  { row.style.opacity = "1"; }
 
+// ── Phase-5 data: real Cook SPO+ interpolation (flipped so SPO+ is on left) ───
+
+// Original (from surrogate-interp.js): α=0 is BPR, α=1 is SPO+.
+// Flipped here: α=0 is SPO+, α=1 is BPR.
+const COOK_SPO_REGRET_RAW = [
+  [0.00, 0.0971], [0.02, 0.0451], [0.04, 0.0000], [0.06, 0.0175], [0.08, 0.0520],
+  [0.10, 0.0520], [0.12, 0.1150], [0.14, 0.0611], [0.16, 0.0349], [0.18, 0.0789],
+  [0.20, 0.1070], [0.22, 0.0698], [0.24, 0.0516], [0.26, 0.1316], [0.28, 0.1074],
+  [0.30, 0.0800], [0.32, 0.0804], [0.34, 0.1415], [0.36, 0.0349], [0.38, 0.0539],
+  [0.40, 0.1241], [0.42, 0.1244], [0.44, 0.1248], [0.46, 0.1863], [0.48, 0.1426],
+  [0.50, 0.0706], [0.52, 0.0618], [0.54, 0.1066], [0.56, 0.1161], [0.58, 0.0713],
+  [0.60, 0.0892], [0.62, 0.0812], [0.64, 0.0542], [0.66, 0.0622], [0.68, 0.0998],
+  [0.70, 0.0645], [0.72, 0.0459], [0.74, 0.0736], [0.76, 0.0725], [0.78, 0.0736],
+  [0.80, 0.1096], [0.82, 0.1085], [0.84, 0.1700], [0.86, 0.1703], [0.88, 0.2511],
+  [0.90, 0.3403], [0.92, 0.3562], [0.94, 0.6430], [0.96, 0.6620], [0.98, 0.7242],
+  [1.00, 1.0000],
+];
+const COOK_SPO_LOSS_RAW = [
+  [0.00, 1.0000], [0.02, 0.9879], [0.04, 0.9766], [0.06, 0.9625], [0.08, 0.9506],
+  [0.10, 0.9366], [0.12, 0.9259], [0.14, 0.9086], [0.16, 0.9000], [0.18, 0.8781],
+  [0.20, 0.8630], [0.22, 0.8489], [0.24, 0.8345], [0.26, 0.8165], [0.28, 0.7989],
+  [0.30, 0.7805], [0.32, 0.7626], [0.34, 0.7386], [0.36, 0.7243], [0.38, 0.6971],
+  [0.40, 0.6749], [0.42, 0.6530], [0.44, 0.6311], [0.46, 0.6061], [0.48, 0.5842],
+  [0.50, 0.5592], [0.52, 0.5305], [0.54, 0.5024], [0.56, 0.4804], [0.58, 0.4511],
+  [0.60, 0.4230], [0.62, 0.3959], [0.64, 0.3613], [0.66, 0.3341], [0.68, 0.3045],
+  [0.70, 0.2764], [0.72, 0.2436], [0.74, 0.2233], [0.76, 0.1956], [0.78, 0.1689],
+  [0.80, 0.1522], [0.82, 0.1192], [0.84, 0.1061], [0.86, 0.0810], [0.88, 0.0581],
+  [0.90, 0.0377], [0.92, 0.0214], [0.94, 0.0101], [0.96, 0.0121], [0.98, 0.0000],
+  [1.00, 0.0194],
+];
+const COOK_PG_REGRET_RAW = [
+  [0.00, 0.3593], [0.02, 0.2443], [0.04, 0.4408], [0.06, 0.4144], [0.08, 0.2192],
+  [0.10, 0.3306], [0.12, 0.2515], [0.14, 0.4216], [0.16, 0.3641], [0.18, 0.2767],
+  [0.20, 0.1389], [0.22, 0.2503], [0.24, 0.1677], [0.26, 0.1066], [0.28, 0.1916],
+  [0.30, 0.1365], [0.32, 0.1928], [0.34, 0.2228], [0.36, 0.0491], [0.38, 0.1365],
+  [0.40, 0.1928], [0.42, 0.1928], [0.44, 0.1916], [0.46, 0.1354], [0.48, 0.1916],
+  [0.50, 0.2767], [0.52, 0.1354], [0.54, 0.0000], [0.56, 0.1940], [0.58, 0.3629],
+  [0.60, 0.2204], [0.62, 0.1641], [0.64, 0.2503], [0.66, 0.4455], [0.68, 0.3354],
+  [0.70, 0.2767], [0.72, 0.5593], [0.74, 0.3940], [0.76, 0.7365], [0.78, 0.5030],
+  [0.80, 0.6192], [0.82, 0.6515], [0.84, 0.9365], [0.86, 0.8539], [0.88, 0.7928],
+  [0.90, 0.8862], [0.92, 0.9389], [0.94, 0.8826], [0.96, 0.9976], [0.98, 1.0000],
+  [1.00, 0.9952],
+];
+const COOK_PG_LOSS_RAW = [
+  [0.00, 0.9935], [0.02, 0.9702], [0.04, 0.9778], [0.06, 1.0000], [0.08, 0.9572],
+  [0.10, 0.8850], [0.12, 0.8755], [0.14, 0.9408], [0.16, 0.8087], [0.18, 0.8827],
+  [0.20, 0.7976], [0.22, 0.8085], [0.24, 0.7880], [0.26, 0.7504], [0.28, 0.7026],
+  [0.30, 0.7795], [0.32, 0.7160], [0.34, 0.6933], [0.36, 0.7082], [0.38, 0.6308],
+  [0.40, 0.5977], [0.42, 0.5930], [0.44, 0.5600], [0.46, 0.5238], [0.48, 0.5372],
+  [0.50, 0.5345], [0.52, 0.4913], [0.54, 0.4670], [0.56, 0.4322], [0.58, 0.4556],
+  [0.60, 0.4100], [0.62, 0.3425], [0.64, 0.3540], [0.66, 0.3707], [0.68, 0.3152],
+  [0.70, 0.2557], [0.72, 0.2586], [0.74, 0.2683], [0.76, 0.2598], [0.78, 0.2097],
+  [0.80, 0.2477], [0.82, 0.1738], [0.84, 0.1854], [0.86, 0.1349], [0.88, 0.0760],
+  [0.90, 0.1262], [0.92, 0.0145], [0.94, 0.0680], [0.96, 0.0275], [0.98, 0.0000],
+  [1.00, 0.0528],
+];
+// Flip (α → 1−α) so the source method sits on the LEFT (α=0) and BPR on the right.
+const COOK_SPO_REGRET_FLIPPED = COOK_SPO_REGRET_RAW.map(([a, v]) => [1 - a, v]).sort((a, b) => a[0] - b[0]);
+const COOK_SPO_LOSS_FLIPPED   = COOK_SPO_LOSS_RAW  .map(([a, v]) => [1 - a, v]).sort((a, b) => a[0] - b[0]);
+const COOK_PG_REGRET_FLIPPED  = COOK_PG_REGRET_RAW .map(([a, v]) => [1 - a, v]).sort((a, b) => a[0] - b[0]);
+const COOK_PG_LOSS_FLIPPED    = COOK_PG_LOSS_RAW   .map(([a, v]) => [1 - a, v]).sort((a, b) => a[0] - b[0]);
+
+// Interp plot coordinate system: reuses the right-half panel box exactly.
+const INTERP_YMIN = -0.02, INTERP_YMAX = 1.05;
+function interpX(a)     { return LS_PANEL_X + LS_LM + a * LS_CW; }
+function interpY(v)     {
+  return LS_TM + (INTERP_YMAX - v) / (INTERP_YMAX - INTERP_YMIN) * LS_CH;
+}
+
+// Build a partial SVG path containing samples with α ∈ [aLo, aHi] inclusive.
+function interpPartialD(data, aLo, aHi) {
+  let d = "";
+  let started = false;
+  for (const [a, v] of data) {
+    if (a < aLo - 1e-9 || a > aHi + 1e-9) continue;
+    const x = interpX(a), y = interpY(v);
+    d += (started ? "L " : "M ") + x.toFixed(2) + "," + y.toFixed(2) + " ";
+    started = true;
+  }
+  return d.trim();
+}
+
+function buildInterp(svg) {
+  interpG = el("g", { id: "interpG" });
+  interpG.style.opacity = "0";
+  interpG.style.transition = "opacity 0.5s ease";
+
+  // Grid + axes
+  const yTicks = [0.0, 0.25, 0.5, 0.75, 1.0];
+  const xTicks = [0.0, 0.25, 0.5, 0.75, 1.0];
+
+  xTicks.forEach(t => interpG.appendChild(el("line", {
+    x1: interpX(t), y1: LS_TM, x2: interpX(t), y2: LS_TM + LS_CH,
+    stroke: COLORS.grid, "stroke-width": 1,
+  })));
+  yTicks.forEach(v => interpG.appendChild(el("line", {
+    x1: LS_PANEL_X + LS_LM, y1: interpY(v),
+    x2: LS_PANEL_X + LS_LM + LS_CW, y2: interpY(v),
+    stroke: COLORS.grid, "stroke-width": 1,
+  })));
+
+  interpG.appendChild(el("line", {
+    x1: LS_PANEL_X + LS_LM, y1: LS_TM + LS_CH,
+    x2: LS_PANEL_X + LS_LM + LS_CW, y2: LS_TM + LS_CH,
+    stroke: COLORS.axis, "stroke-width": 1.5,
+  }));
+  interpG.appendChild(el("line", {
+    x1: LS_PANEL_X + LS_LM, y1: LS_TM,
+    x2: LS_PANEL_X + LS_LM, y2: LS_TM + LS_CH,
+    stroke: COLORS.axis, "stroke-width": 1.5,
+  }));
+
+  // X-axis endpoint labels.  Left endpoint is mutable (SPO+ then PG); BPR on right.
+  interpLeftLabel = el("text", {
+    x: interpX(0), y: LS_TM + LS_CH + 34,
+    "text-anchor": "middle", fill: COLORS.spo_plus,
+    "font-size": 22, "font-weight": 700,
+    "font-family": "Inter, system-ui, sans-serif",
+  }, "SPO+");
+  interpG.appendChild(interpLeftLabel);
+  interpG.appendChild(el("text", {
+    x: interpX(1), y: LS_TM + LS_CH + 34,
+    "text-anchor": "middle", fill: COLORS.dpo,
+    "font-size": 22, "font-weight": 700,
+    "font-family": "Inter, system-ui, sans-serif",
+  }, "BPR"));
+
+  // X-axis ticks as α values
+  xTicks.forEach(t => {
+    interpG.appendChild(el("line", {
+      x1: interpX(t), y1: LS_TM + LS_CH,
+      x2: interpX(t), y2: LS_TM + LS_CH + 6,
+      stroke: COLORS.axis, "stroke-width": 1,
+    }));
+  });
+
+  yTicks.forEach(v => {
+    interpG.appendChild(el("line", {
+      x1: LS_PANEL_X + LS_LM - 6, y1: interpY(v),
+      x2: LS_PANEL_X + LS_LM, y2: interpY(v),
+      stroke: COLORS.axis, "stroke-width": 1,
+    }));
+    interpG.appendChild(el("text", {
+      x: LS_PANEL_X + LS_LM - 12, y: interpY(v) + 6,
+      "text-anchor": "end", fill: COLORS.tickLabel,
+      "font-size": 20, "font-family": "Inter, system-ui, sans-serif",
+    }, v.toFixed(2)));
+  });
+
+  // X-axis label: θ(α) = (1−α)·θ_SPO+ + α·θ_BPR
+  interpG.appendChild(el("text", {
+    x: LS_PANEL_X + LS_LM + LS_CW / 2, y: LS_TM + LS_CH + 78,
+    "text-anchor": "middle", fill: COLORS.tickLabel,
+    "font-size": 20, "font-family": "Inter, system-ui, sans-serif",
+  }, "Interpolation coefficient α"));
+
+  // Y label (swaps between Regret and Loss)
+  interpYLabel = el("text", {
+    transform: `translate(${LS_PANEL_X + 28}, ${LS_TM + LS_CH / 2}) rotate(-90)`,
+    "text-anchor": "middle", fill: COLORS.tickLabel,
+    "font-size": 22, "font-family": "Inter, system-ui, sans-serif",
+  });
+  interpYLabel.textContent = "Normalized Regret";
+  interpG.appendChild(interpYLabel);
+
+  // Panel title
+  interpTitle = el("text", {
+    x: LS_PANEL_X + LS_PANEL_W / 2, y: 58,
+    "text-anchor": "middle", fill: COLORS.title,
+    "font-size": 30, "font-weight": 600,
+    "font-family": "Inter, system-ui, sans-serif",
+  }, "SPO+ ↔ BPR Interpolation");
+  interpTitle.style.opacity = "0";
+  interpTitle.style.transition = "opacity 0.5s ease";
+  interpG.appendChild(interpTitle);
+
+  // Regret path — revealed progressively during the forward drag
+  interpRegretPath = el("path", {
+    d: "",
+    fill: "none",
+    stroke: COLORS.regret,
+    "stroke-width": 3.5,
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+  });
+  interpG.appendChild(interpRegretPath);
+
+  // Loss path — revealed progressively during the slide-back (in SPO+ gold)
+  interpLossPath = el("path", {
+    d: "",
+    fill: "none",
+    stroke: COLORS.spo_plus,
+    "stroke-width": 3.5,
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+  });
+  interpG.appendChild(interpLossPath);
+
+  landscapeGroup.appendChild(interpG);
+}
+
+// ── Retro classic-Mac hand cursor (open + closed states) ──────────────────────
+
+function buildCursor(svg) {
+  cursorG = el("g", { id: "cursorG" });
+  cursorG.style.opacity = "0";
+  cursorG.style.transition = "opacity 0.3s ease";
+
+  // Pixel-art style: white fill, black outline. Built as two shape groups and
+  // we toggle which is visible.  Hotspot is roughly at the top-center of the
+  // index finger (x=24, y=4) so we translate so that corner lies on the target.
+  cursorOpen = el("g", { id: "cursorOpen" });
+  const openStyle  = { fill: "#ffffff", stroke: "#11111e", "stroke-width": 2.5, "stroke-linejoin": "miter" };
+  // Thumb
+  cursorOpen.appendChild(el("rect", { x: 2,  y: 22, width: 10, height: 10, rx: 2, ry: 2, ...openStyle }));
+  // Pinky + ring + middle + index
+  cursorOpen.appendChild(el("rect", { x: 10, y: 10, width: 6,  height: 22, rx: 2, ry: 2, ...openStyle }));
+  cursorOpen.appendChild(el("rect", { x: 16, y: 4,  width: 6,  height: 28, rx: 2, ry: 2, ...openStyle }));
+  cursorOpen.appendChild(el("rect", { x: 22, y: 8,  width: 6,  height: 24, rx: 2, ry: 2, ...openStyle }));
+  cursorOpen.appendChild(el("rect", { x: 28, y: 14, width: 6,  height: 18, rx: 2, ry: 2, ...openStyle }));
+  // Palm
+  cursorOpen.appendChild(el("rect", { x: 4,  y: 30, width: 32, height: 18, rx: 5, ry: 5, ...openStyle }));
+
+  cursorClosed = el("g", { id: "cursorClosed" });
+  cursorClosed.style.display = "none";
+  // Curled fingers (shorter stubs) + palm
+  cursorClosed.appendChild(el("rect", { x: 2,  y: 24, width: 10, height: 10, rx: 2, ry: 2, ...openStyle }));
+  cursorClosed.appendChild(el("rect", { x: 10, y: 20, width: 6,  height: 12, rx: 2, ry: 2, ...openStyle }));
+  cursorClosed.appendChild(el("rect", { x: 16, y: 18, width: 6,  height: 14, rx: 2, ry: 2, ...openStyle }));
+  cursorClosed.appendChild(el("rect", { x: 22, y: 20, width: 6,  height: 12, rx: 2, ry: 2, ...openStyle }));
+  cursorClosed.appendChild(el("rect", { x: 28, y: 22, width: 6,  height: 10, rx: 2, ry: 2, ...openStyle }));
+  cursorClosed.appendChild(el("rect", { x: 4,  y: 30, width: 32, height: 18, rx: 5, ry: 5, ...openStyle }));
+
+  cursorG.appendChild(cursorOpen);
+  cursorG.appendChild(cursorClosed);
+
+  // Start off-screen.  Hotspot is set to (x=18, y=30) — center of palm top edge.
+  cursorG.setAttribute("transform", "translate(-200, -200) scale(1.1)");
+  svg.appendChild(cursorG);
+}
+
+const CURSOR_HOT_X = 18;
+const CURSOR_HOT_Y = 30;
+const CURSOR_SCALE = 1.1;
+function setCursorPos(x, y) {
+  cursorG.setAttribute(
+    "transform",
+    `translate(${(x - CURSOR_HOT_X * CURSOR_SCALE).toFixed(2)}, ${(y - CURSOR_HOT_Y * CURSOR_SCALE).toFixed(2)}) scale(${CURSOR_SCALE})`,
+  );
+}
+function setCursorGrab(closed) {
+  cursorOpen.style.display   = closed ? "none" : "";
+  cursorClosed.style.display = closed ? ""     : "none";
+}
+
+// ── Phase-5 orchestration ─────────────────────────────────────────────────────
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+function easeInOut(t) { return 0.5 - 0.5 * Math.cos(Math.PI * t); }
+
+// Animate a numeric scalar with a per-frame callback.
+function animateValue(duration, onStep, ease = easeInOut) {
+  return new Promise(resolve => {
+    const t0 = performance.now();
+    function step(now) {
+      const raw = Math.min(1, (now - t0) / duration);
+      const eased = ease(raw);
+      onStep(eased, raw);
+      if (raw < 1) requestAnimationFrame(step);
+      else resolve();
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+// Piecewise-linear interp helper over [a, v] pairs sorted by a.
+function lerpTable(data, a) {
+  if (a <= data[0][0]) return data[0][1];
+  if (a >= data[data.length - 1][0]) return data[data.length - 1][1];
+  for (let i = 1; i < data.length; i++) {
+    if (a <= data[i][0]) {
+      const [a0, v0] = data[i - 1];
+      const [a1, v1] = data[i];
+      const f = (a - a0) / (a1 - a0);
+      return v0 + (v1 - v0) * f;
+    }
+  }
+  return data[data.length - 1][1];
+}
+
+// Phase 5a: fade out landscape, fade in interp axes.
+async function runPhase5a() {
+  const axesG = document.getElementById("axesG");
+  axesG.style.opacity = "0";
+  landscapeTitle.style.opacity = "0";
+  await sleep(520);
+
+  interpG.style.opacity = "1";
+  interpTitle.style.opacity = "1";
+  await sleep(520);
+}
+
+// Generic "cursor sweep → grab → drag home→target with regret reveal" runner.
+async function runForwardDrag(dragG, home, regretData, lossColor) {
+  // Raise this drag group to the top of its parent.
+  dragG.parentNode.appendChild(dragG);
+  // Set the loss curve color now so the later slide-back reveals in the right color.
+  interpLossPath.setAttribute("stroke", lossColor);
+
+  const startX = 560, startY = 320;
+  setCursorPos(startX, startY);
+  setCursorGrab(false);
+  cursorG.style.opacity = "1";
+  await sleep(300);
+
+  await animateValue(900, t => {
+    const x = startX + (home.x - startX) * t;
+    const y = startY + (home.y - startY) * t;
+    setCursorPos(x, y);
+  });
+
+  await sleep(140);
+  setCursorGrab(true);
+  await sleep(240);
+
+  const rStart = regretData[0][1];
+  const rEnd   = regretData[regretData.length - 1][1];
+  const rSpan  = rStart - rEnd || 1;
+
+  await animateValue(2600, (_eased, rawT) => {
+    const a = rawT;
+    const r = lerpTable(regretData, a);
+    const yFrac = 1 - (r - rEnd) / rSpan;
+    const dragX = home.x + (bprHome.x - home.x) * a;
+    const dragY = home.y + (bprHome.y - home.y) * yFrac;
+    dragG.setAttribute("transform", `translate(${(dragX - home.x).toFixed(2)}, ${(dragY - home.y).toFixed(2)})`);
+    setCursorPos(dragX, dragY);
+    interpRegretPath.setAttribute("d", interpPartialD(regretData, 0, a));
+  }, t => t);
+}
+
+// Generic "slide back home with loss curve reveal" runner.
+async function runSlideBack(dragG, home, lossData) {
+  interpYLabel.textContent = "Normalized Loss";
+
+  await animateValue(2600, (_eased, rawT) => {
+    const a = 1 - rawT;
+    const dragX = bprHome.x + (home.x - bprHome.x) * rawT;
+    const dragY = bprHome.y + (home.y - bprHome.y) * rawT;
+    dragG.setAttribute("transform", `translate(${(dragX - home.x).toFixed(2)}, ${(dragY - home.y).toFixed(2)})`);
+    setCursorPos(dragX, dragY);
+    interpLossPath.setAttribute("d", interpPartialD(lossData, a, 1));
+  }, t => t);
+
+  await sleep(260);
+  setCursorGrab(false);
+  await sleep(420);
+  cursorG.style.opacity = "0";
+}
+
+// Phase 5b: SPO+ forward drag.
+function runPhase5b() {
+  return runForwardDrag(spoDragG, spoHome, COOK_SPO_REGRET_FLIPPED, COLORS.spo_plus);
+}
+// Phase 5c: SPO+ slide back with SPO+-gold loss curve.
+function runPhase5c() {
+  return runSlideBack(spoDragG, spoHome, COOK_SPO_LOSS_FLIPPED);
+}
+
+// Phase 8: refresh interp axes (clear curves, relabel SPO+ → PG, reset y-label).
+async function runPhase8() {
+  // Fade both curves + the left label out, swap their identity, fade back in.
+  const fadeTargets = [interpRegretPath, interpLossPath, interpLeftLabel];
+  fadeTargets.forEach(el => { el.style.transition = "opacity 0.35s ease"; el.style.opacity = "0"; });
+  await sleep(380);
+
+  interpRegretPath.setAttribute("d", "");
+  interpLossPath.setAttribute("d", "");
+  interpYLabel.textContent = "Normalized Regret";
+  interpLeftLabel.textContent = "PG";
+  interpLeftLabel.setAttribute("fill", COLORS.pg);
+  interpTitle.textContent = "PG ↔ BPR Interpolation";
+
+  fadeTargets.forEach(el => { el.style.opacity = "1"; });
+  await sleep(380);
+}
+
+// Phase 9: PG forward drag.
+function runPhase9() {
+  return runForwardDrag(pgDragG, pgHome, COOK_PG_REGRET_FLIPPED, COLORS.pg);
+}
+// Phase 10: PG slide back with PG-yellow loss curve.
+function runPhase10() {
+  return runSlideBack(pgDragG, pgHome, COOK_PG_LOSS_FLIPPED);
+}
+
 // ── Phase controller ──────────────────────────────────────────────────────────
 
-const PHASES = 5;
+const PHASES = 11;
 let currentPhase = -1;
 let busy = false;
 
@@ -564,6 +1011,36 @@ function applyPhase(n) {
         busy = false;
       });
       break;
+
+    case 5:
+      // Fade landscape → fade in interp axes; then wait for a click.
+      runPhase5a().then(() => { busy = false; });
+      break;
+
+    case 6:
+      // Cursor sweep + grab + drag to BPR with hockeystick reveal; then wait for a click.
+      runPhase5b().then(() => { busy = false; });
+      break;
+
+    case 7:
+      // Slide back with loss curve reveal in SPO+ gold.
+      runPhase5c().then(() => { busy = false; });
+      break;
+
+    case 8:
+      // Refresh axes: clear curves, relabel SPO+ → PG, reset y-label.
+      runPhase8().then(() => { busy = false; });
+      break;
+
+    case 9:
+      // PG forward drag + regret curve reveal.
+      runPhase9().then(() => { busy = false; });
+      break;
+
+    case 10:
+      // PG slide back + loss curve reveal in PG yellow.
+      runPhase10().then(() => { busy = false; });
+      break;
   }
 }
 
@@ -594,6 +1071,8 @@ function init() {
   const svg = document.getElementById("viz");
   buildCookPanel(svg);
   buildLandscape(svg);
+  buildInterp(svg);
+  buildCursor(svg);
 
   svg.addEventListener("click", onClick);
   document.addEventListener("keydown", onKeyDown);
