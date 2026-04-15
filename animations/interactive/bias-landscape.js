@@ -151,7 +151,7 @@ function buildCookPanel(svg) {
     x: lm + CW / 2, y: tm + CH + 62,
     "text-anchor": "middle", fill: COLORS.tickLabel,
     "font-size": 22, "font-family": "Inter, system-ui, sans-serif",
-  }, "Test BPR"));
+  }, "1 - Relative Regret on Heldout Data"));
 
   // Violins + dots
   const violinG = el("g", { "clip-path": `url(#${clipId})` });
@@ -227,7 +227,7 @@ function buildCookPanel(svg) {
   // Legend (inline box, upper-left of plot area)
   const legendItems = [
     { label: "NLL Only", color: COLORS.nll  },
-    { label: "BPR Only", color: COLORS.bpr  },
+    { label: "DPO Regret", color: COLORS.bpr  },
     { label: "DAML",     color: COLORS.daml },
     { label: "SPO+",     color: COLORS.spo  },
     { label: "PG",       color: COLORS.pg   },
