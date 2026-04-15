@@ -11,9 +11,9 @@ date: "2026-04-17"
 ## Talk Outline
 
 1. My story
-2. [Evaluating models for decision making]{.muted}
-3. [Training models for decision making]{.muted}
-4. [Benchmarking decision making modeling approaches]{.muted}
+2. [Measuring What Matters]{.muted}
+3. [Learning to Decide]{.muted}
+4. [Auditing the Field]{.muted}
 
 
 ## {background-iframe="animations/interactive/daly-anim.html" background-interactive="true"}
@@ -67,14 +67,14 @@ Interactive animation — 9 steps:
 :::
 
 
-## Three Open Questions
+## Three Research Goals
 
 ::: {.contribution-item}
 ::: {.contribution-num .accent-teal}
 1
 :::
 ::: {.contribution-body}
-How do we measure if a prediction helps us make better decisions?
+**Measuring What Matters:** How do we measure if a prediction helps us make better decisions?
 :::
 :::
 
@@ -84,7 +84,7 @@ How do we measure if a prediction helps us make better decisions?
 2
 :::
 ::: {.contribution-body}
-How can we train models that make predictions that lead to better decisions?
+**Learning to Decide:** How can we train models that make predictions that lead to better decisions?
 :::
 :::
 :::
@@ -95,7 +95,7 @@ How can we train models that make predictions that lead to better decisions?
 3
 :::
 ::: {.contribution-body}
-Out of all the different ways to do decision-aware learning, how do we pick?
+**Auditing the Field:** Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 :::
@@ -105,14 +105,14 @@ This is the thesis overview dressed up as open questions. Each maps to a chapter
 :::
 
 
-## Three Open Questions
+## Three Research Goals
 
 ::: {.contribution-item}
 ::: {.contribution-num .accent-teal}
 1
 :::
 ::: {.contribution-body}
-How do we measure if a prediction helps us make better decisions?
+**Measuring What Matters:** How do we measure if a prediction helps us make better decisions?
 :::
 :::
 
@@ -121,7 +121,7 @@ How do we measure if a prediction helps us make better decisions?
 2
 :::
 ::: {.contribution-body}
-How can we train models that make predictions that lead to better decisions?
+**Learning to Decide:** How can we train models that make predictions that lead to better decisions?
 :::
 :::
 
@@ -130,12 +130,12 @@ How can we train models that make predictions that lead to better decisions?
 3
 :::
 ::: {.contribution-body}
-Out of all the different ways to do decision-aware learning, how do we pick?
+**Auditing the Field:** Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 
 
-# Evaluation {background-color="#0a2a1a"}
+# Measuring What Matters {background-color="#0a2a1a"}
 
 ::::: {.columns style="margin-top: 1.5em;"}
 
@@ -419,14 +419,14 @@ Our code and *data* are available at <https://github.com/tufts-ml/opioid-overdos
 :::
 
 
-## Three Open Questions
+## Three Research Goals
 
 ::: {.contribution-item style="opacity: 0.25;"}
 ::: {.contribution-num .accent-teal}
 1
 :::
 ::: {.contribution-body}
-How do we measure if a prediction helps us make better decisions?
+**Measuring What Matters:** How do we measure if a prediction helps us make better decisions?
 :::
 :::
 
@@ -435,7 +435,7 @@ How do we measure if a prediction helps us make better decisions?
 2
 :::
 ::: {.contribution-body}
-How can we train models that make predictions that lead to better decisions?
+**Learning to Decide:** How can we train models that make predictions that lead to better decisions?
 :::
 :::
 
@@ -444,12 +444,12 @@ How can we train models that make predictions that lead to better decisions?
 3
 :::
 ::: {.contribution-body}
-Out of all the different ways to do decision-aware learning, how do we pick?
+**Auditing the Field:** Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 
 
-# Training {background-color="#1a0a2a"}
+# Learning to Decide {background-color="#1a0a2a"}
 
 ::::: {.columns style="margin-top: 1.5em;"}
 
@@ -505,7 +505,7 @@ What's the best way to turn a probability distribution over predictions into a s
 :::
 
 
-## How to Train {background-iframe="animations/interactive/mse-gradient-bpr.html" background-interactive="true"}
+## Decision Quality has Uninformative Gradients {background-iframe="animations/interactive/mse-gradient-bpr.html" background-interactive="true"}
 
 ::: {.fragment .mse-step}
 :::
@@ -574,7 +574,7 @@ What's the best way to turn a probability distribution over predictions into a s
 ::: {.fragment .results-step}
 :::
 
-## Training takeaways
+## Learning to Decide takeaways
 
 ::: {.fragment .card .card-purple-light}
 Differentiable perturbed optimizers allow us to train models that make better decisions
@@ -589,14 +589,14 @@ The ratio estimator is superior to the mean when converting a distribution into 
 :::
 
 
-## Three Open Questions
+## Three Research Goals
 
 ::: {.contribution-item style="opacity: 0.25;"}
 ::: {.contribution-num .accent-teal}
 1
 :::
 ::: {.contribution-body}
-How do we measure if a prediction helps us make better decisions?
+**Measuring What Matters:** How do we measure if a prediction helps us make better decisions?
 :::
 :::
 
@@ -605,7 +605,7 @@ How do we measure if a prediction helps us make better decisions?
 2
 :::
 ::: {.contribution-body}
-How can we train models that make predictions that lead to better decisions?
+**Learning to Decide:** How can we train models that make predictions that lead to better decisions?
 :::
 :::
 
@@ -614,12 +614,12 @@ How can we train models that make predictions that lead to better decisions?
 3
 :::
 ::: {.contribution-body}
-Out of all the different ways to do decision-aware learning, how do we pick?
+**Auditing the Field:** Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 
 
-# Benchmarking {background-color="#2a1a0a"}
+# Auditing the Field {background-color="#2a1a0a"}
 
 ::::: {.columns style="margin-top: 1.5em;"}
 
@@ -764,7 +764,7 @@ Kyle Heuton, Michael C. Hughes
 ::: {.fragment .results-step}
 :::
 
-## Benchmarking takeaways
+## Auditing the Field takeaways
 
 ::: {.fragment .card .card-coral-dark}
 Future efforts should focus on the loss landscape induced by a given method
@@ -780,21 +780,21 @@ Existing decision-aware benchmarks don't use decision-aware tasks
 ## Conclusion
 
 ::: {.fragment .card .card-teal}
-**Evaluation**
+**Measuring What Matters**
 
 - Simpler models can be just as strong
 - Error-based metrics miss what matters for policy
 :::
 
 ::: {.fragment .card .card-purple}
-**Training**
+**Learning to Decide**
 
 - Decision-aware metrics can be optimized
 - We don't have to sacrifice accuracy for decision quality
 :::
 
 ::: {.fragment .card .card-coral}
-**Benchmarking**
+**Auditing the Field**
 
 - Existing benchmarks aren't asking the right questions
 - Understanding the loss landscape induced by a method is key to understanding its success
