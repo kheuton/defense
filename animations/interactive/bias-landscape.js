@@ -690,7 +690,7 @@ function buildInterp(svg) {
     "text-anchor": "middle", fill: COLORS.dpo,
     "font-size": 22, "font-weight": 700,
     "font-family": "Inter, system-ui, sans-serif",
-  }, "BPR"));
+  }, "DPO"));
 
   // X-axis ticks as α values
   xTicks.forEach(t => {
@@ -736,7 +736,7 @@ function buildInterp(svg) {
     "text-anchor": "middle", fill: COLORS.title,
     "font-size": 30, "font-weight": 600,
     "font-family": "Inter, system-ui, sans-serif",
-  }, "SPO+ ↔ BPR Interpolation");
+  }, "SPO+ ↔ DPO Interpolation");
   interpTitle.style.opacity = "0";
   interpTitle.style.transition = "opacity 0.5s ease";
   interpG.appendChild(interpTitle);
@@ -1081,7 +1081,7 @@ function applyPhase(n) {
       // Low at BPR (right) → peaks mid-path → moderate at SPO+ (left)
       interpTitle.textContent = "Hypothesis A: SPO\u207a stuck in a local minimum";
       interpTitle.setAttribute("fill", COLORS.spo_plus);
-      interpHypSub.textContent = "Low at \u03b8_BPR \u2192 peaks mid-path \u2192 moderate at \u03b8_SPO\u207a";
+      interpHypSub.innerHTML = `Low at <tspan fill="${COLORS.dpo}">\u03b8<tspan baseline-shift="sub" font-size="0.72em">DPO</tspan></tspan> \u2192 peaks mid-path \u2192 moderate at <tspan fill="${COLORS.spo_plus}">\u03b8<tspan baseline-shift="sub" font-size="0.72em">SPO\u207a</tspan></tspan>`;
       interpHypSub.style.opacity = "1";
       hypAPath.style.opacity = "0.5";
       setTimeout(() => { busy = false; }, 700);
@@ -1090,8 +1090,8 @@ function applyPhase(n) {
     case 8:
       // Hypothesis B: SPO+ more biased than BPR
       // High at BPR (right) → steadily decreasing → low at SPO+ (left)
-      interpTitle.textContent = "Hypothesis B: SPO\u207a is more biased than BPR";
-      interpHypSub.textContent = "High at \u03b8_BPR \u2192 steadily decreasing \u2192 low at \u03b8_SPO\u207a";
+      interpTitle.textContent = "Hypothesis B: SPO\u207a is more biased than DPO";
+      interpHypSub.innerHTML = `High at <tspan fill="${COLORS.dpo}">\u03b8<tspan baseline-shift="sub" font-size="0.72em">DPO</tspan></tspan> \u2192 steadily decreasing \u2192 low at <tspan fill="${COLORS.spo_plus}">\u03b8<tspan baseline-shift="sub" font-size="0.72em">SPO\u207a</tspan></tspan>`;
       hypAPath.style.opacity = "0.2";
       setTimeout(() => { hypBPath.style.opacity = "0.5"; }, 300);
       setTimeout(() => { busy = false; }, 800);
@@ -1099,7 +1099,7 @@ function applyPhase(n) {
 
     case 9:
       // Slide back with loss curve reveal in SPO+ gold (clear hypothesis visuals first).
-      interpTitle.textContent = "SPO+ \u2194 BPR Interpolation";
+      interpTitle.textContent = "SPO+ \u2194 DPO Interpolation";
       interpTitle.setAttribute("fill", COLORS.title);
       interpHypSub.style.opacity = "0";
       hypAPath.style.opacity = "0";

@@ -270,6 +270,8 @@ Prediction error for fatal opioid-related overdose models in Cook County, Illino
 </table>
 :::
 
+<div style="font-family: 'Inter', Georgia, serif; font-size: 0.58em; color: #e4e4ec; line-height: 1.4; margin-top: 0.6em; padding-left: 1.6em; text-indent: -1.6em;">Bauer C, Zhang K, Li W, et al. <span style="color:#b0b0bc;">(2023).</span> <em>Small area forecasting of opioid-related mortality: Bayesian spatiotemporal dynamic modeling approach.</em> <span style="color:#b0b0bc;">JMIR Public Health Surveill.</span> 9(1):e41450.</div>
+
 
 ## % Best Possible Reach {background-iframe="animations/interactive/bpr-eval.html" background-interactive="true"}
 
@@ -338,6 +340,14 @@ Continuation of intro animation — starts at phase 7 (two models, RMSE comparis
 </tbody>
 </table>
 :::
+
+<div style="position: relative; height: 5.5em; font-family: 'Inter', Georgia, serif; font-size: 0.58em; color: #e4e4ec; line-height: 1.4; margin-top: 0.6em;">
+  <div class="fragment fade-in-then-out" data-fragment-index="2" style="position: absolute; top: 0; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">Allen B, Neill DB, et al. <span style="color:#b0b0bc;">(2023).</span> <em>Translating predictive analytics for public health practice: a case study of overdose prevention in Rhode Island.</em> <span style="color:#b0b0bc;">Am J Epidemiol.</span> 192(10):1659&ndash;1668.</div>
+  <div class="fragment fade-in-then-out" data-fragment-index="3" style="position: absolute; top: 0; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">Allen B, Neill DB, et al. <span style="color:#b0b0bc;">(2023).</span> <em>Translating predictive analytics for public health practice: a case study of overdose prevention in Rhode Island.</em> <span style="color:#b0b0bc;">Am J Epidemiol.</span> 192(10):1659&ndash;1668.</div>
+  <div class="fragment fade-in-then-out" data-fragment-index="3" style="position: absolute; top: 3.2em; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">Heuton K, Shrestha S, et al. <span style="color:#b0b0bc;">(2022).</span> <em>Predicting spatiotemporal counts of opioid-related fatal overdoses via zero-inflated Gaussian processes.</em> <span style="color:#b0b0bc;">NeurIPS Workshop.</span></div>
+  <div class="fragment fade-in-then-out" data-fragment-index="4" style="position: absolute; top: 0; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">Ertugrul AM, Lin YR, Taskaya-Temizel T. <span style="color:#b0b0bc;">(2019).</span> <em>CASTNet: community-attentive spatio-temporal networks for opioid overdose forecasting.</em> <span style="color:#b0b0bc;">ECML PKDD.</span></div>
+  <div class="fragment" data-fragment-index="5" style="position: absolute; top: 0; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">Marks C, Abramovitz D, Donnelly CA, et al. <span style="color:#b0b0bc;">(2021).</span> <em>Identifying counties at risk of high overdose mortality burden during the emerging fentanyl epidemic in the USA: a predictive statistical modelling study.</em> <span style="color:#b0b0bc;">Lancet Public Health.</span> 6(10):e720&ndash;e728.</div>
+</div>
 
 
 ## Massachusetts Results
