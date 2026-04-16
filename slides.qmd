@@ -32,6 +32,30 @@ If we can **predict the future**, we can make the world a better place.
 ::: {.fragment fragment-index=2}
 :::
 
+## {background-iframe="animations/interactive/overdose-timeline.html" background-interactive="true"}
+
+::: {.fragment .overdose-step}
+:::
+::: {.fragment .overdose-step}
+:::
+::: {.fragment .overdose-step}
+:::
+::: {.fragment .overdose-step}
+:::
+::: {.fragment .overdose-step}
+:::
+
+::: notes
+Animated timeline of US drug overdose deaths (12-month rolling total, 2010–2025).
+Line draws forward like a worm, pausing at milestones:
+(1) surpasses peak gun deaths (39,800),
+(2) surpasses peak HIV deaths (46,700),
+(3) surpasses peak car crash deaths (54,200),
+(4) reaches absolute peak (111,466 in June 2023),
+(5) draws to present showing the decline.
+Data: NYT/CDC WONDER.
+:::
+
 ## {background-iframe="animations/interactive/opioid-grid.html" background-interactive="true"}
 
 ::: {.fragment .opioid-step}
