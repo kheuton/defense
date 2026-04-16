@@ -174,7 +174,7 @@ function buildPanel(parent, opts) {
     x: lm + CW / 2, y: xLabelY,
     'text-anchor': 'middle', fill: COLORS.tickLabel,
     'font-size': tickFontSize, 'font-family': 'Inter, system-ui, sans-serif',
-  }, 'Test BPR'));
+  }, '1 - Relative Regret on Heldout Data'));
 
   // Panel title
   g.appendChild(el('text', {
@@ -367,7 +367,7 @@ function buildBigCook(svg) {
   // Legend — upper left so it doesn't overlap BPR-only dots (which are lower right)
   const legendItems = [
     { label: 'NLL Only', color: COLORS.nll,  method: 'nll'  },
-    { label: 'BPR Only', color: COLORS.bpr,  method: 'bpr'  },
+    { label: 'DPO Regret', color: COLORS.bpr,  method: 'bpr'  },
     { label: 'DAML',     color: COLORS.daml, method: 'daml' },
     { label: 'SPO+',     color: COLORS.spo,  method: 'spo'  },
     { label: 'PG',       color: COLORS.pg,   method: 'pg'   },
@@ -429,7 +429,7 @@ function buildSmallLayout(svg) {
   // Small legend in cook small — upper left so it doesn't overlap BPR-only (lower right)
   const smLegendItems = [
     { label: 'NLL Only', color: COLORS.nll,  method: 'nll'  },
-    { label: 'BPR Only', color: COLORS.bpr,  method: 'bpr'  },
+    { label: 'DPO Regret', color: COLORS.bpr,  method: 'bpr'  },
     { label: 'DAML',     color: COLORS.daml, method: 'daml' },
     { label: 'SPO+',     color: COLORS.spo,  method: 'spo'  },
     { label: 'PG',       color: COLORS.pg,   method: 'pg'   },

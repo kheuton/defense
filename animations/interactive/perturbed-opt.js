@@ -145,9 +145,9 @@ let predLine = null;
 let predMarkers = [];
 let animPreds = [...predictions];
 
-function buildPredictionLine(preds) {
+function buildPredictionLine(preds, z = 0.5) {
   const points = preds.map((p, i) =>
-    new THREE.Vector3(barPositions[i], p * hScale, 0.5)
+    new THREE.Vector3(barPositions[i], p * hScale, z)
   );
   const curve = new THREE.CatmullRomCurve3(points, false, "catmullrom", 0.5);
   const tubeGeo = new THREE.TubeGeometry(curve, points.length * 8, PRED_LINE.tubeRadius, 8, false);
@@ -190,7 +190,7 @@ function rebuildPredLine(preds) {
 let ghostLines = [];
 
 function addGhostLine(preds) {
-  const { points, tubeGeo } = buildPredictionLine(preds);
+  const { points, tubeGeo } = buildPredictionLine(preds, 0.2);
   const mat = new THREE.MeshBasicMaterial({
     color: COLORS.purple, transparent: true, opacity: CFG.ghostOpacity,
   });
@@ -526,7 +526,7 @@ function phase2() {
     citEl.classList.remove("visible");
     if (!eqEl.dataset.rendered) {
       window.katex.render(
-        "\\mathcal{L}_\\text{DPO}(\\theta) = \\mathbb{E}_{\\varepsilon \\sim \\mathcal{N}(0,\\,I)}\\!\\left[\\operatorname{BPR}(r_\\theta + \\sigma\\varepsilon,\\; y)\\right]",
+        "\\mathcal{L}_\\text{DPO}(\\theta) = -\\mathbb{E}_{\\varepsilon \\sim \\mathcal{N}(0,\\,I)}\\!\\left[\\operatorname{BPR}(r_\\theta + \\sigma\\varepsilon,\\; y)\\right]",
         eqEl,
         { throwOnError: false, displayMode: true }
       );

@@ -151,7 +151,7 @@ function buildCookPanel(svg) {
     x: lm + CW / 2, y: tm + CH + 62,
     "text-anchor": "middle", fill: COLORS.tickLabel,
     "font-size": 22, "font-family": "Inter, system-ui, sans-serif",
-  }, "Test BPR"));
+  }, "1 - Relative Regret on Heldout Data"));
 
   // Violins + dots
   const violinG = el("g", { "clip-path": `url(#${clipId})` });
@@ -227,7 +227,7 @@ function buildCookPanel(svg) {
   // Legend (inline box, upper-left of plot area)
   const legendItems = [
     { label: "NLL Only", color: COLORS.nll  },
-    { label: "BPR Only", color: COLORS.bpr  },
+    { label: "DPO Regret", color: COLORS.bpr  },
     { label: "DAML",     color: COLORS.daml },
     { label: "SPO+",     color: COLORS.spo  },
     { label: "PG",       color: COLORS.pg   },
@@ -365,6 +365,8 @@ let interpYLabel;             // swaps between "Normalized Regret" / "Normalized
 let interpLeftLabel;          // swaps between "SPO+" / "PG" (gold / yellow)
 let interpRegretPath;         // revealed progressively during forward drag
 let interpLossPath;           // revealed progressively during slide-back
+let interpHypSub;             // subtitle for hypothesis phases
+let hypAPath, hypBPath;       // faded hypothesis curves shown before real loss reveal
 let cursorG;                  // Retro hand cursor
 let cursorOpen, cursorClosed; // Two children of cursorG (toggle visibility)
 
@@ -688,7 +690,7 @@ function buildInterp(svg) {
     "text-anchor": "middle", fill: COLORS.dpo,
     "font-size": 22, "font-weight": 700,
     "font-family": "Inter, system-ui, sans-serif",
-  }, "BPR"));
+  }, "DPO"));
 
   // X-axis ticks as α values
   xTicks.forEach(t => {
@@ -734,7 +736,7 @@ function buildInterp(svg) {
     "text-anchor": "middle", fill: COLORS.title,
     "font-size": 30, "font-weight": 600,
     "font-family": "Inter, system-ui, sans-serif",
-  }, "SPO+ ↔ BPR Interpolation");
+  }, "SPO+ ↔ DPO Interpolation");
   interpTitle.style.opacity = "0";
   interpTitle.style.transition = "opacity 0.5s ease";
   interpG.appendChild(interpTitle);
@@ -760,6 +762,56 @@ function buildInterp(svg) {
     "stroke-linejoin": "round",
   });
   interpG.appendChild(interpLossPath);
+
+  // ── Hypothesis elements (shown between regret reveal and real loss reveal) ──
+
+  // Helper: build a dashed path string across the interp x-axis from a value function.
+  function makeHypD(valueFn) {
+    var d = "";
+    for (var i = 0; i <= 50; i++) {
+      var a = i / 50;
+      var v = Math.max(0, Math.min(1, valueFn(a)));
+      var x = interpX(a);
+      var y = interpY(v);
+      d += (i === 0 ? "M " : "L ") + x.toFixed(2) + "," + y.toFixed(2) + " ";
+    }
+    return d.trim();
+  }
+
+  // Hyp A: local minimum — moderate at SPO+ (α=0), peaks mid-path, low at BPR (α=1)
+  var hypAD = makeHypD(function(a) {
+    return 0.40 * (1 - a) + 0.08 * a + 0.60 * Math.exp(-Math.pow((a - 0.5) / 0.22, 2));
+  });
+  // Hyp B: systematic bias — steadily increasing from SPO+ (α=0) to BPR (α=1)
+  var hypBD = makeHypD(function(a) { return 0.05 + 0.85 * a; });
+
+  // Hypothesis subtitle text (hidden initially)
+  interpHypSub = el("text", {
+    x: LS_PANEL_X + LS_PANEL_W / 2, y: 108,
+    "text-anchor": "middle", fill: COLORS.tickLabel,
+    "font-size": 18, "font-family": "Inter, system-ui, sans-serif",
+  });
+  interpHypSub.style.opacity = "0";
+  interpHypSub.style.transition = "opacity 0.45s ease";
+  interpG.appendChild(interpHypSub);
+
+  // Hypothesis A path
+  hypAPath = el("path", {
+    d: hypAD, fill: "none", stroke: COLORS.spo_plus,
+    "stroke-width": 3, "stroke-dasharray": "12,7", "stroke-linecap": "round",
+  });
+  hypAPath.style.opacity = "0";
+  hypAPath.style.transition = "opacity 0.5s ease";
+  interpG.appendChild(hypAPath);
+
+  // Hypothesis B path
+  hypBPath = el("path", {
+    d: hypBD, fill: "none", stroke: COLORS.spo_plus,
+    "stroke-width": 3, "stroke-dasharray": "12,7", "stroke-linecap": "round",
+  });
+  hypBPath.style.opacity = "0";
+  hypBPath.style.transition = "opacity 0.5s ease";
+  interpG.appendChild(hypBPath);
 
   landscapeGroup.appendChild(interpG);
 }
@@ -963,7 +1015,7 @@ function runPhase10() {
 
 // ── Phase controller ──────────────────────────────────────────────────────────
 
-const PHASES = 11;
+const PHASES = 13;
 let currentPhase = -1;
 let busy = false;
 
@@ -1025,21 +1077,49 @@ function applyPhase(n) {
       break;
 
     case 7:
-      // Slide back with loss curve reveal in SPO+ gold.
-      runPhase5c().then(() => { busy = false; });
+      // Hypothesis A: SPO+ stuck in a local minimum
+      // Low at BPR (right) → peaks mid-path → moderate at SPO+ (left)
+      interpTitle.textContent = "Hypothesis A: SPO\u207a stuck in a local minimum";
+      interpTitle.setAttribute("fill", COLORS.spo_plus);
+      interpHypSub.innerHTML = `Low at <tspan fill="${COLORS.dpo}">\u03b8<tspan baseline-shift="sub" font-size="0.72em">DPO</tspan></tspan> \u2192 peaks mid-path \u2192 moderate at <tspan fill="${COLORS.spo_plus}">\u03b8<tspan baseline-shift="sub" font-size="0.72em">SPO\u207a</tspan></tspan>`;
+      interpHypSub.style.opacity = "1";
+      hypAPath.style.opacity = "0.5";
+      setTimeout(() => { busy = false; }, 700);
       break;
 
     case 8:
+      // Hypothesis B: SPO+ more biased than BPR
+      // High at BPR (right) → steadily decreasing → low at SPO+ (left)
+      interpTitle.textContent = "Hypothesis B: SPO\u207a is more biased than DPO";
+      interpHypSub.innerHTML = `High at <tspan fill="${COLORS.dpo}">\u03b8<tspan baseline-shift="sub" font-size="0.72em">DPO</tspan></tspan> \u2192 steadily decreasing \u2192 low at <tspan fill="${COLORS.spo_plus}">\u03b8<tspan baseline-shift="sub" font-size="0.72em">SPO\u207a</tspan></tspan>`;
+      hypAPath.style.opacity = "0.2";
+      setTimeout(() => { hypBPath.style.opacity = "0.5"; }, 300);
+      setTimeout(() => { busy = false; }, 800);
+      break;
+
+    case 9:
+      // Slide back with loss curve reveal in SPO+ gold (clear hypothesis visuals first).
+      interpTitle.textContent = "SPO+ \u2194 DPO Interpolation";
+      interpTitle.setAttribute("fill", COLORS.title);
+      interpHypSub.style.opacity = "0";
+      hypAPath.style.opacity = "0";
+      hypBPath.style.opacity = "0";
+      setTimeout(() => {
+        runPhase5c().then(() => { busy = false; });
+      }, 400);
+      break;
+
+    case 10:
       // Refresh axes: clear curves, relabel SPO+ → PG, reset y-label.
       runPhase8().then(() => { busy = false; });
       break;
 
-    case 9:
+    case 11:
       // PG forward drag + regret curve reveal.
       runPhase9().then(() => { busy = false; });
       break;
 
-    case 10:
+    case 12:
       // PG slide back + loss curve reveal in PG yellow.
       runPhase10().then(() => { busy = false; });
       break;

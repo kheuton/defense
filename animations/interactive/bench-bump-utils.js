@@ -203,7 +203,7 @@ export const RERUN_METHODS = [
   { key: 'dfl',      display: 'DFL',      shape: 'hex',      color: '#3aaa90', group: 'surrogate-gradient' },
   { key: 'blackbox', display: 'Blackbox', shape: 'hex',      color: '#2a8870', group: 'surrogate-gradient' },
   { key: 'identity', display: 'Identity', shape: 'hex',      color: '#1a6650', group: 'surrogate-gradient' },
-  { key: 'perturb',  display: 'Perturb',  shape: 'hex',      color: '#0e4a38', group: 'surrogate-gradient' },
+  { key: 'perturb',  display: 'DPO',      shape: 'hex',      color: '#0e4a38', group: 'surrogate-gradient' },
   { key: 'lodl',     display: 'LODL',     shape: 'circle',   color: '#ffd166', group: 'trained-surrogate' },
   { key: 'cpLayer',  display: 'cpLayer',  shape: 'triangle', color: '#7c6af7', group: 'continuous' },
   { key: 'qptl',     display: 'QPTL',     shape: 'triangle', color: '#9b8ef9', group: 'continuous' },
@@ -247,7 +247,7 @@ export const RERUN_LEGEND_GROUPS = [
     { display: 'DFL',      shape: 'hex',     color: '#3aaa90' },
     { display: 'Blackbox', shape: 'hex',     color: '#2a8870' },
     { display: 'Identity', shape: 'hex',     color: '#1a6650' },
-    { display: 'Perturb',  shape: 'hex',     color: '#0e4a38' },
+    { display: 'DPO',      shape: 'hex',     color: '#0e4a38' },
   ]},
   { head: 'Trained Surrogate', items: [
     { display: 'LODL', shape: 'circle', color: '#ffd166' },

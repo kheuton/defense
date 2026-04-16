@@ -167,9 +167,9 @@ Kyle Heuton
 <h2>Talk Outline</h2>
 <ol type="1">
 <li>My story</li>
-<li><span class="muted">Evaluating models for decision making</span></li>
-<li><span class="muted">Training models for decision making</span></li>
-<li><span class="muted">Benchmarking decision making modeling approaches</span></li>
+<li><span class="muted">Measuring What Matters</span></li>
+<li><span class="muted">Learning to Decide</span></li>
+<li><span class="muted">Analysis of Decision-Aware Learning Methods</span></li>
 </ol>
 </section>
 <section id="section" class="slide level2" data-background-iframe="animations/interactive/daly-anim.html" data-background-interactive="true">
@@ -189,7 +189,38 @@ Kyle Heuton
 
 </div>
 </section>
-<section id="section-1" class="slide level2" data-background-iframe="animations/interactive/opioid-grid.html" data-background-interactive="true">
+<section id="section-1" class="slide level2" data-background-iframe="animations/interactive/overdose-timeline.html" data-background-interactive="true">
+<h2></h2>
+<div class="fragment overdose-step">
+
+</div>
+<div class="fragment overdose-step">
+
+</div>
+<div class="fragment overdose-step">
+
+</div>
+<div class="fragment overdose-step">
+
+</div>
+<div class="fragment overdose-step">
+
+</div>
+<aside class="notes">
+<p>Animated timeline of US drug overdose deaths (12-month rolling total, 2010–2025). Line draws forward like a worm, pausing at milestones: (1) surpasses peak gun deaths (39,800), (2) surpasses peak HIV deaths (46,700), (3) surpasses peak car crash deaths (54,200), (4) reaches absolute peak (111,466 in June 2023), (5) draws to present showing the decline. Data: NYT/CDC WONDER.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-2" class="slide level2" data-background-iframe="animations/interactive/opioid-grid.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment opioid-step">
 
@@ -232,14 +263,14 @@ Kyle Heuton
           display:block!important;
       }</style></aside>
 </section>
-<section id="three-open-questions" class="slide level2">
-<h2>Three Open Questions</h2>
+<section id="three-research-goals" class="slide level2">
+<h2>Three Research Goals</h2>
 <div class="contribution-item">
 <div class="contribution-num accent-teal">
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p>How do we measure if a prediction helps us make better decisions?</p>
+<p><strong>Measuring What Matters:</strong> How do we measure if a prediction helps us make better decisions?</p>
 </div>
 </div>
 <div class="fragment">
@@ -248,7 +279,7 @@ Kyle Heuton
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p>How can we train models that make predictions that lead to better decisions?</p>
+<p><strong>Learning to Decide:</strong> How can we train models that make predictions that lead to better decisions?</p>
 </div>
 </div>
 </div>
@@ -258,7 +289,7 @@ Kyle Heuton
 <p>3</p>
 </div>
 <div class="contribution-body">
-<p>Out of all the different ways to do decision-aware learning, how do we pick?</p>
+<p><strong>Analysis of Decision-Aware Learning Methods:</strong> Out of all the different ways to do decision-aware learning, how do we pick?</p>
 </div>
 </div>
 </div>
@@ -276,14 +307,14 @@ Kyle Heuton
           display:block!important;
       }</style></aside>
 </section>
-<section id="three-open-questions-1" class="slide level2">
-<h2>Three Open Questions</h2>
+<section id="three-research-goals-1" class="slide level2">
+<h2>Three Research Goals</h2>
 <div class="contribution-item">
 <div class="contribution-num accent-teal">
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p>How do we measure if a prediction helps us make better decisions?</p>
+<p><strong>Measuring What Matters:</strong> How do we measure if a prediction helps us make better decisions?</p>
 </div>
 </div>
 <div class="contribution-item" style="opacity: 0.25;">
@@ -291,7 +322,7 @@ Kyle Heuton
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p>How can we train models that make predictions that lead to better decisions?</p>
+<p><strong>Learning to Decide:</strong> How can we train models that make predictions that lead to better decisions?</p>
 </div>
 </div>
 <div class="contribution-item" style="opacity: 0.25;">
@@ -299,13 +330,13 @@ Kyle Heuton
 <p>3</p>
 </div>
 <div class="contribution-body">
-<p>Out of all the different ways to do decision-aware learning, how do we pick?</p>
+<p><strong>Analysis of Decision-Aware Learning Methods:</strong> Out of all the different ways to do decision-aware learning, how do we pick?</p>
 </div>
 </div>
 </section></section>
 <section>
-<section id="evaluation" class="title-slide slide level1 center" data-background-color="#0a2a1a">
-<h1>Evaluation</h1>
+<section id="measuring-what-matters" class="title-slide slide level1 center" data-background-color="#0a2a1a">
+<h1>Measuring What Matters</h1>
 <div class="columns" style="margin-top: 1.5em;">
 <div class="column" style="width:75%;">
 <p><strong>Spatiotemporal forecasting of opioid-related fatal overdoses: towards best practices for modeling and evaluation</strong> <span style="font-weight: normal; font-size: 0.75em; margin-left: 0.4em;"><span class="accent-teal">Open Access</span></span></p>
@@ -362,7 +393,7 @@ Kyle Heuton
 </div>
 </div>
 </section>
-<section id="section-2" class="slide level2" data-background-iframe="animations/interactive/data-model.html" data-background-interactive="true">
+<section id="section-3" class="slide level2" data-background-iframe="animations/interactive/data-model.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment data-model-step">
 
@@ -451,6 +482,9 @@ Historical Average
 </tr>
 </tbody>
 </table>
+</div>
+<div style="font-family: 'Inter', Georgia, serif; font-size: 0.58em; color: #e4e4ec; line-height: 1.4; margin-top: 0.6em; padding-left: 1.6em; text-indent: -1.6em;">
+Bauer C, Zhang K, Li W, et al.&nbsp;<span style="color:#b0b0bc;">(2023).</span> <em>Small area forecasting of opioid-related mortality: Bayesian spatiotemporal dynamic modeling approach.</em> <span style="color:#b0b0bc;">JMIR Public Health Surveill.</span> 9(1):e41450.
 </div>
 </section>
 <section id="best-possible-reach" class="slide level2" data-background-iframe="animations/interactive/bpr-eval.html" data-background-interactive="true">
@@ -579,6 +613,23 @@ Negative Binomial Spatially Lagged + SVI
 </tr>
 </tbody>
 </table>
+</div>
+<div style="position: relative; height: 5.5em; font-family: 'Inter', Georgia, serif; font-size: 0.58em; color: #e4e4ec; line-height: 1.4; margin-top: 0.6em;">
+<div class="fragment fade-in-then-out" data-fragment-index="2" style="position: absolute; top: 0; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">
+Allen B, Neill DB, et al.&nbsp;<span style="color:#b0b0bc;">(2023).</span> <em>Translating predictive analytics for public health practice: a case study of overdose prevention in Rhode Island.</em> <span style="color:#b0b0bc;">Am J Epidemiol.</span> 192(10):1659–1668.
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="3" style="position: absolute; top: 0; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">
+Allen B, Neill DB, et al.&nbsp;<span style="color:#b0b0bc;">(2023).</span> <em>Translating predictive analytics for public health practice: a case study of overdose prevention in Rhode Island.</em> <span style="color:#b0b0bc;">Am J Epidemiol.</span> 192(10):1659–1668.
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="3" style="position: absolute; top: 3.2em; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">
+Heuton K, Shrestha S, et al.&nbsp;<span style="color:#b0b0bc;">(2022).</span> <em>Predicting spatiotemporal counts of opioid-related fatal overdoses via zero-inflated Gaussian processes.</em> <span style="color:#b0b0bc;">NeurIPS Workshop.</span>
+</div>
+<div class="fragment fade-in-then-out" data-fragment-index="4" style="position: absolute; top: 0; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">
+Ertugrul AM, Lin YR, Taskaya-Temizel T. <span style="color:#b0b0bc;">(2019).</span> <em>CASTNet: community-attentive spatio-temporal networks for opioid overdose forecasting.</em> <span style="color:#b0b0bc;">ECML PKDD.</span>
+</div>
+<div class="fragment" data-fragment-index="5" style="position: absolute; top: 0; left: 0; right: 0; padding-left: 1.6em; text-indent: -1.6em;">
+Marks C, Abramovitz D, Donnelly CA, et al.&nbsp;<span style="color:#b0b0bc;">(2021).</span> <em>Identifying counties at risk of high overdose mortality burden during the emerging fentanyl epidemic in the USA: a predictive statistical modelling study.</em> <span style="color:#b0b0bc;">Lancet Public Health.</span> 6(10):e720–e728.
+</div>
 </div>
 </section>
 <section id="massachusetts-results" class="slide level2">
@@ -723,14 +774,14 @@ Negative Binomial Spatially Lagged + SVI
 <p>Our code and <em>data</em> are available at <a href="https://github.com/tufts-ml/opioid-overdose-models" class="uri">https://github.com/tufts-ml/opioid-overdose-models</a></p>
 </div>
 </section>
-<section id="three-open-questions-2" class="slide level2">
-<h2>Three Open Questions</h2>
+<section id="three-research-goals-2" class="slide level2">
+<h2>Three Research Goals</h2>
 <div class="contribution-item" style="opacity: 0.25;">
 <div class="contribution-num accent-teal">
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p>How do we measure if a prediction helps us make better decisions?</p>
+<p><strong>Measuring What Matters:</strong> How do we measure if a prediction helps us make better decisions?</p>
 </div>
 </div>
 <div class="contribution-item">
@@ -738,7 +789,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p>How can we train models that make predictions that lead to better decisions?</p>
+<p><strong>Learning to Decide:</strong> How can we train models that make predictions that lead to better decisions?</p>
 </div>
 </div>
 <div class="contribution-item" style="opacity: 0.25;">
@@ -746,13 +797,13 @@ Negative Binomial Spatially Lagged + SVI
 <p>3</p>
 </div>
 <div class="contribution-body">
-<p>Out of all the different ways to do decision-aware learning, how do we pick?</p>
+<p><strong>Analysis of Decision-Aware Learning Methods:</strong> Out of all the different ways to do decision-aware learning, how do we pick?</p>
 </div>
 </div>
 </section></section>
 <section>
-<section id="training" class="title-slide slide level1 center" data-background-color="#1a0a2a">
-<h1>Training</h1>
+<section id="learning-to-decide" class="title-slide slide level1 center" data-background-color="#1a0a2a">
+<h1>Learning to Decide</h1>
 <div class="columns" style="margin-top: 1.5em;">
 <div class="column" style="width:75%;">
 <p><strong>Decision-aware Training of Spatiotemporal Forecasting Models to Select a Top-K Subset of Sites for Intervention</strong></p>
@@ -796,8 +847,8 @@ Negative Binomial Spatially Lagged + SVI
 </div>
 </div>
 </section>
-<section id="how-to-train" class="slide level2" data-background-iframe="animations/interactive/mse-gradient-bpr.html" data-background-interactive="true">
-<h2>How to Train</h2>
+<section id="decision-quality-has-uninformative-gradients" class="slide level2" data-background-iframe="animations/interactive/mse-gradient-bpr.html" data-background-interactive="true">
+<h2>Decision Quality has Uninformative Gradients</h2>
 <div class="fragment mse-step">
 
 </div>
@@ -841,7 +892,7 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-3" class="slide level2" data-background-iframe="animations/interactive/frontier.html" data-background-interactive="true">
+<section id="section-4" class="slide level2" data-background-iframe="animations/interactive/frontier.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -865,7 +916,7 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-4" class="slide level2" data-background-iframe="animations/interactive/training-results-cook.html" data-background-interactive="true">
+<section id="section-5" class="slide level2" data-background-iframe="animations/interactive/training-results-cook.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -877,7 +928,7 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-5" class="slide level2" data-background-iframe="animations/interactive/training-results-ma-cranes.html" data-background-interactive="true">
+<section id="section-6" class="slide level2" data-background-iframe="animations/interactive/training-results-ma-cranes.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -889,8 +940,8 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="training-takeaways" class="slide level2">
-<h2>Training takeaways</h2>
+<section id="learning-to-decide-takeaways" class="slide level2">
+<h2>Learning to Decide takeaways</h2>
 <div class="fragment card card-purple-light">
 <p>Differentiable perturbed optimizers allow us to train models that make better decisions</p>
 </div>
@@ -901,14 +952,14 @@ Negative Binomial Spatially Lagged + SVI
 <p>The ratio estimator is superior to the mean when converting a distribution into a ranking</p>
 </div>
 </section>
-<section id="three-open-questions-3" class="slide level2">
-<h2>Three Open Questions</h2>
+<section id="three-research-goals-3" class="slide level2">
+<h2>Three Research Goals</h2>
 <div class="contribution-item" style="opacity: 0.25;">
 <div class="contribution-num accent-teal">
 <p>1</p>
 </div>
 <div class="contribution-body">
-<p>How do we measure if a prediction helps us make better decisions?</p>
+<p><strong>Measuring What Matters:</strong> How do we measure if a prediction helps us make better decisions?</p>
 </div>
 </div>
 <div class="contribution-item" style="opacity: 0.25;">
@@ -916,7 +967,7 @@ Negative Binomial Spatially Lagged + SVI
 <p>2</p>
 </div>
 <div class="contribution-body">
-<p>How can we train models that make predictions that lead to better decisions?</p>
+<p><strong>Learning to Decide:</strong> How can we train models that make predictions that lead to better decisions?</p>
 </div>
 </div>
 <div class="contribution-item">
@@ -924,13 +975,13 @@ Negative Binomial Spatially Lagged + SVI
 <p>3</p>
 </div>
 <div class="contribution-body">
-<p>Out of all the different ways to do decision-aware learning, how do we pick?</p>
+<p><strong>Analysis of Decision-Aware Learning Methods:</strong> Out of all the different ways to do decision-aware learning, how do we pick?</p>
 </div>
 </div>
 </section></section>
 <section>
-<section id="benchmarking" class="title-slide slide level1 center" data-background-color="#2a1a0a">
-<h1>Benchmarking</h1>
+<section id="analysis-of-decision-aware-learning-methods" class="title-slide slide level1 center" data-background-color="#2a1a0a">
+<h1>Analysis of Decision-Aware Learning Methods</h1>
 <div class="columns" style="margin-top: 1.5em;">
 <div class="column" style="width:75%;">
 <p><strong>Many Decision-Aware Benchmarks do not benefit from Decision-Aware Learning</strong></p>
@@ -941,7 +992,7 @@ Negative Binomial Spatially Lagged + SVI
 <p><img data-src="figures/AISTATS-logo.svg" style="width: 380px;"></p>
 </div></div>
 </section>
-<section id="section-6" class="slide level2" data-background-iframe="animations/interactive/opportunity.html" data-background-interactive="true">
+<section id="section-7" class="slide level2" data-background-iframe="animations/interactive/opportunity.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -959,7 +1010,7 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-7" class="slide level2" data-background-iframe="animations/interactive/bias-landscape.html" data-background-interactive="true">
+<section id="section-8" class="slide level2" data-background-iframe="animations/interactive/bias-landscape.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -982,21 +1033,6 @@ Negative Binomial Spatially Lagged + SVI
 <div class="fragment results-step">
 
 </div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-<div class="fragment results-step">
-
-</div>
-</section>
-<section id="section-8" class="slide level2" data-background-iframe="animations/interactive/loss-landscape.html" data-background-interactive="true">
-<h2></h2>
 <div class="fragment results-step">
 
 </div>
@@ -1016,11 +1052,126 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-9" class="slide level2" data-background-image="figures/ch5/slide02.png" data-background-size="contain" data-background-color="black">
+<section id="from-opioid-forecasting-to-decision-focused-learning" class="slide level2">
+<h2>From Opioid Forecasting to Decision-Focused Learning</h2>
+<div class="fragment" data-fragment-index="1" style="text-align: center; margin-top: 0.3em; font-size: 1.1em;">
+<p><span class="math display">\min_{\textcolor{#ffd166}{\theta}} \; \mathcal{L}\bigl(\, \textcolor{#50c8a8}{y}, \; \textcolor{#7c6af7}{z^{\!\star}}\!\bigl(\textcolor{#ff7c57}{f_{\textcolor{#ffd166}{\theta}}(x)}\bigr) \,\bigr)
+\qquad
+\textcolor{#7c6af7}{z^{\!\star}}(c) = \underset{z\in\mathcal{Z}}{\arg\min}\; c^{\top}z
+\qquad
+V(c) = c^{\top}\textcolor{#7c6af7}{z^{\!\star}}(c)</span></p>
+</div>
+<div class="fragment" data-fragment-index="2" style="text-align: center; font-size: 0.8em; color: var(--text-muted); margin-top: -0.2em;">
+<p><span class="accent-teal">outcome</span> &nbsp;·&nbsp; <span class="accent-purple">decision</span> &nbsp;·&nbsp; <span class="accent-coral">prediction <span class="math inline">\hat{y} = f_\theta(x)</span></span> &nbsp;·&nbsp; <span class="accent-yellow">parameters</span> &nbsp;·&nbsp; <span class="math inline">V</span> = value function &nbsp;·&nbsp; <span class="math inline">c</span> = any cost vector (e.g.&nbsp;<span class="math inline">\textcolor{#ff7c57}{f_\theta(x)}</span> or <span class="math inline">\textcolor{#50c8a8}{y}</span>)</p>
+</div>
+<div class="template-table" style="margin-top: 0.9em; font-size: 0.8em; display: grid; grid-template-columns: 1.3fr 1.3fr 1.6fr 1.5fr; gap: 0.5em 1.2em; align-items: center;">
+<div class="fragment" data-fragment-index="3" style="font-weight: 600; color: var(--text-muted); border-bottom: 1px solid var(--separator); padding-bottom: 0.3em;">
+<p>Domain</p>
+</div>
+<div class="fragment" data-fragment-index="3" style="font-weight: 600; border-bottom: 1px solid var(--separator); padding-bottom: 0.3em;">
+<p><span class="accent-teal">outcome <span class="math inline">y</span></span></p>
+</div>
+<div class="fragment" data-fragment-index="3" style="font-weight: 600; border-bottom: 1px solid var(--separator); padding-bottom: 0.3em;">
+<p><span class="accent-purple">decision <span class="math inline">z^{\!\star}(\cdot)</span></span></p>
+</div>
+<div class="fragment" data-fragment-index="3" style="font-weight: 600; border-bottom: 1px solid var(--separator); padding-bottom: 0.3em;">
+<p><span class="accent-coral">prediction <span class="math inline">f_{\theta}(x)</span></span></p>
+</div>
+<div class="fragment" data-fragment-index="4">
+<p><strong>Opioid overdose</strong></p>
+</div>
+<div class="fragment" data-fragment-index="4">
+<p><span class="accent-teal">deaths per tract</span></p>
+</div>
+<div class="fragment" data-fragment-index="4">
+<p><span class="accent-purple">select top-100 tracts</span></p>
+</div>
+<div class="fragment" data-fragment-index="4">
+<p><span class="accent-coral">predicted deaths</span></p>
+</div>
+<div class="fragment" data-fragment-index="5">
+<p><strong>Whooping crane siting</strong></p>
+</div>
+<div class="fragment" data-fragment-index="5">
+<p><span class="accent-teal">cranes per site</span></p>
+</div>
+<div class="fragment" data-fragment-index="5">
+<p><span class="accent-purple">select top-<span class="math inline">K</span> sites</span></p>
+</div>
+<div class="fragment" data-fragment-index="5">
+<p><span class="accent-coral">predicted crane counts</span></p>
+</div>
+<div class="fragment" data-fragment-index="6">
+<p><strong>Shortest path</strong></p>
+</div>
+<div class="fragment" data-fragment-index="6">
+<p><span class="accent-teal">edge travel times</span></p>
+</div>
+<div class="fragment" data-fragment-index="6">
+<p><span class="accent-purple">shortest <span class="math inline">s</span>–<span class="math inline">t</span> path</span></p>
+</div>
+<div class="fragment" data-fragment-index="6">
+<p><span class="accent-coral">predicted edge times</span></p>
+</div>
+<div class="fragment" data-fragment-index="7">
+<p><strong>Energy-cost scheduling</strong></p>
+</div>
+<div class="fragment" data-fragment-index="7">
+<p><span class="accent-teal">energy prices per timeslot</span></p>
+</div>
+<div class="fragment" data-fragment-index="7">
+<p><span class="accent-purple">schedule <span class="math inline">J</span> jobs on <span class="math inline">M</span> machines</span></p>
+</div>
+<div class="fragment" data-fragment-index="7">
+<p><span class="accent-coral">predicted prices</span></p>
+</div>
+</div>
+<div class="fragment" data-fragment-index="8" style="margin-top: 1.0em; text-align: center; font-size: 0.9em;">
+<p>One recipe, many problems — and the focus of the rest of this section.</p>
+</div>
+<aside class="notes">
+<p>Header equation persists. Rows: opioid + cranes are our work; shortest path and energy-cost scheduling (SEMO) are standard PtO/DFL benchmarks. V(c) = optimal objective value at cost c — same V that shows up on the next slide’s surrogate losses (V(y), V(ŷ), V(2ŷ−y), …).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-9" class="slide level2" data-background-iframe="animations/interactive/loss-landscape.html" data-background-interactive="true">
+<h2></h2>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+</section>
+<section id="section-10" class="slide level2" data-background-image="figures/ch5/slide02.png" data-background-size="contain" data-background-color="black">
 <h2></h2>
 </section>
-<section id="section-10" class="slide level2" data-background-iframe="animations/interactive/bench-bump-original.html" data-background-interactive="true">
+<section id="section-11" class="slide level2" data-background-iframe="animations/interactive/bench-bump-original.html" data-background-interactive="true">
 <h2></h2>
+<div style="position: absolute; bottom: 0; left: 0; width: 50%; font-family: 'Inter', Georgia, serif; font-size: 0.5em; color: #e4e4ec; line-height: 1.4; padding-left: 1.6em; text-indent: -1.6em;">
+Results from Geng H, Ruan H, Wang R, et al.&nbsp;<span style="color:#b0b0bc;">(2024).</span> <em>Benchmarking PtO and PnO methods in the predictive combinatorial optimization regime.</em> <span style="color:#b0b0bc;">Advances in Neural Information Processing Systems.</span> 37:65944–65971.
+</div>
 <div class="fragment results-step">
 
 </div>
@@ -1081,7 +1232,7 @@ Negative Binomial Spatially Lagged + SVI
 </ul>
 </div>
 </section>
-<section id="section-11" class="slide level2" data-background-iframe="animations/interactive/bench-bump-rerun-main.html" data-background-interactive="true">
+<section id="section-12" class="slide level2" data-background-iframe="animations/interactive/bench-bump-rerun-main.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -1096,7 +1247,7 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-12" class="slide level2" data-background-iframe="animations/interactive/bench-bump-rerun-budget.html" data-background-interactive="true">
+<section id="section-13" class="slide level2" data-background-iframe="animations/interactive/bench-bump-rerun-budget.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -1105,7 +1256,7 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-13" class="slide level2" data-background-iframe="animations/interactive/bench-bump-rerun-portfolio.html" data-background-interactive="true">
+<section id="section-14" class="slide level2" data-background-iframe="animations/interactive/bench-bump-rerun-portfolio.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -1114,8 +1265,8 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="benchmarking-takeaways" class="slide level2">
-<h2>Benchmarking takeaways</h2>
+<section id="analysis-of-decision-aware-learning-methods-takeaways" class="slide level2">
+<h2>Analysis of Decision-Aware Learning Methods takeaways</h2>
 <div class="fragment card card-coral-dark">
 <p>Future efforts should focus on the loss landscape induced by a given method</p>
 </div>
@@ -1131,21 +1282,21 @@ Negative Binomial Spatially Lagged + SVI
 <section id="conclusion" class="slide level2">
 <h2>Conclusion</h2>
 <div class="fragment card card-teal">
-<p><strong>Evaluation</strong></p>
+<p><strong>Measuring What Matters</strong></p>
 <ul>
 <li>Simpler models can be just as strong</li>
 <li>Error-based metrics miss what matters for policy</li>
 </ul>
 </div>
 <div class="fragment card card-purple">
-<p><strong>Training</strong></p>
+<p><strong>Learning to Decide</strong></p>
 <ul>
 <li>Decision-aware metrics can be optimized</li>
 <li>We don’t have to sacrifice accuracy for decision quality</li>
 </ul>
 </div>
 <div class="fragment card card-coral">
-<p><strong>Benchmarking</strong></p>
+<p><strong>Analysis of Decision-Aware Learning Methods</strong></p>
 <ul>
 <li>Existing benchmarks aren’t asking the right questions</li>
 <li>Understanding the loss landscape induced by a method is key to understanding its success</li>
@@ -1321,16 +1472,16 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-14" class="slide level2" data-background-image="figures/ch5/slide09.png" data-background-size="contain" data-background-color="white">
+<section id="section-15" class="slide level2" data-background-image="figures/ch5/slide09.png" data-background-size="contain" data-background-color="white">
 <h2></h2>
 </section>
-<section id="section-15" class="slide level2" data-background-image="figures/ch5/slide10.png" data-background-size="contain" data-background-color="white">
+<section id="section-16" class="slide level2" data-background-image="figures/ch5/slide10.png" data-background-size="contain" data-background-color="white">
 <h2></h2>
 </section>
-<section id="section-16" class="slide level2" data-background-image="figures/ch5/slide11.png" data-background-size="contain" data-background-color="white">
+<section id="section-17" class="slide level2" data-background-image="figures/ch5/slide11.png" data-background-size="contain" data-background-color="white">
 <h2></h2>
 </section>
-<section id="section-17" class="slide level2" data-background-image="figures/ch5/slide12.png" data-background-size="contain" data-background-color="white">
+<section id="section-18" class="slide level2" data-background-image="figures/ch5/slide12.png" data-background-size="contain" data-background-color="white">
 <h2></h2>
 </section>
 <section id="how-to-rank" class="slide level2" data-background-iframe="animations/interactive/how-to-rank.html" data-background-interactive="true">
@@ -1342,7 +1493,7 @@ Negative Binomial Spatially Lagged + SVI
 
 </div>
 </section>
-<section id="section-18" class="slide level2" data-background-iframe="animations/interactive/surrogate-interp.html" data-background-interactive="true">
+<section id="section-19" class="slide level2" data-background-iframe="animations/interactive/surrogate-interp.html" data-background-interactive="true">
 <h2></h2>
 <div class="fragment results-step">
 
@@ -1787,11 +1938,11 @@ window.addEventListener('load', function () {
 
       <span class="sec" data-id="introduction" style="--nav-color:#ffd166">Introduction</span>
 
-      <span class="sec" data-id="evaluation" style="--nav-color:#50c8a8">Evaluation</span>
+      <span class="sec" data-id="evaluation" style="--nav-color:#50c8a8">Measuring What Matters</span>
 
-      <span class="sec" data-id="training" style="--nav-color:#7c6af7">Training</span>
+      <span class="sec" data-id="training" style="--nav-color:#7c6af7">Learning to Decide</span>
 
-      <span class="sec" data-id="benchmarking" style="--nav-color:#ff7c57">Benchmarking</span>
+      <span class="sec" data-id="benchmarking" style="--nav-color:#ff7c57">Methods Landscape</span>
 
       <span class="sec" data-id="conclusion" style="--nav-color:#ffd166">Conclusion</span>
 
