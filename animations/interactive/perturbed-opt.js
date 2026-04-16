@@ -526,7 +526,7 @@ function phase2() {
     citEl.classList.remove("visible");
     if (!eqEl.dataset.rendered) {
       window.katex.render(
-        "\\mathcal{L}_\\text{DPO}(\\theta) = \\mathbb{E}_{\\varepsilon \\sim \\mathcal{N}(0,\\,I)}\\!\\left[\\operatorname{BPR}(r_\\theta + \\sigma\\varepsilon,\\; y)\\right]",
+        "\\mathcal{L}_\\text{DPO}(\\theta) = -\\mathbb{E}_{\\varepsilon \\sim \\mathcal{N}(0,\\,I)}\\!\\left[\\operatorname{BPR}(r_\\theta + \\sigma\\varepsilon,\\; y)\\right]",
         eqEl,
         { throwOnError: false, displayMode: true }
       );

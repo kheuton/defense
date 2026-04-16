@@ -13,7 +13,7 @@ date: "2026-04-17"
 1. My story
 2. [Measuring What Matters]{.muted}
 3. [Learning to Decide]{.muted}
-4. [Auditing the Field]{.muted}
+4. [Analysis of Decision-Aware Learning Methods]{.muted}
 
 
 ## {background-iframe="animations/interactive/daly-anim.html" background-interactive="true"}
@@ -95,7 +95,7 @@ Interactive animation — 9 steps:
 3
 :::
 ::: {.contribution-body}
-**Auditing the Field:** Out of all the different ways to do decision-aware learning, how do we pick?
+**Analysis of Decision-Aware Learning Methods:** Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 :::
@@ -130,7 +130,7 @@ This is the thesis overview dressed up as open questions. Each maps to a chapter
 3
 :::
 ::: {.contribution-body}
-**Auditing the Field:** Out of all the different ways to do decision-aware learning, how do we pick?
+**Analysis of Decision-Aware Learning Methods:** Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 
@@ -454,7 +454,7 @@ Our code and *data* are available at <https://github.com/tufts-ml/opioid-overdos
 3
 :::
 ::: {.contribution-body}
-**Auditing the Field:** Out of all the different ways to do decision-aware learning, how do we pick?
+**Analysis of Decision-Aware Learning Methods:** Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 
@@ -624,12 +624,12 @@ The ratio estimator is superior to the mean when converting a distribution into 
 3
 :::
 ::: {.contribution-body}
-**Auditing the Field:** Out of all the different ways to do decision-aware learning, how do we pick?
+**Analysis of Decision-Aware Learning Methods:** Out of all the different ways to do decision-aware learning, how do we pick?
 :::
 :::
 
 
-# Auditing the Field {background-color="#2a1a0a"}
+# Analysis of Decision-Aware Learning Methods {background-color="#2a1a0a"}
 
 ::::: {.columns style="margin-top: 1.5em;"}
 
@@ -691,6 +691,98 @@ Kyle Heuton, Michael C. Hughes
 ::: {.fragment .results-step}
 :::
 
+## From Opioid Forecasting to Decision-Focused Learning
+
+::: {.fragment fragment-index=1 style="text-align: center; margin-top: 0.3em; font-size: 1.1em;"}
+$$\min_{\textcolor{#ffd166}{\theta}} \; \mathcal{L}\bigl(\, \textcolor{#50c8a8}{y}, \; \textcolor{#7c6af7}{z^{\!\star}}\!\bigl(\textcolor{#ff7c57}{f_{\textcolor{#ffd166}{\theta}}(x)}\bigr) \,\bigr)
+\qquad
+\textcolor{#7c6af7}{z^{\!\star}}(c) = \underset{z\in\mathcal{Z}}{\arg\min}\; c^{\top}z
+\qquad
+V(c) = c^{\top}\textcolor{#7c6af7}{z^{\!\star}}(c)$$
+:::
+
+::: {.fragment fragment-index=2 style="text-align: center; font-size: 0.8em; color: var(--text-muted); margin-top: -0.2em;"}
+[outcome]{.accent-teal} &nbsp;·&nbsp; [decision]{.accent-purple} &nbsp;·&nbsp; [prediction $\hat{y} = f_\theta(x)$]{.accent-coral} &nbsp;·&nbsp; [parameters]{.accent-yellow} &nbsp;·&nbsp; $V$ = value function &nbsp;·&nbsp; $c$ = any cost vector (e.g. $\textcolor{#ff7c57}{f_\theta(x)}$ or $\textcolor{#50c8a8}{y}$)
+:::
+
+:::: {.template-table style="margin-top: 0.9em; font-size: 0.8em; display: grid; grid-template-columns: 1.3fr 1.3fr 1.6fr 1.5fr; gap: 0.5em 1.2em; align-items: center;"}
+
+::: {.fragment fragment-index=3 style="font-weight: 600; color: var(--text-muted); border-bottom: 1px solid var(--separator); padding-bottom: 0.3em;"}
+Domain
+:::
+::: {.fragment fragment-index=3 style="font-weight: 600; border-bottom: 1px solid var(--separator); padding-bottom: 0.3em;"}
+[outcome $y$]{.accent-teal}
+:::
+::: {.fragment fragment-index=3 style="font-weight: 600; border-bottom: 1px solid var(--separator); padding-bottom: 0.3em;"}
+[decision $z^{\!\star}(\cdot)$]{.accent-purple}
+:::
+::: {.fragment fragment-index=3 style="font-weight: 600; border-bottom: 1px solid var(--separator); padding-bottom: 0.3em;"}
+[prediction $f_{\theta}(x)$]{.accent-coral}
+:::
+
+::: {.fragment fragment-index=4}
+**Opioid overdose**
+:::
+::: {.fragment fragment-index=4}
+[deaths per tract]{.accent-teal}
+:::
+::: {.fragment fragment-index=4}
+[select top-100 tracts]{.accent-purple}
+:::
+::: {.fragment fragment-index=4}
+[predicted deaths]{.accent-coral}
+:::
+
+::: {.fragment fragment-index=5}
+**Whooping crane siting**
+:::
+::: {.fragment fragment-index=5}
+[cranes per site]{.accent-teal}
+:::
+::: {.fragment fragment-index=5}
+[select top-$K$ sites]{.accent-purple}
+:::
+::: {.fragment fragment-index=5}
+[predicted crane counts]{.accent-coral}
+:::
+
+::: {.fragment fragment-index=6}
+**Shortest path**
+:::
+::: {.fragment fragment-index=6}
+[edge travel times]{.accent-teal}
+:::
+::: {.fragment fragment-index=6}
+[shortest $s$–$t$ path]{.accent-purple}
+:::
+::: {.fragment fragment-index=6}
+[predicted edge times]{.accent-coral}
+:::
+
+::: {.fragment fragment-index=7}
+**Energy-cost scheduling**
+:::
+::: {.fragment fragment-index=7}
+[energy prices per timeslot]{.accent-teal}
+:::
+::: {.fragment fragment-index=7}
+[schedule $J$ jobs on $M$ machines]{.accent-purple}
+:::
+::: {.fragment fragment-index=7}
+[predicted prices]{.accent-coral}
+:::
+
+::::
+
+::: {.fragment fragment-index=8 style="margin-top: 1.0em; text-align: center; font-size: 0.9em;"}
+One recipe, many problems — and the focus of the rest of this section.
+:::
+
+::: notes
+Header equation persists. Rows: opioid + cranes are our work; shortest path and energy-cost scheduling (SEMO) are standard PtO/DFL benchmarks. V(c) = optimal objective value at cost c — same V that shows up on the next slide's surrogate losses (V(y), V(ŷ), V(2ŷ−y), …).
+:::
+
+
 ## {background-iframe="animations/interactive/loss-landscape.html" background-interactive="true"}
 
 ::: {.fragment .results-step}
@@ -709,6 +801,8 @@ Kyle Heuton, Michael C. Hughes
 ## {background-image="figures/ch5/slide02.png" background-size="contain" background-color="black"}
 
 ## {background-iframe="animations/interactive/bench-bump-original.html" background-interactive="true"}
+
+<div style="position: absolute; bottom: 0; left: 0; width: 50%; font-family: 'Inter', Georgia, serif; font-size: 0.5em; color: #e4e4ec; line-height: 1.4; padding-left: 1.6em; text-indent: -1.6em;">Results from Geng H, Ruan H, Wang R, et al. <span style="color:#b0b0bc;">(2024).</span> <em>Benchmarking PtO and PnO methods in the predictive combinatorial optimization regime.</em> <span style="color:#b0b0bc;">Advances in Neural Information Processing Systems.</span> 37:65944&ndash;65971.</div>
 
 ::: {.fragment .results-step}
 :::
@@ -778,7 +872,7 @@ Kyle Heuton, Michael C. Hughes
 ::: {.fragment .results-step}
 :::
 
-## Auditing the Field takeaways
+## Analysis of Decision-Aware Learning Methods takeaways
 
 ::: {.fragment .card .card-coral-dark}
 Future efforts should focus on the loss landscape induced by a given method
@@ -808,7 +902,7 @@ Existing decision-aware benchmarks don't use decision-aware tasks
 :::
 
 ::: {.fragment .card .card-coral}
-**Auditing the Field**
+**Analysis of Decision-Aware Learning Methods**
 
 - Existing benchmarks aren't asking the right questions
 - Understanding the loss landscape induced by a method is key to understanding its success
