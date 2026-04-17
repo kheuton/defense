@@ -1383,19 +1383,6 @@ Results from Geng H, Ruan H, Wang R, et al.&nbsp;<span style="color:#b0b0bc;">(2
 </section>
 <section id="thank-you" class="slide level2">
 <h2>Thank You</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><strong>Dissertation committee:</strong></p>
-<!-- TODO: names -->
-<p><br></p>
-<p><strong>Collaborators and labmates:</strong></p>
-<!-- TODO: names -->
-<p><br></p>
-<p><strong>Funding:</strong></p>
-<!-- TODO: grants -->
-</div><div class="column" style="width:40%;">
-<!-- TODO: optional QR code / contact -->
-</div></div>
 <aside class="notes">
 <p>Keep this brief. Have a backup slide with key results ready.</p>
 <style type="text/css">
@@ -1632,6 +1619,174 @@ window.addEventListener('load', function () {
   });
 });
 </script>
+</section>
+<section id="section-20" class="slide level2" data-background-iframe="animations/interactive/method-categorization.html" data-background-interactive="true">
+<h2></h2>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<aside class="notes">
+<p>Committee feedback slide 1 of 5. Method categorization: every method is decision-aware — MSE via a finite HP grid, the rest via continuous gradient surrogates. Four phases: (1) reveal bins, (2) MSE lands in HP-grid bin + caption, (3) 8 gradient methods land in gradient bin + caption, (4) callout.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-21" class="slide level2" data-background-iframe="animations/interactive/problem-regimes.html" data-background-interactive="true">
+<h2></h2>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<aside class="notes">
+<p>Committee feedback slide 2 of 5. Four regimes: well-specified, mis-specified, small-data, real/unknown. Phases: (1) reveal quadrants, (2) synthetic problems fly in, (3) real-data problems fly in, (4) “next three slides visit three of these regimes” callout.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-22" class="slide level2" data-background-iframe="animations/interactive/specification-scatter.html" data-background-interactive="true">
+<h2></h2>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<aside class="notes">
+<p>Committee feedback slide 3 of 5. sp_synth (mis-spec) vs sp_planted (well-spec) scatter. Same 5×5 DAG, same 1-layer linear head; only DGP flips. Phases: (1) diagonal + legend, (2) near-origin methods (SPO+, listLTR, Perturb, MSE, PG), (3) far methods (DFL, Identity, Blackbox), (4) callout. LODL omitted (missing sp_planted run).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-23" class="slide level2" data-background-iframe="animations/interactive/small-data.html" data-background-interactive="true">
+<h2></h2>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<aside class="notes">
+<p>Committee feedback slide 4 of 5. 3 panels × 4 methods (MSE, DFL, Perturb, LODL — DAD excluded). Phases: (1) knapsack, (2) sp_synth, (3) cook_county (Perturb getting WORSE with more data is the surprise finding), (4) callout. PG omitted — small-data SLURM sweep only covered these 4 methods.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-24" class="slide level2" data-background-iframe="animations/interactive/realdata-interp.html" data-background-interactive="true">
+<h2></h2>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<aside class="notes">
+<p>Committee feedback slide 5 of 5. Full 6-panel cook_county interpolation: {train, val, test} × {regret, pred MSE}. θ(α) = (1−α)θ_MSE + α·θ_Perturb, α ∈ [−0.5, 1.5]. Phases: (1) endpoint markers, (2) regret row, (3) MSE row, (4) highlight test-regret minimum at α ≈ −0.16 (<em>before</em> MSE, away from Perturb), (5) callout on distribution shift / overfitting.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-25" class="slide level2" data-background-iframe="animations/interactive/bench-bump-rerun-extra.html" data-background-interactive="true">
+<h2></h2>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<div class="fragment results-step">
+
+</div>
+<aside class="notes">
+<p>Extended benchmark rerun: 6 additional tasks not in the main rerun slide. Spatial Top-K (ASurv, Cook County, Speed Humps) and Shortest Path family (SP Synth 5×5, SP Planted 5×5, Warcraft 12×12). Phases: (1) MSE baseline across all axes, (2) L-LTR reveal, (3) all remaining methods. cpLayer/QPTL absent for these tasks; Warcraft only has MSE/DFL/Identity/SPO+/NCE/Blackbox/Perturb. Note SPO+ and L-LTR tie near the top of sp_synth/sp_planted; Perturb is a major regression on Cook County (48 vs ~20).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 </section></section>
     </div>
@@ -1831,223 +1986,114 @@ window.addEventListener('load', function () {
       });
     </script>
     <style>
-
       .section-nav {
-
         position: fixed;
-
         bottom: 0;
-
         left: 0;
-
         right: 0;
-
         display: flex;
-
         justify-content: center;
-
         align-items: baseline;
-
         gap: 0.3em;
-
         padding-bottom: 12px;
-
         z-index: 50;
-
         pointer-events: none;
-
         opacity: 1;
-
         transition: opacity 0.4s;
-
       }
-
       .section-nav.hidden {
-
         opacity: 0;
-
       }
-
       .section-nav .sec {
-
         font-family: 'Inter', sans-serif;
-
         font-size: 12px;
-
         font-weight: 800;
-
         letter-spacing: 0;
-
         text-transform: uppercase;
-
         color: #888899;
-
         transition: color 0.35s ease, font-size 0.35s ease;
-
       }
-
       .section-nav .sec.active {
-
         font-size: 26px;
-
         color: var(--nav-color);
-
       }
-
-    
 
       .slide-counter {
-
         position: fixed;
-
         bottom: 14px;
-
         right: 20px;
-
         font-family: 'Inter', sans-serif;
-
         font-size: 14px;
-
         font-weight: 600;
-
         letter-spacing: 0.06em;
-
         color: #888899;
-
         z-index: 50;
-
         pointer-events: none;
-
         opacity: 1;
-
         transition: opacity 0.4s;
-
       }
-
       .slide-counter.hidden {
-
         opacity: 0;
-
       }
-
     </style>
 
-    
-
     <div class="section-nav hidden" id="section-nav">
-
       <span class="sec" data-id="introduction" style="--nav-color:#ffd166">Introduction</span>
-
       <span class="sec" data-id="evaluation" style="--nav-color:#50c8a8">Measuring What Matters</span>
-
       <span class="sec" data-id="training" style="--nav-color:#7c6af7">Learning to Decide</span>
-
       <span class="sec" data-id="benchmarking" style="--nav-color:#ff7c57">Methods Landscape</span>
-
       <span class="sec" data-id="conclusion" style="--nav-color:#ffd166">Conclusion</span>
-
     </div>
-
-    
 
     <div class="slide-counter hidden" id="slide-counter"></div>
 
-    
-
     <script>
-
     (function () {
-
       // indexh=0 is the title slide; each # section maps to indexh 1..N in order.
-
       const ORDER   = ['introduction', 'evaluation', 'training', 'benchmarking', 'conclusion'];
-
       const nav     = document.getElementById('section-nav');
-
       const counter = document.getElementById('slide-counter');
-
       const labels  = Array.from(nav.querySelectorAll('.sec'));
 
-    
-
       function visibleChildren(section) {
-
         return Array.from(section.querySelectorAll(':scope > section'))
-
           .filter(s => s.getAttribute('data-visibility') !== 'hidden');
-
       }
-
-    
 
       function update(indexh, indexv) {
-
         if (indexh === 0) {
-
           nav.classList.add('hidden');
-
           counter.classList.add('hidden');
-
           return;
-
         }
 
-    
-
         // Section nav
-
         nav.classList.remove('hidden');
-
         const active = ORDER[indexh - 1] ?? null;
-
         labels.forEach(el => el.classList.toggle('active', el.dataset.id === active));
 
-    
-
         // Slide counter
-
         const hSlides = Reveal.getHorizontalSlides();
-
         const hSection = hSlides[indexh];
-
         if (!hSection) { counter.classList.add('hidden'); return; }
 
-    
-
         const vSlides = visibleChildren(hSection);
-
         const total   = vSlides.length || 1;
-
         counter.classList.remove('hidden');
-
         counter.textContent = `${indexv + 1} / ${total}`;
-
       }
-
-    
 
       function attach() {
-
         Reveal.on('slidechanged', e => update(e.indexh, e.indexv));
-
         const s = Reveal.getState();
-
         update(s.indexh, s.indexv);
-
       }
-
-    
 
       if (typeof Reveal !== 'undefined') {
-
         Reveal.isReady() ? attach() : Reveal.on('ready', attach);
-
       }
-
     })();
-
     </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
