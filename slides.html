@@ -1057,12 +1057,10 @@ Negative Binomial Spatially Lagged + SVI
 <div class="fragment" data-fragment-index="1" style="text-align: center; margin-top: 0.3em; font-size: 1.1em;">
 <p><span class="math display">\min_{\textcolor{#ffd166}{\theta}} \; \mathcal{L}\bigl(\, \textcolor{#50c8a8}{y}, \; \textcolor{#7c6af7}{z^{\!\star}}\!\bigl(\textcolor{#ff7c57}{f_{\textcolor{#ffd166}{\theta}}(x)}\bigr) \,\bigr)
 \qquad
-\textcolor{#7c6af7}{z^{\!\star}}(c) = \underset{z\in\mathcal{Z}}{\arg\min}\; c^{\top}z
-\qquad
-V(c) = c^{\top}\textcolor{#7c6af7}{z^{\!\star}}(c)</span></p>
+\textcolor{#7c6af7}{z^{\!\star}}(c) = \underset{z\in\mathcal{Z}}{\arg\min}\; c^{\top}z</span></p>
 </div>
 <div class="fragment" data-fragment-index="2" style="text-align: center; font-size: 0.8em; color: var(--text-muted); margin-top: -0.2em;">
-<p><span class="accent-teal">outcome</span> &nbsp;·&nbsp; <span class="accent-purple">decision</span> &nbsp;·&nbsp; <span class="accent-coral">prediction <span class="math inline">\hat{y} = f_\theta(x)</span></span> &nbsp;·&nbsp; <span class="accent-yellow">parameters</span> &nbsp;·&nbsp; <span class="math inline">V</span> = value function &nbsp;·&nbsp; <span class="math inline">c</span> = any cost vector (e.g.&nbsp;<span class="math inline">\textcolor{#ff7c57}{f_\theta(x)}</span> or <span class="math inline">\textcolor{#50c8a8}{y}</span>)</p>
+<p><span class="accent-teal">outcome</span> &nbsp;·&nbsp; <span class="accent-purple">decision</span> &nbsp;·&nbsp; <span class="accent-coral">prediction <span class="math inline">\hat{y} = f_\theta(x)</span></span> &nbsp;·&nbsp; <span class="accent-yellow">parameters</span></p>
 </div>
 <div class="template-table" style="margin-top: 0.9em; font-size: 0.8em; display: grid; grid-template-columns: 1.3fr 1.3fr 1.6fr 1.5fr; gap: 0.5em 1.2em; align-items: center;">
 <div class="fragment" data-fragment-index="3" style="font-weight: 600; color: var(--text-muted); border-bottom: 1px solid var(--separator); padding-bottom: 0.3em;">
@@ -1126,11 +1124,8 @@ V(c) = c^{\top}\textcolor{#7c6af7}{z^{\!\star}}(c)</span></p>
 <p><span class="accent-coral">predicted prices</span></p>
 </div>
 </div>
-<div class="fragment" data-fragment-index="8" style="margin-top: 1.0em; text-align: center; font-size: 0.9em;">
-<p>One recipe, many problems — and the focus of the rest of this section.</p>
-</div>
 <aside class="notes">
-<p>Header equation persists. Rows: opioid + cranes are our work; shortest path and energy-cost scheduling (SEMO) are standard PtO/DFL benchmarks. V(c) = optimal objective value at cost c — same V that shows up on the next slide’s surrogate losses (V(y), V(ŷ), V(2ŷ−y), …).</p>
+<p>Header equation persists. Rows: opioid + cranes are our work; shortest path and energy-cost scheduling (SEMO) are standard PtO/DFL benchmarks.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1591,17 +1586,15 @@ Results from Geng H, Ruan H, Wang R, et al.&nbsp;<span style="color:#b0b0bc;">(2
 <script>
 window.addEventListener('load', function () {
   if (typeof Reveal === 'undefined') return;
-  var container = document.querySelector('.ranking-math-slide');
-  if (!container) return;
 
   var THRESH  = 0.6;
   var PADDING = 260;
 
-  function inContainer(frags) {
-    return frags.filter(function (f) { return container.contains(f); });
+  function containerFor(frag) {
+    return frag && frag.closest ? frag.closest('.ranking-math-slide') : null;
   }
 
-  function fragBounds(frags) {
+  function fragBounds(container, frags) {
     var cr = container.getBoundingClientRect();
     var minTop = Infinity, maxBot = -Infinity;
     frags.forEach(function (f) {
@@ -1614,31 +1607,45 @@ window.addEventListener('load', function () {
     return { top: minTop, bottom: maxBot };
   }
 
+  function groupByContainer(frags) {
+    var groups = new Map();
+    frags.forEach(function (f) {
+      var c = containerFor(f);
+      if (!c) return;
+      if (!groups.has(c)) groups.set(c, []);
+      groups.get(c).push(f);
+    });
+    return groups;
+  }
+
   Reveal.on('fragmentshown', function (e) {
-    var frags = inContainer(e.fragments || [e.fragment]);
-    if (!frags.length) return;
-    var bounds  = fragBounds(frags);
-    var visible = container.clientHeight;
-    if (bounds.bottom > container.scrollTop + visible * THRESH) {
-      var target = bounds.bottom - visible + PADDING;
-      if (target > container.scrollTop)
-        container.scrollTo({ top: target, behavior: 'smooth' });
-    }
+    var groups = groupByContainer(e.fragments || [e.fragment]);
+    groups.forEach(function (frags, container) {
+      var bounds  = fragBounds(container, frags);
+      var visible = container.clientHeight;
+      if (bounds.bottom > container.scrollTop + visible * THRESH) {
+        var target = bounds.bottom - visible + PADDING;
+        if (target > container.scrollTop)
+          container.scrollTo({ top: target, behavior: 'smooth' });
+      }
+    });
   });
 
   Reveal.on('fragmenthidden', function (e) {
-    var frags = inContainer(e.fragments || [e.fragment]);
-    if (!frags.length) return;
-    var bounds = fragBounds(frags);
-    var target = Math.max(0, bounds.bottom - container.clientHeight + PADDING);
-    if (target < container.scrollTop)
-      container.scrollTo({ top: target, behavior: 'smooth' });
+    var groups = groupByContainer(e.fragments || [e.fragment]);
+    groups.forEach(function (frags, container) {
+      var bounds = fragBounds(container, frags);
+      var target = Math.max(0, bounds.bottom - container.clientHeight + PADDING);
+      if (target < container.scrollTop)
+        container.scrollTo({ top: target, behavior: 'smooth' });
+    });
   });
 
   Reveal.on('slidechanged', function () {
     setTimeout(function () {
-      var c = document.querySelector('.present .ranking-math-slide');
-      if (c) c.scrollTop = 0;
+      document.querySelectorAll('.present .ranking-math-slide').forEach(function (c) {
+        c.scrollTop = 0;
+      });
     }, 0);
   });
 });
@@ -1800,6 +1807,227 @@ window.addEventListener('load', function () {
 </div>
 <aside class="notes">
 <p>Extended benchmark rerun: 6 additional tasks not in the main rerun slide. Spatial Top-K (ASurv, Cook County, Speed Humps) and Shortest Path family (SP Synth 5×5, SP Planted 5×5, Warcraft 12×12). Phases: (1) MSE baseline across all axes, (2) L-LTR reveal, (3) all remaining methods. cpLayer/QPTL absent for these tasks; Warcraft only has MSE/DFL/Identity/SPO+/NCE/Blackbox/Perturb. Note SPO+ and L-LTR tie near the top of sp_synth/sp_planted; Perturb is a major regression on Cook County (48 vs ~20).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-makes-dpo-differentiable" class="slide level2">
+<h2>What makes DPO differentiable?</h2>
+<div style="font-size: 0.82em;">
+<div style="display: grid; grid-template-columns: 55% 45%; gap: 0.4em 1.2em;">
+<div class="fragment" data-fragment-index="1" style="grid-column: 1 / span 2; grid-row: 1;">
+<p>The discrete argmax breaks backprop — piecewise constant, zero gradient a.e.:</p>
+<p><span class="math display">y^*(\theta) \;=\; \arg\max_{y \in \mathcal{C}} \langle y, \theta \rangle</span></p>
+</div>
+<div class="fragment" data-fragment-index="2" style="grid-column: 1; grid-row: 2;">
+<p><span class="accent-teal" style="font-weight: bold;">Fix:</span> perturb the input with noise <span class="math inline">\varepsilon Z</span>, take the expectation</p>
+<p><span class="math display">F_\varepsilon(\theta) \;=\; \mathbb{E}\!\left[F(\theta + \varepsilon Z)\right]</span></p>
+<p><span class="math display">y_\varepsilon^*(\theta) \;=\; \mathbb{E}\!\left[y^*(\theta + \varepsilon Z)\right]</span></p>
+</div>
+<div class="fragment" data-fragment-index="2" style="grid-column: 2; grid-row: 2; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;">
+<p><span class="math inline">Z \sim \mu</span> with positive, differentiable density (Gaussian, Gumbel, …)</p>
+<p>Temperature <span class="math inline">\varepsilon &gt; 0</span> controls smoothness</p>
+</div>
+<div class="fragment" data-fragment-index="3" style="grid-column: 1 / span 2; grid-row: 3; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;">
+<p><span class="accent-purple" style="font-weight: bold;">Key identity:</span> the perturbed argmax is the gradient of the smoothed value</p>
+<p><span class="math display">y_\varepsilon^*(\theta) \;=\; \nabla_\theta F_\varepsilon(\theta)</span></p>
+</div>
+<div class="fragment" data-fragment-index="4" style="grid-column: 1; grid-row: 4;">
+<p><span class="math inline">F_\varepsilon</span> is strictly convex and twice differentiable</p>
+<p>→ <span class="math inline">y_\varepsilon^*</span> is differentiable, Jacobian nonzero everywhere</p>
+</div>
+<div class="fragment" data-fragment-index="4" style="grid-column: 2; grid-row: 4;">
+<p>For Gaussian <span class="math inline">Z</span>:</p>
+<p><span class="math display">J_\theta\, y_\varepsilon^*(\theta) \;=\; \tfrac{1}{\varepsilon}\,\mathrm{Cov}_{p_\theta}(Y)</span></p>
+<p>gradient signal = variation across perturbations</p>
+</div>
+<div class="fragment" data-fragment-index="5" style="grid-column: 1 / span 2; grid-row: 5; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em; margin-top: 0.3em;">
+<p>Estimated by Monte Carlo — only blackbox access to <span class="math inline">y^*</span> needed:</p>
+<p><span class="math display">\bar{y}_{\varepsilon,M}(\theta) \;=\; \tfrac{1}{M}\sum_{m=1}^{M} y^*\!\left(\theta + \varepsilon Z^{(m)}\right)</span></p>
+</div>
+</div>
+</div>
+<div style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 1em;">
+<p>Berthet, Blondel, Teboul, Cuturi, Vert, Bach. Learning with Differentiable Perturbed Optimizers. <em>NeurIPS</em> 2020.</p>
+</div>
+<aside class="notes">
+<p>Bonus slide unpacking the mechanics of Berthet et al.&nbsp;(NeurIPS 2020). Core construction: add noise to the solver’s input, take expectation. The argmax is piecewise constant — flat on the interior of each face of the polytope, jumps at boundaries — so its gradient is uninformative. After smoothing, two things happen: <span class="math inline">F_\varepsilon</span> becomes strictly convex and twice differentiable (regardless of the underlying polytope), and the perturbed argmax equals its gradient: <span class="math inline">y_\varepsilon^* = \nabla_\theta F_\varepsilon</span>. That identity is what makes the whole construction work. For Gaussian noise, the Jacobian is <span class="math inline">(1/\varepsilon) \mathrm{Cov}[Y]</span> — literally measures how much the decision varies across perturbations. Practical: Monte Carlo from a blackbox solver; <span class="math inline">M=1</span> often enough under SGD because gradients are already stochastic from minibatching.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-is-that-identity-true" class="slide level2">
+<h2>Why is that identity true?</h2>
+<div class="ranking-math-slide" style="margin-top: 0.4em; font-size: 0.82em;">
+<div class="math-scroll-inner" style="display: grid; grid-template-columns: 60% 40%; gap: 0 1.2em;">
+<div class="fragment" data-fragment-index="1" style="grid-column: 1 / span 2; grid-row: 1;">
+<p><strong>Step 1.</strong> <span class="math inline">F</span> is the <span class="accent-purple" style="font-weight: bold;">support function</span> of <span class="math inline">\mathcal{C}</span> — a max of linear functions of <span class="math inline">\theta</span>:</p>
+<p><span class="math display">F(\theta) \;=\; \max_{y \in \mathcal{C}} \langle y, \theta \rangle</span></p>
+</div>
+<div class="fragment" data-fragment-index="2" style="grid-column: 1; grid-row: 2;">
+<p>On the region where one <span class="math inline">y^*</span> dominates, <span class="math inline">F</span> is <em>literally linear</em> in <span class="math inline">\theta</span>:</p>
+<p><span class="math display">F(\theta) \;=\; \langle y^*(\theta), \theta \rangle \quad\Rightarrow\quad \nabla_\theta F(\theta) \;=\; y^*(\theta)</span></p>
+</div>
+<div class="fragment" data-fragment-index="2" style="grid-column: 2; grid-row: 2; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;">
+<p><span class="accent-yellow" style="font-weight: bold;">Envelope theorem</span> (Danskin’s theorem)</p>
+<p>Kinks only at face boundaries — measure-zero set.</p>
+</div>
+<div class="fragment" data-fragment-index="3" style="grid-column: 1 / span 2; grid-row: 3; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;">
+<p><strong>Step 2.</strong> Smooth by averaging, then <span class="accent-teal" style="font-weight: bold;">swap <span class="math inline">\nabla</span> and <span class="math inline">\mathbb{E}</span></span>:</p>
+<p><span class="math display">\nabla_\theta F_\varepsilon(\theta) \;=\; \nabla_\theta\, \mathbb{E}\!\left[F(\theta + \varepsilon Z)\right]</span></p>
+</div>
+<div class="fragment" data-fragment-index="4" style="grid-column: 1; grid-row: 4;">
+<p><span class="math display">\;=\; \mathbb{E}\!\left[\nabla_\theta F(\theta + \varepsilon Z)\right]</span></p>
+<p><span class="math display">\;=\; \mathbb{E}\!\left[y^*(\theta + \varepsilon Z)\right] \;=\; y_\varepsilon^*(\theta)</span></p>
+</div>
+<div class="fragment" data-fragment-index="4" style="grid-column: 2; grid-row: 4; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;">
+<p><span class="accent-yellow" style="font-weight: bold;">Swap justified</span> by dominated convergence:</p>
+<p><span class="math inline">F</span> is <span class="math inline">R_\mathcal{C}</span>-Lipschitz, and <span class="math inline">Z</span> has a continuous density, so <span class="math inline">\theta + \varepsilon Z</span> a.s. misses the kink set.</p>
+</div>
+<div class="fragment" data-fragment-index="5" style="grid-column: 1 / span 2; grid-row: 5; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;">
+<p><strong>Step 3.</strong> <span class="accent-coral" style="font-weight: bold;">Why perturbation matters:</span></p>
+</div>
+<div class="fragment" data-fragment-index="6" style="grid-column: 1; grid-row: 6;">
+<p>Without noise: <span class="math inline">\nabla_\theta F(\theta) = y^*(\theta)</span> is piecewise constant — locally flat, zero gradient along every direction that stays on one face.</p>
+</div>
+<div class="fragment" data-fragment-index="7" style="grid-column: 2; grid-row: 6;">
+<p>With noise: <span class="math inline">\theta + \varepsilon Z</span> explores a neighborhood, hitting different faces with different <span class="math inline">y^*</span> values — the average blends them into a smooth, informative gradient.</p>
+</div>
+<div class="fragment" data-fragment-index="8" style="grid-column: 1 / span 2; grid-row: 7; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em; margin-top: 0.3em;">
+<p>Equivalently: <span class="math inline">F_\varepsilon</span> is <span class="accent-purple" style="font-weight: bold;">strictly convex</span> everywhere (the expectation washes out the piecewise-linear kinks), so <span class="math inline">\nabla_\theta F_\varepsilon = y_\varepsilon^*</span> varies continuously and is nonzero across directions that change the decision distribution.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Follow-up bonus slide: derivation of the identity <span class="math inline">y_\varepsilon^*(\theta) = \nabla_\theta F_\varepsilon(\theta)</span> used on the previous slide. Two ingredients: (1) envelope/Danskin — since <span class="math inline">F</span> is a support function, on each face <span class="math inline">F(\theta) = \langle y^*, \theta \rangle</span> is linear in <span class="math inline">\theta</span>, so <span class="math inline">\nabla_\theta F = y^*</span> wherever the argmax is unique; (2) dominated-convergence swap of <span class="math inline">\nabla</span> and <span class="math inline">\mathbb{E}</span>, valid because <span class="math inline">F</span> is Lipschitz (<span class="math inline">R_\mathcal{C} = \max_{y \in \mathcal{C}} \|y\|</span>) and <span class="math inline">Z</span> has a continuous density so the kink set is almost surely avoided. Step 3 is the intuition pump: the unperturbed envelope identity is useless for SGD because <span class="math inline">y^*</span> is locally constant and gives zero gradient along every direction that stays on one face; averaging over <span class="math inline">Z</span> explores a neighborhood that spans multiple faces, producing a strictly convex <span class="math inline">F_\varepsilon</span> with nonzero gradients everywhere. Scrollable container (<code>.ranking-math-slide</code>) with the same auto-scroll-on-fragment behavior as the Optimal Ranking Score slide.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="spo-guarantees" class="slide level2">
+<h2>SPO+ guarantees</h2>
+<div style="font-size: 0.82em;">
+<div style="display: grid; grid-template-columns: 55% 45%; gap: 0.4em 1.2em;">
+<div class="fragment" data-fragment-index="1" style="grid-column: 1 / span 2; grid-row: 1;">
+<p>The true <span class="accent-coral" style="font-weight: bold;">task loss</span> is non-convex and discontinuous in <span class="math inline">\hat{c}</span>:</p>
+<p><span class="math display">\ell_{\mathrm{SPO}}(\hat{c}, c) \;=\; \max_{w \in W^*(\hat{c})} c^\top w \;-\; z^*(c)</span></p>
+</div>
+<div class="fragment" data-fragment-index="2" style="grid-column: 1; grid-row: 2;">
+<p><span class="accent-teal" style="font-weight: bold;">SPO+ surrogate</span> (Elmachtoub &amp; Grigas, 2022):</p>
+<p><span class="math display">\ell_{\mathrm{SPO+}}(\hat{c}, c) \;=\; \xi_\mathcal{S}(c - 2\hat{c}) + 2\hat{c}^\top w^*(c) - z^*(c)</span></p>
+</div>
+<div class="fragment" data-fragment-index="2" style="grid-column: 2; grid-row: 2; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;">
+<ul>
+<li>Convex in <span class="math inline">\hat{c}</span></li>
+<li>Upper bound: <span class="math inline">\ell_{\mathrm{SPO}} \leq \ell_{\mathrm{SPO+}}</span></li>
+<li>Two oracle calls / gradient step</li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="3" style="grid-column: 1 / span 2; grid-row: 3; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;">
+<p><span class="accent-purple" style="font-weight: bold;">Fisher consistency (Thm 1):</span> the Bayes-risk minimizer of <span class="math inline">\ell_{\mathrm{SPO+}}</span> is <span class="math inline">\mathbb{E}[c \mid x]</span> — same as squared loss and the true SPO loss.</p>
+</div>
+<div class="fragment" data-fragment-index="4" style="grid-column: 1; grid-row: 4;">
+<p><strong>Requires:</strong></p>
+<ol type="1">
+<li><span class="math inline">c \mid x</span> has a continuous distribution</li>
+<li><span class="math inline">c \mid x</span> is <span class="accent-coral" style="font-weight: bold;">symmetric</span> about <span class="math inline">\mathbb{E}[c \mid x]</span></li>
+<li>Objective linear in <span class="math inline">\hat{c}</span></li>
+</ol>
+</div>
+<div class="fragment" data-fragment-index="4" style="grid-column: 2; grid-row: 4; align-self: center;">
+<p><span class="accent-coral" style="font-weight: bold;">The symmetry assumption is load-bearing.</span></p>
+<p>Gupta &amp; Huang show SPO+ degrades as noise skew grows.</p>
+</div>
+<div class="fragment" data-fragment-index="5" style="grid-column: 1 / span 2; grid-row: 5; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em; margin-top: 0.3em;">
+<p>No guarantees under <span class="accent-coral" style="font-weight: bold;">model misspecification</span> (<span class="math inline">f^* \notin \mathcal{H}</span>) — the consistency result is a <em>well-specified</em> statement.</p>
+</div>
+</div>
+</div>
+<div style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 0.8em;">
+<p>Elmachtoub &amp; Grigas. Smart “Predict, then Optimize”. <em>Management Science</em> 2022.</p>
+</div>
+<aside class="notes">
+<p>SPO+ guarantees bonus slide. The true SPO loss measures decision regret under the predicted cost — non-convex, discontinuous, NP-hard to ERM directly. SPO+ is a convex upper bound derived from duality (Fenchel/support-function representation). Core theoretical result: Fisher consistency — the Bayes-risk minimizer of SPO+ equals the conditional mean <span class="math inline">\mathbb{E}[c \mid x]</span>, which also minimizes SPO loss and squared loss. Two conditions for this: continuous conditional distribution of <span class="math inline">c \mid x</span>, AND symmetry about the conditional mean. Symmetry is non-trivial — standard Gaussian noise satisfies it, many real distributions don’t. Gupta &amp; Huang’s PG paper shows empirically that as noise asymmetry increases, SPO+ degrades while PG losses remain robust, so symmetry is load-bearing, not decorative. And crucially: the consistency theorem is a <em>well-specified</em> result — it says the Bayes-OPTIMAL predictor is the conditional mean; under misspecification (<span class="math inline">f^* \notin \mathcal{H}</span>), no regret guarantees exist. Also requires linear-in-predicted-cost objective (the support-function step in the derivation).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pg-loss-guarantees" class="slide level2">
+<h2>PG loss guarantees</h2>
+<div class="ranking-math-slide" style="margin-top: 0.4em; font-size: 0.82em;">
+<div class="math-scroll-inner" style="display: grid; grid-template-columns: 55% 45%; gap: 0.4em 1.2em;">
+<div class="fragment" data-fragment-index="1" style="grid-column: 1 / span 2; grid-row: 1;">
+<p><span class="accent-purple" style="font-weight: bold;">Core insight:</span> decision loss is the <span class="accent-teal" style="font-weight: bold;">directional derivative</span> of the concave plug-in value <span class="math inline">V(t) = \min_{w \in \mathcal{S}} t^\top w</span>:</p>
+<p><span class="math display">\ell(t, c) \;=\; c^\top w^*(t) \;=\; \left.\tfrac{\partial}{\partial \lambda}\, V(t + \lambda c)\right|_{\lambda = 0}</span></p>
+</div>
+<div class="fragment" data-fragment-index="2" style="grid-column: 1; grid-row: 2;">
+<p><span class="accent-teal" style="font-weight: bold;">Finite-difference surrogate (PGB):</span></p>
+<p><span class="math display">\hat{\ell}_h^{\,b}(t, c) \;=\; \tfrac{1}{h}\!\left(V(t) - V(t - h c)\right)</span></p>
+<p><span class="math display">\nabla_t \hat{\ell}_h^{\,b}(t, c) \;=\; \tfrac{1}{h}\!\left(w^*(t) - w^*(t - h c)\right)</span></p>
+</div>
+<div class="fragment" data-fragment-index="2" style="grid-column: 2; grid-row: 2; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;">
+<p>Unbiased gradient (Lemma 2.2):</p>
+<p><span class="math inline">\nabla_t\, \mathbb{E}[\hat{\ell}_h^{\,b}] = \mathbb{E}[\nabla_t \hat{\ell}_h^{\,b}]</span></p>
+<p>→ SGD applies directly.</p>
+</div>
+<div class="fragment" data-fragment-index="3" style="grid-column: 1 / span 2; grid-row: 3; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;">
+<p><span class="accent-purple" style="font-weight: bold;">Excess regret bound (Thm 3.8):</span> the empirical minimizer <span class="math inline">\hat{f}_h</span> satisfies</p>
+<p><span class="math display">\mathsf{ERegret}(\hat{f}_h) \;\lesssim\; \sqrt{B^3 L\, \mathfrak{R}^n(\mathcal{H})} \;+\; \tfrac{B}{\sqrt{n}} \;\xrightarrow{n \to \infty}\; 0</span></p>
+</div>
+<div class="fragment" data-fragment-index="4" style="grid-column: 1; grid-row: 4;">
+<p><strong>Requires:</strong></p>
+<ol type="1">
+<li><span class="math inline">\log g(\,\cdot\, ; f, Y)</span> has <span class="math inline">L</span>-Lipschitz log conditional density (Asm. 3.1)</li>
+<li>Bandwidth <span class="math inline">h = O(n^{-1/2})</span></li>
+<li>Objective linear in <span class="math inline">t</span></li>
+</ol>
+</div>
+<div class="fragment" data-fragment-index="4" style="grid-column: 2; grid-row: 4; align-self: center;">
+<p><span class="accent-teal" style="font-weight: bold;">No symmetry assumption.</span></p>
+<p>Bound holds under <span class="accent-yellow" style="font-weight: bold;">misspecification</span> (<span class="math inline">f^* \notin \mathcal{H}</span>) and asymmetric noise.</p>
+</div>
+<div class="fragment" data-fragment-index="5" style="grid-column: 1 / span 2; grid-row: 5; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em; margin-top: 0.3em;">
+<p>First differentiable surrogate with <span class="accent-purple" style="font-weight: bold;">vanishing excess-regret bound under misspecification</span>. Price: the surrogate is non-convex (difference of concave functions).</p>
+</div>
+</div>
+</div>
+<div style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 0.8em;">
+<p>Gupta &amp; Huang. Decision-Focused Learning with Directional Gradients. <em>NeurIPS</em> 2024.</p>
+</div>
+<aside class="notes">
+<p>PG loss guarantees bonus slide. Core derivation: <span class="math inline">V(t) = \min_w t^\top w</span> is concave (minimum of linear functions), so by Danskin’s theorem the discontinuous decision loss <span class="math inline">c^\top w^*(t)</span> is the directional derivative of <span class="math inline">V</span> along <span class="math inline">c</span>. Finite-difference approximations to that derivative (backward = PGB, central = PGC) are continuous, differentiable, and — by Lemma 2.2 — have unbiased gradients under the data distribution, so vanilla SGD works. The headline guarantee is Theorem 3.8: excess regret of the empirical minimizer vanishes as <span class="math inline">n \to \infty</span>, with rate depending on the Rademacher complexity of <span class="math inline">\mathcal{H}</span>. For linear <span class="math inline">\mathcal{H}</span> with <span class="math inline">\dim(x) = p</span>, gives <span class="math inline">\tilde O((dp/n)^{1/4})</span>; for polyhedral <span class="math inline">\mathcal{S}</span>, <span class="math inline">O(n^{-1/2})</span>. Crucially, the bound holds <em>under misspecification</em> — it’s a best-in-class guarantee, not a well-specified consistency result. Assumption 3.1 (Lipschitz log conditional density of <span class="math inline">f(X) \mid Y</span>) is the main technical condition — weaker and different in kind from SPO+’s symmetry assumption. Price paid: PG losses are non-convex (difference of concave), so no global-optimum polynomial-time guarantee for linear <span class="math inline">\mathcal{H}</span>; empirically this does not seem to bite. Still requires linear-in-predicted-cost objective.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
