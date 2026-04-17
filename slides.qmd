@@ -720,13 +720,11 @@ Kyle Heuton, Michael C. Hughes
 ::: {.fragment fragment-index=1 style="text-align: center; margin-top: 0.3em; font-size: 1.1em;"}
 $$\min_{\textcolor{#ffd166}{\theta}} \; \mathcal{L}\bigl(\, \textcolor{#50c8a8}{y}, \; \textcolor{#7c6af7}{z^{\!\star}}\!\bigl(\textcolor{#ff7c57}{f_{\textcolor{#ffd166}{\theta}}(x)}\bigr) \,\bigr)
 \qquad
-\textcolor{#7c6af7}{z^{\!\star}}(c) = \underset{z\in\mathcal{Z}}{\arg\min}\; c^{\top}z
-\qquad
-V(c) = c^{\top}\textcolor{#7c6af7}{z^{\!\star}}(c)$$
+\textcolor{#7c6af7}{z^{\!\star}}(c) = \underset{z\in\mathcal{Z}}{\arg\min}\; c^{\top}z$$
 :::
 
 ::: {.fragment fragment-index=2 style="text-align: center; font-size: 0.8em; color: var(--text-muted); margin-top: -0.2em;"}
-[outcome]{.accent-teal} &nbsp;·&nbsp; [decision]{.accent-purple} &nbsp;·&nbsp; [prediction $\hat{y} = f_\theta(x)$]{.accent-coral} &nbsp;·&nbsp; [parameters]{.accent-yellow} &nbsp;·&nbsp; $V$ = value function &nbsp;·&nbsp; $c$ = any cost vector (e.g. $\textcolor{#ff7c57}{f_\theta(x)}$ or $\textcolor{#50c8a8}{y}$)
+[outcome]{.accent-teal} &nbsp;·&nbsp; [decision]{.accent-purple} &nbsp;·&nbsp; [prediction $\hat{y} = f_\theta(x)$]{.accent-coral} &nbsp;·&nbsp; [parameters]{.accent-yellow}
 :::
 
 :::: {.template-table style="margin-top: 0.9em; font-size: 0.8em; display: grid; grid-template-columns: 1.3fr 1.3fr 1.6fr 1.5fr; gap: 0.5em 1.2em; align-items: center;"}
@@ -798,12 +796,8 @@ Domain
 
 ::::
 
-::: {.fragment fragment-index=8 style="margin-top: 1.0em; text-align: center; font-size: 0.9em;"}
-One recipe, many problems — and the focus of the rest of this section.
-:::
-
 ::: notes
-Header equation persists. Rows: opioid + cranes are our work; shortest path and energy-cost scheduling (SEMO) are standard PtO/DFL benchmarks. V(c) = optimal objective value at cost c — same V that shows up on the next slide's surrogate losses (V(y), V(ŷ), V(2ŷ−y), …).
+Header equation persists. Rows: opioid + cranes are our work; shortest path and energy-cost scheduling (SEMO) are standard PtO/DFL benchmarks.
 :::
 
 
@@ -1252,17 +1246,15 @@ $\operatorname{TopKMask}(\mathbf{s}, K) = \operatorname{TopKMask}\!\left(\mathbb
 <script>
 window.addEventListener('load', function () {
   if (typeof Reveal === 'undefined') return;
-  var container = document.querySelector('.ranking-math-slide');
-  if (!container) return;
 
   var THRESH  = 0.6;
   var PADDING = 260;
 
-  function inContainer(frags) {
-    return frags.filter(function (f) { return container.contains(f); });
+  function containerFor(frag) {
+    return frag && frag.closest ? frag.closest('.ranking-math-slide') : null;
   }
 
-  function fragBounds(frags) {
+  function fragBounds(container, frags) {
     var cr = container.getBoundingClientRect();
     var minTop = Infinity, maxBot = -Infinity;
     frags.forEach(function (f) {
@@ -1275,31 +1267,45 @@ window.addEventListener('load', function () {
     return { top: minTop, bottom: maxBot };
   }
 
+  function groupByContainer(frags) {
+    var groups = new Map();
+    frags.forEach(function (f) {
+      var c = containerFor(f);
+      if (!c) return;
+      if (!groups.has(c)) groups.set(c, []);
+      groups.get(c).push(f);
+    });
+    return groups;
+  }
+
   Reveal.on('fragmentshown', function (e) {
-    var frags = inContainer(e.fragments || [e.fragment]);
-    if (!frags.length) return;
-    var bounds  = fragBounds(frags);
-    var visible = container.clientHeight;
-    if (bounds.bottom > container.scrollTop + visible * THRESH) {
-      var target = bounds.bottom - visible + PADDING;
-      if (target > container.scrollTop)
-        container.scrollTo({ top: target, behavior: 'smooth' });
-    }
+    var groups = groupByContainer(e.fragments || [e.fragment]);
+    groups.forEach(function (frags, container) {
+      var bounds  = fragBounds(container, frags);
+      var visible = container.clientHeight;
+      if (bounds.bottom > container.scrollTop + visible * THRESH) {
+        var target = bounds.bottom - visible + PADDING;
+        if (target > container.scrollTop)
+          container.scrollTo({ top: target, behavior: 'smooth' });
+      }
+    });
   });
 
   Reveal.on('fragmenthidden', function (e) {
-    var frags = inContainer(e.fragments || [e.fragment]);
-    if (!frags.length) return;
-    var bounds = fragBounds(frags);
-    var target = Math.max(0, bounds.bottom - container.clientHeight + PADDING);
-    if (target < container.scrollTop)
-      container.scrollTo({ top: target, behavior: 'smooth' });
+    var groups = groupByContainer(e.fragments || [e.fragment]);
+    groups.forEach(function (frags, container) {
+      var bounds = fragBounds(container, frags);
+      var target = Math.max(0, bounds.bottom - container.clientHeight + PADDING);
+      if (target < container.scrollTop)
+        container.scrollTo({ top: target, behavior: 'smooth' });
+    });
   });
 
   Reveal.on('slidechanged', function () {
     setTimeout(function () {
-      var c = document.querySelector('.present .ranking-math-slide');
-      if (c) c.scrollTop = 0;
+      document.querySelectorAll('.present .ranking-math-slide').forEach(function (c) {
+        c.scrollTop = 0;
+      });
     }, 0);
   });
 });
@@ -1394,6 +1400,258 @@ Committee feedback slide 5 of 5. Full 6-panel cook_county interpolation: {train,
 
 ::: notes
 Extended benchmark rerun: 6 additional tasks not in the main rerun slide. Spatial Top-K (ASurv, Cook County, Speed Humps) and Shortest Path family (SP Synth 5×5, SP Planted 5×5, Warcraft 12×12). Phases: (1) MSE baseline across all axes, (2) L-LTR reveal, (3) all remaining methods. cpLayer/QPTL absent for these tasks; Warcraft only has MSE/DFL/Identity/SPO+/NCE/Blackbox/Perturb. Note SPO+ and L-LTR tie near the top of sp_synth/sp_planted; Perturb is a major regression on Cook County (48 vs ~20).
+:::
+
+## What makes DPO differentiable?
+
+:::::: {style="font-size: 0.82em;"}
+
+:::: {style="display: grid; grid-template-columns: 55% 45%; gap: 0.4em 1.2em;"}
+
+::: {.fragment fragment-index=1 style="grid-column: 1 / span 2; grid-row: 1;"}
+The discrete argmax breaks backprop — piecewise constant, zero gradient a.e.:
+
+$$y^*(\theta) \;=\; \arg\max_{y \in \mathcal{C}} \langle y, \theta \rangle$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 1; grid-row: 2;"}
+[Fix:]{.accent-teal style="font-weight: bold;"} perturb the input with noise $\varepsilon Z$, take the expectation
+
+$$F_\varepsilon(\theta) \;=\; \mathbb{E}\!\left[F(\theta + \varepsilon Z)\right]$$
+
+$$y_\varepsilon^*(\theta) \;=\; \mathbb{E}\!\left[y^*(\theta + \varepsilon Z)\right]$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 2; grid-row: 2; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;"}
+$Z \sim \mu$ with positive, differentiable density (Gaussian, Gumbel, …)
+
+Temperature $\varepsilon > 0$ controls smoothness
+:::
+
+::: {.fragment fragment-index=3 style="grid-column: 1 / span 2; grid-row: 3; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;"}
+[Key identity:]{.accent-purple style="font-weight: bold;"} the perturbed argmax is the gradient of the smoothed value
+
+$$y_\varepsilon^*(\theta) \;=\; \nabla_\theta F_\varepsilon(\theta)$$
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 1; grid-row: 4;"}
+$F_\varepsilon$ is strictly convex and twice differentiable
+
+→ $y_\varepsilon^*$ is differentiable, Jacobian nonzero everywhere
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 2; grid-row: 4;"}
+For Gaussian $Z$:
+
+$$J_\theta\, y_\varepsilon^*(\theta) \;=\; \tfrac{1}{\varepsilon}\,\mathrm{Cov}_{p_\theta}(Y)$$
+
+gradient signal = variation across perturbations
+:::
+
+::: {.fragment fragment-index=5 style="grid-column: 1 / span 2; grid-row: 5; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em; margin-top: 0.3em;"}
+Estimated by Monte Carlo — only blackbox access to $y^*$ needed:
+
+$$\bar{y}_{\varepsilon,M}(\theta) \;=\; \tfrac{1}{M}\sum_{m=1}^{M} y^*\!\left(\theta + \varepsilon Z^{(m)}\right)$$
+:::
+
+::::
+
+::::::
+
+::: {style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 1em;"}
+Berthet, Blondel, Teboul, Cuturi, Vert, Bach. Learning with Differentiable Perturbed Optimizers. *NeurIPS* 2020.
+:::
+
+::: notes
+Bonus slide unpacking the mechanics of Berthet et al. (NeurIPS 2020). Core construction: add noise to the solver's input, take expectation. The argmax is piecewise constant — flat on the interior of each face of the polytope, jumps at boundaries — so its gradient is uninformative. After smoothing, two things happen: $F_\varepsilon$ becomes strictly convex and twice differentiable (regardless of the underlying polytope), and the perturbed argmax equals its gradient: $y_\varepsilon^* = \nabla_\theta F_\varepsilon$. That identity is what makes the whole construction work. For Gaussian noise, the Jacobian is $(1/\varepsilon) \mathrm{Cov}[Y]$ — literally measures how much the decision varies across perturbations. Practical: Monte Carlo from a blackbox solver; $M=1$ often enough under SGD because gradients are already stochastic from minibatching.
+:::
+
+## Why is that identity true?
+
+:::::: {.ranking-math-slide style="margin-top: 0.4em; font-size: 0.82em;"}
+
+:::: {.math-scroll-inner style="display: grid; grid-template-columns: 60% 40%; gap: 0 1.2em;"}
+
+::: {.fragment fragment-index=1 style="grid-column: 1 / span 2; grid-row: 1;"}
+**Step 1.** $F$ is the [support function]{.accent-purple style="font-weight: bold;"} of $\mathcal{C}$ — a max of linear functions of $\theta$:
+
+$$F(\theta) \;=\; \max_{y \in \mathcal{C}} \langle y, \theta \rangle$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 1; grid-row: 2;"}
+On the region where one $y^*$ dominates, $F$ is *literally linear* in $\theta$:
+
+$$F(\theta) \;=\; \langle y^*(\theta), \theta \rangle \quad\Rightarrow\quad \nabla_\theta F(\theta) \;=\; y^*(\theta)$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 2; grid-row: 2; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;"}
+[Envelope theorem]{.accent-yellow style="font-weight: bold;"} (Danskin's theorem)
+
+Kinks only at face boundaries — measure-zero set.
+:::
+
+::: {.fragment fragment-index=3 style="grid-column: 1 / span 2; grid-row: 3; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;"}
+**Step 2.** Smooth by averaging, then [swap $\nabla$ and $\mathbb{E}$]{.accent-teal style="font-weight: bold;"}:
+
+$$\nabla_\theta F_\varepsilon(\theta) \;=\; \nabla_\theta\, \mathbb{E}\!\left[F(\theta + \varepsilon Z)\right]$$
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 1; grid-row: 4;"}
+$$\;=\; \mathbb{E}\!\left[\nabla_\theta F(\theta + \varepsilon Z)\right]$$
+
+$$\;=\; \mathbb{E}\!\left[y^*(\theta + \varepsilon Z)\right] \;=\; y_\varepsilon^*(\theta)$$
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 2; grid-row: 4; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;"}
+[Swap justified]{.accent-yellow style="font-weight: bold;"} by dominated convergence:
+
+$F$ is $R_\mathcal{C}$-Lipschitz, and $Z$ has a continuous density, so $\theta + \varepsilon Z$ a.s. misses the kink set.
+:::
+
+::: {.fragment fragment-index=5 style="grid-column: 1 / span 2; grid-row: 5; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;"}
+**Step 3.** [Why perturbation matters:]{.accent-coral style="font-weight: bold;"}
+:::
+
+::: {.fragment fragment-index=6 style="grid-column: 1; grid-row: 6;"}
+Without noise: $\nabla_\theta F(\theta) = y^*(\theta)$ is piecewise constant — locally flat, zero gradient along every direction that stays on one face.
+:::
+
+::: {.fragment fragment-index=7 style="grid-column: 2; grid-row: 6;"}
+With noise: $\theta + \varepsilon Z$ explores a neighborhood, hitting different faces with different $y^*$ values — the average blends them into a smooth, informative gradient.
+:::
+
+::: {.fragment fragment-index=8 style="grid-column: 1 / span 2; grid-row: 7; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em; margin-top: 0.3em;"}
+Equivalently: $F_\varepsilon$ is [strictly convex]{.accent-purple style="font-weight: bold;"} everywhere (the expectation washes out the piecewise-linear kinks), so $\nabla_\theta F_\varepsilon = y_\varepsilon^*$ varies continuously and is nonzero across directions that change the decision distribution.
+:::
+
+::::
+
+::::::
+
+::: notes
+Follow-up bonus slide: derivation of the identity $y_\varepsilon^*(\theta) = \nabla_\theta F_\varepsilon(\theta)$ used on the previous slide. Two ingredients: (1) envelope/Danskin — since $F$ is a support function, on each face $F(\theta) = \langle y^*, \theta \rangle$ is linear in $\theta$, so $\nabla_\theta F = y^*$ wherever the argmax is unique; (2) dominated-convergence swap of $\nabla$ and $\mathbb{E}$, valid because $F$ is Lipschitz ($R_\mathcal{C} = \max_{y \in \mathcal{C}} \|y\|$) and $Z$ has a continuous density so the kink set is almost surely avoided. Step 3 is the intuition pump: the unperturbed envelope identity is useless for SGD because $y^*$ is locally constant and gives zero gradient along every direction that stays on one face; averaging over $Z$ explores a neighborhood that spans multiple faces, producing a strictly convex $F_\varepsilon$ with nonzero gradients everywhere. Scrollable container (`.ranking-math-slide`) with the same auto-scroll-on-fragment behavior as the Optimal Ranking Score slide.
+:::
+
+## SPO+ guarantees
+
+:::::: {style="font-size: 0.82em;"}
+
+:::: {style="display: grid; grid-template-columns: 55% 45%; gap: 0.4em 1.2em;"}
+
+::: {.fragment fragment-index=1 style="grid-column: 1 / span 2; grid-row: 1;"}
+The true [task loss]{.accent-coral style="font-weight: bold;"} is non-convex and discontinuous in $\hat{c}$:
+
+$$\ell_{\mathrm{SPO}}(\hat{c}, c) \;=\; \max_{w \in W^*(\hat{c})} c^\top w \;-\; z^*(c)$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 1; grid-row: 2;"}
+[SPO+ surrogate]{.accent-teal style="font-weight: bold;"} (Elmachtoub & Grigas, 2022):
+
+$$\ell_{\mathrm{SPO+}}(\hat{c}, c) \;=\; \xi_\mathcal{S}(c - 2\hat{c}) + 2\hat{c}^\top w^*(c) - z^*(c)$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 2; grid-row: 2; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;"}
+- Convex in $\hat{c}$
+- Upper bound: $\ell_{\mathrm{SPO}} \leq \ell_{\mathrm{SPO+}}$
+- Two oracle calls / gradient step
+:::
+
+::: {.fragment fragment-index=3 style="grid-column: 1 / span 2; grid-row: 3; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;"}
+[Fisher consistency (Thm 1):]{.accent-purple style="font-weight: bold;"} the Bayes-risk minimizer of $\ell_{\mathrm{SPO+}}$ is $\mathbb{E}[c \mid x]$ — same as squared loss and the true SPO loss.
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 1; grid-row: 4;"}
+**Requires:**
+
+1. $c \mid x$ has a continuous distribution
+2. $c \mid x$ is [symmetric]{.accent-coral style="font-weight: bold;"} about $\mathbb{E}[c \mid x]$
+3. Objective linear in $\hat{c}$
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 2; grid-row: 4; align-self: center;"}
+[The symmetry assumption is load-bearing.]{.accent-coral style="font-weight: bold;"}
+
+Gupta & Huang show SPO+ degrades as noise skew grows.
+:::
+
+::: {.fragment fragment-index=5 style="grid-column: 1 / span 2; grid-row: 5; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em; margin-top: 0.3em;"}
+No guarantees under [model misspecification]{.accent-coral style="font-weight: bold;"} ($f^* \notin \mathcal{H}$) — the consistency result is a *well-specified* statement.
+:::
+
+::::
+
+::::::
+
+::: {style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 0.8em;"}
+Elmachtoub & Grigas. Smart "Predict, then Optimize". *Management Science* 2022.
+:::
+
+::: notes
+SPO+ guarantees bonus slide. The true SPO loss measures decision regret under the predicted cost — non-convex, discontinuous, NP-hard to ERM directly. SPO+ is a convex upper bound derived from duality (Fenchel/support-function representation). Core theoretical result: Fisher consistency — the Bayes-risk minimizer of SPO+ equals the conditional mean $\mathbb{E}[c \mid x]$, which also minimizes SPO loss and squared loss. Two conditions for this: continuous conditional distribution of $c \mid x$, AND symmetry about the conditional mean. Symmetry is non-trivial — standard Gaussian noise satisfies it, many real distributions don't. Gupta & Huang's PG paper shows empirically that as noise asymmetry increases, SPO+ degrades while PG losses remain robust, so symmetry is load-bearing, not decorative. And crucially: the consistency theorem is a *well-specified* result — it says the Bayes-OPTIMAL predictor is the conditional mean; under misspecification ($f^* \notin \mathcal{H}$), no regret guarantees exist. Also requires linear-in-predicted-cost objective (the support-function step in the derivation).
+:::
+
+## PG loss guarantees
+
+:::::: {.ranking-math-slide style="margin-top: 0.4em; font-size: 0.82em;"}
+
+:::: {.math-scroll-inner style="display: grid; grid-template-columns: 55% 45%; gap: 0.4em 1.2em;"}
+
+::: {.fragment fragment-index=1 style="grid-column: 1 / span 2; grid-row: 1;"}
+[Core insight:]{.accent-purple style="font-weight: bold;"} decision loss is the [directional derivative]{.accent-teal style="font-weight: bold;"} of the concave plug-in value $V(t) = \min_{w \in \mathcal{S}} t^\top w$:
+
+$$\ell(t, c) \;=\; c^\top w^*(t) \;=\; \left.\tfrac{\partial}{\partial \lambda}\, V(t + \lambda c)\right|_{\lambda = 0}$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 1; grid-row: 2;"}
+[Finite-difference surrogate (PGB):]{.accent-teal style="font-weight: bold;"}
+
+$$\hat{\ell}_h^{\,b}(t, c) \;=\; \tfrac{1}{h}\!\left(V(t) - V(t - h c)\right)$$
+
+$$\nabla_t \hat{\ell}_h^{\,b}(t, c) \;=\; \tfrac{1}{h}\!\left(w^*(t) - w^*(t - h c)\right)$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 2; grid-row: 2; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;"}
+Unbiased gradient (Lemma 2.2):
+
+$\nabla_t\, \mathbb{E}[\hat{\ell}_h^{\,b}] = \mathbb{E}[\nabla_t \hat{\ell}_h^{\,b}]$
+
+→ SGD applies directly.
+:::
+
+::: {.fragment fragment-index=3 style="grid-column: 1 / span 2; grid-row: 3; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;"}
+[Excess regret bound (Thm 3.8):]{.accent-purple style="font-weight: bold;"} the empirical minimizer $\hat{f}_h$ satisfies
+
+$$\mathsf{ERegret}(\hat{f}_h) \;\lesssim\; \sqrt{B^3 L\, \mathfrak{R}^n(\mathcal{H})} \;+\; \tfrac{B}{\sqrt{n}} \;\xrightarrow{n \to \infty}\; 0$$
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 1; grid-row: 4;"}
+**Requires:**
+
+1. $\log g(\,\cdot\, ; f, Y)$ has $L$-Lipschitz log conditional density (Asm. 3.1)
+2. Bandwidth $h = O(n^{-1/2})$
+3. Objective linear in $t$
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 2; grid-row: 4; align-self: center;"}
+[No symmetry assumption.]{.accent-teal style="font-weight: bold;"}
+
+Bound holds under [misspecification]{.accent-yellow style="font-weight: bold;"} ($f^* \notin \mathcal{H}$) and asymmetric noise.
+:::
+
+::: {.fragment fragment-index=5 style="grid-column: 1 / span 2; grid-row: 5; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em; margin-top: 0.3em;"}
+First differentiable surrogate with [vanishing excess-regret bound under misspecification]{.accent-purple style="font-weight: bold;"}. Price: the surrogate is non-convex (difference of concave functions).
+:::
+
+::::
+
+::::::
+
+::: {style="font-size: 0.42em; color: var(--muted); border-top: 1px solid var(--separator); padding-top: 0.5em; margin-top: 0.8em;"}
+Gupta & Huang. Decision-Focused Learning with Directional Gradients. *NeurIPS* 2024.
+:::
+
+::: notes
+PG loss guarantees bonus slide. Core derivation: $V(t) = \min_w t^\top w$ is concave (minimum of linear functions), so by Danskin's theorem the discontinuous decision loss $c^\top w^*(t)$ is the directional derivative of $V$ along $c$. Finite-difference approximations to that derivative (backward = PGB, central = PGC) are continuous, differentiable, and — by Lemma 2.2 — have unbiased gradients under the data distribution, so vanilla SGD works. The headline guarantee is Theorem 3.8: excess regret of the empirical minimizer vanishes as $n \to \infty$, with rate depending on the Rademacher complexity of $\mathcal{H}$. For linear $\mathcal{H}$ with $\dim(x) = p$, gives $\tilde O((dp/n)^{1/4})$; for polyhedral $\mathcal{S}$, $O(n^{-1/2})$. Crucially, the bound holds *under misspecification* — it's a best-in-class guarantee, not a well-specified consistency result. Assumption 3.1 (Lipschitz log conditional density of $f(X) \mid Y$) is the main technical condition — weaker and different in kind from SPO+'s symmetry assumption. Price paid: PG losses are non-convex (difference of concave), so no global-optimum polynomial-time guarantee for linear $\mathcal{H}$; empirically this does not seem to bite. Still requires linear-in-predicted-cost objective.
 :::
 
 ## When does the gradient surrogate apply?
