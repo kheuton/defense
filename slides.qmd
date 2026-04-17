@@ -948,6 +948,55 @@ Decision-aware model training and inference
 :::
 
 
+## Thesis Papers
+
+::::: {.columns style="font-size: 0.68em; margin-top: 0.8em;"}
+
+:::: {.column width="33%" style="padding: 0 0.6em;"}
+::: {style="display: flex; justify-content: center; align-items: center; height: 130px; margin-bottom: 0.8em;"}
+![](figures/aje.svg){style="max-width: 130px; max-height: 130px;"}
+:::
+
+**Spatiotemporal forecasting of opioid-related fatal overdoses: towards best practices for modeling and evaluation**
+
+<br>
+
+Kyle Heuton, Jyontika Kapoor, Shikhar Shrestha, Thomas J. Stopka, Michael C. Hughes
+
+[*American Journal of Epidemiology*, Vol. 194, No. 6, June 2025, pp. 1776–1782]{.muted}
+::::
+
+:::: {.column width="33%" style="padding: 0 0.6em; border-left: 1px solid var(--separator);"}
+::: {style="display: flex; justify-content: center; align-items: center; height: 130px; margin-bottom: 0.8em;"}
+![](figures/icml-logo.svg){style="max-width: 260px; max-height: 120px; filter: brightness(0) invert(1) sepia(1) hue-rotate(220deg) saturate(10);"}
+:::
+
+**Decision-aware Training of Spatiotemporal Forecasting Models to Select a Top-K Subset of Sites for Intervention**
+
+<br>
+
+Kyle Heuton, Frederick Muench, Shikhar Shrestha, Thomas J. Stopka, Michael C. Hughes
+
+[*Proceedings of the Forty-Second International Conference on Machine Learning (ICML)*, 2025]{.muted}
+::::
+
+:::: {.column width="33%" style="padding: 0 0.6em; border-left: 1px solid var(--separator);"}
+::: {style="display: flex; justify-content: center; align-items: center; height: 130px; margin-bottom: 0.8em;"}
+![](figures/AISTATS-logo.svg){style="max-width: 180px; max-height: 120px;"}
+:::
+
+**Many Decision-Aware Benchmarks do not benefit from Decision-Aware Learning**
+
+<br>
+
+Kyle Heuton, Michael C. Hughes
+
+[*OPTIMAL: Optimisation and Post-Bayesian Inference in Machine Learning* Workshop @ AISTATS 2026]{.muted}
+::::
+
+:::::
+
+
 ## Other Work at Tufts
 
 ::::: {.columns style="font-size: 0.72em;"}
@@ -990,9 +1039,9 @@ Predicting spatiotemporal counts of opioid-related fatal overdoses via zero-infl
 Forecasting opioid-related fatal overdoses: Striving towards strong baselines and best evaluation practices
 
 [American Public Health Association 151st Annual Meeting 2023]{.muted}
-:::
 
-::: {.fragment fragment-index=7}
+<br>
+
 APHA Data Science Demonstration Project on NLP for Opioid-Related EMS calls
 
 [2024]{.muted}
@@ -1001,18 +1050,18 @@ APHA Data Science Demonstration Project on NLP for Opioid-Related EMS calls
 ::::
 
 :::: {.column width="25%"}
-::: {.fragment .col-header fragment-index=8 style="border-left: 1px solid var(--separator); padding-left: 1em;"}
+::: {.fragment .col-header fragment-index=7 style="border-left: 1px solid var(--separator); padding-left: 1em;"}
 **Constrained Optimization**
 
 * * *
 
-::: {.fragment fragment-index=9}
+::: {.fragment fragment-index=8}
 Prediction-constrained markov models for medical time series with missing data and few labels
 
 [NeurIPS 2022 Workshop on Time Series for Health]{.muted}
-:::
 
-::: {.fragment fragment-index=10}
+<br>
+
 Partial VOROS: A Cost-aware Performance Metric for Binary Classifiers with Precision and Capacity Constraints
 
 [AISTATS 2026]{.muted}
@@ -1022,7 +1071,7 @@ Partial VOROS: A Cost-aware Performance Metric for Binary Classifiers with Preci
 
 :::::
 
-:::: {style="position: relative; height: 2rem; font-size: 0.65em; border-top: 1px solid var(--separator); padding-top: 0.3em; overflow: visible;"}
+:::: {style="position: relative; height: 2.8rem; font-size: 0.65em; border-top: 1px solid var(--separator); padding-top: 0.3em; overflow: visible;"}
 ::: {.fragment .fade-in-then-out fragment-index=2 style="position: absolute; width: 100%;"}
 Kaitlin Gili, Kyle Heuton, Astha Shah, David Hammer, and Michael C. Hughes
 :::
@@ -1032,10 +1081,8 @@ Kyle Heuton, Shikhar Shrestha, Thomas J. Stopka, Jennifer Pustz, Michael C. Hugh
 ::: {.fragment .fade-in-then-out fragment-index=6 style="position: absolute; width: 100%;"}
 Kyle Heuton, Thomas J. Stopka, Shikhar Shrestha, Jennifer Pustz, Liping Liu, Michael C. Hughes
 :::
-::: {.fragment .fade-in-then-out fragment-index=9 style="position: absolute; width: 100%;"}
-Preetish Rath, Gabe Hope, Kyle Heuton, Erik Sudderth, Michael Hughes
-:::
-::: {.fragment .fade-in fragment-index=10 style="position: absolute; width: 100%;"}
+::: {.fragment .fade-in fragment-index=8 style="position: absolute; width: 100%;"}
+Preetish Rath, Gabe Hope, Kyle Heuton, Erik Sudderth, Michael Hughes<br>
 Christopher Ratigan, Kyle Heuton, Carissa Wang, Lenore Cowen, Michael C. Hughes
 :::
 ::::
@@ -1347,5 +1394,63 @@ Committee feedback slide 5 of 5. Full 6-panel cook_county interpolation: {train,
 
 ::: notes
 Extended benchmark rerun: 6 additional tasks not in the main rerun slide. Spatial Top-K (ASurv, Cook County, Speed Humps) and Shortest Path family (SP Synth 5×5, SP Planted 5×5, Warcraft 12×12). Phases: (1) MSE baseline across all axes, (2) L-LTR reveal, (3) all remaining methods. cpLayer/QPTL absent for these tasks; Warcraft only has MSE/DFL/Identity/SPO+/NCE/Blackbox/Perturb. Note SPO+ and L-LTR tie near the top of sp_synth/sp_planted; Perturb is a major regression on Cook County (48 vs ~20).
+:::
+
+## When does the gradient surrogate apply?
+
+:::::: {style="font-size: 0.82em;"}
+
+:::: {style="display: grid; grid-template-columns: 55% 45%; gap: 0.4em 1.2em;"}
+
+::: {.fragment fragment-index=1 style="grid-column: 1 / span 2; grid-row: 1;"}
+**SPO+**, **PG losses**, and **DPO** all formally require the objective to be [linear in the predicted parameter]{.accent-purple style="font-weight: bold;"}:
+
+$$\phi(\hat{c}, z) \;=\; \hat{c}^\top z, \qquad z^*(\hat{c}) \in \arg\min_{z \in \mathcal{S}} \hat{c}^\top z$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 1; grid-row: 2;"}
+[Why:]{.accent-yellow style="font-weight: bold;"} all three derivations rely on the envelope identity
+
+$$\nabla_{\hat{c}}\, V(\hat{c}) \;=\; z^*(\hat{c}), \quad V(\hat{c}) = \min_{z \in \mathcal{S}} \hat{c}^\top z$$
+:::
+
+::: {.fragment fragment-index=2 style="grid-column: 2; grid-row: 2; align-self: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em;"}
+SPO+ &nbsp;→&nbsp; support function $\xi_\mathcal{S}$
+
+PG &nbsp;→&nbsp; Danskin's theorem
+
+DPO &nbsp;→&nbsp; $y_\varepsilon^*(\theta) = \nabla_\theta F_\varepsilon(\theta)$
+:::
+
+::: {.fragment fragment-index=3 style="grid-column: 1 / span 2; grid-row: 3; border-top: 1px solid var(--separator); padding-top: 0.6em; margin-top: 0.2em;"}
+**Two kinds of "nonlinear" — only one is allowed:**
+:::
+
+::: {.fragment fragment-index=4 style="grid-column: 1; grid-row: 4;"}
+[Nonlinear in decision $z$, linear in $\hat{c}$]{.accent-teal style="font-weight: bold;"}
+
+$$\hat{c}^\top z - \lambda\, z^\top Q z$$
+
+Portfolio: gradient in $\hat{c}$ is still $z^*(\hat{c})$ &nbsp;✓
+:::
+
+::: {.fragment fragment-index=5 style="grid-column: 2; grid-row: 4;"}
+[Nonlinear in predicted $\hat{c}$]{.accent-coral style="font-weight: bold;"}
+
+$$\tfrac{1}{N}\!\sum_u\!\Big(1 - \prod_w (1 - z^w \hat{c}^{wu})\Big)$$
+
+Budget allocation: envelope identity fails &nbsp;✗
+:::
+
+::: {.fragment fragment-index=6 style="grid-column: 1 / span 2; grid-row: 5; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8em; margin-top: 0.3em;"}
+The oracle-blackbox framing hides the shape of the [feasible set]{.accent-purple style="font-weight: bold;"} — not the shape of the [objective]{.accent-coral style="font-weight: bold;"}. Running the gradient formula through a submodular solver is mechanically possible, but no longer justified by the derivation.
+:::
+
+::::
+
+::::::
+
+::: notes
+Bonus / committee-style slide pulled from the DFL wiki (`comparisons/nonlinear_objective_handling.md`). Key points: (1) all three gradient-surrogate methods share the same formal requirement — linearity in the predicted parameter — via the envelope identity; (2) nonlinearity in the *decision* is fine (portfolio's $z^\top Q z$ with known $Q$), nonlinearity in the *predicted cost* breaks the derivation (budget allocation's multilinear coverage); (3) "oracle-only" does not rescue this — it sidesteps constraint-set complexity, not cost-parameter nonlinearity. PtO/PnO benchmark applies SPO+/Perturb/etc. to budget allocation as a heuristic; cubic top-K is *not* a counterexample because the objective there is still linear in $y$ (the cubic lives in the feature map).
 :::
 
