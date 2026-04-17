@@ -1043,29 +1043,6 @@ Christopher Ratigan, Kyle Heuton, Carissa Wang, Lenore Cowen, Michael C. Hughes
 
 ## Thank You
 
-::: {.columns}
-::: {.column width="60%"}
-**Dissertation committee:**
-
-<!-- TODO: names -->
-
-<br>
-
-**Collaborators and labmates:**
-
-<!-- TODO: names -->
-
-<br>
-
-**Funding:**
-
-<!-- TODO: grants -->
-:::
-::: {.column width="40%"}
-<!-- TODO: optional QR code / contact -->
-:::
-:::
-
 ::: notes
 Keep this brief. Have a backup slide with key results ready.
 :::
@@ -1281,3 +1258,94 @@ window.addEventListener('load', function () {
 });
 </script>
 ```
+
+## {background-iframe="animations/interactive/method-categorization.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
+::: notes
+Committee feedback slide 1 of 5. Method categorization: every method is decision-aware — MSE via a finite HP grid, the rest via continuous gradient surrogates. Four phases: (1) reveal bins, (2) MSE lands in HP-grid bin + caption, (3) 8 gradient methods land in gradient bin + caption, (4) callout.
+:::
+
+## {background-iframe="animations/interactive/problem-regimes.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
+::: notes
+Committee feedback slide 2 of 5. Four regimes: well-specified, mis-specified, small-data, real/unknown. Phases: (1) reveal quadrants, (2) synthetic problems fly in, (3) real-data problems fly in, (4) "next three slides visit three of these regimes" callout.
+:::
+
+## {background-iframe="animations/interactive/specification-scatter.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
+::: notes
+Committee feedback slide 3 of 5. sp_synth (mis-spec) vs sp_planted (well-spec) scatter. Same 5×5 DAG, same 1-layer linear head; only DGP flips. Phases: (1) diagonal + legend, (2) near-origin methods (SPO+, listLTR, Perturb, MSE, PG), (3) far methods (DFL, Identity, Blackbox), (4) callout. LODL omitted (missing sp_planted run).
+:::
+
+## {background-iframe="animations/interactive/small-data.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
+::: notes
+Committee feedback slide 4 of 5. 3 panels × 4 methods (MSE, DFL, Perturb, LODL — DAD excluded). Phases: (1) knapsack, (2) sp_synth, (3) cook_county (Perturb getting WORSE with more data is the surprise finding), (4) callout. PG omitted — small-data SLURM sweep only covered these 4 methods.
+:::
+
+## {background-iframe="animations/interactive/realdata-interp.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
+::: notes
+Committee feedback slide 5 of 5. Full 6-panel cook_county interpolation: {train, val, test} × {regret, pred MSE}. θ(α) = (1−α)θ_MSE + α·θ_Perturb, α ∈ [−0.5, 1.5]. Phases: (1) endpoint markers, (2) regret row, (3) MSE row, (4) highlight test-regret minimum at α ≈ −0.16 (*before* MSE, away from Perturb), (5) callout on distribution shift / overfitting.
+:::
+
+## {background-iframe="animations/interactive/bench-bump-rerun-extra.html" background-interactive="true"}
+
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+::: {.fragment .results-step}
+:::
+
+::: notes
+Extended benchmark rerun: 6 additional tasks not in the main rerun slide. Spatial Top-K (ASurv, Cook County, Speed Humps) and Shortest Path family (SP Synth 5×5, SP Planted 5×5, Warcraft 12×12). Phases: (1) MSE baseline across all axes, (2) L-LTR reveal, (3) all remaining methods. cpLayer/QPTL absent for these tasks; Warcraft only has MSE/DFL/Identity/SPO+/NCE/Blackbox/Perturb. Note SPO+ and L-LTR tie near the top of sp_synth/sp_planted; Perturb is a major regression on Cook County (48 vs ~20).
+:::
+
